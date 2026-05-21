@@ -11,6 +11,7 @@ from workflow import (
     estimate_page_count,
     generate_outline,
     generate_slide,
+    fix_slide,
     REQUIRED,
 )
 from themes import tech_blue
@@ -57,10 +58,9 @@ def test_load_theme_tech_blue_returns_module():
     assert t is tech_blue
 
 
-def test_load_theme_pptx_path_raises_not_implemented():
-    with pytest.raises(NotImplementedError) as exc:
-        load_theme("path/to/template.pptx")
-    assert "template-ingest" in str(exc.value)
+def test_load_theme_pptx_file_not_exists_raises():
+    with pytest.raises(FileNotFoundError):
+        load_theme("/tmp/this_file_does_not_exist_iloveppt.pptx")
 
 
 def test_load_theme_unknown_raises_value_error():
@@ -147,3 +147,68 @@ def test_generate_slide_unknown_layout_raises_attribute_error():
     spec = {"layout": "nonexistent_layout"}
     with pytest.raises(AttributeError):
         generate_slide(prs, spec, tech_blue)
+
+
+# ----- fix_slide -----
+
+def test_fix_slide_no_issues_returns_slide_unchanged():
+    prs = _new_prs()
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    result = fix_slide(slide, [])
+    assert result is slide
+
+
+def test_fix_slide_fontsize_too_large_reduces_fonts():
+    from pptx.util import Inches, Pt
+    prs = _new_prs()
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    tb = slide.shapes.add_textbox(Inches(1), Inches(1), Inches(3), Inches(1))
+    run = tb.text_frame.paragraphs[0].add_run()
+    run.text = "test"
+    run.font.size = Pt(40)
+    issues = [{"issue": "test", "suggested_fix": "字号过大"}]
+    fix_slide(slide, issues)
+    assert run.font.size == Pt(32)  # 40 × 0.8 = 32
+
+
+def test_fix_slide_margin_not_zeroed_fixes_margins():
+    from pptx.util import Inches, Emu
+    prs = _new_prs()
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    tb = slide.shapes.add_textbox(Inches(1), Inches(1), Inches(3), Inches(1))
+    issues = [{"issue": "test", "suggested_fix": "margin 未归零"}]
+    fix_slide(slide, issues)
+    assert tb.text_frame.margin_left == Emu(0)
+
+
+def test_fix_slide_unknown_fix_does_not_modify_shape_count():
+    prs = _new_prs()
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    n_shapes = len(slide.shapes)
+    fix_slide(slide, [{"issue": "test", "suggested_fix": "未知修复策略 xyz"}])
+    assert len(slide.shapes) == n_shapes
+
+
+# ----- _ingest_template / load_theme with .pptx -----
+
+def test_load_theme_pptx_ingest_uses_minimal_deck(tmp_path):
+    """用 minimal_deck.py 生成的 .pptx 作为 ingest 输入,验证 load_theme 返回带 make_* 的 module。"""
+    import importlib.util
+    # minimal_deck 位于 skills/pptx/examples/,通过绝对路径加载
+    here = Path(__file__).parent
+    md_path = here.parent.parent / "skills" / "pptx" / "examples" / "minimal_deck.py"
+    spec = importlib.util.spec_from_file_location("minimal_deck", md_path)
+    md = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(md)
+
+    out = str(tmp_path / "ingest_test.pptx")
+    md.main(out=out)
+
+    theme = load_theme(out)
+    for name in [
+        "make_cover", "make_toc", "make_section_divider",
+        "make_single_focus", "make_two_col_compare",
+        "make_three_col_cards", "make_bullet_list", "make_table",
+        "make_pic_text", "make_summary", "make_closing",
+    ]:
+        assert hasattr(theme, name), f"ingested theme 缺少 {name}"

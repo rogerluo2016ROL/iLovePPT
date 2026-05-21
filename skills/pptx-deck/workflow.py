@@ -26,6 +26,7 @@ for _p in [str(HERE.parent / "pptx"), str(HERE)]:
 
 import helpers as H
 from themes import tech_blue as T
+import re
 
 
 # ----- 1. parse_brief -----
@@ -51,14 +52,131 @@ def parse_brief(path: str | Path) -> dict[str, Any]:
 THEMES: dict[str, ModuleType] = {"tech_blue": T}
 
 
+def _extract_design_tokens(pptx_path: str) -> dict[str, Any]:
+    """从 .pptx 提取 design token (主色 + 字体)。提取失败时返回空 dict,由调用方回退默认值。"""
+    from pptx import Presentation as _Pres2
+    from lxml import etree
+
+    tokens: dict[str, Any] = {}
+    try:
+        prs = _Pres2(pptx_path)
+    except Exception:
+        return tokens
+
+    # 1. 字体 — 取 slide master 中第一个含 ea typeface 的 run
+    try:
+        from pptx.oxml.ns import qn
+        if prs.slide_masters:
+            master = prs.slide_masters[0]
+            outer_break = False
+            for ph in master.placeholders:
+                for para in ph.text_frame.paragraphs:
+                    for run in para.runs:
+                        rPr = run._r.find(qn("a:rPr"))
+                        if rPr is not None:
+                            ea = rPr.find(qn("a:ea"))
+                            if ea is not None and ea.get("typeface"):
+                                tokens["font_header"] = ea.get("typeface")
+                                tokens["font_body"] = ea.get("typeface")
+                                outer_break = True
+                                break
+                    if outer_break:
+                        break
+                if outer_break:
+                    break
+    except Exception:
+        pass
+
+    # 2. 主色 — 从 theme*.xml 读 accent1 srgbClr
+    try:
+        from pptx.dml.color import RGBColor
+        for part in prs.part.package.iter_parts():
+            pn = part.partname
+            if "theme" in pn and pn.endswith(".xml"):
+                root = etree.fromstring(part.blob)
+                ns = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main"}
+                accent1 = root.find(".//a:accent1//a:srgbClr", ns)
+                if accent1 is not None:
+                    hex_val = accent1.get("val", "")
+                    if len(hex_val) == 6:
+                        tokens["primary"] = RGBColor(
+                            int(hex_val[0:2], 16),
+                            int(hex_val[2:4], 16),
+                            int(hex_val[4:6], 16),
+                        )
+                        break
+    except Exception:
+        pass
+
+    return tokens
+
+
+def _ingest_template(pptx_path: str) -> ModuleType:
+    """从用户 .pptx 学风格,生成临时主题模块。
+
+    实现策略：读取 tech_blue.py 源码 → 替换字体/颜色常量 → 写入 tmpdir →
+    importlib 动态加载。返回的模块有与 tech_blue 相同的 11 个 make_* API。
+
+    token 提取为 best-effort：若模板 XML 结构不含目标字段,保留 tech_blue 默认值。
+    """
+    import importlib.util
+
+    tokens = _extract_design_tokens(pptx_path)
+
+    # 读取 tech_blue.py 源码
+    import themes.tech_blue as base_module
+    base_source_path = Path(base_module.__file__)
+    new_source = base_source_path.read_text(encoding="utf-8")
+
+    # 替换字体常量（仅精确匹配已知的默认行）
+    if "font_header" in tokens:
+        font_val = tokens["font_header"]
+        new_source = new_source.replace(
+            'FONT_HEADER = "Microsoft YaHei"',
+            f'FONT_HEADER = "{font_val}"',
+            1,
+        )
+        new_source = new_source.replace(
+            'FONT_BODY   = "Microsoft YaHei"',
+            f'FONT_BODY   = "{tokens.get("font_body", font_val)}"',
+            1,
+        )
+
+    # 替换 PRIMARY 颜色常量
+    if "primary" in tokens:
+        c = tokens["primary"]
+        new_source = new_source.replace(
+            "PRIMARY      = RGBColor(0x1E, 0x6F, 0xE0)",
+            f"PRIMARY      = RGBColor(0x{c[0]:02X}, 0x{c[1]:02X}, 0x{c[2]:02X})",
+            1,
+        )
+
+    # 写出到临时目录并动态 import
+    tmpdir = Path(tempfile.gettempdir()) / "iloveppt_ingest"
+    tmpdir.mkdir(exist_ok=True)
+    out_name = f"ingested_{Path(pptx_path).stem}"
+    out_path = tmpdir / f"{out_name}.py"
+    out_path.write_text(new_source, encoding="utf-8")
+
+    spec = importlib.util.spec_from_file_location(out_name, out_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"无法从 {out_path} 加载 ingested theme")
+    ingested = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ingested)
+
+    print(f"  ingested theme written to {out_path}")
+    print(f"     fonts: {tokens.get('font_header', '(default)')}")
+    print(f"     primary: {tokens.get('primary', '(default)')}")
+    return ingested
+
+
 def load_theme(theme_id: str) -> ModuleType:
     if theme_id in THEMES:
         return THEMES[theme_id]
     if str(theme_id).endswith(".pptx"):
-        raise NotImplementedError(
-            "template-ingest 走 LLM 流程,见 template-ingest.md;"
-            "本骨架先实现 tech_blue 路径"
-        )
+        if not Path(theme_id).exists():
+            raise FileNotFoundError(f"theme .pptx 文件不存在: {theme_id}")
+        return _ingest_template(theme_id)
     raise ValueError(f"未知 theme: {theme_id}")
 
 
@@ -142,9 +260,67 @@ def vision_check(image_path: str | Path, intent: str) -> list[dict[str, Any]]:
     return []
 
 
+def _fix_fontsize_too_large(slide: Slide, issue: dict[str, Any]) -> str:
+    """对 slide 中所有 textbox 的 font.size 减 20%（最小 8pt）。"""
+    from pptx.util import Pt
+    fixed = 0
+    for shape in slide.shapes:
+        if not shape.has_text_frame:
+            continue
+        for para in shape.text_frame.paragraphs:
+            for run in para.runs:
+                if run.font.size is None:
+                    continue
+                new_size = int(run.font.size.pt * 0.8)
+                if new_size < 8:
+                    new_size = 8
+                run.font.size = Pt(new_size)
+                fixed += 1
+    return f"font 缩小 20% (影响 {fixed} 个 run)"
+
+
+def _fix_margin_not_zeroed(slide: Slide, issue: dict[str, Any]) -> str:
+    """所有 textbox margin 归零。"""
+    from pptx.util import Emu
+    fixed = 0
+    for shape in slide.shapes:
+        if not shape.has_text_frame:
+            continue
+        tf = shape.text_frame
+        tf.margin_left = tf.margin_right = Emu(0)
+        tf.margin_top = tf.margin_bottom = Emu(0)
+        fixed += 1
+    return f"textbox margin 归零 (影响 {fixed} 个 textbox)"
+
+
+def _fix_no_action(slide: Slide, issue: dict[str, Any]) -> str:
+    """无可机械应用的修复,记录 suggested_fix 供人工处理。"""
+    return f"无机械修复策略: {issue.get('suggested_fix', '(空)')}"
+
+
 def fix_slide(slide: Slide, issues: list[dict[str, Any]]) -> Slide:
-    """根据 issues 修 slide。骨架占位：不修。"""
+    """根据 issues 修 slide。
+
+    支持的机械修复：
+    - suggested_fix 含 "字号" / "font" + ("大"|"large"|"small") → 全 slide font 缩小 20%
+    - suggested_fix 含 "margin" / "归零" → 全 slide textbox margin 归零
+    - 其他关键字 → 打印 suggested_fix 但不修改（限制：视觉 QA 输出为自由文本,
+      只能处理有限的关键字模式；复杂修复需人工介入）
+
+    Returns the (possibly modified) slide.
+    """
     print(f"  [fix_slide] 应用 {len(issues)} 个修复")
+    for issue in issues:
+        sf = issue.get("suggested_fix", "").lower()
+        # 字号过大/过小：含 "字号" 或 "font" + size-related 词
+        if "字号" in sf or ("font" in sf and re.search(r"大|large|过大|small|过小", sf)):
+            action = _fix_fontsize_too_large(slide, issue)
+        # margin 未归零
+        elif "margin" in sf or "归零" in sf:
+            action = _fix_margin_not_zeroed(slide, issue)
+        else:
+            action = _fix_no_action(slide, issue)
+        print(f"    - {issue.get('issue', '(unknown)')}: {action}")
     return slide
 
 
