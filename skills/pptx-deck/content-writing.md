@@ -45,7 +45,7 @@ bullet_list:      { layout, title, items: [str, ...] }
 table:            { layout, title, headers: [str, ...], rows: [[str, ...], ...] }
 pic_text:         { layout, title, image_path, points: [{title, body}, ...] }
 summary:          { layout, conclusions: [str, ...] }
-closing:          { layout, contact_info }
+closing:          { layout, subtitle }
 
 遵循约束（详见上表）：
 - 字数限制严格执行，超出则裁剪，不得将约束视为建议
@@ -126,7 +126,7 @@ cover
 - [ ] 不出现通用形容词（"高效"、"创新"、"优秀"、"先进"）
 - [ ] 章节扉页 `num` 与 toc 章节顺序严格一致
 - [ ] 总结页结论与 `brief.key_points` 呼应（不新增未出现过的论点）
-- [ ] 封底 `contact_info` 不超 30 字
+- [ ] 封底 `subtitle` 不超 30 字
 - [ ] `bullet_list` 所有 items 同一句式（不混用动宾 / 名词性）
 - [ ] `three_col_cards` 每卡 body 长度差 ≤ 30%（视觉平衡）
 - [ ] `table` 列标题与行内容语义对齐（列是维度，行是实例）

@@ -3,9 +3,10 @@
 调用 [[pptx]]/helpers.py 作为底层。11 个 layout 函数对应 spec §3.4。
 默认字体 Microsoft YaHei（用户决策）。
 """
-import os, sys
-HERE = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(HERE, "../../pptx"))
+import sys, warnings
+from pathlib import Path
+HERE = Path(__file__).parent
+sys.path.insert(0, str(HERE.parent.parent / "pptx"))
 
 from pptx import Presentation
 from pptx.dml.color import RGBColor
@@ -93,21 +94,24 @@ def make_single_focus(prs, *, big_text="", big_number="", explanation=""):
     H.fix_textbox_margins(box.text_frame)
     p = box.text_frame.paragraphs[0]
     p.alignment = PP_ALIGN.CENTER
-    r = p.add_run(); r.text = big_number
+    r = p.add_run()
+    r.text = big_number
     H.set_font(r, name=FONT_NUM, size=120, bold=True, color=PRIMARY)
     # 大文字
     box2 = s.shapes.add_textbox(Inches(0.55), Inches(4.5), Inches(12), Inches(1.0))
     H.fix_textbox_margins(box2.text_frame)
     p2 = box2.text_frame.paragraphs[0]
     p2.alignment = PP_ALIGN.CENTER
-    r2 = p2.add_run(); r2.text = big_text
+    r2 = p2.add_run()
+    r2.text = big_text
     H.set_font(r2, name=FONT_HEADER, size=32, bold=True, color=PRIMARY_DEEP)
     # 解释
     box3 = s.shapes.add_textbox(Inches(0.55), Inches(5.6), Inches(12), Inches(0.6))
     H.fix_textbox_margins(box3.text_frame)
     p3 = box3.text_frame.paragraphs[0]
     p3.alignment = PP_ALIGN.CENTER
-    r3 = p3.add_run(); r3.text = explanation
+    r3 = p3.add_run()
+    r3.text = explanation
     H.set_font(r3, name=FONT_HEADER, size=14, color=H.GRAY_500)
     return s
 
@@ -145,10 +149,12 @@ def make_two_col_compare(prs, left_title, left_body, right_title, right_body):
 
 
 def make_three_col_cards(prs, cards, title="三栏"):
+    if len(cards) > 3:
+        warnings.warn(f"make_three_col_cards 收到 {len(cards)} 张卡片,只显前 3 张", stacklevel=2)
     s = _blank_slide(prs)
     _add_title(s, title, size=28)
     for i, c in enumerate(cards[:3]):
-        x = Inches(0.55 + i * 4.15)
+        x = Inches(0.55 + i * 4.15)  # card_w=3.85 + gap=0.30 = 4.15 列间距
         H.card(s, x, Inches(1.8), Inches(3.85), Inches(5.0),
                fill=H.WHITE, border=H.GRAY_300, accent=PRIMARY if i % 2 == 0 else ACCENT)
         t = s.shapes.add_textbox(x + Inches(0.3), Inches(2.0), Inches(3.4), Inches(0.6))
@@ -183,6 +189,8 @@ def make_table(prs, title, headers, rows):
 
 
 def make_pic_text(prs, title, image_path, points):
+    if len(points) > 4:
+        warnings.warn(f"make_pic_text 收到 {len(points)} 个要点,只显前 4 项", stacklevel=2)
     s = _blank_slide(prs)
     _add_title(s, title, size=28)
     H.embed_picture(s, image_path, Inches(0.55), Inches(1.9), height=Inches(5.0))
@@ -205,6 +213,8 @@ def make_pic_text(prs, title, image_path, points):
 
 
 def make_summary(prs, conclusions, title="核心结论"):
+    if len(conclusions) > 5:
+        warnings.warn(f"make_summary 收到 {len(conclusions)} 条结论,只显前 5 条", stacklevel=2)
     s = _blank_slide(prs)
     _add_title(s, title, size=32, color=PRIMARY_DEEP)
     for i, c in enumerate(conclusions[:5]):
@@ -215,7 +225,8 @@ def make_summary(prs, conclusions, title="核心结论"):
         H.fix_textbox_margins(n_box.text_frame)
         p = n_box.text_frame.paragraphs[0]
         p.alignment = PP_ALIGN.CENTER
-        r = p.add_run(); r.text = str(i + 1)
+        r = p.add_run()
+        r.text = str(i + 1)
         H.set_font(r, name=FONT_NUM, size=32, bold=True, color=H.WHITE)
         # 结论文字
         t = s.shapes.add_textbox(Inches(1.7), y + Inches(0.18), Inches(11), Inches(0.6))
@@ -226,19 +237,22 @@ def make_summary(prs, conclusions, title="核心结论"):
     return s
 
 
-def make_closing(prs, contact_info="谢谢"):
+def make_closing(prs, subtitle="谢谢"):
+    """封底页:大字 '谢谢' + 小字 subtitle (默认也是 '谢谢',可改为联系方式等)."""
     s = _blank_slide(prs)
     H.rect(s, 0, 0, H.SLIDE_W, H.SLIDE_H, PRIMARY_DEEP)
     box = s.shapes.add_textbox(Inches(0.55), Inches(3.0), Inches(12), Inches(1.5))
     H.fix_textbox_margins(box.text_frame)
     p = box.text_frame.paragraphs[0]
     p.alignment = PP_ALIGN.CENTER
-    r = p.add_run(); r.text = "谢谢"
+    r = p.add_run()
+    r.text = "谢谢"
     H.set_font(r, name=FONT_HEADER, size=64, bold=True, color=H.WHITE)
     box2 = s.shapes.add_textbox(Inches(0.55), Inches(4.6), Inches(12), Inches(0.6))
     H.fix_textbox_margins(box2.text_frame)
     p2 = box2.text_frame.paragraphs[0]
     p2.alignment = PP_ALIGN.CENTER
-    r2 = p2.add_run(); r2.text = contact_info
+    r2 = p2.add_run()
+    r2.text = subtitle
     H.set_font(r2, name=FONT_BODY, size=16, color=PRIMARY_TINT)
     return s

@@ -137,7 +137,7 @@ def card(slide, x, y, w, h, *, fill=WHITE, border=GRAY_300, accent=None):
     shape.line.width = Pt(0.75)  # 0.75pt border keeps card light without being invisible
     shape.adjustments[0] = 0.05  # corner radius = 5% of shorter side (small rounded corner)
     if accent:
-        bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, y, Emu(36000), h)  # 36000 EMU ≈ 2.83pt, narrow left accent bar
+        bar = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, y, Inches(0.04), h)  # ~2.88pt 窄左 accent 条
         bar.fill.solid()
         bar.fill.fore_color.rgb = accent
         no_line(bar)

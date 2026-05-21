@@ -7,7 +7,7 @@
 vision_check 当前实现为：导出 PNG,打印路径,默认接受。
 真实使用时由 Claude 调本脚本后逐张看图,出 issue JSON 再 fix。
 """
-import os, sys, subprocess, json
+import sys, subprocess, tempfile
 from pathlib import Path
 
 import yaml
@@ -30,7 +30,7 @@ REQUIRED = {"title", "outline", "theme", "output"}
 def parse_brief(path):
     with open(path) as f:
         data = yaml.safe_load(f)
-    missing = REQUIRED - set(data.keys())
+    missing = REQUIRED - set(data)
     if missing:
         raise ValueError(f"brief 缺字段: {missing}")
     data.setdefault("subtitle", "")
@@ -64,7 +64,7 @@ def estimate_page_count(brief):
     return int(len(brief["outline"]) * 1.5) + 4
 
 
-def generate_outline(brief, theme):
+def generate_outline(brief):
     """根据 brief 生成 page_spec list。LLM 在真实运行时会替换此函数。
     本骨架返回固定的简版 outline 跑通 pipeline。"""
     specs = []
@@ -79,7 +79,7 @@ def generate_outline(brief, theme):
     specs.append({"layout": "summary",
                   "conclusions": brief.get("key_points",
                                             ["结论 1", "结论 2", "结论 3"])})
-    specs.append({"layout": "closing", "contact_info": "谢谢"})
+    specs.append({"layout": "closing", "subtitle": "谢谢"})
     return specs
 
 
@@ -95,25 +95,38 @@ def generate_slide(prs, spec, theme):
 
 def render_one_slide(prs, idx, out_png):
     """导出全 deck PDF,然后 pdftoppm 截第 idx 页。"""
-    tmpdir = Path("/tmp/iloveppt_render")
+    import shutil  # 局部 import 防止顶部污染
+    if shutil.which("soffice") is None:
+        raise RuntimeError("soffice 未安装。请: brew install --cask libreoffice")
+    if shutil.which("pdftoppm") is None:
+        raise RuntimeError("pdftoppm 未安装。请: brew install poppler")
+    tmpdir = Path(tempfile.gettempdir()) / "iloveppt_render"
     tmpdir.mkdir(exist_ok=True)
     pptx_tmp = tmpdir / "current.pptx"
     prs.save(str(pptx_tmp))
-    subprocess.run(
-        ["soffice", "--headless", "--convert-to", "pdf",
-         str(pptx_tmp), "--outdir", str(tmpdir)],
-        check=True, capture_output=True,
-    )
+    try:
+        subprocess.run(
+            ["soffice", "--headless", "--convert-to", "pdf",
+             str(pptx_tmp), "--outdir", str(tmpdir)],
+            check=True, capture_output=True, text=True,
+        )
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(f"soffice PDF 转换失败: {e.stderr}") from e
     pdf = tmpdir / "current.pdf"
-    subprocess.run(
-        ["pdftoppm", "-jpeg", "-r", "120",
-         "-f", str(idx), "-l", str(idx),
-         str(pdf), str(tmpdir / "slide_only")],
-        check=True, capture_output=True,
-    )
+    if not pdf.exists():
+        raise RuntimeError(f"soffice 跑了但未产 PDF: {pdf}")
+    try:
+        subprocess.run(
+            ["pdftoppm", "-jpeg", "-r", "120",
+             "-f", str(idx), "-l", str(idx),
+             str(pdf), str(tmpdir / "slide_only")],
+            check=True, capture_output=True, text=True,
+        )
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(f"pdftoppm 转换失败: {e.stderr}") from e
     candidates = list(tmpdir.glob(f"slide_only-{idx}*.jpg"))
     if not candidates:
-        raise RuntimeError(f"渲染失败,未找到第 {idx} 页 jpg")
+        raise RuntimeError(f"渲染未产 jpg,期望第 {idx} 页输出")
     Path(out_png).parent.mkdir(parents=True, exist_ok=True)
     candidates[0].rename(out_png)
 
@@ -135,20 +148,21 @@ def fix_slide(slide, issues):
 def run(brief_path):
     brief = parse_brief(brief_path)
     theme = load_theme(brief["theme"])
-    outline = generate_outline(brief, theme)
+    outline = generate_outline(brief)
 
     prs = Presentation()
-    prs.slide_width = Inches(13.333); prs.slide_height = Inches(7.5)
+    prs.slide_width = Inches(13.333)
+    prs.slide_height = Inches(7.5)
 
     review_needed = []
 
     for idx, spec in enumerate(outline, 1):
         print(f"slide {idx}/{len(outline)}: {spec['layout']}")
         slide = generate_slide(prs, spec, theme)
-        png_path = f"/tmp/iloveppt_render/page_{idx:02d}.png"
+        png_path = str(Path(tempfile.gettempdir()) / "iloveppt_render" / f"page_{idx:02d}.png")
         try:
             render_one_slide(prs, idx, png_path)
-        except subprocess.CalledProcessError as e:
+        except RuntimeError as e:
             print(f"  warning: render failed: {e}; marking review-needed")
             review_needed.append({"idx": idx, "reason": "render_failed"})
             continue

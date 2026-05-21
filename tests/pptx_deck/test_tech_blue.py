@@ -80,7 +80,7 @@ def test_make_summary():
 
 def test_make_closing():
     prs = _new()
-    T.make_closing(prs, contact_info="联系邮箱：x@y.com")
+    T.make_closing(prs, subtitle="联系邮箱：x@y.com")
     assert len(prs.slides) == 1
 
 def test_font_default_is_microsoft_yahei():
