@@ -96,7 +96,7 @@ brief = parse_brief("examples/demo_brief.yaml")
 | `reference_pptx` | str | None | 参考 pptx，用于风格学习 |
 | `audience` | str | None | 受众描述（影响措辞复杂度） |
 | `duration_min` | int | None | 演讲时长（影响页数估算） |
-| `brand_colors` | list[str] | None | 品牌色 hex 列表 |
+| `brand_color` | str | None | 品牌色 hex（如 `"#0B2A4A"`） |
 
 完整示例见 [brief.example.yaml](brief.example.yaml)。
 
@@ -299,7 +299,7 @@ for slide in prs.slides[:5]:
 
 #### 颜色一致性
 
-品牌主色（`#1B3F8B`）和强调色（`#00B4D8`）不得被其他颜色大量替代。
+品牌主色（PRIMARY = `#1E6FE0`, DEEP = `#0B2A4A`）和强调色（ACCENT = `#00D1C1`）不得被其他颜色大量替代。
 
 ---
 
@@ -516,7 +516,7 @@ cp "Microsoft YaHei.ttf" ~/Library/Fonts/
 fc-cache -fv
 ```
 
-或者降级使用 `PingFang SC`（macOS 内置），并在 brief 中指定 `brand_colors`。
+或者降级使用 `PingFang SC`（macOS 内置），并在 brief 中指定 `brand_color`。
 
 ### Q: vision_check 骨架版全部接受，如何接入真实检查？
 

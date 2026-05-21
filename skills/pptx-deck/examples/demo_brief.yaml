@@ -10,5 +10,5 @@ key_points:
   - "视觉自检 + 自动修复"
   - "支持模板学风格"
 theme: tech_blue
-output: /Users/pc2026/Documents/DevTools/KillPPTs/skills/pptx-deck/examples/sample_output.pptx
+output: ./examples/sample_output.pptx
 page_count_target: 12
