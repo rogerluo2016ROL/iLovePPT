@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.venv/
+venv/
+.idea/
+.vscode/
+/tmp/
+*.swp
+
+# 渲染验证产物
+/out/
+*.pdf
+slide-*.jpg
+slide-*.png
+preview*.png
+thumbnails-*.jpg
+
+# 但保留示例产物
+!skills/pptx-deck/examples/sample_output.pptx
