@@ -1,4 +1,4 @@
-"""KillPPTs pptx-deck — 端到端 workflow 骨架。
+"""iLovePPT pptx-deck — 端到端 workflow 骨架。
 
 用法：
     python3 workflow.py path/to/brief.yaml
@@ -95,7 +95,7 @@ def generate_slide(prs, spec, theme):
 
 def render_one_slide(prs, idx, out_png):
     """导出全 deck PDF,然后 pdftoppm 截第 idx 页。"""
-    tmpdir = Path("/tmp/killppts_render")
+    tmpdir = Path("/tmp/iloveppt_render")
     tmpdir.mkdir(exist_ok=True)
     pptx_tmp = tmpdir / "current.pptx"
     prs.save(str(pptx_tmp))
@@ -145,7 +145,7 @@ def run(brief_path):
     for idx, spec in enumerate(outline, 1):
         print(f"slide {idx}/{len(outline)}: {spec['layout']}")
         slide = generate_slide(prs, spec, theme)
-        png_path = f"/tmp/killppts_render/page_{idx:02d}.png"
+        png_path = f"/tmp/iloveppt_render/page_{idx:02d}.png"
         try:
             render_one_slide(prs, idx, png_path)
         except subprocess.CalledProcessError as e:

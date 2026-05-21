@@ -1,4 +1,4 @@
-# KillPPTs Skill 库设计文档（v2）
+# iLovePPT Skill 库设计文档（v2）
 
 **日期**：2026-05-21
 **作者**：brainstorm 协作产出
@@ -9,7 +9,7 @@
 
 ## 1. 项目定位（v2 调整）
 
-KillPPTs 的目标：**复制人类快速生成 PPT 的能力**——用户输入主题/要点（或给出参考 .pptx）,skill 自动产出完整 .pptx,包括拓写每页文案、生成架构图、套用风格,并通过 LLM 视觉能力**逐页自检与优化**。
+iLovePPT 的目标：**复制人类快速生成 PPT 的能力**——用户输入主题/要点（或给出参考 .pptx）,skill 自动产出完整 .pptx,包括拓写每页文案、生成架构图、套用风格,并通过 LLM 视觉能力**逐页自检与优化**。
 
 不再是被动的"工具集",而是**端到端生成器**。
 
@@ -36,7 +36,7 @@ diagram    ─── 独立可用（单独出图场景）
 ### 2.3 顶层目录
 
 ```
-KillPPTs/
+iLovePPT/
 ├── README.md                          # 项目目标 + 三 skill 入口 + 一句话 demo
 ├── .gitignore
 ├── docs/superpowers/specs/            # spec 落地
@@ -431,7 +431,7 @@ skill 是文档+脚本集,三层验证：
 
 ## 10. 从源 AGF skill 的迁移变化清单
 
-| 维度 | 源 AGF | KillPPTs v2 |
+| 维度 | 源 AGF | iLovePPT v2 |
 |---|---|---|
 | skill 命名 | `pptx` + `agf-writing-pptx-reports` | `pptx-deck` + `pptx` + `diagram` |
 | 项目定位 | 工具方法论沉淀 | 端到端 PPT 生成器 |

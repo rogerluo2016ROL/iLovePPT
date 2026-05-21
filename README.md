@@ -1,4 +1,4 @@
-# KillPPTs
+# iLovePPT
 
 端到端 PPT 生成 skill 库 — 复制人类快速生成 PPT 的能力。给主题/要点,自动产出含视觉自检的完整 .pptx。
 
@@ -71,12 +71,12 @@ python3 skills/pptx-deck/workflow.py my_brief.yaml
 
 ```bash
 # 拷贝
-cp -R /path/to/KillPPTs/skills/* /path/to/your-project/.claude/skills/
+cp -R /path/to/iLovePPT/skills/* /path/to/your-project/.claude/skills/
 
 # 或符号链接
-ln -s /path/to/KillPPTs/skills/pptx       /path/to/your-project/.claude/skills/pptx
-ln -s /path/to/KillPPTs/skills/pptx-deck  /path/to/your-project/.claude/skills/pptx-deck
-ln -s /path/to/KillPPTs/skills/diagram    /path/to/your-project/.claude/skills/diagram
+ln -s /path/to/iLovePPT/skills/pptx       /path/to/your-project/.claude/skills/pptx
+ln -s /path/to/iLovePPT/skills/pptx-deck  /path/to/your-project/.claude/skills/pptx-deck
+ln -s /path/to/iLovePPT/skills/diagram    /path/to/your-project/.claude/skills/diagram
 ```
 
 Claude 自动按 frontmatter 触发关键词识别 skill。常见触发：
@@ -86,8 +86,8 @@ Claude 自动按 frontmatter 触发关键词识别 skill。常见触发：
 
 ## 设计文档
 
-- 完整设计：[`docs/superpowers/specs/2026-05-21-killppts-skill-design.md`](docs/superpowers/specs/2026-05-21-killppts-skill-design.md)
-- 实现计划：[`docs/superpowers/plans/2026-05-21-killppts-skill.md`](docs/superpowers/plans/2026-05-21-killppts-skill.md)
+- 完整设计：[`docs/superpowers/specs/2026-05-21-iloveppt-skill-design.md`](docs/superpowers/specs/2026-05-21-iloveppt-skill-design.md)
+- 实现计划：[`docs/superpowers/plans/2026-05-21-iloveppt-skill.md`](docs/superpowers/plans/2026-05-21-iloveppt-skill.md)
 
 ## 默认风格
 
@@ -100,7 +100,7 @@ Claude 自动按 frontmatter 触发关键词识别 skill。常见触发：
 ## 仓库结构
 
 ```
-KillPPTs/
+iLovePPT/
 ├── README.md                        # 本文件
 ├── docs/superpowers/
 │   ├── specs/                       # 设计文档

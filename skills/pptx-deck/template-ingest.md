@@ -129,7 +129,7 @@ core_layouts = [k for k, v in usage.items() if v >= 2]
 from pptx.dml.color import RGBColor
 import sys, os
 
-sys.path.insert(0, "<KillPPTs>/skills/pptx")
+sys.path.insert(0, "<iLovePPT>/skills/pptx")
 import helpers as H
 
 # --- token 填入区 ---

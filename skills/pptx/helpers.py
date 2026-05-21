@@ -1,4 +1,4 @@
-"""KillPPTs pptx skill — 核心 helper 集合。
+"""iLovePPT pptx skill — 核心 helper 集合。
 
 被 pptx-deck/themes/*.py 调用作为 layout 底层；也可单独 import 用于
 "从零创建 PPT"或"模板局部改"场景。

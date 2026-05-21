@@ -12,7 +12,7 @@ from pptx.util import Inches
 import helpers as H
 
 
-def main(out="/tmp/killppts_minimal.pptx"):
+def main(out="/tmp/iloveppt_minimal.pptx"):
     prs = Presentation()
     prs.slide_width = H.SLIDE_W
     prs.slide_height = H.SLIDE_H
@@ -23,7 +23,7 @@ def main(out="/tmp/killppts_minimal.pptx"):
     box = s.shapes.add_textbox(Inches(0.55), Inches(2.8), Inches(12), Inches(2))
     H.fix_textbox_margins(box.text_frame)
     r = box.text_frame.paragraphs[0].add_run()
-    r.text = "KillPPTs minimal smoke test"
+    r.text = "iLovePPT minimal smoke test"
     H.set_font(r, size=44, bold=True, color=H.WHITE)
 
     # 页 2：内容（card + bullets）

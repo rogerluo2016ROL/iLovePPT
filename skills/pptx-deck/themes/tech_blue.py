@@ -1,4 +1,4 @@
-"""KillPPTs pptx-deck — 内置科技蓝主题。
+"""iLovePPT pptx-deck — 内置科技蓝主题。
 
 调用 [[pptx]]/helpers.py 作为底层。11 个 layout 函数对应 spec §3.4。
 默认字体 Microsoft YaHei（用户决策）。

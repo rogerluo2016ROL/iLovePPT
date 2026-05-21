@@ -2,7 +2,7 @@
 # 一键探测 pptx skill 依赖
 
 set -e
-echo "== KillPPTs pptx skill 依赖检查 =="
+echo "== iLovePPT pptx skill 依赖检查 =="
 
 check_py() {
     if python3 -c "import $1" 2>/dev/null; then
