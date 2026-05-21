@@ -1,0 +1,29 @@
+<mxfile host="app.diagrams.net" version="30.0.1">
+  <diagram name="killppts-minimal" id="D1">
+    <mxGraphModel dx="1600" dy="900" page="1" pageWidth="1600" pageHeight="900">
+      <root>
+        <mxCell id="0" /><mxCell id="1" parent="0" />
+        <mxCell id="n1" value="输入" vertex="1" parent="1"
+                style="rounded=1;fillColor=#1E6FE0;strokeColor=#1E6FE0;fontColor=#FFFFFF;fontSize=20;fontFamily=Microsoft YaHei;fontStyle=1;strokeWidth=2;arcSize=10;">
+          <mxGeometry x="200" y="400" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" value="处理" vertex="1" parent="1"
+                style="rounded=1;fillColor=#00D1C1;strokeColor=#00D1C1;fontColor=#0B2A4A;fontSize=20;fontFamily=Microsoft YaHei;fontStyle=1;strokeWidth=2;arcSize=10;">
+          <mxGeometry x="680" y="400" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" value="输出" vertex="1" parent="1"
+                style="rounded=1;fillColor=#0B2A4A;strokeColor=#0B2A4A;fontColor=#FFFFFF;fontSize=20;fontFamily=Microsoft YaHei;fontStyle=1;strokeWidth=2;arcSize=10;">
+          <mxGeometry x="1160" y="400" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="n1" target="n2"
+                style="endArrow=classic;endFill=1;endSize=14;strokeColor=#0B2A4A;strokeWidth=2.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="n2" target="n3"
+                style="endArrow=classic;endFill=1;endSize=14;strokeColor=#0B2A4A;strokeWidth=2.5;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
