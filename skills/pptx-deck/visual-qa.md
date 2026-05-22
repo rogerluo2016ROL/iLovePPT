@@ -1,12 +1,14 @@
 # 逐页视觉自检 prompt 与流程
 
-本文档定义 `vision_check` 的 prompt 模板 + fix 流程 + 12 项 deck checklist。被 [workflow.md](workflow.md) Step 4 引用。
+本文档定义逐页视觉自检的 prompt 模板 + fix 循环 + 12 项 deck checklist。被 [workflow.md](workflow.md) Step 5 引用。
+
+视觉 QA 是一个 **Claude 执行的检查步骤**：`build.py` 渲染 PNG → Claude 用 Read 工具读图 → 按 12 项 checklist 打分 → 编辑 `deck_plan.json` → 重跑 `build.py`。没有对应的 Python 占位函数。
 
 ---
 
 ## 单页 vision 自检 prompt 模板
 
-[workflow.py](workflow.py) 渲染每页 PNG 后，Claude 用 Read 工具读图，然后用以下 prompt 思考：
+`build.py` 渲染每页 PNG 后，Claude 用 Read 工具读图，然后用以下 prompt 思考：
 
 ```
 你审视的是 PPT 第 {idx}/{total} 页，期望意图：{intent}（layout={spec.layout}）。
@@ -28,7 +30,7 @@
 11. emoji 误用 / 显示为方块（除 ⚠ ⛔ 🔒 警示性 emoji 外均不应出现）
 12. 装饰大字号换行：180pt 数字或 single_focus 的 big_number 变两行
 
-输出 JSON（直接供 fix_slide 使用）：
+输出 JSON（供 Claude 修改 deck_plan.json 时参考）：
 
 [
   {
@@ -43,32 +45,31 @@
 
 ---
 
-## 单页渲染脚本
+## 单页渲染（build.py 流程）
 
-[workflow.py](workflow.py) 中 `render_one_slide(prs, idx, out_png)` 的流程：
+`build.py` 在生成 `.pptx` 后自动渲染 PNG（除非传 `--no-render`）：
 
-1. 将整个 deck 临时导出为 PDF（`soffice --headless --convert-to pdf`）
-2. 用 `pdftoppm` 截取第 `idx` 页为 jpg
-3. 重命名输出到 `out_png`
+1. 调用 `soffice --headless --convert-to pdf` 将整个 deck 导出为 PDF
+2. 用 `pdftoppm` 将每页转为 PNG，输出到与 `.pptx` 同目录的 `slides/` 子目录
 
 速度参考：~3-4s / 页（soffice 启动 ~1.5s + 转换 + pdftoppm 0.3s）。
 
-对于大型 deck（> 20 页），建议批量渲染后再逐页 check，而非每页渲染一次 soffice。
+对于大型 deck（> 20 页），建议一次性全渲染后再逐页 check，而非每页重跑 build.py。
 
 ---
 
-## fix → 重渲染 → 再 check 循环
+## fix → 重渲染 → 再 check 循环（v2 流程）
 
 ```
-generate_slide(spec)
+Claude 产出 deck_plan.json
   ↓
-render_one_slide(prs, idx) → png
+python3 build.py deck_plan.json → .pptx + PNG
   ↓
-vision_check(png, intent, spec) → issues
+Claude 逐页 Read PNG → 对照 12 项 checklist 输出 issues JSON
   ↓
 [issues 非空，attempts < 3]
-  → fix_slide(slide, issues)
-  → render_one_slide → vision_check
+  → Claude 编辑 deck_plan.json（修字段 / 换 layout / 调文字长度）
+  → 重跑 build.py → 再 Read PNG → 再 check
   → 循环
 
 [issues 为空]
@@ -76,27 +77,24 @@ vision_check(png, intent, spec) → issues
 
 [attempts ≥ 3]
   → 标记 review_needed[idx]
-  → 接受当前 slide，继续下一页
+  → 接受当前版本，继续下一页
 ```
 
 ---
 
-## fix_slide 实现策略
+## fix 策略（Claude 编辑 deck_plan.json）
 
-`fix_slide` 根据 `issue.suggested_fix` 字符串关键词决策修法：
+Claude 根据 `issue.suggested_fix` 决策如何修改 `deck_plan.json`：
 
-| suggested_fix 关键词 | 修法 |
+| suggested_fix 关键词 | 修法（在 deck_plan.json 中） |
 |---|---|
-| `"字号过大"` | 减小对应 `set_font(size=N)` 调用的 `N`；参考 [[pptx]] [helpers.py](../pptx/helpers.py) |
-| `"margin 未归零"` | 对遗漏的 textbox 补调 `H.fix_textbox_margins()` |
-| `"layout 不符"` | 换用其他 `theme.make_*` 函数重新生成本页（不是微调参数） |
-| `"颜色对比低"` | 改用 `H.WHITE` / `H.GRAY_900` 等高对比色 |
-| `"字体 fallback"` | 检查 `set_font` 是否漏处理某个 run；或提示用户安装 Microsoft YaHei |
-| `"装饰数字换行"` | textbox 加宽 / 设 `word_wrap=False` |
-| `"重叠"` | 检查 z-order；重叠元素调 `slide.shapes._spTree` 顺序 |
-| `"溢出框"` | 缩短文本（回到 content-writing.md 字数约束）或放大容器 |
-
-骨架版（[workflow.py](workflow.py)）暂不实现自动 fix — Claude 在调用时手动修改 `page_spec` 后重跑 `generate_slide`。
+| `"字号过大"` | 裁剪该字段文字至 content-writing.md 字数约束 |
+| `"layout 不符"` | 将该 slide 的 `layout` 字段换成更合适的 layout 名称，并调整相应字段 |
+| `"颜色对比低"` | 在 deck_plan.json 的 theme 层面换用更高对比配色；或提示用户修改主题文件 |
+| `"字体 fallback"` | 提示用户安装 Microsoft YaHei；检查是否传入了正确 theme |
+| `"装饰数字换行"` | 缩短 `big_number` / `big_text` 字段内容 |
+| `"重叠"` | 裁剪文字 / 换 layout（多数重叠问题是内容过长导致的） |
+| `"溢出框"` | 缩短文本至字数约束（参考 content-writing.md 各 layout 上限） |
 
 ---
 
@@ -161,7 +159,7 @@ vision_check(png, intent, spec) → issues
 
 vision QA 通过后，`review_needed` 清单附在最终交付旁，告知用户哪些页需人工审阅。用户选项：
 
-- 自己修改 `brief.key_points` 重新跑 [workflow.py](workflow.py)
+- 修改 `deck_plan.json` 重跑 `python3 build.py deck_plan.json`
 - 直接编辑输出的 .pptx
 - 接受 `review_needed` 状态交付
 
@@ -169,10 +167,10 @@ vision QA 通过后，`review_needed` 清单附在最终交付旁，告知用户
 
 ## Anti-prompt
 
-- 不要 `vision_check` 失败 N 次后还硬重试 — 达到 3 次直接降级，不再循环
-- 不要让 `fix_slide` 修改 layout 类型 — 修字号 / 位置 / 颜色可以；要改 layout 应走重新生成
-- 不要 `vision_check` 时声称 "看起来 OK" 而不细查 — 默认 assume 有问题，仔细找
+- 不要视觉 check 失败 N 次后还硬重试 — 达到 3 次直接降级，不再循环
+- 不要用修字号 / 位置 / 颜色来掩盖 layout 选错的问题 — layout 不符时直接换 layout 名重新渲染
+- 不要视觉 check 时声称 "看起来 OK" 而不细查 — 默认 assume 有问题，仔细找
 - 不要忽略 low severity issue 累积 — 累积 ≥ 5 个 low 等同 1 个 high
 - 不要在 deck_review 通过后反复回 single-slide 修 — 标 `review_needed` 后向前推进
 - 不要跳过 Microsoft YaHei 字体检查 — 字体 fallback 是最常见的中文 PPT 问题
-- 不要把渲染失败（soffice crash）当成视觉问题处理 — 先排查 workflow.py 渲染步骤
+- 不要把渲染失败（soffice crash）当成视觉问题处理 — 先排查 build.py 渲染步骤

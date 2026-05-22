@@ -1,6 +1,6 @@
 # 每页文案拓写规范
 
-本文档定义 11 种 layout 各自的文案约束 + LLM 拓写 prompt 模板。被 [workflow.md](workflow.md) Step 4（generate_outline）引用。
+本文档定义 11 种 layout 各自的文案约束 + LLM 拓写 prompt 模板。被 [workflow.md](workflow.md) Step 4（Claude 页面拓写）引用。
 
 > 拓写文案**之前**先做图层规划（workflow Step 3）：判断哪些章节该配图。规则见 [diagram-planning.md](diagram-planning.md)。带 `visual_element` 标记的章节内容页改用 `pic_text` 版式（左图右文），其右侧 4 卡片文案从该节要点提炼。
 
@@ -14,8 +14,8 @@
 | toc | 章节 ≤ 6、每章 ≤ 12 字、动宾对齐 | "公司发展的历史背景与现状分析" |
 | section_divider | 章节号 + 标题（≤ 10 字），layout 独立于内容页 | 与内容页同 header |
 | single_focus | 1 句话 ≤ 12 字 + 1 数字（72pt+）+ 1 行解释 | 5 个要点平铺 |
-| two_col_compare | 左右标题各 ≤ 6 字、句式对称 | 标题长度差 2× |
-| three_col_cards | 每卡标题 ≤ 6 字、body ≤ 30 字 | body 一长一短 |
+| compare | 左右标题各 ≤ 6 字、句式对称（N 列，items 列表） | 标题长度差 2× |
+| cards | 每卡标题 ≤ 6 字、body ≤ 30 字（N 列，cards 列表） | body 一长一短 |
 | bullet_list | 每点 ≤ 14 字、句式一致（动宾或名词性结构） | 一点一句话一点一段 |
 | table | 列 ≤ 5、行 ≤ 7、单元格 ≤ 8 字 | 把段落塞进单元格 |
 | pic_text | 左图右文，4 卡片每卡 ≤ 20 字 | 图占满 + 文字塞角落 |
@@ -26,7 +26,7 @@
 
 ## 拓写指令模板
 
-给 LLM 用的 prompt（在 workflow Step 3 内部调用）：
+给 LLM 用的 prompt（在 workflow Step 4 Claude 页面拓写时使用）：
 
 ```
 你正在生成 PPT 第 {idx}/{total} 页。
@@ -35,22 +35,23 @@
 本页 layout：{layout_type}
 本页意图：{intent}
 
-请输出 page_spec JSON，字段对应 {layout_type} 的参数：
+请输出 deck_plan.json 中该 slide 的 JSON 对象，字段对应 {layout_type} 的参数：
 
 cover:            { layout, title, subtitle }
 toc:              { layout, sections: [str, ...] }
 section_divider:  { layout, num: int, title }
 single_focus:     { layout, big_text, big_number, explanation }
-two_col_compare:  { layout, left_title, left_body, right_title, right_body, title? }
-three_col_cards:  { layout, cards: [{title, body}, ...], title? }
+compare:          { layout, title?, items: [{title, body}, ...] }
+cards:            { layout, title?, cards: [{title, body}, ...] }
 bullet_list:      { layout, title, items: [str, ...] }
 table:            { layout, title, headers: [str, ...], rows: [[str, ...], ...] }
 pic_text:         { layout, title, image_path, points: [{title, body}, ...] }
 summary:          { layout, conclusions: [str, ...], title? }
 closing:          { layout, subtitle? }
 
-> `title?` / `subtitle?` 带 `?` 为可选字段。`two_col_compare.title` 默认"对比"——
+> `title?` / `subtitle?` 带 `?` 为可选字段。`compare.title` 默认"对比"——
 > 建议显式传更具体的页标题（如"现状 vs 目标"）。`closing.subtitle` 默认空(只显大字"谢谢")。
+> `compare` / `cards` 的列数由 `items` / `cards` 列表长度决定（N 列）。
 
 遵循约束（详见上表）：
 - 字数限制严格执行，超出则裁剪，不得将约束视为建议
@@ -97,16 +98,16 @@ cover
 
 ### 变化感（相邻页 layout 不重复）
 
-- 连续 2 页都用 `bullet_list` → 第 2 页换 `three_col_cards` 或 `table`
-- 连续 2 页都用 `single_focus` → 其中一页改为 `two_col_compare`
-- 连续 2 页都用 `three_col_cards` → 其中一页改为 `pic_text`
+- 连续 2 页都用 `bullet_list` → 第 2 页换 `cards` 或 `table`
+- 连续 2 页都用 `single_focus` → 其中一页改为 `compare`
+- 连续 2 页都用 `cards` → 其中一页改为 `pic_text`
 - `section_divider` 不计入"连续"判断（它本身不是内容页）
 
 ### 强调感（关键论点单独成页）
 
 - 整 deck 最关键的 1-2 个论点用 `single_focus`（大字号 + 大数字）
-- 数据密集页用 `table`；对比类用 `two_col_compare`
-- 流程类用 `bullet_list`（步骤有序）；分类类用 `three_col_cards`
+- 数据密集页用 `table`；对比类用 `compare`
+- 流程类用 `bullet_list`（步骤有序）；分类类用 `cards`
 
 ---
 
@@ -133,7 +134,7 @@ cover
 - [ ] 总结页结论与 `brief.key_points` 呼应（不新增未出现过的论点）
 - [ ] 封底 `subtitle` 不超 30 字
 - [ ] `bullet_list` 所有 items 同一句式（不混用动宾 / 名词性）
-- [ ] `three_col_cards` 每卡 body 长度差 ≤ 30%（视觉平衡）
+- [ ] `cards` 每卡 body 长度差 ≤ 30%（视觉平衡）
 - [ ] `table` 列标题与行内容语义对齐（列是维度，行是实例）
 
 ---
@@ -148,7 +149,7 @@ cover
 | `key_points` | `summary.conclusions` + 各 `bullet_list.items` 候选库 |
 | `audience` | LLM 拓写时的语气校准（技术受众 → 精确数字；业务受众 → 结论先行） |
 | `duration_min` | 估算页数（1 min ≈ 1.5 页）+ 内容密度（时间短 → 减 bullet 数量） |
-| `reference_pptx` | 若存在，由 [template-ingest.md](template-ingest.md) 提取风格覆盖 theme |
+| `reference_pptx` | 若存在，由 [template-extract.md](template-extract.md) 提取主色与字体覆盖 theme |
 
 ---
 
@@ -171,7 +172,7 @@ cover
 |---|---|---|
 | 10 min | 8-12 页 | 每页 3-5 个 bullet 或 1 组数据 |
 | 20 min | 15-20 页 | 每页 4-6 个 bullet 或 1 张表 |
-| 30 min | 22-28 页 | 可含 2-3 个 `table` + 多个 `two_col_compare` |
+| 30 min | 22-28 页 | 可含 2-3 个 `table` + 多个 `compare` |
 | 45 min | 30-38 页 | 章节更多；每章可有 3 内容页 |
 | 60 min | 40-50 页 | 通常需要 `pic_text` 补充图例 |
 

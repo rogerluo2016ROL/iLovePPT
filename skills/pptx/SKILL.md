@@ -45,8 +45,15 @@ bash scripts/check_deps.sh
 
 ## 与 [[pptx-deck]] / [[diagram]] 的关系
 
-- [[pptx-deck]] 端到端生成器调本 skill 的 `helpers.py` 与 `scripts/`
+- [[pptx-deck]] 端到端生成器调本 skill 的 `helpers.py`、`layout.py` 与 `scripts/`
 - [[diagram]] 出图 skill 调本 skill 的 `embed_picture` helper 嵌入 PNG
+
+## 模块列表
+
+| 模块 | 用途 |
+|---|---|
+| `helpers.py` | 低层 pptx 原语（set_font / card / bullets / table_modern / embed_picture 等）+ 设计 token（BRAND_* / FONT_* / 灰阶）|
+| `layout.py` | 几何原语（Box、content_region、full_region、columns、rows、stack、split、inset）— 主题无关，供 make_* 函数使用 |
 
 ## 交付前 checklist
 

@@ -20,4 +20,4 @@ theme: tech_blue                            # 必填: 内置主题名 或 .pptx 
 output: ./out/deck.pptx                     # 必填,产物路径
 page_count_target: 20                       # 可选,自动估算时省略
 brand_color: "#0B2A4A"                      # 可选,覆盖 theme 默认色
-reference_pptx: null                        # 可选,用户给参考 .pptx 学风格,走 template-ingest 流程
+reference_pptx: null                        # 可选,用户给参考 .pptx 提取主色与字体,走 template-extract 流程

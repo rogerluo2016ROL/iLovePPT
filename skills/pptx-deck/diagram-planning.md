@@ -58,37 +58,38 @@
 - **不是每章都要图**：纯观点 / 背景陈述类章节（如"背景与意义"）通常不配图。
 - **节点数决定架构图 vs 关系图**：> 5 节点或有嵌套层次走 `arch_diagram`（draw.io）；≤ 5 节点的简单关系走 `simple_relation`（slide 内直接画，可编辑）。
 
-## 骨架实现 vs Claude 判断
+## Claude 语义判断
 
-`workflow.py:plan_diagrams()` 是**关键词匹配骨架**——用 `_DIAGRAM_SIGNALS` 正则扫章节标题，命中即标记。它的作用是让 `workflow.py` 能独立跑通，并给出粗筛提示。
+图层规划是一个 **Claude 执行的推理步骤**，没有对应的 Python 函数。
 
-**真实运行时，Claude 覆盖骨架输出**：Claude 读 brief 后按本文档的决策规则做**语义判断**——理解每章真正讲什么，而不只是匹配字面词。骨架命中 ≠ 最终决定；骨架漏掉的语义（如"评审机制"其实是流程）由 Claude 补上。
+Claude 读 brief 后按本文档的决策规则做**语义判断**——理解每章真正讲什么，而不只是匹配字面关键词。纯关键词匹配容易漏掉语义（如"评审机制"其实是流程图）；Claude 必须推理每章的本质内容再决策。
 
-## 与 generate_outline / pic_text 的衔接
+产出是一个 `diagram_plan` JSON 列表（见上方示例），Claude 在进入页面拓写步骤前在内部记录这个列表，并在写 `deck_plan.json` 时据此将对应页改为 `pic_text` 版式并填入 `image_path`。
 
-`diagram_plan` 传入 `generate_outline(brief, diagram_plan)`。命中的章节，其内容页 `page_spec` 会带上 `visual_element` 元数据：
+## 与 deck_plan.json / pic_text 的衔接
 
-```python
+Claude 在图层规划后进行页面拓写，将需要配图的章节直接写成 `pic_text` 版式：
+
+**工作流程：**
+
+1. Claude 先调 [[diagram]] skill，按 `diagram_plan` 中的 `tool` 生成图 → 得到 PNG 路径
+2. 在 `deck_plan.json` 中，该章节对应的 slide 直接写成 `pic_text` 版式，填入 `image_path`（PNG 路径）与 `points`（右侧说明卡片，从要点提炼）
+
+```json
 {
-  "layout": "bullet_list",          # 骨架仍用 bullet_list（无法自己产 PNG）
+  "layout": "pic_text",
   "title": "技术架构",
-  "items": [...],
-  "visual_element": {               # ← 图层规划标记
-    "type": "arch_diagram",
-    "tool": "draw.io",
-    "intent": "展示三层架构与模块依赖"
-  }
+  "image_path": "diagrams/arch_diagram.png",
+  "points": [
+    {"title": "三层架构", "body": "前端 / API / 数据层解耦"},
+    {"title": "微服务", "body": "独立部署，按需扩容"},
+    {"title": "数据流", "body": "事件驱动，低延迟"},
+    {"title": "安全", "body": "网关统一鉴权"}
+  ]
 }
 ```
 
-真实运行时，Claude 看到 `visual_element` 后：
-
-1. 调 [[diagram]] skill，按 `tool` 生成图 → 得到 PNG 路径
-2. 把该页 `layout` 从 `bullet_list` 换成 `pic_text`
-3. 补上 `image_path`（PNG 路径）与 `points`（右侧 4 个说明卡片，从原 `items` 提炼）
-4. `generate_slide` 调 `make_pic_text` 渲染「左图右文」版式
-
-`visual_element` 是规划元数据，不是渲染参数——`generate_slide` 调 `make_*` 前会从 kwargs 剔除它（见 `_NON_RENDER_KEYS`）。
+图必须在写 `deck_plan.json` **之前**生成好，`build.py` 会直接用 `image_path` 嵌入。
 
 ## 密度自检
 
@@ -100,7 +101,7 @@
 
 ## Anti-prompt
 
-- 不要等文案写完才想图——图层规划必须在 `generate_outline` 之前
+- 不要等文案写完才想图——图层规划必须在页面拓写（写 deck_plan.json）之前
 - 不要每章都硬塞图——背景 / 观点类章节不配图
 - 不要混用工具——同一 deck 的图尽量同一套工具，避免视觉割裂（见 [[diagram]] 选型表）
 - 不要把 `visual_element` 当渲染参数传给 `make_*`——它是规划元数据

@@ -13,7 +13,7 @@
 | 分析 XML 结构 / 主题 / 字体 | unpack.py（本页 Step 3） |
 | 查看 layout 和 placeholder 映射 | dump 脚本（本页 Step 4） |
 | 发现问题后要局部改 | → [editing.md](editing.md) |
-| 学模板风格后从零生成 | → [[pptx-deck]] template-ingest |
+| 提取模板主色与字体后从零生成 | → [[pptx-deck]] template-extract |
 
 ---
 
@@ -161,7 +161,7 @@ for i, slide in enumerate(prs.slides, 1):
 | 目标 | 跳转 |
 |---|---|
 | 局部改文字 / 换内容 | [editing.md](editing.md) — 加载模板 + clear + 重新填充 |
-| 学习模板风格 + 用于生成新 deck | [[pptx-deck]] `template-ingest.md` — 风格萃取流程 |
+| 提取模板主色与字体 + 用于生成新 deck | [[pptx-deck]] `template-extract.md` — 主色与字体提取流程 |
 | 读取完后要嵌入图表 | [creating.md](creating.md) — `embed_picture` / `card` 用法 |
 | 提取后需要 LLM 总结或改写 | 把 markitdown 输出直接传给 Claude prompt |
 
