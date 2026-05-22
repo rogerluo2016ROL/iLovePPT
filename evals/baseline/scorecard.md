@@ -1,83 +1,89 @@
-# iLovePPT Eval Baseline Scorecard
+# iLovePPT Eval Baseline Scorecard（PPTEval 三维）
 
-> 记录于 v2 layout 修复后（cards/compare/section_divider 居中修复，commit f1eb345）。
-> 对比基准——后续改 layout/build 代码后重跑 eval，fail 项变多即回归。
+> 按 evals/rubric.md 三维评测。固定 eval 夹具是 filler 内容，**仅 Design 维为确定性回归信号**；
+> Content / Coherence 维对 filler 夹具标 N/A，仅在评真实 deck 时打分。
+> 记录于 v2 + PPTEval rubric 采纳后。
 
-## 01_short （6 页）
+## Design 维（D1-D14）—— 固定夹具回归基准
 
-- page 2, #13 — TOC 页三条目之间仍有大片空白（条目顶部堆叠，中段留白过宽），内容未均布
-- page 4, #13 — bullet_list 三条集中在页面中偏下区域，标题与内容之间大片空白
-- page 5, #13 — numbered_list 三个蓝色方块各自内容只有一行文字，方块内部下半段为大片空白
+### 01_short （6 页）
 
-其余页（cover、section_divider page 3、closing）全部通过。
-**注：page 3（section_divider）数字方块与标题已垂直居中，旧基准 #13 fail 已修复。**
+- page 2（toc）— **D10** FAIL：目录三条目集中在上方，条目之间及下方大片空白，内容未均布
+- page 4（bullet_list）— **D10** FAIL：三条 bullet 集中在页面中偏下区域，标题与内容区之间大片空白
+- page 5（numbered_list）— **D10** FAIL：三个蓝色数字方块各自仅一行文字在方块顶部，方块下半段大片空白（短内容留白已知限制）
+- page 1（cover）— 通过
+- page 3（section_divider）— 通过（数字方块与标题垂直居中）
+- page 6（closing）— 通过
 
-## 02_long （28 页，抽检 cover/TOC/divider/content×4/closing）
+### 02_long （28 页，抽检 10 页：01, 02, 04, 07, 10, 15, 20, 25, 27, 28）
 
-抽检页：page-01、02、03、04、07、14、26、28
+- page-04（bullet_list 3条）— **D10** FAIL：内容集中在中偏下，标题与内容区之间大片空白
+- page-07（bullet_list 3条）— **D10** FAIL：同上
+- page-20（cards 3张）— **D10** FAIL：每张卡片内容（一行正文）集中在顶部，卡片下方约 60% 为空白
+- page-27（numbered_list 4项）— **D10** FAIL：四个蓝色方块各仅一行文字，方块内下方大片空白
+- page-01（cover）— 通过
+- page-02（toc）— 通过
+- page-10（bullet_list）— **D10** FAIL：三条 bullet 内容聚集在页面下半段，大片空白
+- page-15（section_divider）— 通过
+- page-25（bullet_list 4条）— 通过（内容较多，空白可接受）
+- page-28（closing）— 通过
 
-- page-04, #13 — bullet_list（3 条）集中在页面中偏下，标题与内容之间大片空白
-- page-07, #13 — bullet_list（3 条）同上，大片空白
-- page-14, #13 — cards 页（3 卡片）每张卡片内容（标题+一行正文）在卡片顶部，下半段大片空白
-- page-26, #13 — cards 页（3 卡片）同上
+### 03_cards （5 页）
 
-其余抽检页（cover、TOC、section_divider page-03、closing）全部通过。
-**注：page-03（section_divider）数字方块与标题已垂直居中，旧基准 #13 fail 已修复。**
+- page 2（双卡片）— **D10** FAIL：每张卡片内容（标题+一行文字）集中在卡片顶部，下半约 60% 为空白
+- page 3（三卡片）— **D10** FAIL：同上，三张卡片均有明显内部空白
+- page 4（四卡片）— **D10** FAIL：同上，四张卡片均有明显内部空白
+- page 1（cover）— 通过
+- page 5（closing）— 通过
 
-## 03_cards （5 页）
+### 04_compare （4 页）
 
-- page 2, #13 — 双卡片内容（标题+一行文字）在卡片顶部，卡片下半部约 60% 为空白
-- page 3, #13 — 三卡片同上，每张卡仅一行正文，下半部空白明显
-- page 4, #13 — 四卡片同上，每张卡仅一行正文，下半部空白明显
+- page 2（双对比卡片）— **D10** FAIL：两张卡片内容在顶部，下约 50% 为空白
+- page 3（三对比卡片）— **D8** FAIL：中间卡片左侧装饰线条为青色/teal，左右两张为蓝色，三张卡片 accent 色不一致，出套色；**D10** FAIL：三张卡片下半均有明显空白
+- page 1（cover）— 通过
+- page 4（closing）— 通过
 
-其余页（cover、closing）全部通过。
-**注：卡片内容仍顶部对齐（非居中），cards 的 airy 修复在此 deck 尚未完全生效。**
+### 05_pictext （3 页）
 
-## 04_compare （4 页）
+- page 2（pic_text）— **D10** FAIL：左侧图区为纯蓝占位块（无实际图像），三张右侧文本卡各自内容仅占卡片顶部约 30%，下方大片空白；布局与意图整体相符（D6 通过），无重叠/溢出
+- page 1（cover）— 通过
+- page 3（closing）— 通过
 
-- page 2, #13 — 双对比卡片内容（多行正文）在卡片顶部，卡片下半约 50% 为空白
-- page 3, #13 — 三对比卡片同上，内容在卡片顶部，下段大片空白
+### 06_table （4 页）
 
-其余页（cover、closing）全部通过。
-**注：旧基准 04_compare 全部通过，此次重新评分发现卡片下方有明显空白，判定为 #13 fail。**
+- 全部通过（D1–D14 均无 fail）
+- 说明：page-2、3 表格行交替浅蓝/白 banding 为设计内预期样式，非意外 banding（D12 通过）
 
-## 05_pictext （3 页）
+### 07_chinese （6 页）
 
-全部通过。
+- page 1（cover）— **D14** FAIL：封面标题"人工智能驱动的新一代企业数字化转型解决方案全景评估报告"字号大、字数多（21 汉字），在封面框内换行为 2 行，"方"字在行尾折行（"解决方 / 案全景评估报告"）；大字号装饰性标题异常换行
+- page 3（bullet_list 6条）— **D10** FAIL：六条 bullet 集中在页面下半段，标题与内容区之间大片空白
+- page 4（bullet_list 6条）— **D10** FAIL：同上
+- page 5（numbered_list 4项）— **D10** FAIL：四个蓝色数字方块各仅一行文字，方块下方大片空白
+- page 2（toc）— 通过
+- page 6（closing）— 通过
+- 备注：中文字体正常渲染（无 Arial/花体 fallback，D3 通过）；已知限制：07_chinese 封面标题为超长压力测试输入
 
-page-2 pic_text 布局：左侧图片占位块（纯蓝）+ 右侧三张特性卡，布局与意图一致，无溢出/重叠。
+### 08_template_extract （3 页）
 
-## 06_table （4 页）
+- 全部通过（D1–D14 均无 fail）
+- 说明：模板主色提取（4F81BD）正确应用，页面布局与 tech_blue 主题一致
 
-全部通过。
+---
 
-page-2、3 表格行 banding 为交替浅蓝/白，属于设计内预期样式，非意外 banding（rubric #10 通过）。
+## Content / Coherence 维
 
-## 07_chinese （6 页）
-
-- page 1, #12 — 封面标题"人工智能驱动的新一代企业数字化转型解决方案全景评估报告"字号较大、文字较长，换行形成 2 行（末字组"全景评估报告"换行），大字号文本换行
-
-其余页（TOC、bullet×3、closing）全部通过。中文字体正常渲染（无 Arial/花体 fallback），文字无溢出/截断。
-
-已知限制：07_chinese page 1 标题超长（24 个汉字）属压力测试，换行为预期边缘情况。
-
-## 08_template_extract （3 页）
-
-全部通过。
-
-模板主色提取（4F81BD）正确应用，页面布局与 tech_blue 主题一致，文字/布局无异常。
+固定夹具为 filler 内容，本两维不适用（N/A）。评真实生成的 deck 时按 rubric.md 的 C / H 项打分。
 
 ---
 
 ## 汇总
 
-- 总检查页数: 37（01_short 6页 + 02_long 抽检 8页 + 03_cards 5页 + 04_compare 4页 + 05_pictext 3页 + 06_table 4页 + 07_chinese 6页 + 08_template_extract 3页；注：02_long 实际 28 页，仅抽检）
-- 总 fail 项: 12
-- 已修复（对比旧基准 bb0f87b）:
-  1. **#13 section_divider 居中** — 01_short page 3 和 02_long page-03 的数字方块+标题已垂直居中，旧基准 2 处 #13 fail 消除。
-- 已知问题清单:
-  1. **#13 空白过多（bullet_list 系统性）**：bullet_list 页面标题与内容之间有大片空白，内容未居中/均布。影响 01_short（page 4）、02_long（page-04、07）。
-  2. **#13 空白过多（cards/compare 卡片）**：卡片内容（短内容时）顶部对齐，卡片下方大片空白。影响 03_cards（3处）、04_compare（2处）、02_long 抽检（2处）。
-  3. **#13 TOC 间距**：01_short page 2 TOC 三条目间距过大（仅 3 条时均匀拉伸，显空旷）。
-  4. **#13 numbered_list 方块过高**：01_short page 5 蓝色方块高度过大，短内容仅占方块上部。
-  5. **#12 大字号换行（07_chinese page 1）**：封面超长标题（24 汉字）换行，已知压力测试边缘情况。
+- Design 维检查页数: 37（01_short 6页 + 02_long 抽检 10页 + 03_cards 5页 + 04_compare 4页 + 05_pictext 3页 + 06_table 4页 + 07_chinese 6页 + 08_template_extract 3页；02_long 实际 28 页，仅抽检）
+- Design 维总 fail 项: 20
+- 已知限制:
+  1. **D10 系统性空白（bullet_list）**：bullet_list 页标题与内容区之间大片空白；影响 01_short、02_long、07_chinese。
+  2. **D10 系统性空白（cards / numbered_list 短内容）**：卡片内容顶部对齐、方块偏高，短内容时下方空白明显；影响 03_cards、04_compare、02_long、07_chinese。
+  3. **D10 toc 间距**：01_short page 2 三条目拉伸间距过大，整体偏空旷。
+  4. **D14 大字号换行**：07_chinese page 1 封面超长标题（21 汉字）换行，压力测试预期边缘情况。
+  5. **D8 accent 色不一致**：04_compare page 3 三列对比卡中间卡片 accent 线为 teal 非 brand 蓝。
