@@ -29,6 +29,20 @@ def content_region() -> Box:
     )
 
 
+def full_region() -> Box:
+    """整张 slide 的区域（左右留边距,纵向占满）。
+
+    用于全屏页（封面 / 封底）—— 这类页没有 header,内容应在整张 slide
+    内居中,而非 content_region() 的 header-footer 之间。
+    """
+    return Box(
+        x=H.LEFT_MARGIN,
+        y=Emu(0),
+        w=Emu(H.SLIDE_W - H.LEFT_MARGIN - H.RIGHT_MARGIN),
+        h=H.SLIDE_H,
+    )
+
+
 def columns(box: Box, n: int, gap: Length = Inches(0.3)) -> list[Box]:
     """把 box 横切成 n 等宽列,列间留 gap。"""
     col_w = Emu(int((box.w - gap * (n - 1)) / n))

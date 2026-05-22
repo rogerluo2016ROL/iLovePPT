@@ -79,7 +79,7 @@ def _text(slide: Slide, box: "L.Box", text: str, *, size: int,
 def make_cover(prs: _Pres, title: str, subtitle: str) -> Slide:
     s = _blank_slide(prs)
     H.rect(s, 0, 0, H.SLIDE_W, H.SLIDE_H, PRIMARY_DEEP)
-    region = L.content_region()
+    region = L.full_region()
     blocks = L.stack(region, [Inches(1.2), Inches(0.7)], gap=Inches(0.3),
                      align="middle")
     _text(s, blocks[0], title, size=44, bold=True, color=H.WHITE)
@@ -255,7 +255,7 @@ def make_closing(prs: _Pres, subtitle: str = "") -> Slide:
     """
     s = _blank_slide(prs)
     H.rect(s, 0, 0, H.SLIDE_W, H.SLIDE_H, PRIMARY_DEEP)
-    region = L.content_region()
+    region = L.full_region()
     blocks = L.stack(region, [Inches(1.5), Inches(0.6)], gap=Inches(0.3),
                      align="middle")
     _text(s, blocks[0], "谢谢", size=64, bold=True, color=H.WHITE,

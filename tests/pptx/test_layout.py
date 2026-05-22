@@ -88,3 +88,11 @@ def test_rows_x_matches_box():
     box = L.Box(Inches(2), Inches(0), Inches(8), Inches(6))
     rs = L.rows(box, 3)
     assert all(r.x == box.x for r in rs)
+
+
+def test_full_region_covers_full_height():
+    r = L.full_region()
+    assert r.y == 0
+    assert r.h == Inches(7.5)
+    # 纵向中点 = 真实 slide 中点
+    assert abs((r.y + r.h // 2) - Inches(3.75)) < 100
