@@ -8,6 +8,7 @@ import yaml
 from workflow import (
     parse_brief,
     load_theme,
+    plan_diagrams,
     estimate_page_count,
     generate_outline,
     generate_slide,
@@ -212,3 +213,102 @@ def test_load_theme_pptx_ingest_uses_minimal_deck(tmp_path):
         "make_pic_text", "make_summary", "make_closing",
     ]:
         assert hasattr(theme, name), f"ingested theme 缺少 {name}"
+
+
+# ----- plan_diagrams -----
+
+def test_plan_diagrams_flags_arch_section():
+    """含'架构'的章节应被标记为 arch_diagram。"""
+    brief = {"outline": ["背景介绍", "系统架构", "落地节奏"]}
+    plan = plan_diagrams(brief)
+    arch = [d for d in plan if d["diagram_type"] == "arch_diagram"]
+    assert len(arch) == 1
+    assert arch[0]["section"] == "系统架构"
+    assert arch[0]["section_idx"] == 2
+    assert arch[0]["tool"] == "draw.io"
+
+
+def test_plan_diagrams_flags_flow_section():
+    """含'流程'的章节应被标记为 flow。"""
+    brief = {"outline": ["评审流程", "组织保障"]}
+    plan = plan_diagrams(brief)
+    flow = [d for d in plan if d["diagram_type"] == "flow"]
+    assert len(flow) == 1
+    assert flow[0]["section"] == "评审流程"
+    assert flow[0]["tool"] == "mermaid"
+
+
+def test_plan_diagrams_flags_chart_section():
+    """含'对比'/'数据'的章节应被标记为 chart。"""
+    brief = {"outline": ["效果数据对比"]}
+    plan = plan_diagrams(brief)
+    assert len(plan) == 1
+    assert plan[0]["diagram_type"] == "chart"
+    assert plan[0]["tool"] == "matplotlib"
+
+
+def test_plan_diagrams_no_match_returns_empty():
+    """纯观点章节无信号词,不产出图建议。"""
+    brief = {"outline": ["背景与意义", "总结展望"]}
+    plan = plan_diagrams(brief)
+    assert plan == []
+
+
+def test_plan_diagrams_one_diagram_per_section():
+    """每个章节最多 1 个图建议（即使命中多个信号）。"""
+    brief = {"outline": ["架构与流程总览"]}  # 同时含 '架构' 和 '流程'
+    plan = plan_diagrams(brief)
+    assert len(plan) == 1  # 不重复
+
+
+# ----- generate_outline 注入 visual_element -----
+
+def test_generate_outline_injects_visual_element():
+    """diagram_plan 命中的章节,内容页带 visual_element 元数据。"""
+    brief = {
+        "title": "T", "subtitle": "",
+        "outline": ["系统架构", "落地节奏"],
+        "key_points": ["kp1"],
+    }
+    plan = plan_diagrams(brief)
+    specs = generate_outline(brief, plan)
+    # 找到 '系统架构' 的内容页（bullet_list）
+    arch_content = [
+        s for s in specs
+        if s["layout"] == "bullet_list" and s.get("title") == "系统架构"
+    ]
+    assert len(arch_content) == 1
+    ve = arch_content[0].get("visual_element")
+    assert ve is not None
+    assert ve["type"] == "arch_diagram"
+    assert ve["tool"] == "draw.io"
+
+
+def test_generate_outline_no_plan_no_visual_element():
+    """不传 diagram_plan 时,内容页不带 visual_element。"""
+    brief = {
+        "title": "T", "subtitle": "",
+        "outline": ["系统架构"],
+        "key_points": ["kp1"],
+    }
+    specs = generate_outline(brief)  # 无 diagram_plan
+    for s in specs:
+        assert "visual_element" not in s
+
+
+def test_generate_slide_strips_visual_element():
+    """generate_slide 调 make_* 前必须剔除 visual_element（非渲染参数）。"""
+    from pptx import Presentation
+    from pptx.util import Inches
+    prs = Presentation()
+    prs.slide_width = Inches(13.333)
+    prs.slide_height = Inches(7.5)
+    spec = {
+        "layout": "bullet_list",
+        "title": "系统架构",
+        "items": ["a", "b"],
+        "visual_element": {"type": "arch_diagram", "tool": "draw.io", "intent": "x"},
+    }
+    # 不剔除会因 make_bullet_list 不接受 visual_element 而 TypeError
+    generate_slide(prs, spec, tech_blue)
+    assert len(prs.slides) == 1

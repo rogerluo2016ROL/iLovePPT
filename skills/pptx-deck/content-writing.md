@@ -1,6 +1,8 @@
 # 每页文案拓写规范
 
-本文档定义 11 种 layout 各自的文案约束 + LLM 拓写 prompt 模板。被 [workflow.md](workflow.md) Step 3 引用。
+本文档定义 11 种 layout 各自的文案约束 + LLM 拓写 prompt 模板。被 [workflow.md](workflow.md) Step 4（generate_outline）引用。
+
+> 拓写文案**之前**先做图层规划（workflow Step 3）：判断哪些章节该配图。规则见 [diagram-planning.md](diagram-planning.md)。带 `visual_element` 标记的章节内容页改用 `pic_text` 版式（左图右文），其右侧 4 卡片文案从该节要点提炼。
 
 ---
 

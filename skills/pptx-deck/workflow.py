@@ -3,9 +3,10 @@
 用法：
     python3 workflow.py path/to/brief.yaml
 
-流程：parse_brief → load_theme → outline → per-slide(generate + render + vision_check) → save
+流程：parse_brief → load_theme → plan_diagrams → outline → per-slide(generate + render + vision_check) → save
 vision_check 当前实现为：导出 PNG,打印路径,默认接受。
 真实使用时由 Claude 调本脚本后逐张看图,出 issue JSON 再 fix。
+plan_diagrams 当前为关键词匹配骨架；真实判断由 Claude 按 diagram-planning.md 做。
 """
 import sys, subprocess, tempfile
 from pathlib import Path
@@ -180,7 +181,44 @@ def load_theme(theme_id: str) -> ModuleType:
     raise ValueError(f"未知 theme: {theme_id}")
 
 
-# ----- 3. outline → page_specs -----
+# ----- 3. plan_diagrams -----
+
+# 触发配图的关键词信号 → (图类型, 推荐工具)。判断细则见 diagram-planning.md。
+_DIAGRAM_SIGNALS: list[tuple[str, str, str]] = [
+    (r"架构|系统组成|分层|模块|组件|微服务|技术栈|拓扑", "arch_diagram", "draw.io"),
+    (r"流程|步骤|阶段|时序|先后|环节|pipeline|workflow", "flow", "mermaid"),
+    (r"趋势|增长|占比|对比|数据|指标|百分比|\d+\s*%", "chart", "matplotlib"),
+    (r"关系|依赖|交互|连接|映射|角色边界", "simple_relation", "pptx-native"),
+]
+
+
+def plan_diagrams(brief: dict[str, Any]) -> list[dict[str, Any]]:
+    """图层规划：读完 brief 后,判断哪些章节适合配图。
+
+    骨架版用关键词匹配（_DIAGRAM_SIGNALS）扫描每个 outline 章节标题。
+    真实运行时 Claude 按 diagram-planning.md 的决策规则做语义判断,
+    覆盖本函数的输出（关键词命中只是粗筛提示,不是最终决定）。
+
+    每个 outline 章节最多产出 1 个图建议（命中的第一个信号）。
+
+    Returns: list of {section_idx, section, diagram_type, tool, intent}
+    """
+    plan: list[dict[str, Any]] = []
+    for sec_idx, sec in enumerate(brief["outline"], 1):
+        for pattern, dtype, tool in _DIAGRAM_SIGNALS:
+            if re.search(pattern, sec):
+                plan.append({
+                    "section_idx": sec_idx,
+                    "section": sec,
+                    "diagram_type": dtype,
+                    "tool": tool,
+                    "intent": f"为「{sec}」配 {dtype}",
+                })
+                break  # 每章节最多 1 张图
+    return plan
+
+
+# ----- 4. outline → page_specs -----
 
 def estimate_page_count(brief: dict[str, Any]) -> int:
     if brief["page_count_target"]:
@@ -188,9 +226,18 @@ def estimate_page_count(brief: dict[str, Any]) -> int:
     return int(len(brief["outline"]) * 1.5) + 4
 
 
-def generate_outline(brief: dict[str, Any]) -> list[dict[str, Any]]:
+def generate_outline(
+    brief: dict[str, Any],
+    diagram_plan: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
     """根据 brief 生成 page_spec list。LLM 在真实运行时会替换此函数。
-    本骨架返回固定的简版 outline 跑通 pipeline。"""
+    本骨架返回固定的简版 outline 跑通 pipeline。
+
+    diagram_plan（plan_diagrams 的输出）中命中的章节,其内容页会带上
+    `visual_element` 元数据 {type, tool, intent}。真实运行时 Claude 据此
+    调 [[diagram]] skill 出图,并把该页 layout 换成 pic_text。
+    """
+    by_section = {d["section_idx"]: d for d in (diagram_plan or [])}
     specs = []
     specs.append({"layout": "cover", "title": brief["title"],
                   "subtitle": brief.get("subtitle", "")})
@@ -198,7 +245,15 @@ def generate_outline(brief: dict[str, Any]) -> list[dict[str, Any]]:
     for i, sec in enumerate(brief["outline"], 1):
         specs.append({"layout": "section_divider", "num": i, "title": sec})
         kp = brief.get("key_points") or [f"{sec} 要点 1", f"{sec} 要点 2"]
-        specs.append({"layout": "bullet_list", "title": sec, "items": kp[:5]})
+        content: dict[str, Any] = {"layout": "bullet_list", "title": sec, "items": kp[:5]}
+        if i in by_section:
+            d = by_section[i]
+            content["visual_element"] = {
+                "type": d["diagram_type"],
+                "tool": d["tool"],
+                "intent": d["intent"],
+            }
+        specs.append(content)
     specs.append({"layout": "summary",
                   "conclusions": brief.get("key_points",
                                             ["结论 1", "结论 2", "结论 3"])})
@@ -206,15 +261,19 @@ def generate_outline(brief: dict[str, Any]) -> list[dict[str, Any]]:
     return specs
 
 
-# ----- 4. generate_slide -----
+# ----- 5. generate_slide -----
+
+# 非渲染参数（规划元数据）,generate_slide 调 make_* 前需剔除
+_NON_RENDER_KEYS = {"layout", "visual_element"}
+
 
 def generate_slide(prs: _Pres, spec: dict[str, Any], theme: ModuleType) -> Slide:
     fn = getattr(theme, f"make_{spec['layout']}")
-    kwargs = {k: v for k, v in spec.items() if k != "layout"}
+    kwargs = {k: v for k, v in spec.items() if k not in _NON_RENDER_KEYS}
     return fn(prs, **kwargs)
 
 
-# ----- 5. render_one_slide -----
+# ----- 6. render_one_slide -----
 
 def render_one_slide(prs: _Pres, idx: int, out_png: str | Path) -> None:
     """导出全 deck PDF,然后 pdftoppm 截第 idx 页。"""
@@ -324,12 +383,18 @@ def fix_slide(slide: Slide, issues: list[dict[str, Any]]) -> Slide:
     return slide
 
 
-# ----- 6. main loop -----
+# ----- 7. main loop -----
 
 def run(brief_path: str | Path) -> tuple[Path, list[dict[str, Any]]]:
     brief = parse_brief(brief_path)
     theme = load_theme(brief["theme"])
-    outline = generate_outline(brief)
+    diagram_plan = plan_diagrams(brief)
+    if diagram_plan:
+        print(f"diagram plan: {len(diagram_plan)} 个章节建议配图")
+        for d in diagram_plan:
+            print(f"  - 章节 {d['section_idx']}「{d['section']}」"
+                  f" → {d['diagram_type']} ({d['tool']})")
+    outline = generate_outline(brief, diagram_plan)
 
     prs = Presentation()
     prs.slide_width = Inches(13.333)

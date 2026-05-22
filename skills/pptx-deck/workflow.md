@@ -14,7 +14,10 @@ parse_brief ──── 字段校验 / 补默认值
 load_theme ───── 内置 tech_blue 或 template-ingest 学风格
   │
   ▼
-generate_outline ─── 页数估算 + layout 选型
+plan_diagrams ── 扫 outline 判断哪些章节配图（架构/流程/数据/关系）
+  │
+  ▼
+generate_outline ─── 页数估算 + layout 选型 + 注入 visual_element
   │
   ▼
 ┌─────────────────────────────────┐
@@ -47,7 +50,7 @@ save → brief.output
 
 ---
 
-## 6 步流程详解
+## 7 步流程详解
 
 ### Step 1：parse_brief
 
@@ -143,9 +146,34 @@ theme = T
 
 ---
 
-### Step 3：generate_outline
+### Step 3：plan_diagrams — 图层规划
 
-`generate_outline(brief, theme)` 根据 brief 生成 page_spec list。
+`plan_diagrams(brief)` 在拓写 outline **之前**，先判断哪些章节适合配图。
+这一步独立成步，强制"读完 brief 就主动想图"，避免 deck 变成纯文字墙。
+
+**决策规则**（4 类图的触发信号、工具选型、节点数阈值）完整写在
+[diagram-planning.md](diagram-planning.md)。摘要：
+
+| 章节内容信号 | 图类型 | 工具 |
+|---|---|---|
+| 架构 / 分层 / 模块 / 组件 / 拓扑 | `arch_diagram` | draw.io |
+| 流程 / 步骤 / 阶段 / 时序 | `flow` | Mermaid |
+| 趋势 / 占比 / 对比 / 指标 / 数据 | `chart` | matplotlib |
+| 关系 / 依赖 / 交互（≤ 5 节点） | `simple_relation` | pptx-native |
+
+**输出** `diagram_plan`：`list[{section_idx, section, diagram_type, tool, intent}]`。
+
+**骨架 vs 真实判断**：`workflow.py:plan_diagrams()` 用 `_DIAGRAM_SIGNALS`
+正则扫章节标题做粗筛；真实运行时 Claude 按 diagram-planning.md 做语义判断，
+覆盖骨架输出。
+
+`diagram_plan` 传入下一步 `generate_outline`，命中章节的内容页会带 `visual_element` 标记。
+
+---
+
+### Step 4：generate_outline
+
+`generate_outline(brief, diagram_plan)` 根据 brief + 图层规划生成 page_spec list。
 骨架版返回固定结构跑通 pipeline；真实运行由 LLM 替换此函数。
 
 #### 页数估算
@@ -189,14 +217,22 @@ LLM 根据每节要点数选择 layout：
 | 4–6 | `bullet_list` |
 | ≥ 7 | `table` 或拆为 2 页 `bullet_list` |
 
-#### 图表插入决策
+#### 注入 visual_element
 
-每 4–5 页至少插入一张图（架构图 / 流程图 / 对比图）。
-生成图需求 → 调 [[diagram]] skill 出 PNG → 用 `make_image_full()` 或 `make_two_col_compare()` 嵌入。
+`generate_outline` 接收 Step 3 的 `diagram_plan`。命中的章节，其内容页 `page_spec`
+会带上 `visual_element` 元数据 `{type, tool, intent}`。真实运行时 Claude 据此：
+
+1. 调 [[diagram]] skill 按 `tool` 出 PNG
+2. 把该页 `layout` 从 `bullet_list` 换成 `pic_text`，补 `image_path` 与 `points`
+3. `make_pic_text` 渲染「左图右文」版式
+
+密度建议：每 4–5 页至少 1 张图。`visual_element` 是规划元数据，不是渲染参数——
+`generate_slide` 调 `make_*` 前会剔除它（见 `_NON_RENDER_KEYS`）。详见
+[diagram-planning.md](diagram-planning.md)。
 
 ---
 
-### Step 4：per-slide generate + vision QA 循环
+### Step 5：per-slide generate + vision QA 循环
 
 #### generate_slide
 
@@ -270,7 +306,7 @@ vision_check 详细检查项见 [visual-qa.md](visual-qa.md)。
 
 ---
 
-### Step 5：deck_review
+### Step 6：deck_review
 
 全 deck 渲染完成后执行跨页一致性检查。
 
@@ -303,7 +339,7 @@ for slide in prs.slides[:5]:
 
 ---
 
-### Step 6：交付
+### Step 7：交付
 
 ```python
 out = Path(brief["output"]).expanduser()
