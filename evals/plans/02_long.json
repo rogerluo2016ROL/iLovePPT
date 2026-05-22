@@ -1,0 +1,223 @@
+{
+  "theme": "tech_blue",
+  "output": "./02_long.pptx",
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "长篇演示文稿压力测试",
+      "subtitle": "28页完整章节结构验证"
+    },
+    {
+      "layout": "toc",
+      "sections": [
+        "第一章：市场分析",
+        "第二章：用户研究",
+        "第三章：产品规划",
+        "第四章：技术架构",
+        "第五章：商业模式",
+        "第六章：运营策略",
+        "第七章：风险管控",
+        "第八章：里程碑"
+      ]
+    },
+    {
+      "layout": "section_divider",
+      "num": 1,
+      "title": "市场分析"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "市场现状",
+      "items": [
+        "全球市场规模超过500亿美元",
+        "年复合增长率达到25%",
+        "国内市场渗透率仍低于30%"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "市场机会",
+      "cards": [
+        {"title": "增量空间", "body": "新兴细分赛道尚未饱和"},
+        {"title": "替代效应", "body": "传统方式存在升级需求"},
+        {"title": "政策支持", "body": "监管环境持续利好"}
+      ]
+    },
+    {
+      "layout": "section_divider",
+      "num": 2,
+      "title": "用户研究"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "用户痛点",
+      "items": [
+        "现有工具操作复杂，学习成本高",
+        "数据分散，难以统一管理",
+        "个性化需求无法满足"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "用户画像",
+      "cards": [
+        {"title": "企业决策者", "body": "关注效率与成本控制"},
+        {"title": "一线执行者", "body": "关注易用性与稳定性"},
+        {"title": "技术团队", "body": "关注扩展性与集成能力"}
+      ]
+    },
+    {
+      "layout": "section_divider",
+      "num": 3,
+      "title": "产品规划"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "核心功能",
+      "items": [
+        "智能数据采集与整合",
+        "实时分析与可视化展示",
+        "自动化报告生成"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "产品优势",
+      "cards": [
+        {"title": "易用性", "body": "5分钟快速上手"},
+        {"title": "准确性", "body": "AI驱动99%精准率"},
+        {"title": "扩展性", "body": "模块化架构灵活扩展"}
+      ]
+    },
+    {
+      "layout": "section_divider",
+      "num": 4,
+      "title": "技术架构"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "技术栈",
+      "items": [
+        "前端：React + TypeScript",
+        "后端：Python FastAPI 微服务",
+        "数据层：PostgreSQL + Redis"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "技术亮点",
+      "cards": [
+        {"title": "云原生", "body": "容器化部署，弹性伸缩"},
+        {"title": "安全可靠", "body": "多层加密，零信任架构"},
+        {"title": "高性能", "body": "毫秒级响应，百万并发"}
+      ]
+    },
+    {
+      "layout": "section_divider",
+      "num": 5,
+      "title": "商业模式"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "收入来源",
+      "items": [
+        "SaaS订阅：按月/年收费",
+        "增值服务：高级功能包",
+        "私有化部署：企业定制版"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "定价策略",
+      "cards": [
+        {"title": "基础版", "body": "免费，功能有限"},
+        {"title": "专业版", "body": "每月299元"},
+        {"title": "企业版", "body": "定制报价"}
+      ]
+    },
+    {
+      "layout": "section_divider",
+      "num": 6,
+      "title": "运营策略"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "获客渠道",
+      "items": [
+        "内容营销：行业干货输出",
+        "社群运营：垂直圈层渗透",
+        "合作分销：生态伙伴网络"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "留存策略",
+      "cards": [
+        {"title": "客户成功", "body": "专属顾问一对一服务"},
+        {"title": "产品迭代", "body": "每月发布新功能"},
+        {"title": "社区建设", "body": "用户共创与激励"}
+      ]
+    },
+    {
+      "layout": "section_divider",
+      "num": 7,
+      "title": "风险管控"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "主要风险",
+      "items": [
+        "市场竞争加剧导致价格战",
+        "技术人才招募困难",
+        "数据安全与合规压力"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "应对措施",
+      "cards": [
+        {"title": "差异化", "body": "聚焦细分场景建立壁垒"},
+        {"title": "人才梯队", "body": "校企合作储备人才"},
+        {"title": "合规体系", "body": "ISO认证与等保三级"}
+      ]
+    },
+    {
+      "layout": "section_divider",
+      "num": 8,
+      "title": "里程碑"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "关键节点",
+      "items": [
+        "Q1：完成MVP开发与内测",
+        "Q2：公测上线，积累500家客户",
+        "Q3：完成A轮融资，扩张团队",
+        "Q4：营收突破1000万元"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "成功指标",
+      "cards": [
+        {"title": "用户规模", "body": "年度活跃用户10万+"},
+        {"title": "营收目标", "body": "ARR达到5000万元"},
+        {"title": "市场份额", "body": "细分市场占比15%"}
+      ]
+    },
+    {
+      "layout": "summary",
+      "title": "核心结论",
+      "conclusions": [
+        "市场空间广阔，时机成熟",
+        "产品方案差异化明显",
+        "团队能力与资源匹配",
+        "商业模式清晰可持续"
+      ]
+    },
+    {
+      "layout": "closing",
+      "subtitle": "期待您的支持与合作"
+    }
+  ]
+}

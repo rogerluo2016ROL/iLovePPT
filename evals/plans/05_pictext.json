@@ -1,0 +1,34 @@
+{
+  "theme": "tech_blue",
+  "output": "./05_pictext.pptx",
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "图文混排测试",
+      "subtitle": "验证pic_text布局的图片嵌入与要点展示"
+    },
+    {
+      "layout": "pic_text",
+      "title": "产品核心功能展示",
+      "image_path": "/Users/pc2026/Documents/DevTools/KillPPTs/evals/plans/_assets/sample.png",
+      "points": [
+        {
+          "title": "智能识别",
+          "body": "基于深度学习的图像识别，准确率达99.5%"
+        },
+        {
+          "title": "实时处理",
+          "body": "毫秒级响应速度，支持高并发场景"
+        },
+        {
+          "title": "无缝集成",
+          "body": "标准API接口，5分钟完成系统接入"
+        }
+      ]
+    },
+    {
+      "layout": "closing",
+      "subtitle": "图文布局测试完成"
+    }
+  ]
+}

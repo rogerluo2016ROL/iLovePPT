@@ -1,0 +1,42 @@
+{
+  "theme": "tech_blue",
+  "output": "./03_cards.pptx",
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "卡片布局多数量测试",
+      "subtitle": "验证2、3、4张卡片的渲染效果"
+    },
+    {
+      "layout": "cards",
+      "title": "双卡片布局",
+      "cards": [
+        {"title": "优势一", "body": "技术领先：自研核心算法，性能比竞品高出40%"},
+        {"title": "优势二", "body": "生态完整：开放平台已接入200+合作伙伴"}
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "三卡片布局",
+      "cards": [
+        {"title": "发现问题", "body": "通过数据分析精准定位业务瓶颈"},
+        {"title": "分析原因", "body": "深度挖掘根因，避免表面修补"},
+        {"title": "制定方案", "body": "结合实际情况提出可落地解决方案"}
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "四卡片布局",
+      "cards": [
+        {"title": "计划", "body": "制定详细的项目执行计划"},
+        {"title": "执行", "body": "按计划推进各项任务"},
+        {"title": "检查", "body": "定期复盘评估进展偏差"},
+        {"title": "改进", "body": "持续优化提升整体效能"}
+      ]
+    },
+    {
+      "layout": "closing",
+      "subtitle": "卡片布局测试完成"
+    }
+  ]
+}

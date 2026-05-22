@@ -1,0 +1,42 @@
+{
+  "theme": "tech_blue",
+  "output": "./01_short.pptx",
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "简短演示文稿",
+      "subtitle": "验证6页最小流程"
+    },
+    {
+      "layout": "toc",
+      "sections": ["背景介绍", "核心内容", "总结展望"]
+    },
+    {
+      "layout": "section_divider",
+      "num": 1,
+      "title": "背景介绍"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "主要要点",
+      "items": [
+        "第一个要点：项目背景说明",
+        "第二个要点：当前面临的挑战",
+        "第三个要点：解决方案概述"
+      ]
+    },
+    {
+      "layout": "summary",
+      "title": "核心结论",
+      "conclusions": [
+        "方案可行，技术路径清晰",
+        "团队具备执行能力",
+        "预期效果可量化验证"
+      ]
+    },
+    {
+      "layout": "closing",
+      "subtitle": "感谢聆听，欢迎提问"
+    }
+  ]
+}

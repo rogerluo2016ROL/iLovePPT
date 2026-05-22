@@ -1,0 +1,25 @@
+{
+  "theme": "/Users/pc2026/Documents/DevTools/KillPPTs/evals/plans/_assets/template.pptx",
+  "output": "./08_template_extract.pptx",
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "模板主题提取测试",
+      "subtitle": "验证从.pptx文件提取设计令牌的功能"
+    },
+    {
+      "layout": "bullet_list",
+      "title": "主题提取功能说明",
+      "items": [
+        "从现有PPTX文件中提取主色（accent1颜色值）",
+        "提取中文字体设置（母版EA字体）",
+        "以提取的设计令牌覆盖默认tech_blue主题",
+        "提取失败时自动回退到默认主题配置"
+      ]
+    },
+    {
+      "layout": "closing",
+      "subtitle": "模板提取测试完成"
+    }
+  ]
+}

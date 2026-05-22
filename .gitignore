@@ -22,3 +22,5 @@ thumbnails-*.jpg
 
 # evals 临时产物
 evals/_run/
+evals/plans/*.pptx
+evals/plans/*_render/
