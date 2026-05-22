@@ -2,7 +2,7 @@
 
 本文档定义 11 种 layout 各自的文案约束 + LLM 拓写 prompt 模板。被 [workflow.md](workflow.md) Step 4（Claude 页面拓写）引用。
 
-> 拓写文案**之前**先做图层规划（workflow Step 3）：判断哪些章节该配图。规则见 [diagram-planning.md](diagram-planning.md)。需配图的章节,Claude 先调 [[diagram]] skill 出 PNG,再把该页直接写成 `pic_text` 版式（左图右文）,`image_path` 指向 PNG,右侧 4 卡片文案从该节要点提炼。
+> 拓写文案**之前**先做图层规划（workflow Step 3）：判断哪些章节该配图。规则见 [diagram-planning.md](diagram-planning.md)。需配图的章节,Claude 先调 [[diagram]] skill 出 PNG,再把该页直接写成 `pic_text` 版式（左图右文）,`image_path` 指向 PNG,右侧 N 个说明卡片文案从该节要点提炼。
 
 ---
 
@@ -18,7 +18,7 @@
 | cards | 每卡标题 ≤ 6 字、body ≤ 30 字（N 列，cards 列表） | body 一长一短 |
 | bullet_list | 每点 ≤ 14 字、句式一致（动宾或名词性结构） | 一点一句话一点一段 |
 | table | 列 ≤ 5、行 ≤ 7、单元格 ≤ 8 字 | 把段落塞进单元格 |
-| pic_text | 左图右文，4 卡片每卡 ≤ 20 字 | 图占满 + 文字塞角落 |
+| pic_text | 左图右文，右侧 N 个说明卡片，每卡 ≤ 20 字 | 图占满 + 文字塞角落 |
 | summary | 3-5 条结论，每条 ≤ 18 字，有数字佐证 | 重复 outline 章节 |
 | closing | 极简："谢谢" + 联系方式或下一步 | 又一页要点总结 |
 

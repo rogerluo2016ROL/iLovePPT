@@ -115,7 +115,11 @@ def _extract_theme_from_pptx(pptx_path: str) -> ModuleType:
         mod.FONT_BODY = tokens.get("font_body", tokens["font_header"])
     if "primary" in tokens:
         mod.PRIMARY = tokens["primary"]
-    print(f"  从模板提取主题: {out_name}（主色 {tokens.get('primary', '默认')}）")
+    font_status = tokens.get("font_header", "默认 Microsoft YaHei")
+    color_status = tokens.get("primary", "默认 tech_blue 主色")
+    print(f"  从模板提取主题: {out_name}")
+    print(f"     字体: {font_status}")
+    print(f"     主色: {color_status}")
     return mod
 
 

@@ -11,7 +11,7 @@ The repo is consumed two ways: (1) as a skill library other projects link into `
 ## Commands
 
 ```bash
-# Run all tests (35 tests; pythonpath auto-configured via pyproject.toml)
+# Run all tests (42 tests; pythonpath auto-configured via pyproject.toml)
 python3 -m pytest tests/ -v
 
 # Run a single test

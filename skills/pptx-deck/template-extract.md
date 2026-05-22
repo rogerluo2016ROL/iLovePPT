@@ -43,7 +43,7 @@
 | `<a:accent1>` 无 `srgbClr`（渐变色等） | 主题色退回 `tech_blue` 默认 |
 | `<a:ea>` typeface 为空 / 缺失 | 中文字体退回 `Microsoft YaHei` |
 
-降级发生时，`build.py` 在终端打印警告（`[WARN] _extract_theme_from_pptx: ...`），构建继续。
+提取是 best-effort：无法提取某 token 时静默退回 tech_blue 默认值，不中止构建、不打印 `[WARN]`。`build.py` 在终端打印提取结果行，显示实际使用的字体与主色（提取成功显示提取值，未提取到则显示"默认"），可由此判断哪些 token 被替换。
 
 ---
 
@@ -59,4 +59,4 @@
 
 - 不要以为提取会"复刻"用户模板的整体视觉 —— 它只替换主色与中文字体
 - 不要期望 spacing / 圆角 / 装饰块的风格被继承 —— layout 函数来自 `tech_blue`，不变
-- 不要在提取失败时抛出异常中止构建 —— 应降级并打印警告
+- 不要在提取失败时抛出异常中止构建 —— 应静默降级，退回 tech_blue 默认值
