@@ -39,7 +39,7 @@
 ### 04_compare （4 页）
 
 - page 2（双对比卡片）— **D10** FAIL：两张卡片内容在顶部，下约 50% 为空白
-- page 3（三对比卡片）— **D8** FAIL：中间卡片左侧装饰线条为青色/teal，左右两张为蓝色，三张卡片 accent 色不一致，出套色；**D10** FAIL：三张卡片下半均有明显空白
+- page 3（三对比卡片）— **D10** FAIL：三张卡片下半均有明显空白。（注：中间卡片 accent 为 teal、左右为蓝,是 `make_compare` 交替 accent 的有意设计,teal = `H.ACCENT` 品牌色,**不计 D8 fail**。）
 - page 1（cover）— 通过
 - page 4（closing）— 通过
 
@@ -80,10 +80,11 @@
 ## 汇总
 
 - Design 维检查页数: 37（01_short 6页 + 02_long 抽检 10页 + 03_cards 5页 + 04_compare 4页 + 05_pictext 3页 + 06_table 4页 + 07_chinese 6页 + 08_template_extract 3页；02_long 实际 28 页，仅抽检）
-- Design 维总 fail 项: 20
+- Design 维总 fail 项: 19（剔除 1 项 D8 误判,见下）
 - 已知限制:
   1. **D10 系统性空白（bullet_list）**：bullet_list 页标题与内容区之间大片空白；影响 01_short、02_long、07_chinese。
-  2. **D10 系统性空白（cards / numbered_list 短内容）**：卡片内容顶部对齐、方块偏高，短内容时下方空白明显；影响 03_cards、04_compare、02_long、07_chinese。
+  2. **D10 系统性空白（cards / compare 短内容）**：卡片高度固定,短内容（filler 夹具）时卡内下半空白明显；影响 03_cards、04_compare、02_long、07_chinese。卡片高度自适应内容是更大的改动,留待后续。
   3. **D10 toc 间距**：01_short page 2 三条目拉伸间距过大，整体偏空旷。
-  4. **D14 大字号换行**：07_chinese page 1 封面超长标题（21 汉字）换行，压力测试预期边缘情况。
-  5. **D8 accent 色不一致**：04_compare page 3 三列对比卡中间卡片 accent 线为 teal 非 brand 蓝。
+  4. **D14 大字号换行**：07_chinese page 1 封面超长标题（21 汉字）换行，压力测试预期边缘情况（content-writing.md 规定封面 ≤ 20 字）。
+- 已剔除的误判:
+  - ~~D8 accent 色不一致（04_compare page 3 中间卡 teal）~~ —— teal 是 `make_compare` 交替 accent 的有意设计,`H.ACCENT` 本就是品牌色,不算 fail。
