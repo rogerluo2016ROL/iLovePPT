@@ -7,6 +7,10 @@ description: 端到端 PPT 生成器。用户给主题/要点/brief.yaml/参考 
 
 复制人类快速生成 PPT 的能力：用户给主题或参考模板,skill 自动产出含视觉自检的完整 .pptx。
 
+## 核心原则：一图胜千文
+
+能用图形表达的观点,就不要用文字堆——凡涉及结构、流程、关系、数据对比的内容,主动调用 AI 绘图能力（[[diagram]] skill）出图。判断犹豫时倾向于画图。这条原则由主流程第 3 步「图层规划」强制兑现,见 [diagram-planning.md](diagram-planning.md)。
+
 ## 何时用本 skill
 
 | 场景 | 用本 skill | 备选 |
