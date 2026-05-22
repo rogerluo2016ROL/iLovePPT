@@ -234,7 +234,7 @@ def generate_outline(
     specs.append({"layout": "summary",
                   "conclusions": brief.get("key_points",
                                             ["结论 1", "结论 2", "结论 3"])})
-    specs.append({"layout": "closing", "subtitle": "谢谢"})
+    specs.append({"layout": "closing"})  # subtitle 留空,只显大字"谢谢"
     return specs
 
 
@@ -401,7 +401,11 @@ def run(brief_path: str | Path) -> tuple[Path, list[dict[str, Any]]]:
             review_needed.append({"idx": idx, "reason": "vision_unresolved",
                                   "issues": issues})
 
+    # output 相对路径按 brief 文件所在目录解析（而非 CWD）,
+    # 这样从任意目录跑 workflow.py 产物落点都一致。
     out = Path(brief["output"]).expanduser()
+    if not out.is_absolute():
+        out = (Path(brief_path).resolve().parent / out).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
     prs.save(str(out))
     print(f"\nDone: {out}")

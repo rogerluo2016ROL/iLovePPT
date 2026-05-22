@@ -41,13 +41,16 @@ cover:            { layout, title, subtitle }
 toc:              { layout, sections: [str, ...] }
 section_divider:  { layout, num: int, title }
 single_focus:     { layout, big_text, big_number, explanation }
-two_col_compare:  { layout, left_title, left_body, right_title, right_body }
-three_col_cards:  { layout, cards: [{title, body}, ...] }
+two_col_compare:  { layout, left_title, left_body, right_title, right_body, title? }
+three_col_cards:  { layout, cards: [{title, body}, ...], title? }
 bullet_list:      { layout, title, items: [str, ...] }
 table:            { layout, title, headers: [str, ...], rows: [[str, ...], ...] }
 pic_text:         { layout, title, image_path, points: [{title, body}, ...] }
-summary:          { layout, conclusions: [str, ...] }
-closing:          { layout, subtitle }
+summary:          { layout, conclusions: [str, ...], title? }
+closing:          { layout, subtitle? }
+
+> `title?` / `subtitle?` 带 `?` 为可选字段。`two_col_compare.title` 默认"对比"——
+> 建议显式传更具体的页标题（如"现状 vs 目标"）。`closing.subtitle` 默认空(只显大字"谢谢")。
 
 遵循约束（详见上表）：
 - 字数限制严格执行，超出则裁剪，不得将约束视为建议

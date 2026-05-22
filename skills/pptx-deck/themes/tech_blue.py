@@ -142,9 +142,10 @@ def make_two_col_compare(
     left_body: str,
     right_title: str,
     right_body: str,
+    title: str = "对比",
 ) -> Slide:
     s = _blank_slide(prs)
-    _add_title(s, "对比", size=28)
+    _add_title(s, title, size=28)
     # 左
     H.card(s, Inches(0.55), Inches(1.8), Inches(6.0), Inches(5.2),
            fill=PRIMARY_TINT, border=H.GRAY_300, accent=PRIMARY)
@@ -281,8 +282,11 @@ def make_summary(
     return s
 
 
-def make_closing(prs: _Pres, subtitle: str = "谢谢") -> Slide:
-    """封底页:大字 '谢谢' + 小字 subtitle (默认也是 '谢谢',可改为联系方式等)."""
+def make_closing(prs: _Pres, subtitle: str = "") -> Slide:
+    """封底页:大字 '谢谢' + 小字 subtitle。
+
+    subtitle 默认空(只显大字 '谢谢')；传入联系方式 / 下一步行动等可加副标。
+    """
     s = _blank_slide(prs)
     H.rect(s, 0, 0, H.SLIDE_W, H.SLIDE_H, PRIMARY_DEEP)
     box = s.shapes.add_textbox(Inches(0.55), Inches(3.0), Inches(12), Inches(1.5))
