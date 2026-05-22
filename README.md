@@ -104,8 +104,10 @@ Claude 自动按 frontmatter 触发关键词识别 skill。常见触发：
 
 ## 设计文档
 
-- 完整设计：[`docs/superpowers/specs/2026-05-21-iloveppt-skill-design.md`](docs/superpowers/specs/2026-05-21-iloveppt-skill-design.md)
-- 实现计划：[`docs/superpowers/plans/2026-05-21-iloveppt-skill.md`](docs/superpowers/plans/2026-05-21-iloveppt-skill.md)
+- v2 完整设计（当前）：[`docs/superpowers/specs/2026-05-22-iloveppt-v2-design.md`](docs/superpowers/specs/2026-05-22-iloveppt-v2-design.md)
+- v2 实现计划（当前）：[`docs/superpowers/plans/2026-05-22-iloveppt-v2.md`](docs/superpowers/plans/2026-05-22-iloveppt-v2.md)
+- v1 初版设计（历史）：[`docs/superpowers/specs/2026-05-21-killppts-skill-design.md`](docs/superpowers/specs/2026-05-21-killppts-skill-design.md)
+- v1 初版计划（历史）：[`docs/superpowers/plans/2026-05-21-killppts-skill.md`](docs/superpowers/plans/2026-05-21-killppts-skill.md)
 
 ## 默认风格
 

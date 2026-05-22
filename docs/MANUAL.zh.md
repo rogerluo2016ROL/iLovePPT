@@ -1863,9 +1863,11 @@ iLovePPT/
 │   ├── MANUAL.zh.md                 # 本文件：详细使用手册
 │   └── superpowers/
 │       ├── specs/                   # 设计文档
-│       │   └── 2026-05-21-iloveppt-skill-design.md
+│       │   ├── 2026-05-22-iloveppt-v2-design.md  # v2 当前设计
+│       │   └── 2026-05-21-killppts-skill-design.md  # v1 初版（历史）
 │       └── plans/                   # 实现计划
-│           └── 2026-05-21-iloveppt-skill.md
+│           ├── 2026-05-22-iloveppt-v2.md  # v2 当前计划
+│           └── 2026-05-21-killppts-skill.md  # v1 初版（历史）
 └── skills/
     ├── pptx-deck/                   # 端到端 PPT 生成器（主入口）
     │   ├── SKILL.md                 # skill 入口描述（含触发关键词）
@@ -1912,8 +1914,10 @@ iLovePPT/
 
 | 文档 | 内容 | 路径 |
 |---|---|---|
-| 完整设计文档 | iLovePPT skill 整体设计：架构决策、11 layout 规范、10 色板、13 helper | `docs/superpowers/specs/2026-05-21-iloveppt-skill-design.md` |
-| 实现计划 | 分阶段实现任务列表（Phase 1/2/3） | `docs/superpowers/plans/2026-05-21-iloveppt-skill.md` |
+| v2 完整设计文档（当前） | iLovePPT v2 重构设计：架构决策、layout 规范、build.py 机制、主题系统 | `docs/superpowers/specs/2026-05-22-iloveppt-v2-design.md` |
+| v2 实现计划（当前） | v2 重构分阶段任务列表（Tasks 1–11） | `docs/superpowers/plans/2026-05-22-iloveppt-v2.md` |
+| v1 初版设计（历史） | 初版 iLovePPT skill 整体设计（KillPPTs 时期） | `docs/superpowers/specs/2026-05-21-killppts-skill-design.md` |
+| v1 初版计划（历史） | 初版分阶段实现任务列表（Phase 1/2/3） | `docs/superpowers/plans/2026-05-21-killppts-skill.md` |
 
 ### 17.3 测试说明
 

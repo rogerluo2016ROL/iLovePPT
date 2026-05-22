@@ -266,8 +266,10 @@ A: `python3 -m markitdown your_deck.pptx` 一行搞定。
 
 ## 十二、设计文档
 
-- 完整设计：`docs/superpowers/specs/2026-05-21-killppts-skill-design.md`
-- 实施计划：`docs/superpowers/plans/2026-05-21-killppts-skill.md`
+- v2 完整设计（当前）：`docs/superpowers/specs/2026-05-22-iloveppt-v2-design.md`
+- v2 实施计划（当前）：`docs/superpowers/plans/2026-05-22-iloveppt-v2.md`
+- v1 初版设计（历史）：`docs/superpowers/specs/2026-05-21-killppts-skill-design.md`
+- v1 初版计划（历史）：`docs/superpowers/plans/2026-05-21-killppts-skill.md`
 
 ---
 
