@@ -24,3 +24,4 @@ thumbnails-*.jpg
 evals/_run/
 evals/plans/*.pptx
 evals/plans/*_render/
+skills/pptx-deck/examples/*_render/
