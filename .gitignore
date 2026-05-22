@@ -19,3 +19,6 @@ thumbnails-*.jpg
 
 # 但保留示例产物
 !skills/pptx-deck/examples/sample_output.pptx
+
+# evals 临时产物
+evals/_run/
