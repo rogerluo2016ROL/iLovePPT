@@ -1,9 +1,12 @@
 ---
 name: pptx-deck
-description: 端到端 PPT 生成器。用户给主题/要点/brief.yaml/参考 .pptx 模板,skill 自动产出完整 .pptx：拓写每页文案、生成架构图、提取模板主色与字体、逐页视觉自检与优化。内置 tech_blue 科技蓝主题,支持从用户 .pptx 提取主色与字体（template-extract）。触发：做一份 PPT / 帮我写 PPT / 路演 deck / 汇报 / 提案 / brief.yaml / .pptx 模板。
+description: pptx-deck 知识库 —— 11 个 layout 的主题(tech_blue)、build.py 机械构建器、文案/图层/视觉 QA/模板提取的参考文档。**主入口是 [[iloveppt]] agent**(@agent-iloveppt 派发,带大纲 checkpoint 自动跑完全程);本 SKILL.md 仅作 skill-mode 后备入口供主线程 Claude 直接读用。触发由 agent 的 description 接管;本 skill 不再做自动委派。
 ---
 
 # pptx-deck — 端到端 PPT 生成器
+
+> **主入口:`@agent-iloveppt`**(独立上下文跑两阶段:Phase 1 出大纲等批准 → Phase 2 拓写/构建/QA/交付)。本 skill 仍可被主线程 Claude 直接读用作 skill-mode 后备入口;触发关键词已搬到 agent 的 description。
+> agent 设计见 [iLovePPT Agent 设计](../../docs/superpowers/specs/2026-05-23-iloveppt-agent-design.md)。
 
 复制人类快速生成 PPT 的能力：用户给主题或参考模板,skill 自动产出含视觉自检的完整 .pptx。Claude 产出 `deck_plan.json`，`build.py` 机械地将其渲染为 `.pptx` + PNG。
 
@@ -80,10 +83,11 @@ bash ../pptx/scripts/check_deps.sh
 
 ## 内置主题
 
-[themes/tech_blue.py](themes/tech_blue.py) — 11 个 make_* layout 函数：
+[themes/tech_blue.py](themes/tech_blue.py) — 12 个 make_* layout 函数：
 - `make_cover` / `make_toc` / `make_section_divider`
 - `make_single_focus` / `make_compare` / `make_cards`
 - `make_bullet_list` / `make_table` / `make_pic_text`
+- `make_detail`（成段讲解：引导段 + 要点 + 高亮框,用于培训 / 教程类 deck）
 - `make_summary` / `make_closing`
 
 切换其他色板：改 `themes/tech_blue.py` 顶部 PRIMARY_* 常量,或从 [[pptx]] design-system.md 10 色板挑一套覆盖。

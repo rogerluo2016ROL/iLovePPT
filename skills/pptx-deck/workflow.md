@@ -30,15 +30,30 @@ Claude 产出、build.py 消费。schema：
 6. **视觉自检** —— 按 [visual-qa.md](visual-qa.md) 逐页 Read 渲染 PNG，发现问题改 deck_plan.json，重跑 build.py。至多 3 轮，仍不过的页标 review-needed。
 7. **交付** —— 最终 .pptx + review-needed 清单（若有）。
 
+## agent 模式下的运行差异
+
+当通过 `@agent-iloveppt` 派发时,上述 7 步分到两次 agent 派发里:
+
+- **Phase 1**(第 1 次派发) = 步骤 1 + 2 + 3(部分):读 brief → 图层规划 → 设计大纲(action title / Minto / ghost deck test)。**出完大纲即终止,等用户批准。**
+- **Phase 2**(第 2 次派发,入参带已批准 outline) = 步骤 3(余) + 4 + 5 + 6 + 7:生成图 → 写 deck_plan.json → build.py → 视觉 QA 循环(≤ 3 轮)→ 交付。
+
+主线程 Claude 模式(直接读本 SKILL.md 跑)= 一气跑完 7 步,中间不强制 checkpoint。
+
+两种模式的 build.py 调用、deck_plan.json 接缝、视觉 QA 标准完全一致 —— 只是 orchestration 主体不同(agent 实例 vs 主线程 Claude)。
+
+agent 详细设计见 [iLovePPT Agent 设计](../../docs/superpowers/specs/2026-05-23-iloveppt-agent-design.md)。
+
 ## build.py 的能力边界
 
 build.py 只做机械构建：deck_plan.json → .pptx + PNG。它**不**拓写文案、**不**规划图、**不**做视觉自检。那些是 Claude 照本文档及子文档做的智能步骤。
 
 CLI：`python3 build.py deck_plan.json [--no-render]`
 
-## 11 种 layout
+## 12 种 layout
 
-cover / toc / section_divider / single_focus / compare / cards / bullet_list / table / pic_text / summary / closing。各 layout 的字段见 [content-writing.md](content-writing.md)；选型规则见同文档。
+cover / toc / section_divider / single_focus / compare / cards / bullet_list / table / pic_text / detail / summary / closing。各 layout 的字段见 [content-writing.md](content-writing.md)；选型规则见同文档。
+
+`detail` 是成段讲解版式（引导段 + N 个要点 + 可选高亮框），承载 cards / bullet 装不下的完整说明,适合培训 / 教程类 deck。
 
 ## Anti-prompt
 
