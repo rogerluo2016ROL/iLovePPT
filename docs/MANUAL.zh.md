@@ -649,10 +649,12 @@ brand_color: "#C8102E"     # 比如可口可乐红
 
 agent 会用它覆盖 `BRAND_PRIMARY`。
 
-### 9.3 用 .pptx 模板
+### 9.3 用 .pptx 模板(单次,贴路径)
 
 ```yaml
 theme: ./company_template.pptx
+# 或绝对路径
+theme: /Users/me/templates/company.pptx
 ```
 
 抽 **主题色(accent1)+ 中文字体** 两样,其他全用 tech_blue 的 layout。
@@ -666,7 +668,59 @@ theme: ./company_template.pptx
 
 提取失败(模板损坏、accent1 是渐变色等)会**静默退回 tech_blue 默认值**,不会中止构建——查 `build.py` 终端输出能看到实际使用的字体与主色。
 
-### 9.4 想要彻底自定义视觉?
+### 9.4 预制多个模板(短名引用)
+
+如果你有多份模板(公司外部 / 客户演示 / 内部评审),不必每次贴长路径。**放进仓库 `templates/` 目录**:
+
+```
+templates/
+├── README.md           # 进 git(门牌)
+├── example.yaml        # 进 git(元数据 schema 示例)
+├── company_a.pptx      # 你放(.gitignore,本地)
+├── company_a.yaml      # 可选元数据(本地)
+├── customer_b.pptx
+└── roadshow.pptx
+```
+
+`.pptx` / `.yaml` 都 **不进 git**(防机密 logo/disclaimer 误 commit)。
+
+brief 里用**短名**:
+
+```yaml
+theme: company_a       # 自动解析 templates/company_a.pptx
+```
+
+agent 在 Stage A 问 theme 时**自动列出可用模板**:
+
+```
+你这边有几个模板可选:
+- tech_blue (内置默认科技蓝)
+- company_a (公司外部提案模板,推荐 executive/sales)
+- customer_b (...)
+
+用哪个?
+```
+
+**元数据文件 `<name>.yaml`(可选,推荐配)**:
+
+```yaml
+# templates/company_a.yaml
+name: 公司外部提案模板
+desc: 用于客户演示 / 销售提案 / 路演
+recommended_for: [executive, sales]
+owner: 销售部 (alice@example.com)
+notes: |
+  封面深色,subtitle 字号偏小(建议 ≤ 25 字)
+  数据图建议浅色背景
+```
+
+agent 会读 `notes` 用于拓写时尊重模板约束(比如 subtitle 字数收紧)。
+
+**查找顺序**:`<deck 工作目录>/templates/` 优先 → `<iLovePPT repo>/templates/` 兜底。
+
+详细见仓库 [`templates/README.md`](../templates/README.md)。
+
+### 9.5 想要彻底自定义视觉?
 
 需要写 Python——`skills/pptx-deck/themes/tech_blue.py` 是模板,新建 `themes/party_red.py` 复制改即可。这超出本手册范围,见仓库 `CLAUDE.md` 与 `skills/pptx/design-system.md`。
 

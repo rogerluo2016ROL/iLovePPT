@@ -61,6 +61,44 @@ def test_load_theme_pptx_missing_raises():
         load_theme("/tmp/does_not_exist_xyz.pptx")
 
 
+def test_load_theme_short_name_resolves_via_plan_templates(tmp_path):
+    """deck 工作目录下 templates/<name>.pptx 优先生效"""
+    from pptx import Presentation as _P
+    templates_dir = tmp_path / "templates"
+    templates_dir.mkdir()
+    _P().save(str(templates_dir / "company_a.pptx"))
+    theme = load_theme("company_a", plan_dir=str(tmp_path))
+    # 派生 theme 模块至少有 make_cover(从 tech_blue 复制 + 改 token)
+    assert hasattr(theme, "make_cover")
+    assert hasattr(theme, "FONT_HEADER")
+    assert hasattr(theme, "PRIMARY")
+
+
+def test_load_theme_short_name_not_found_lists_available(tmp_path):
+    """短名查不到时报错应当列出 templates/ 现有名字 + 提示"""
+    with pytest.raises(ValueError) as e:
+        load_theme("nonexistent_xyz", plan_dir=str(tmp_path))
+    msg = str(e.value)
+    assert "nonexistent_xyz" in msg
+    assert "tech_blue" in msg               # 提示内置可选
+    assert "templates/" in msg              # 提示查 templates/
+
+
+def test_load_theme_per_plan_overrides_repo_templates(tmp_path):
+    """plan_dir 下的 templates 优先于 repo templates"""
+    from pptx import Presentation as _P
+    plan_templates = tmp_path / "templates"
+    plan_templates.mkdir()
+    # 用一个明显不一样的内容验证用的是 plan 的而非 repo 的
+    _P().save(str(plan_templates / "override_test.pptx"))
+    # plan_dir 命中
+    theme = load_theme("override_test", plan_dir=str(tmp_path))
+    assert hasattr(theme, "make_cover")
+    # 不传 plan_dir 时,仅 repo templates 找,这个 override_test 没在 repo,应 raise
+    with pytest.raises(ValueError):
+        load_theme("override_test")
+
+
 def test_build_deck_produces_pptx(tmp_path):
     p = _write_plan(tmp_path, {
         "theme": "tech_blue", "output": "./deck.pptx",

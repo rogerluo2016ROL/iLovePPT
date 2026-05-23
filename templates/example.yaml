@@ -1,0 +1,31 @@
+# 模板元数据 schema 示例
+#
+# 用法:把这份文件复制成 templates/<你的模板名>.yaml(同名 .pptx 旁边)
+# 比如:templates/company_a.pptx + templates/company_a.yaml
+#
+# agent 在 Stage A 问 theme 时会读这份元数据 prompt 给用户:
+#   "company_a (公司外部提案模板, 推荐 executive/sales): 客户演示 / 销售提案"
+
+# === 必填 ===
+name: 模板显示名(中文 OK,会展示给用户)
+desc: 一句话描述模板用途
+recommended_for:   # 推荐 audience,匹配 brief.audience 字段
+  - executive
+  - technical
+  - general
+  - sales
+
+# === 可选 ===
+owner: 负责人(部门 / 邮箱),便于团队找到谁维护
+notes: |
+  额外注意事项,多行 OK。
+  比如:
+  - 封面深色,subtitle 字号偏小(建议 ≤ 25 字)
+  - 数据图建议浅色背景
+  - 不要用 ACCENT 色做正文(模板字体在 ACCENT 上看不清)
+
+# === 自动填(可选,加速)===
+# 这些字段若提供,跳过运行时 _extract_theme_from_pptx 解析
+# 但要注意:.pptx 改了后这里不会自动同步,记得手动更新
+extracted_color: "#0B5BCC"     # accent1 hex
+extracted_font: "Source Han Sans CN"  # ea typeface

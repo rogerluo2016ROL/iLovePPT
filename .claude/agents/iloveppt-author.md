@@ -48,6 +48,10 @@ user_response: "用户对上轮 outline/content 的反馈"  # 后续派发可能
 3. 检查 `<working_dir>/.iloveppt_author_state.json`:
    - 存在 → Read,载入 stage / outline_md_path / content_md_path / approvals / iteration
    - 不存在 → 初始化(从入参 stage / brief / asset_inventory 起)
+4. **若 `brief.theme` 是短名(不是 `tech_blue` 也不是 .pptx 路径)**:
+   - 尝试 `Read` `<repo>/templates/<theme>.yaml`(或 `<working_dir>/templates/<theme>.yaml`)
+   - 若有,把 `notes` 字段当作"本模板使用注意事项"——拓写 outline / content 时尊重(如 "封面 subtitle ≤ 25 字" 这种约束)
+   - 若无元数据,正常按 brief 拓写
 
 ### Step 1A · Stage C(出 outline)
 

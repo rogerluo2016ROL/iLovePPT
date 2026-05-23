@@ -130,14 +130,72 @@ def _extract_theme_from_pptx(pptx_path: str) -> ModuleType:
     return mod
 
 
-def load_theme(theme_id: str) -> ModuleType:
+def _repo_templates_dir() -> Path:
+    """iLovePPT 仓库根的 templates/ 目录(`<repo>/skills/pptx-deck/build.py`
+    → `<repo>/templates/`)。.resolve() 处理符号链接场景。"""
+    return Path(__file__).resolve().parent.parent.parent / "templates"
+
+
+def _find_template(name: str, plan_dir: str | None = None) -> Path | None:
+    """按短名查找 .pptx 模板。
+
+    优先级:
+      1. <plan_dir>/templates/<name>.pptx  (deck 项目专属)
+      2. <repo>/templates/<name>.pptx      (全局共享)
+
+    找到返回 Path,找不到返回 None。
+    """
+    candidates: list[Path] = []
+    if plan_dir:
+        candidates.append(Path(plan_dir) / "templates" / f"{name}.pptx")
+    candidates.append(_repo_templates_dir() / f"{name}.pptx")
+    for p in candidates:
+        if p.exists():
+            return p
+    return None
+
+
+def _list_available_templates() -> list[str]:
+    """返回 <repo>/templates/ 下所有 .pptx 短名(不含扩展名)。"""
+    tdir = _repo_templates_dir()
+    if not tdir.exists():
+        return []
+    return sorted(p.stem for p in tdir.glob("*.pptx"))
+
+
+def load_theme(theme_id: str, plan_dir: str | None = None) -> ModuleType:
+    """解析 theme_id 到 theme 模块。
+
+    Args:
+        theme_id: 三种形式之一
+            - 内置 theme 名(如 "tech_blue")
+            - 短名(如 "company_a")—— 查找 templates/<name>.pptx
+            - 路径(含 "/" 或以 ".pptx" 结尾)—— 直接当 .pptx 路径
+        plan_dir: deck plan 所在目录,影响相对路径解析 + 短名查找优先级
+    """
     if theme_id in THEMES:
         return THEMES[theme_id]
-    if str(theme_id).endswith(".pptx"):
-        if not Path(theme_id).exists():
-            raise FileNotFoundError(f"theme .pptx 不存在: {theme_id}")
-        return _extract_theme_from_pptx(theme_id)
-    raise ValueError(f"未知 theme: {theme_id}")
+    # 含 / 或以 .pptx 结尾 → 当路径处理
+    if str(theme_id).endswith(".pptx") or "/" in str(theme_id):
+        path = Path(theme_id).expanduser()
+        if not path.is_absolute() and plan_dir:
+            path = (Path(plan_dir) / path).resolve()
+        if not path.exists():
+            raise FileNotFoundError(f"theme .pptx 不存在: {path}")
+        return _extract_theme_from_pptx(str(path))
+    # 短名 → 查 templates/
+    found = _find_template(theme_id, plan_dir)
+    if found is not None:
+        return _extract_theme_from_pptx(str(found))
+    # 未找到 → 列可用的帮用户排错
+    available = _list_available_templates()
+    available_str = ", ".join(available) if available else "(空,把 .pptx 放进 templates/)"
+    raise ValueError(
+        f"未知 theme: {theme_id!r}. "
+        f"内置: tech_blue. "
+        f"templates/ 可用: {available_str}. "
+        f"或直接给 .pptx 绝对/相对路径。"
+    )
 
 
 # ----- build_deck -----
@@ -150,7 +208,7 @@ def build_deck(plan: dict[str, Any]) -> Path:
     - **footer_meta**(plan 顶层): classification / project / version,显示在 footer 左侧
     - **source**(slide 级): 数据 slide 的引文,渲染在 footer 上方
     """
-    theme = load_theme(plan["theme"])
+    theme = load_theme(plan["theme"], plan.get("_plan_dir"))
     prs = Presentation()
     prs.slide_width = H.SLIDE_W
     prs.slide_height = H.SLIDE_H

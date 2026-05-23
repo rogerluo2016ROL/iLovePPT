@@ -73,8 +73,32 @@ initial_request: "用户的一句话需求"          # 仅初次派发必填
 - `audience`: executive | technical | general | sales
 - `duration_min`: 整数(常见 10/15/20/30/45)
 - `top_recommendation`: 完整推荐句(动宾结构 + 边界)
-- `theme`: `tech_blue` 或 .pptx 模板绝对路径
+- `theme`: `tech_blue`(内置)/ 短名(查 `templates/<name>.pptx`)/ .pptx 绝对路径
 - `output`: .pptx 输出路径(默认 `<working_dir>/deck_v1.pptx`)
+
+### theme 字段:列可用模板给用户选
+
+问 theme 时**不要只问"用哪个模板"**——用户不知道有哪些可选。先 enumerate:
+
+1. `Glob` `<repo>/templates/*.pptx`(+ `<working_dir>/templates/*.pptx` 若存在)→ 列短名清单
+2. 对每个短名,尝试 `Read` 对应的 `<name>.yaml` 元数据(可能不存在,best-effort)
+3. 用以下格式 prompt:
+
+```
+你这边有几个模板可选:
+- tech_blue (内置默认科技蓝)
+- company_a (公司外部提案模板, 推荐 executive/sales) — 客户演示
+- customer_b (...)
+- 或:给 .pptx 绝对路径(用你公司私有模板)
+
+用哪个?
+```
+
+若用户答的是**短名**(不是 .pptx 路径):
+- 验证该短名能解析(Read 验证 `templates/<name>.pptx` 存在)
+- 若有对应 `<name>.yaml`,把 `recommended_for` 和 `notes` 字段记到 `asset_inventory[]`(供 author 后续 Read)
+
+若 `templates/` 目录不存在或为空,只列 `tech_blue` 内置 + 提"或给 .pptx 路径"。
 
 **素材摄入触发**(对话中识别):
 - 用户提到"数据 / 报表 / 增长 / 对比" → prompt 数据
