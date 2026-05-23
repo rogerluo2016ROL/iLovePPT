@@ -1,197 +1,218 @@
-# iLovePPT Agent 工作原理
+# iLovePPT Agent 工作原理(v3)
 
-> 这份文档讲清楚 iLovePPT agent **怎么工作的**——架构、触发机制、两阶段流程、关键设计决策。
-> 适合想理解(或后续改造)agent 行为的人;不是用户操作手册(那个看 [`MANUAL.zh.md`](MANUAL.zh.md))。
+> 这份文档讲清楚 iLovePPT 系统**怎么工作的**——主线程 + agent 双层架构、5 阶段流程、关键设计决策。
+> 适合想理解(或后续改造)系统的人;不是用户操作手册(那个看 [`MANUAL.zh.md`](MANUAL.zh.md))。
+>
+> **v3(2026-05-23)重大改动**:从"agent 端到端"变为"主线程对话 + agent build"。
+> agent 不再做 brief 解析 / 大纲 / 文案拓写,只做 markdown → .pptx 的构建。
+> 旧 v2 设计仍在 [v2 agent design](superpowers/specs/2026-05-23-iloveppt-agent-design.md)。
+> v3 spec:[v3 markdown-first](superpowers/specs/2026-05-23-iloveppt-v3-markdown-first.md)。
 
 ---
 
 ## 目录
 
-- [1. 三层架构:agent / skill / build.py 各自的角色](#1-三层架构agent--skill--buildpy-各自的角色)
-- [2. 触发机制:agent 怎么被唤起](#2-触发机制agent-怎么被唤起)
-- [3. 两阶段派发模型 —— 设计的灵魂](#3-两阶段派发模型--设计的灵魂)
-- [4. Phase 1 详解:大纲是怎么出来的](#4-phase-1-详解大纲是怎么出来的)
-- [5. Phase 2 详解:构建到交付](#5-phase-2-详解构建到交付)
+- [1. 四层架构:主线程 / agent / skill / build.py](#1-四层架构主线程--agent--skill--buildpy)
+- [2. 入口:用户怎么发起一次任务](#2-入口用户怎么发起一次任务)
+- [3. 5 阶段流程(Stage A-E)—— 主线程做前 4 个,agent 做最后 1 个](#3-5-阶段流程stage-a-e--主线程做前-4-个agent-做最后-1-个)
+- [4. Stage A-D 详解:主线程怎么协同用户出 markdown](#4-stage-a-d-详解主线程怎么协同用户出-markdown)
+- [5. Stage E 详解:agent 怎么把 markdown 变 .pptx](#5-stage-e-详解agent-怎么把-markdown-变-pptx)
 - [6. 关键设计决策:为什么这么设计](#6-关键设计决策为什么这么设计)
 - [7. 一次完整调用的 timeline 示例](#7-一次完整调用的-timeline-示例)
 - [8. 这套设计避开了哪些常见坑](#8-这套设计避开了哪些常见坑)
 - [9. 进一步阅读](#9-进一步阅读)
+- [10. v2 → v3 变迁说明](#10-v2--v3-变迁说明)
 
 ---
 
-## 1. 三层架构:agent / skill / build.py 各自的角色
+## 1. 四层架构:主线程 / agent / skill / build.py
 
-iLovePPT 不是单一组件,而是 3 层叠加:
+v3 把 v2 的 3 层扩展为 **4 层**——在 agent 之上新加 "主线程 Claude" 作为对话与协同设计层:
 
 ```mermaid
 flowchart TB
-    A["<b>Agent 层</b><br/>.claude/agents/iloveppt.md<br/><br/>智能编排 · 独立上下文 subagent<br/>读 brief → 出大纲 → checkpoint → 拓写 → 交付"]
-    B["<b>Skill 层</b><br/>skills/pptx-deck · pptx · diagram<br/><br/>知识库 + 工具<br/>SKILL.md + 子文档 · helpers.py · themes · build.py<br/>agent 运行时实时 Read 的「运行手册」"]
+    M["<b>主线程 Claude 层</b>(v3 新增)<br/>与用户多轮对话(brainstorming skill)<br/>素材摄入 · 大纲设计 · 文案拓写<br/>产出 deck_v{N}_outline.md / content.md"]
+    A["<b>Agent 层</b><br/>.claude/agents/iloveppt.md<br/><br/>独立上下文 subagent · v3 简化为构建器<br/>读 content.md → Pyramid 自检 → md→JSON → build → 视觉 QA"]
+    B["<b>Skill 层</b><br/>skills/pptx-deck · pptx · diagram<br/><br/>知识库 + 工具<br/>SKILL.md + 子文档 · helpers.py · themes · build.py · matplotlib_rc.py"]
     C["<b>build.py</b>(纯机械构建器)<br/><br/>deck_plan.json → .pptx + 每页 PNG<br/>不拓写 · 不画图 · 不自检 · 不调 LLM"]
+    M -->|派发 + content.md 路径| A
+    M -.->|读| B
     A -->|读| B
     B -->|调| C
+    classDef main fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
     classDef agent fill:#E6F0FC,stroke:#1E6FE0,stroke-width:2px,color:#0B2A4A
     classDef skill fill:#F5F5F5,stroke:#555,stroke-width:1.5px,color:#222
     classDef tool fill:#FFF4E6,stroke:#D97706,stroke-width:1.5px,color:#7C2D12
+    class M main
     class A agent
     class B skill
     class C tool
 ```
 
-**关键认知**:agent 是"会思考的人",build.py 是"会按图纸施工的木工",skill 是"摆在工地上随时翻的施工手册 + 工具箱"。
+**关键认知**:
+- **主线程** 是"和用户聊天的人"(对话 + 设计)
+- **agent** 是"按图纸施工的工头"(读 md,调 build,视觉 QA)
+- **build.py** 是"会按规格切料的木工"(JSON → .pptx)
+- **skill** 是"工地上的施工手册 + 工具箱"
+
+v2 → v3 的关键转变:**智能在主线程,agent 只做构建**。原因见 §6。
 
 ---
 
-## 2. 触发机制:agent 怎么被唤起
+## 2. 入口:用户怎么发起一次任务
 
-你在 Claude Code 里有两种入口:
+v3 的入口**不是** `@agent-iloveppt`,而是**直接对话主线程 Claude**:
 
 ```mermaid
 flowchart TB
-    U[用户输入] --> D{消息里有 @agent-iloveppt 前缀?}
-    D -->|是| A["<b>路径 A:主动派发</b><br/>主线程 Claude 识别前缀<br/>直接派发 subagent"]
-    D -->|否| K{是否匹配关键词?<br/>做 PPT / 帮我写 PPT<br/>路演 deck / brief.yaml ...}
-    K -->|是| B["<b>路径 B:自动委派</b><br/>关键词命中 agent 的<br/>frontmatter description<br/>主线程 Claude 自动派发"]
-    K -->|否| N[当作普通对话处理<br/>不派发 agent]
-    A --> AG[Agent 实例启动<br/>隔离上下文]
-    B --> AG
+    U[用户:"帮我做个 X 的 PPT"] --> M["主线程 Claude<br/>触发 brainstorming skill<br/>开始 Stage A 对话"]
+    M --> ABCD[Stage A-D · 多轮对话 · 出 markdown]
+    ABCD --> Y{用户批准 content.md?}
+    Y -->|是| DP[主线程派发 agent<br/>入参 = content_md_path + output_pptx + theme]
+    Y -->|否,改| ABCD
+    DP --> AG[Agent 实例启动<br/>独立上下文<br/>跑 Stage E build]
     classDef start fill:#FFF,stroke:#333,stroke-width:1.5px
-    classDef path fill:#E6F0FC,stroke:#1E6FE0,stroke-width:2px,color:#0B2A4A
-    classDef skip fill:#F5F5F5,stroke:#888,stroke-width:1px,color:#666
+    classDef main fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
     classDef agent fill:#0B2A4A,stroke:#1E6FE0,stroke-width:2px,color:#FFF
-    class U,D,K start
-    class A,B path
-    class N skip
-    class AG agent
+    class U,Y start
+    class M,ABCD main
+    class DP,AG agent
 ```
 
-agent 的 frontmatter 决定它能不能被自动委派:
+agent 的 frontmatter 限定它的窄角色:
 
 ```yaml
 ---
 name: iloveppt
-description: 端到端 PPT 生成 agent... Use proactively when the user wants
-             a deck/presentation/PPT generated from a topic or brief ——
-             做 PPT / 帮我写 PPT / 路演 deck / 汇报 / 提案 / brief.yaml / .pptx 模板。
+description: PPT 终稿构建 agent。接收主线程已和用户协同确认的
+             deck_content.md(markdown 终稿)→ 跑 Pyramid 自检 →
+             md→deck_plan.json 转换 → build.py 出 .pptx →
+             视觉 QA 自动修复循环 → 交付。**不再做 brief 解析 /
+             大纲设计 / 文案拓写**——那是主线程 Claude 的 Stage A-D 工作。
 tools: Bash, Read, Write, Edit, Glob, Grep, Skill
 model: opus
 ---
 ```
 
-- `description` 是触发关键词的家——主线程 Claude 看这里决定要不要委派
-- `tools` 限定 agent 能用什么——它不能再派 subagent(自我嵌套禁止)
-- `model: opus` —— 视觉 QA + 内容判断密集,需要判断力
-
-**派发后,subagent 启动一个全新的隔离上下文**——主线程的对话历史它都看不到。所以入参就是它能看到的全部世界。
+**关键变化**:
+- 用户**不再直接 `@agent-iloveppt`**(那样会跳过 Stage A-D 协同设计)。主线程会先把用户带过 brainstorming
+- agent 是 main 的"工具",不是用户的"对接者"
+- 派发时,主线程已经手握用户审过的 content.md;agent 收到的是**接近终稿的输入**,不是原始 brief
 
 ---
 
-## 3. 两阶段派发模型 —— 设计的灵魂
+## 3. 5 阶段流程(Stage A-E)—— 主线程做前 4 个,agent 做最后 1 个
 
-这是 iLovePPT 最重要的设计决策:**一次任务,两次派发,中间一个人工 checkpoint。**
+v3 把 v2 的"agent 2 阶段"升级为"主线程 4 阶段 + agent 1 阶段",共 5 阶段。两个用户 checkpoint(outline.md 审 + content.md 审):
 
 ```mermaid
 sequenceDiagram
     autonumber
     actor U as 用户
     participant M as 主线程<br/>Claude
-    participant A1 as Agent #1<br/>(Phase 1)
-    participant A2 as Agent #2<br/>(Phase 2)
+    participant A as Agent<br/>(只做 Stage E)
 
-    U->>M: 做一份 X 的 PPT
-    M->>+A1: 派发(入参 = brief)
-    Note over A1: 隔离上下文启动<br/>读 workflow.md /<br/>content-writing.md /<br/>diagram-planning.md
-    Note over A1: 按金字塔原理设计 outline<br/>跑 Pyramid 自检 7 项<br/>规划图层
-    A1-->>-M: 返回 YAML outline 并终止
-    M->>U: 展示 outline + diagram_plan
-    Note over U: 审 outline<br/>批准 / 改 / 推翻
-    U->>M: 批准,继续
-    M->>+A2: 派发(入参 = 已批准 outline)
-    Note over A2: 全新上下文(#1 的记忆已丢失)<br/>重读 content-writing.md /<br/>visual-qa.md / rubric.md
-    Note over A2: 调 diagram skill 出图<br/>写 deck_plan.json<br/>跑 build.py<br/>视觉 QA 循环 ≤ 3 轮
-    A2-->>-M: 返回 .pptx + review_needed
-    M->>U: 交付成品 + 待审清单
+    U->>M: "帮我做 X 的 PPT"
+    Note over M: <b>Stage A · 需求挖掘</b><br/>brainstorming skill<br/>多轮问 audience/duration/<br/>核心命题/theme/output
+    M->>U: 一问一答补齐字段
+    U->>M: 字段答全
+    Note over M: <b>Stage B · 素材摄入</b><br/>识别用户素材 → prompt<br/>落 _assets/raw/charts/refs/
+    U->>M: 提供 CSV/图/模板
+    Note over M: <b>Stage C · 内容规划</b><br/>按 Pyramid 5 件套设计 outline<br/>产出 deck_v1_outline.md
+    M->>U: outline.md(可读 markdown)
+    U->>M: 批准 / 改
+    Note over M: <b>Stage D · 全文拓写</b><br/>基于 outline 展开每节<br/>调 matplotlib 出图嵌入 md<br/>产出 deck_v1_content.md
+    M->>U: content.md(2000-5000 字)
+    U->>M: 批准
+    M->>+A: 派发(content_md_path)
+    Note over A: <b>Stage E · 终稿构建</b><br/>0. Pyramid 自检 7 项(质量门)<br/>1. md → deck_plan.json<br/>2. build.py<br/>3. 视觉 QA × ≤ 3 轮(自动改 md)<br/>4. 返回
+    A-->>-M: pptx + auto_md_edits + review_needed
+    M->>U: 交付成品 + agent 自动改动报告
 ```
 
-### 为什么要拆两阶段?
+### 为什么把 4 阶段放主线程?
 
-| 不拆 | 拆 |
-|---|---|
-| agent 一口气跑完,中间不停 | Phase 1 出完大纲就**强制停下** |
-| 大纲跑偏要等成品才发现,白干 30 页 | 大纲不对,**checkpoint 处就纠偏**,成本最低 |
-| 用户体感是"黑盒拿成品" | 用户体感是"我能介入设计" |
+v2 把全部智能塞 agent,但 subagent **是单次派发,无法多轮对话**。结果 Stage A 的"挖需求"做不到——agent 一次性收到一句话 brief 就要硬出 outline。
 
-**金字塔原理是核心要求**这件事就是 checkpoint 才能兜住——agent 在 Phase 1 跑 7 项 Pyramid 自检,任一不过 → 列在 `missing_fields`,**不交付**,反问你。
+v3 把对话密集的 Stage A-D 上挪到主线程:
 
-### Agent 自己怎么知道现在跑哪个 Phase?
+| 任务 | v2 | v3 | 理由 |
+|---|---|---|---|
+| 多轮对话挖需求 | ❌ agent 做不了 | ✅ 主线程做 | 主线程天然支持多轮 |
+| 收素材文件 | ❌ 没有这环 | ✅ 主线程对话中收 | 主线程能 Read 用户提供路径 |
+| 大纲协同设计 | ⚠️ 单向输出 | ✅ 双向迭代 | 主线程能根据用户反馈反复改 outline.md |
+| 文案审 | ❌ 无此 checkpoint | ✅ content.md 审 | 用户在 .pptx 出来前就知道每页写啥 |
 
-看派发入参里**有没有"已批准 outline 结构"**:
+### Agent 怎么判断该跑哪一段?
 
-```python
-# agent 内部判断逻辑(伪代码)
-if "已批准 outline" in dispatch_input:
-    run_phase_2()
-else:
-    run_phase_1()
+不用判断了——**agent 只做 Stage E**。收到入参检查 `content_md_path` 是否存在;不存在或主线程派老 v2 风格的入参 → 直接返回:
+
+```yaml
+error: missing_content_md
+message: "v3 流程要求主线程先完成 Stage A-D 产出 content.md;agent 不接受裸 brief。"
 ```
 
 ---
 
-## 4. Phase 1 详解:大纲是怎么出来的
+## 4. Stage A-D 详解:主线程怎么协同用户出 markdown
+
+主线程 Claude 在用户对话中跑 Stage A-D,产出两份用户可读的 markdown:
 
 ```mermaid
 flowchart TB
-    I([入参:brief<br/>自由对话 / brief.yaml / 模板 .pptx 路径]) --> S0
-    S0["<b>Step 0</b> · Glob 定位 iLovePPT 仓库根<br/><i>agent 可能被链接到其他项目</i>"] --> S1
-    S1["<b>Step 1</b> · 解析 brief<br/>title / outline 意图 / 受众 / 时长<br/>缺字段记 missing_fields,不凭空编"] --> S2
-    S2["<b>Step 2</b> · Read 三份必备文档<br/>workflow.md · content-writing.md · diagram-planning.md<br/><i>现读现用,不预加载</i>"] --> S3
-    S3["<b>Step 3</b> · 按金字塔原理设计 outline<br/>① 单一顶端论点 · ② SCQA<br/>③ 答案在前 BLUF · ④ 横向 MECE<br/>⑤ 纵向疑问/回答链"] --> P
-    P{Pyramid 自检 7 项<br/>全过?}
-    P -->|否| MS["加 missing_fields<br/><b>不交付 Phase 1</b><br/>反问用户补 brief"]
-    P -->|是| S4["<b>Step 4</b> · 图层规划<br/>4 类图决策表<br/>arch / flow / chart / simple_relation"]
-    S4 --> S5["<b>Step 5</b> · 页数预估<br/>total ≈ duration_min × 1.5"]
-    S5 --> OUT([返回 YAML outline<br/>Agent #1 终止])
-    MS --> OUT
+    I([用户:一句话需求]) --> A
+    A["<b>Stage A · 需求挖掘</b><br/>调 brainstorming skill<br/>多轮问 audience/duration/<br/>top_recommendation/theme/output<br/>未收齐 → 不进 B"] --> B
+    B["<b>Stage B · 素材摄入</b><br/>对话中识别用户素材<br/>prompt:数据 / 图 / 模板 / 文档<br/>落到 _assets/{raw,charts,refs}/"] --> C
+    C["<b>Stage C · 内容规划</b><br/>按 Pyramid 5 件套设计 outline<br/>产出 deck_v1_outline.md"] --> UC{用户审 outline}
+    UC -->|改| C
+    UC -->|批准| D["<b>Stage D · 全文拓写</b><br/>每节按 layout 字数规则展开<br/>调 matplotlib 出图嵌入 md<br/>关键数据加 Source 引文<br/>产出 deck_v1_content.md"]
+    D --> UD{用户审 content}
+    UD -->|改某节| D
+    UD -->|批准| OUT([派发 agent 跑 Stage E])
     classDef io fill:#FFF,stroke:#333,stroke-width:1.5px,color:#222
-    classDef step fill:#F5F5F5,stroke:#555,color:#222
-    classDef pyramid fill:#E6F0FC,stroke:#1E6FE0,stroke-width:2px,color:#0B2A4A
+    classDef stage fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
     classDef gate fill:#FFF4E6,stroke:#D97706,stroke-width:2px,color:#7C2D12
-    classDef fail fill:#FEE2E2,stroke:#DC2626,stroke-width:1.5px,color:#7F1D1D
     class I,OUT io
-    class S0,S1,S2,S4,S5 step
-    class S3 pyramid
-    class P gate
-    class MS fail
+    class A,B,C,D stage
+    class UC,UD gate
 ```
 
-返回的 YAML 是结构化的——主线程 Claude 不需要解析,直接给你看就行。
+**关键产出**:
+- `deck_v1_outline.md` —— 大纲 + Pyramid 自检 checkbox 列表
+- `deck_v1_content.md` —— 完整文案(每页 h2 + 正文 + 嵌入图)
+- `_assets/charts/*.png` —— 图表素材
+
+详细 schema 见 [content-writing.md v3 markdown schema 章节](../skills/pptx-deck/content-writing.md#-v3-markdown-schema主线程--agent-接口契约)。
 
 ---
 
-## 5. Phase 2 详解:构建到交付
+## 5. Stage E 详解:agent 怎么把 markdown 变 .pptx
 
-Phase 2 进来时是**全新上下文**——Phase 1 读过的文档现在它都不记得。所以第 0 步要重读。
+agent 在独立上下文中跑 5 步。**Step 0 是质量门**(Pyramid 自检),不过则 hard stop 返回主线程,不允许"自动修复内容"。
 
-### 5.1 Phase 2 主流程
+### 5.1 Stage E 主流程
 
 ```mermaid
 flowchart TB
-    I([入参:已批准 outline]) --> S0
-    S0["<b>Step 0</b> · 重读必备文档<br/>content-writing.md · visual-qa.md · rubric.md"] --> S1
-    S1["<b>Step 1</b> · 生成图<br/>Read drawio.md / matplotlib.md<br/>Bash 调工具出 PNG<br/>落到 &lt;output&gt;/_assets/"] --> S2
-    S2["<b>Step 2</b> · 写 deck_plan.json<br/>逐页拓写,守 11 layout 字数 / 句式约束<br/>节奏感:≥3 连续相同 layout 才警告(软约束)<br/>加 cover / toc / divider×N / summary / closing<br/>含 source / cover_meta / next_steps / footer_meta 字段"] --> S3
-    S3["<b>Step 3</b> · 跑 build.py<br/>python3 skills/pptx-deck/build.py &lt;deck_plan.json&gt;<br/>→ .pptx + &lt;output&gt;_render/*.jpg<br/><i>同时自动加 footer/页码/source 引文(详见 §5.3)</i>"] --> S4
-    S4["<b>Step 4</b> · 视觉 QA 循环(≤ 3 轮)<br/><i>对照 17 项 checklist,详见 §5.2</i>"] --> S5
-    S5["<b>Step 5</b> · 返回 YAML<br/>pptx_path · qa_rounds · review_needed · design_score"]
+    I([入参:<br/>content_md_path + output_pptx + theme + footer_meta]) --> S0
+    S0["<b>Step 0</b> · 质量门<br/>Read content.md + content-writing.md<br/>跑 Pyramid 自检 7 项"] --> P
+    P{自检全过?}
+    P -->|否| HS["<b>hard stop</b><br/>返回 error: pyramid_check_failed<br/>列 failed_items + suggestion<br/>不试图自动修复(动观点是越界)"]
+    P -->|是| S1["<b>Step 1</b> · md → deck_plan.json<br/>严约束:不引入新论点 / 不放大字数<br/>layout 推断 + 图片路径透传<br/>反向 diff 校验(差异 > 5% 报错)"]
+    S1 --> S2["<b>Step 2</b> · 跑 build.py<br/>python3 skills/pptx-deck/build.py &lt;deck_plan.json&gt;<br/>→ .pptx + 渲染 PNG<br/>build.py 自动加 footer/页码/source 引文"]
+    S2 --> S3["<b>Step 3</b> · 视觉 QA 循环(≤ 3 轮)<br/>详见 §5.2 与 §5.3"]
+    S3 --> S4["<b>Step 4</b> · 返回 YAML<br/>pptx_path · qa_rounds<br/>auto_md_edits[] · review_needed[]<br/>pyramid_check 结果"]
     classDef io fill:#FFF,stroke:#333,stroke-width:1.5px
     classDef step fill:#F5F5F5,stroke:#555
-    classDef qa fill:#E6F0FC,stroke:#1E6FE0,stroke-width:2px,color:#0B2A4A
-    class I,S5 io
+    classDef gate fill:#FFF4E6,stroke:#D97706,stroke-width:2px,color:#7C2D12
+    classDef fail fill:#FEE2E2,stroke:#DC2626,stroke-width:1.5px,color:#7F1D1D
+    class I,S4 io
     class S0,S1,S2,S3 step
-    class S4 qa
+    class P gate
+    class HS fail
 ```
 
-### 5.2 Step 4 视觉 QA 循环细节
+### 5.2 Step 3 视觉 QA 循环细节(v3:修 md 而非 JSON)
 
 ```mermaid
 flowchart TB
@@ -199,27 +220,46 @@ flowchart TB
     Read --> Q{发现 issues?}
     Q -->|无| Next[标记本页通过]
     Q -->|有| Cnt{该页修过<br/>&lt; 3 次?}
-    Cnt -->|是| Fix["改 deck_plan.json 该 slide<br/>(改字数 / 换 layout / 调字段)"]
-    Fix --> Rebuild[rerun build.py]
-    Rebuild --> Read
+    Cnt -->|是| AE{允许的格式修复?<br/>(见 §5.3 边界表)}
+    AE -->|是| Fix["改 content.md 该 slide<br/>记入 auto_md_edits[]"]
+    AE -->|否| Deg
+    Fix --> Re1[重跑 md → deck_plan.json] --> Re2[rerun build.py] --> Read
     Cnt -->|否| Deg["<b>降级</b><br/>加入 review_needed<br/>接受当前版本"]
     Deg --> Next
     Next --> Loop{还有页?}
     Loop -->|是| Start
-    Loop -->|否| Done([QA 完成 → Step 5])
+    Loop -->|否| Done([QA 完成 → Step 4])
     classDef io fill:#FFF,stroke:#333,stroke-width:1.5px
     classDef act fill:#F5F5F5,stroke:#555
     classDef gate fill:#FFF4E6,stroke:#D97706,stroke-width:2px,color:#7C2D12
     classDef pass fill:#DCFCE7,stroke:#16A34A,stroke-width:1.5px,color:#14532D
     classDef fail fill:#FEE2E2,stroke:#DC2626,stroke-width:1.5px,color:#7F1D1D
     class Start,Done io
-    class Read,Fix,Rebuild act
-    class Q,Cnt,Loop gate
+    class Read,Fix,Re1,Re2 act
+    class Q,Cnt,AE,Loop gate
     class Next pass
     class Deg fail
 ```
 
-### 5.3 Cross-cutting concerns:build.py 在 fn 调用后自动加的东西
+**v2 vs v3 的关键差异**:v2 改 `deck_plan.json`(用户审过的源是 outline yaml,JSON 是 agent 自己写的,改它无所谓);v3 改 `content.md`(用户审过的源就是 md,**改 md 等于改用户审过的内容**——所以有严格边界,见 §5.3)。
+
+### 5.3 Agent 自动改 content.md 的边界(决策 8a)
+
+| ✅ 允许(纯格式修正) | ❌ 禁止(动观点 / 数据) |
+|---|---|
+| 缩短 action title(超 24 字) | 改 action title 立场 / 语义 |
+| bullet 字数超限 → 截短 | 删整条 bullet |
+| 合并连续 bullet(超数量) | 改 bullet 顺序(= 改论证) |
+| layout 推断错改 layout 注释 | 加删整张 slide |
+| 修 markdown 语法错(missing dash 等) | 改 source 引文 / 数据值 |
+| 切换字号/颜色(通过 layout 注释) | 改 frontmatter(top_recommendation / SCQA 等) |
+
+每次自动改都要:
+- 记录到返回 yaml 的 `auto_md_edits[]`,含 `page / issue / before / after`
+- 主线程展示给用户(可批量批准或回退某条)
+- 用户可以"接受 + 继续"或"回退到 agent 改前的 md 版本重新介入"
+
+### 5.4 Cross-cutting concerns:build.py 在 fn 调用后自动加的东西
 
 `build.py` 调完 `theme.make_<layout>()` 后,**还会自动处理 3 类"横切关注点"** —— theme `make_*` 函数完全不感知,职责干净:
 
@@ -245,6 +285,8 @@ flowchart TB
 - theme `make_*` 只关心**布局视觉**(把 title/items 摆好);footer 和 source 是**规范层关注**(每页都要有),不该让每个 layout 函数都重复处理
 - 想新增一种 cross-cutting(比如水印 / classification 徽标),改 build.py 一处即可,11 个 layout 一起生效
 - agent 写 `deck_plan.json` 时,这些字段是**通用 slot**(任何 layout 都可加 `source`),不需要为每种 layout 各想一遍
+
+**v3 下这套机制依然成立**:agent 在 Step 1 (md→JSON) 把 md 里的 `> 数据:Source: ...` 写成 JSON 的 `source` 字段;`footer_meta` 从 frontmatter 透传到 plan 顶层。build.py 后续的渲染流程没变。
 
 ---
 
@@ -272,6 +314,31 @@ flowchart LR
 - **可测试**:`evals/run_eval.sh` 跑固定 deck_plan,验证 build.py 没回归——不掺 LLM 不确定性
 
 如果 build.py 内嵌 LLM 调用,这 3 条全废了。
+
+### 6.1.1 v3 多了一个接缝:content.md(用户接口)vs deck_plan.json(构建接口)
+
+v2 只有 1 个接缝:`deck_plan.json`(agent ↔ build.py)。
+
+v3 有 **2 个接缝**:
+
+```mermaid
+flowchart LR
+    U[用户] -->|审 markdown| MD["<b>content.md</b><br/>(用户接口)<br/>人类可读"]
+    MD -->|agent 转换| JSON["<b>deck_plan.json</b><br/>(构建接口)<br/>JSON,机器读"]
+    JSON -->|build.py| PPTX[".pptx"]
+    classDef u fill:#FFF,stroke:#333
+    classDef interface fill:#E6F0FC,stroke:#1E6FE0,stroke-width:2px,color:#0B2A4A
+    classDef tool fill:#FFF4E6,stroke:#D97706,stroke-width:2px,color:#7C2D12
+    class U u
+    class MD,JSON interface
+    class PPTX tool
+```
+
+**为什么不直接 content.md → .pptx,省一个接缝?**
+
+- `deck_plan.json` 仍是 build.py 的契约,**已经测试 + 评估覆盖**(`evals/run_eval.sh` 跑固定 JSON)
+- markdown → JSON 转换里有"严约束"(不引入新论点),正好用 JSON 做"用户审过的内容的事实快照"
+- 未来若要支持其他源(如 Notion API / Confluence),只需写新的 `X → JSON` 转换,不动 build.py
 
 ### 6.2 deck_plan.json 这个"接缝"是设计核心
 
@@ -346,7 +413,32 @@ FOOTER_TOP    = Inches(7.0)
 
 为什么拆?matplotlib 用 `font.sans-serif` 列表 / hex 字符串,跟 python-pptx 的 `RGBColor` / `<a:ea typeface>` 类型不兼容,无法直接共享对象。所以 matplotlib_rc 是"helpers.py 的派生镜像"——改 helpers 后需手动同步(改色值时 grep `_hex(H.` 找到所有 mirror 点)。
 
-### 6.6 字号 / 色 / 字段都对标 BCG/McKinsey
+### 6.6.1 v3:为什么把"智能"从 agent 拆到主线程
+
+最初(v1/v2)直觉:agent 跑端到端,用户只看 outline 一次。后来发现:
+
+| 问题 | 原因 |
+|---|---|
+| 用户不会写 brief | 一句话扔进来,缺关键字段 |
+| 用户审 outline 是盲批 | YAML 不可读 |
+| 文案没 sign-off | 用户没在 .pptx 前看到文案 |
+| 改 1 个字 = rebuild 全 deck | 用户介入的颗粒度太粗 |
+
+根本原因:**subagent 是单次派发**,无法多轮对话。所以挖需求、收素材、协同设计这些**对话密集**的工作,塞 agent 里硬做必然失败。
+
+v3 把对话密集任务上挪到主线程,agent 简化为"接收 markdown → 构建 .pptx"。这样:
+
+| 任务 | v2 谁做 | v3 谁做 | 收益 |
+|---|---|---|---|
+| 多轮挖需求 | agent 硬做(失败) | 主线程 + brainstorming(顺) | 用户感受到被"问"而非被"猜" |
+| 素材收集 | 无环节 | 主线程对话中收 | 数据 / 图能真正进 deck |
+| 大纲设计 | agent 单方面输出 | 主线程协同迭代 | 用户参与 |
+| 文案审 | 无环节 | content.md checkpoint | 错字 / tone / 数据准确性都在 .pptx 前定 |
+| 视觉构建 | agent | agent(职责简化) | agent 不再分心,专注做好这一件 |
+
+**代价**:主线程上下文会膨胀(对话历史 + outline + content)。但主线程有自带 compaction,且 markdown 本身比 v2 yaml schema 更紧凑。
+
+### 6.7 字号 / 色 / 字段都对标 BCG/McKinsey
 
 2026-05-23 全面对标行业最佳实践,17 项调整落地:
 
@@ -368,29 +460,55 @@ FOOTER_TOP    = Inches(7.0)
 
 ---
 
-## 7. 一次完整调用的 timeline 示例
+## 7. 一次完整调用的 timeline 示例(v3)
 
-假设你说:`@agent-iloveppt 做一份"评审办法 v1.0"的 PPT,15 分钟,技术受众`
+假设你说:`帮我做一份"评审办法 v1.0"的 PPT,15 分钟,技术受众`
 
 ```
-T+0s    主线程 Claude 派发 Phase 1
-T+2s    Agent #1 启动,读 brief
-T+8s    Read workflow.md / content-writing.md / diagram-planning.md
-T+15s   设计 outline + 跑 Pyramid 自检
-T+20s   规划 diagram_plan(判定第 3 节配 flow 图)
-T+22s   返回 YAML outline → Agent #1 终止
-T+22s   主线程把 outline 展示给你
-─── 你审 outline,回 "批准,继续" ───
-T+1min  主线程派发 Phase 2(入参带批准的 outline)
-T+1min  Agent #2 启动,重读 content-writing.md / visual-qa.md
-T+1.5m  Read drawio.md,Bash 调 draw.io 出流程图 PNG
-T+2m    写 deck_plan.json(20 页)
-T+2.5m  跑 build.py → .pptx + 20 张 PNG(约 60s)
-T+3.5m  视觉 QA 第 1 轮:Read 20 张 PNG,发现 page-5 卡片溢出
-T+4m    改 deck_plan.json 缩短 page-5 内容 → rebuild
-T+5m    第 2 轮:全部通过
-T+5m    返回 .pptx 路径 + review_needed: []
+=== Stage A · 需求挖掘(主线程对话) ===
+T+0s     用户输入一句话
+T+5s     主线程:"给谁看?有数据吗?有现成图吗?预期多长?"
+T+30s    用户答 → 主线程接着问
+T+2min   字段收齐(audience/duration/top_recommendation/theme)
+
+=== Stage B · 素材摄入 ===
+T+2.5m   主线程:"你提到 Q4 数据,可以粘贴或给文件路径吗?"
+T+3min   用户给 ./q4_revenue.csv → 主线程 Read + 解析
+T+3.5m   主线程:"5 阶段流程图,你想画还是用 draw.io 现画?"
+T+4min   用户:"现画" → 主线程稍后调
+
+=== Stage C · 内容规划 ===
+T+4.5m   主线程跑 Pyramid 设计 outline
+T+5min   写 deck_v1_outline.md(7 章节 + Pyramid 自检 checkbox)
+T+5min   "Outline 在 deck_v1_outline.md,审一下"
+─── 你审 outline,改第 3 节标题,回 "批准" ───
+T+8min   
+
+=== Stage D · 全文拓写 ===
+T+8min   主线程基于 outline 展开每节文案
+T+9min   调 matplotlib 出 Q4 revenue chart → _assets/charts/q4.png
+T+10min  调 draw.io 出 5 阶段流程图 → _assets/charts/review_flow.png
+T+11min  写 deck_v1_content.md(20 页 + 嵌入 2 张图 + Source 引文)
+T+11min  "全文在 deck_v1_content.md,逐页审"
+─── 你审 content,改第 5 页一个数字,回 "批准" ───
+T+15min
+
+=== Stage E · agent 派发构建 ===
+T+15min  主线程派发 agent(content_md_path + theme + footer_meta)
+T+15.5m  Agent 启动,Read content.md + Pyramid 自检 → 全过
+T+16min  md → deck_plan.json(20 slide 字段)
+T+17min  跑 build.py → .pptx + 20 张 PNG(~60s)
+T+18min  视觉 QA 第 1 轮:Read 20 PNG,发现 page-5 action title 27 字超限
+T+18.5m  auto_md_edit:改 content.md page 5 标题为 18 字 → 重 build
+T+19.5m  视觉 QA 第 2 轮:全部通过
+T+20min  返回 .pptx 路径 + auto_md_edits[1 条] + review_needed: []
+
+=== 主线程交付 ===
+T+20min  "成品 /tmp/deck_v1.pptx;agent 自动改了 content.md page 5
+         标题从 'X' 改成 'Y'(超 24 字限制),已记录。如要回退说一声。"
 ```
+
+**对比 v2**:v2 全程 ~5 分钟(纯 agent),但用户只在 outline 一次 sign-off。v3 全程 ~20 分钟,**用户在对话中投入 5-10 分钟**,但拿到的成品是真正"协同设计"出来的。
 
 ---
 
@@ -425,9 +543,23 @@ T+5m    返回 .pptx 路径 + review_needed: []
 | 视觉 QA 只看单页,deck-level 不一致漏检 | 17 项 checklist + Deck-level 一致性 3 项(配色比例 / 字号层级 / 同 layout 对齐) |
 | 主色泛滥(单页 60% BRAND_PRIMARY) | 60-30-10 视觉 QA 项(主色面积 ≤ 30%) |
 
+### 协同设计层(v3 新增)
+
+| 坑 | 这套设计的防御 |
+|---|---|
+| 用户不会写 brief | Stage A 主线程 brainstorming 多轮问,直到收齐字段 |
+| 用户审 YAML 看不懂(盲批) | 改成 markdown 双 checkpoint(outline.md + content.md) |
+| 数据图 / 用户已有图没入口 | Stage B 显式素材摄入对话,落 `_assets/{raw,charts,refs}/` |
+| 文案错字要等 .pptx 出来才发现 | content.md 阶段已审过文案 |
+| 手改 .pptx 后 agent 重跑覆盖 | 用户改的是 content.md,不是 pptx;agent 永远从 md 派生 |
+| 多版本管理乱(deck.pptx 覆盖) | `deck_v1.md` / `deck_v2.md` 显式版本号 |
+| agent 改了 md 用户不知道 | `auto_md_edits[]` 返回 + 主线程展示 |
+| agent 拓写引入用户没说的话 | md → JSON 严约束 + 反向 diff 校验(差异 > 5% 报错) |
+| 用户绕过 Stage A 直接 @agent | agent 检查入参缺 content_md_path 直接 reject |
+
 ---
 
-**一句话总结**:iLovePPT agent 把"写 PPT"这件事拆成**"想清楚论证(Phase 1 + 用户 checkpoint)→ 机械执行(Phase 2 + 视觉自检循环)"**两段,用 `deck_plan.json` 这个诚实接缝把智能(agent)和哑工具(build.py)隔离,用 SSOT(helpers.py + matplotlib_rc.py)+ 运行时读 .md(skill docs)+ 金字塔自检 + 17 项视觉规范(强约束)来防各种漂移。
+**一句话总结(v3)**:iLovePPT 把"写 PPT"拆成**"主线程多轮协同(Stage A-D,用户 + Claude 双方共写 markdown)→ agent 机械构建(Stage E,markdown 终稿 → .pptx)"**,用 `content.md`(用户接口)+ `deck_plan.json`(构建接口)两个接缝,把对话密集的"想清楚"和构建密集的"做出来"彻底分离。SSOT(helpers.py + matplotlib_rc.py)+ 17 项视觉规范 + Pyramid 自检 + md→JSON 严约束防各种漂移。
 
 ---
 
@@ -437,22 +569,66 @@ T+5m    返回 .pptx 路径 + review_needed: []
 
 | 想了解 | 看 |
 |---|---|
-| Agent 完整 system prompt | `.claude/agents/iloveppt.md` |
-| Agent 设计 rationale | `docs/superpowers/specs/2026-05-23-iloveppt-agent-design.md` |
-| 7 步主流程 | `skills/pptx-deck/workflow.md` |
-| 金字塔原理 5 件套完整规则 + 自检表 | `skills/pptx-deck/content-writing.md` |
-| 11 layout 字段约束 + 节奏感规则 | `skills/pptx-deck/content-writing.md` |
+| **v3 设计 spec(权威,8 决策 + 接口契约)** | `docs/superpowers/specs/2026-05-23-iloveppt-v3-markdown-first.md` |
+| Agent 完整 system prompt(v3 简化为 builder-only) | `.claude/agents/iloveppt.md` |
+| Agent 旧 v2 设计 rationale(供对比) | `docs/superpowers/specs/2026-05-23-iloveppt-agent-design.md` |
+| 5 阶段主流程(Stage A-E) | `skills/pptx-deck/workflow.md` |
+| markdown schema(outline.md + content.md)+ 11 layout 字段 | `skills/pptx-deck/content-writing.md` |
+| 金字塔原理 5 件套 + 自检表 | `skills/pptx-deck/content-writing.md` |
 | 图层规划 4 类决策表 | `skills/pptx-deck/diagram-planning.md` |
-| 视觉自检 17 项 checklist(12 基础 + 5 进阶 + 3 deck-level)+ fix 循环 | `skills/pptx-deck/visual-qa.md` |
+| 视觉自检 17 项 checklist + fix 循环 | `skills/pptx-deck/visual-qa.md` |
 | 模板提取(主色 + 字体) | `skills/pptx-deck/template-extract.md` |
 | draw.io / Mermaid / matplotlib 出图细节 | `skills/diagram/SKILL.md` |
-| matplotlib 风格 SSOT(BRAND_* 配色 + YaHei) | `skills/diagram/matplotlib_rc.py` + `skills/diagram/matplotlib.md` |
-| 底层 .pptx 读写 / 字体处理 / footer + source helper | `skills/pptx/SKILL.md` + `skills/pptx/helpers.py` |
+| matplotlib 风格 SSOT | `skills/diagram/matplotlib_rc.py` + `skills/diagram/matplotlib.md` |
+| 底层 .pptx 读写 + footer/source helper | `skills/pptx/SKILL.md` + `skills/pptx/helpers.py` |
 | 12-col grid 原语 | `skills/pptx/layout.py: grid_columns()` |
 | 设计 token(SSOT 源头) | `skills/pptx/helpers.py` |
 | 仓库架构与代码约定 | `CLAUDE.md`(根目录) |
-| 用户操作手册(给 PM / 讲者) | `docs/MANUAL.zh.md` |
+| 用户操作手册(v3 流程) | `docs/MANUAL.zh.md` |
 
 ---
 
-*文档版本:2.0 · 2026-05-23 视觉规范对标 BCG/McKinsey 后更新 · 适用 iLovePPT agent v1*
+## 10. v2 → v3 变迁说明
+
+如果你熟悉 v2 设计,这是关键变化:
+
+### 架构层
+
+| | v2 | v3 |
+|---|---|---|
+| 智能放哪 | 全在 agent(Phase 1 + Phase 2) | 拆:主线程做 Stage A-D / agent 做 Stage E |
+| 用户入口 | 直接 `@agent-iloveppt` | 直接对话主线程(主线程稍后派 agent) |
+| Checkpoint 数 | 1(outline yaml 审) | 2(outline.md 审 + content.md 审) |
+| 接缝介质 | `deck_plan.json` | `content.md` + `deck_plan.json` 两层 |
+| agent 角色 | 端到端 brief → pptx | builder only:md → pptx |
+| 素材摄入 | 无 | Stage B 显式对话收集 |
+| 多版本管理 | 无 | `deck_v{N}_*.md` 显式 |
+
+### 复用 v2 资产
+
+下列 v2 资产**完全保留,不动**:
+- `helpers.py` 设计 token / footer / source_citation
+- `tech_blue.py` 11 个 make_* layout 函数
+- `build.py` 接收 deck_plan.json 出 .pptx(接口完全不变)
+- `matplotlib_rc.py` 数据图 SSOT
+- `layout.py` grid_columns + 几何原语
+- `visual-qa.md` 17 项 checklist
+- 字号 / 色 / 字段对标 BCG 的全套规范
+
+### 废弃 v2 字段
+
+下列 v2 schema 字段不再使用:
+- agent Phase 1 输出的 `top_recommendation` / `scqa` / `mece_check_passed` / `pyramid_check_passed` / `bypass_pyramid` 字段
+  → 改成 markdown frontmatter + 自检 checkbox 列表(用户可读)
+- `ghost_deck_test_passed` 独立字段
+  → 合并进 Pyramid 自检 7 项的第 ⑤ 项
+
+### 迁移路径
+
+v2 现有 deck 不需迁移——`build.py` 接口不变,旧 `deck_plan.json` 仍能跑。
+新 deck 默认走 v3 流程(主线程 brainstorming 入口)。
+v2 `brief.yaml` 仍可作为主线程 Stage A 的输入(主线程会读 yaml 然后正常进入 Stage C 跳过 brainstorming)。
+
+---
+
+*文档版本:**3.0** · 2026-05-23 重大架构升级:主线程对话 + agent build · 替代 v2 端到端流程*

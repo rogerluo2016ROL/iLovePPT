@@ -1,19 +1,21 @@
-# iLovePPT 使用手册
+# iLovePPT 使用手册(v3)
 
-> 给 PM、设计师、讲者、运营、咨询——任何想把一份 brief 变成完整 PPT 的人。
-> 你不需要写代码,也不需要看懂 `build.py`——读完这份手册你就能用 agent 出稿。
+> 给 PM、设计师、讲者、运营、咨询——任何想把一句话需求变成完整 PPT 的人。
+> 你不需要写代码,也不需要看懂 `build.py`——读完这份手册你就能用。
+>
+> **v3 重大变化(2026-05-23)**:从"派 agent 出稿"改成"先在主线程多轮聊清楚 → agent 只做最后构建"。你不再面对 yaml,你只面对 markdown。
 
 ---
 
 ## 目录
 
-- [1. 30 秒理解 iLovePPT](#1-30-秒理解-iloveppt)
+- [1. 30 秒理解 iLovePPT v3](#1-30-秒理解-iloveppt-v3)
 - [2. 五分钟跑通一份 demo](#2-五分钟跑通一份-demo)
 - [3. 准备工作:依赖与字体](#3-准备工作依赖与字体)
-- [4. 提交需求的三种姿势](#4-提交需求的三种姿势)
-- [5. agent 的两阶段流程(你会看到什么)](#5-agent-的两阶段流程你会看到什么)
-- [6. 写好 brief 的六条经验](#6-写好-brief-的六条经验)
-- [7. 审 outline 的四个角度](#7-审-outline-的四个角度)
+- [4. 用 iLovePPT 的标准流程](#4-用-iloveppt-的标准流程)
+- [5. 5 阶段你会看到什么](#5-5-阶段你会看到什么)
+- [6. 写好需求的六条经验(在 Stage A 对话时用)](#6-写好需求的六条经验在-stage-a-对话时用)
+- [7. 审 outline.md 和 content.md 的角度](#7-审-outlinemd-和-contentmd-的角度)
 - [8. 收稿之后做什么](#8-收稿之后做什么)
 - [9. 主题与品牌色](#9-主题与品牌色)
 - [10. 11 种 layout 速查](#10-11-种-layout-速查)
@@ -23,25 +25,30 @@
 
 ---
 
-## 1. 30 秒理解 iLovePPT
+## 1. 30 秒理解 iLovePPT v3
 
-**iLovePPT 是一个 Claude Code agent**,你把"主题 / 大纲 / 要点"丢给它,它会:
+**iLovePPT 是一个 Claude Code 系统**(主线程 + agent 协作)。你扔一句话需求进来,流程是:
 
-1. 设计一份完整论证大纲——**先停下来给你看**,改完再继续;
-2. 自动判断哪几页该配架构图 / 流程图 / 数据图,然后真的画出来;
-3. 逐页拓写文案,跑构建脚本出 `.pptx` + 每页渲染图;
-4. 自己读渲染图做视觉自检,有问题就改 `deck_plan.json` 重新构建,最多 3 轮;
-5. 把成品 `.pptx` 和"还要人审"的清单一起交给你。
+1. **主线程 Claude 跟你多轮对话**,问清:给谁看、多长、核心想说啥、有没有素材;
+2. 对话中识别到数据 / 图 / 模板 → **主动让你提供文件路径或粘贴**;
+3. 主线程按金字塔原理出 `deck_v1_outline.md`(大纲),**给你审**;
+4. 批了 → 主线程拓写出 `deck_v1_content.md`(全文 + 数据图嵌入),**再给你审**;
+5. 批了 → 主线程派 agent 构建 `.pptx`,agent 自己跑视觉自检循环;
+6. 交付 `.pptx` + agent 自动改了哪几句的清单 + 仍需人审的问题清单。
 
-**所以你只做三件事**:
+**所以你只做四件事**:
 
 | 你做的 | iLovePPT 做的 |
 |---|---|
-| 写 brief / 选模板 | 解析 brief、判断图层、设计大纲 |
-| 审大纲(可改可拒) | 等你批准,不批不动 |
-| 收成品 / 看 review 清单 | 拓写、出图、构建、视觉自检、交付 |
+| 对话:答 audience/duration/核心命题/有什么素材 | 多轮 prompt 问到收齐 |
+| 给素材(数据表 / 图 / 模板路径) | Read 文件 / 解析数据 / 落 `_assets/` |
+| 审 outline.md(可改) | 等批准 |
+| 审 content.md(可改 / 直接编辑文件) | 等批准 |
+| 收 .pptx + 看 auto_md_edits 清单 | agent build + 视觉自检 |
 
-> **核心原则——一图胜千文(一图胜过一千字)。** 凡涉及结构、流程、关系、数据对比,iLovePPT 会主动用 draw.io / matplotlib 画图,而不是堆文字 bullet。
+> **核心原则——一图胜千文。** 凡涉及结构、流程、关系、数据对比,主线程会主动用 draw.io / matplotlib 画图嵌进 markdown,而不是堆文字 bullet。
+
+> **v3 vs v2**:v2 让你直接 `@agent-iloveppt`,agent 全包,你只审一次 yaml 大纲。v3 把对话密集的步骤交给主线程(更适合 brainstorming),agent 专门负责构建,你审 markdown(更可读)。详情见 [agent-internals.zh.md](agent-internals.zh.md) §10。
 
 ---
 
@@ -109,210 +116,245 @@ bash skills/pptx/scripts/check_deps.sh
 
 ---
 
-## 4. 提交需求的三种姿势
+## 4. 用 iLovePPT 的标准流程
 
-iLovePPT agent 接受三种输入,用哪种都行——agent 会自己补齐缺的字段。
+v3 只有**一个**标准入口:**直接对话主线程 Claude**。
 
-### 姿势 A:一句话对话
+### 标准入口:一句话即可
 
-直接在 Claude Code 里跟 agent 说人话:
-
-```
-@agent-iloveppt 帮我做一份「AI 4A 架构评审办法 v1.0」的提案,
-受众 30 人左右(技术 + 业务),时长 15 分钟,
-主线想讲:背景、评审范围、5 阶段流程、组织保障、落地节奏。
-主题用内置 tech_blue,产物输出到 ./out/deck.pptx。
-```
-
-agent 会自己提取出:`title / outline / audience / duration_min / theme / output`,缺字段会列在 `missing_fields` 里反问你。
-
-### 姿势 B:brief.yaml(结构化,推荐)
-
-适合内容已经成稿、想可重复生成的人。在仓库任意位置写一份 yaml:
-
-```yaml
-# brief.yaml
-title: "AI 4A 架构评审办法 v1.0"        # 必填,≤ 20 字
-subtitle: "技术 + 业务 协同评审机制"     # 可选,≤ 30 字
-audience: executive                       # executive / technical / general / sales
-duration_min: 15                          # 影响页数估算
-outline:                                  # 必填,章节列表
-  - "背景与意义"
-  - "评审范围"
-  - "评审流程(5 阶段)"
-  - "组织保障"
-  - "落地节奏"
-key_points:                               # 可选,跨章节关键信息
-  - "强制嵌入研发流程"
-  - "5 阶段评审,每阶段 ≤ 3 天"
-  - "AI 助手提前预审"
-theme: tech_blue                          # 必填,见姿势 C
-output: ./out/deck.pptx                   # 必填,产物路径
-page_count_target: 20                     # 可选,自动估算时省略
-brand_color: "#0B2A4A"                    # 可选,覆盖 theme 主色
-reference_pptx: null                      # 可选,见姿势 C
-```
-
-然后:
+在 Claude Code 里直接说:
 
 ```
-@agent-iloveppt 按 ./brief.yaml 出稿
+帮我做一份 AI 4A 架构评审办法 v1.0 的提案
 ```
 
-> 完整字段样例:`skills/pptx-deck/brief.example.yaml`(直接复制改)。
-
-### 姿势 C:已有 .pptx 当模板
-
-公司已经有品牌模板?直接把 `.pptx` 路径填进 `theme` 或 `reference_pptx`:
-
-```yaml
-theme: ./company_template.pptx     # 或写绝对路径
-```
-
-agent 会自动从这份模板里抽两样东西:
-
-| 抽什么 | 怎么用 |
-|---|---|
-| 主题色(`<a:accent1>`) | 替换 `tech_blue` 的 PRIMARY 色 |
-| 中文字体(`<a:ea typeface>`) | 替换默认的 Microsoft YaHei |
-
-**抽不到的东西**(这是底线,别期待):
-
-- 背景图、装饰元素、自定义 layout
-- 圆角风格、间距、动画
-- 你模板里的页面内容(agent 不会复制)
-
-也就是说,模板**只用于换色 + 换字体**,布局仍然是 iLovePPT 内置的 11 种 layout。如果你想要"完全照模板视觉风格出稿",这不是 iLovePPT 的能力范围。
-
-### 字段速查
-
-| 字段 | 必填 | 默认 / 备注 |
-|---|:--:|---|
-| `title` | ✅ | ≤ 20 字 |
-| `outline` | ✅ | 章节列表,每条 ≤ 12 字 |
-| `theme` | ✅ | `tech_blue` 或 `.pptx` 路径 |
-| `output` | ✅ | 绝对路径或相对当前目录 |
-| `subtitle` | — | ≤ 30 字 |
-| `audience` | — | `executive` / `technical` / `general` / `sales`,默认 `general` |
-| `duration_min` | — | 用于页数估算,公式 `total ≈ duration × 1.5` |
-| `key_points` | — | summary 页结论的候选库 |
-| `brand_color` | — | 覆盖 theme 主色 |
-| `reference_pptx` | — | 同 `theme` 写 .pptx 路径 |
-
----
-
-## 5. agent 的两阶段流程(你会看到什么)
-
-iLovePPT 把工作砍成**两次派发**,中间有一个**人工 checkpoint**——这是设计上故意的,防止 agent 直接给你一份歪掉的成品。
+主线程 Claude 识别"做提案 / PPT / deck"等关键词后,会**自动启动 brainstorming**,开始 Stage A 对话:
 
 ```
-你: @agent-iloveppt 做 PPT
-       ↓
-[Phase 1: 大纲] ← agent 跑
-       ↓
-agent 返回 outline.yaml → 停在这里
-       ↓
-你审 outline(可以全盘改)
-       ↓
-你: 批准/改 X 处后重发
-       ↓
-[Phase 2: 构建] ← agent 跑(自动跑完)
-       ↓
-agent 返回 .pptx + review_needed 清单
+主线程: 几个关键问题先确认一下,
+       1) 给谁看?老板 / 客户 / 团队 / 投资人?
+       2) 讲多久?10/15/20/30 分钟?
+       3) 一句话总结:你想让听众接受的核心判断是什么?
+       4) 主题用默认 tech_blue,还是有公司模板?
+       5) 成品 .pptx 想放哪?
+
+你: 给管理层看,15 分钟,核心是"本季度落地这套办法 5 阶段每阶段 ≤ 3 天",
+    用 tech_blue,放 ./decks/
+
+主线程: 好的。你这边有素材吗?
+       - Q4 评审数据 / 上线返工率数据?
+       - 现有评审流程图?
+       - 参考模板 / 之前的提案?
+
+你: 有一份 ./_assets/raw/review_metrics.csv,流程图你帮我画一张
 ```
 
-### 5.1 Phase 1 —— 你会收到什么
+主线程接着进入 Stage C(出 outline)+ Stage D(出 content),全程跟你确认。
 
-agent 跑完 Phase 1 会返回一份 YAML,大概长这样:
+### 不再推荐:`@agent-iloveppt`(v2 用法)
 
-```yaml
-phase: 1
+v3 下直接 `@agent-iloveppt` **会被 reject**(agent 检查没有 content.md 入参就返回错误)。原因:agent 不再做 brief 解析。
+
+如果你**确实有现成 content.md**(自己手写 / 上版本回收),可以直接派:
+
+```
+@agent-iloveppt
+content_md_path: /abs/path/to/deck_v1_content.md
+output_pptx: /abs/path/to/deck_v1.pptx
 theme: tech_blue
-output: /abs/path/to/deck.pptx
-audience: technical
-target_page_count: 20
-
-# 金字塔原理 5 件套(核心要求,见第 6 章)
-top_recommendation: "应当本季度落地 AI 4A 评审办法,5 阶段每阶段 ≤ 3 天"
-scqa:
-  situation: "AI 工具铺开,研发提速 30%"
-  complication: "架构评审仍靠人审,质量飘移,上线返工率上升"
-  question: "怎么让评审跟上节奏又不放低质量?"
-  answer: "应当本季度落地 AI 4A 评审办法,5 阶段每阶段 ≤ 3 天"
-mece_check_passed: true
-pyramid_check_passed: true
-bypass_pyramid: false
-
-sections:
-  - title: "背景与意义"
-    action_title: "AI 工具铺开,但架构评审仍靠人,质量飘移"
-    intent: "让管理层认可:这件事必须做"
-    layout: bullet_list
-    needs_diagram: false
-  - title: "评审范围"
-    action_title: "覆盖 4A:Application/Architecture/Auth-N/Auth-Z 全闭环"
-    intent: "划清边界,避免后续扯皮"
-    layout: cards
-    needs_diagram: false
-  - title: "评审流程"
-    action_title: "5 阶段串行,每阶段 ≤ 3 天,卡点不超 1 周"
-    intent: "节奏可控,可复制到其他业务线"
-    layout: pic_text
-    needs_diagram: true
-  # ...
-diagram_plan:
-  - section_idx: 3
-    diagram_type: flow
-    tool: drawio
-    intent: "5 阶段评审流程图,展示阶段 + 卡点 + 角色"
-ghost_deck_test_passed: true
-missing_fields: []
 ```
 
-**Phase 1 结束后 agent 不会继续做任何事**——它会等你回话。
+但这条路径只给"已经懂 markdown schema 的进阶用户"。普通用户走主线程对话即可。
 
-> 如果 `pyramid_check_passed: false` 或 `missing_fields` 不空(常见:`top_recommendation 缺失` / `complication 与 situation 重复` / `章节非 MECE`),说明你的 brief 缺金字塔某个要件,agent 会反问你补,而不是硬出大纲。
+### brief.yaml(v2 旧路径,仍兼容)
 
-### 5.2 Phase 1 → Phase 2 之间,你能做的
+如果你已经有 `brief.yaml`:
 
-| 你想做的 | 怎么做 |
-|---|---|
-| 全盘接受 | 回:"批准,继续" |
-| 改某节标题 | 回:"第 3 节 action_title 改成 ……,然后继续" |
-| 加 / 删一节 | 回:"删掉第 5 节,在第 2 节后加一节 ……,然后继续" |
-| 改图层规划 | 回:"第 2 节也要配架构图,加进去" |
-| 推翻重来 | 回:"重新设计 outline,这次按结论先行的结构" |
-
-agent 第二次派发时会带着你**改后的 outline** 进 Phase 2,直接拓写到交付。
-
-### 5.3 Phase 2 —— agent 会做这些
-
-1. **出图** —— 按 `diagram_plan` 调 draw.io / matplotlib,PNG 落到 `<output 同目录>/_assets/`
-2. **写 deck_plan.json** —— 逐页拓写文案,严格遵守 11 layout 的字数 / 句式约束
-3. **构建** —— 跑 `build.py`,出 `.pptx` + 每页 PNG
-4. **视觉自检循环(最多 3 轮)** —— agent 自己读 PNG,按 12 项 checklist 找问题,有问题改 `deck_plan.json` 重跑
-5. **交付** —— 返回 `.pptx` 路径 + `review_needed` 清单
-
-### 5.4 Phase 2 你会收到什么
-
-```yaml
-phase: 2
-pptx_path: /abs/path/to/deck.pptx
-qa_rounds: 2                       # 跑了 2 轮自检
-review_needed:
-  - page: 5
-    issues: ["D10 内容下半空白"]
-    suggestion: "缩短卡片正文 或 改用 bullet_list"
-design_score: "13/14"               # 最弱页的设计分(满分 14)
+```
+基于这份 ./brief.yaml 帮我做 PPT
 ```
 
-**`review_needed` 不空,说明那几页机器自己修不动了,需要你看看。** 不是失败,只是 agent 已经尽力。
+主线程会读 yaml → 跳过 Stage A 大部分对话(字段已收齐)→ 直接进 Stage C(出 outline)。后续 outline 审 / content 审仍要做。
+
+> brief.yaml schema 见 `skills/pptx-deck/brief.example.yaml`。
+
+### 工作目录约定
+
+你的 deck 会用一个目录管所有产物:
+
+```
+~/decks/2026-05-23-evaluation-proposal/
+├── deck_v1_outline.md       # 主线程 Stage C 产出,给你审
+├── deck_v1_content.md       # 主线程 Stage D 产出,给你审
+├── deck_v1.pptx             # agent Stage E 产出
+├── deck_v1_render/          # 渲染图(QA 用,可删)
+└── _assets/
+    ├── raw/                 # 你提供的素材(csv/png/pdf)
+    ├── charts/              # matplotlib / draw.io 生成的图
+    └── refs/                # 你直接给的参考图
+```
 
 ---
 
-## 6. 写好 brief 的六条经验
+## 5. 5 阶段你会看到什么
 
-agent 越笨,你写 brief 就要越细。下面这六条,能把出稿质量直接抬一档。
+v3 把流程拆成 **5 阶段**,你在 Stage C 和 Stage D 各审一次:
+
+```
+你: "帮我做 X 的 PPT"
+   ↓
+[Stage A · 主线程多轮问 audience/duration/核心命题/theme/output]
+   ↓
+你: 答完 5 个字段
+   ↓
+[Stage B · 主线程问素材] → 你给文件路径或粘贴 → _assets/ 落盘
+   ↓
+[Stage C · 主线程按 Pyramid 出 outline.md] ← 主线程跑
+   ↓
+你: 审 outline.md(可改可拒)
+   ↓
+你: "批准 outline,继续"
+   ↓
+[Stage D · 主线程拓写 + 出图 + content.md] ← 主线程跑
+   ↓
+你: 审 content.md(可直接编辑文件)
+   ↓
+你: "批准 content,继续"
+   ↓
+[Stage E · agent 派发构建] ← agent 跑(独立上下文)
+   ↓
+agent 返回 .pptx + auto_md_edits + review_needed
+```
+
+### 5.1 Stage C —— 你会收到什么
+
+主线程会写一份 `deck_v1_outline.md` 到你工作目录,大概长这样:
+
+```markdown
+---
+title: AI 4A 架构评审办法 v1.0
+subtitle: 本季度落地,5 阶段每阶段 ≤ 3 天
+audience: technical
+duration_min: 15
+theme: tech_blue
+output: ./decks/deck_v1.pptx
+top_recommendation: 应当本季度落地 AI 4A 评审办法,5 阶段每阶段 ≤ 3 天
+scqa:
+  situation: AI 工具铺开,研发提速 30%
+  complication: 架构评审仍靠人审,质量飘移
+  question: 怎么让评审跟上节奏又不放低质量?
+  answer: 应当本季度落地 AI 4A 评审办法,5 阶段每阶段 ≤ 3 天
+footer_meta:
+  classification: INTERNAL
+  project: AI Review
+  version: v1.0
+---
+
+# Outline
+
+## 1. AI 工具铺开,但架构评审仍靠人,质量飘移
+- intent: 让管理层认可:这件事必须做
+- layout: bullet_list
+- data: 研发提速 30% / 评审排期 ≥ 1 周
+- diagram: 无
+
+## 2. 覆盖 4A:Application/Architecture/Auth-N/Auth-Z 全闭环
+- intent: 划清边界
+- layout: cards
+- diagram: 无
+
+## 3. 5 阶段串行,每阶段 ≤ 3 天,卡点不超 1 周
+- intent: 节奏可控
+- layout: pic_text
+- diagram: drawio flow chart
+
+# Pyramid 自检
+- [x] ① 单一顶端论点
+- [x] ② SCQA 完整
+- [x] ③ 答案在前
+- [x] ④ MECE 通过
+- [x] ⑤ 纵向疑问/回答链
+- [x] ⑥ 字段完整
+- [x] ⑦ action title ≤ 24 字
+```
+
+**主线程会说:"Outline 在 deck_v1_outline.md,审一下,改完告诉我。"**
+
+> 如果 Pyramid 自检某项 unchecked,主线程会主动指出哪一项不过 + 怎么改。
+
+### 5.2 Stage C 后,你能做的
+
+**最方便的 3 种改法**:
+
+| 想做的 | 怎么做 |
+|---|---|
+| 直接编辑文件 | 在 VS Code / Obsidian 打开 outline.md 改 → 告诉主线程"我改了,继续" |
+| 让主线程改 | "第 3 节标题改成 ……" / "加一节 X 在 2 后" / "删第 5 节" |
+| 推翻重来 | "重新设计 outline,改用结论先行结构" |
+
+### 5.3 Stage D —— 主线程拓写
+
+批准 outline 后,主线程:
+
+1. **出图** —— 调 matplotlib_rc / draw.io,PNG 落到 `_assets/charts/`
+2. **拓写每节** —— 按 layout 字数规则展开;关键数据加 `> 数据:Source: ...` 引文
+3. **嵌入图** —— 用 `![alt](_assets/charts/X.png)` 嵌进 markdown
+
+产出 `deck_v1_content.md`(20 页 deck 约 3000-5000 字 + 嵌入图)。
+
+### 5.4 Stage D 你会收到什么
+
+主线程会展示 `deck_v1_content.md` 大纲 + 关键改动,例:
+
+```
+deck_v1_content.md 写好了(2400 字 + 2 张图)。预览前 3 页:
+
+## 1. AI 工具铺开,但架构评审仍靠人,质量飘移
+<!-- layout: bullet_list -->
+- 研发周期被 AI 压缩 30%
+- 架构评审仍排期 ≥ 1 周
+- 上线返工率从 8% 升至 24%
+> 数据:Source: 公司 2025 Q4 月报
+
+## 2. 覆盖 4A 全闭环 ...
+[完整内容请打开 deck_v1_content.md]
+```
+
+**改法 3 种**:
+
+| 想做的 | 怎么做 |
+|---|---|
+| 直接改 md | 文件编辑器改 → "我改了 page 5,继续" |
+| 让主线程改 | "page 7 那个数据改成 35%" |
+| 重写某节 | "第 3 节重写,我要换 layout 成 table" |
+
+### 5.5 Stage E 你会收到什么
+
+content 批准后主线程派 agent 去 build,跑完返回:
+
+```yaml
+pptx_path: /abs/path/to/deck_v1.pptx
+qa_rounds: 2
+auto_md_edits:                          # agent 自动改了哪几句
+  - page: 5
+    issue: "action title 27 字超 24 限制"
+    before: "应当本季度落地 AI 4A 评审办法,5 阶段每阶段不超过 3 天"
+    after: "本季度落地 AI 4A,5 阶段 ≤ 3 天"
+review_needed:                          # 3 轮仍未解决的(罕见)
+  - page: 12
+    issue: "matplotlib 字体 fallback"
+    suggestion: "macOS 装雅黑"
+pyramid_check:
+  passed: true
+```
+
+**主线程会问**:"agent 自动改了 1 处(page 5 action title 缩短),需要回退吗?" 你回 "接受" 或 "回退" 即可。
+
+---
+
+## 6. 写好需求的六条经验(在 Stage A 对话时用)
+
+主线程在 Stage A 问你需求时,**答得越具体,outline/content 越准**。下面这六条,能把出稿质量直接抬一档。
 
 ### 6.1 用麦肯锡金字塔原理设计 outline(核心要求)
 
@@ -442,12 +484,27 @@ agent 已经在 Phase 1 跑过 Pyramid 自检并返回 `pyramid_check_passed: tr
 | **⑥ 纵向疑问/回答(ghost deck test)** | 把所有 `action_title` 抽出来按顺序读,能不能讲出顶端论点的完整论据链? |
 | **⑦ action title 全是结论句** | 还有名词短语标题没有?("市场背景" / "技术方案"一律要改) |
 
-任一项不过,直接告诉 agent 改:
+任一项不过,直接告诉主线程改:
 
 ```
 Pyramid 自检第 ④ 项不过:第 3 节"评审流程"和第 4 节"组织保障"内容有重叠
 (评审委员会算流程也算保障)。把组织保障合并进流程节,outline 重排成 4 节
 ```
+
+### 审 content.md(Stage D 后)
+
+这一步**才是真正决定 .pptx 长什么样**的环节。重点查:
+
+| 维度 | 你审什么 |
+|---|---|
+| **每节文案** | 数字对不对?术语统一吗?有没有错字? |
+| **数据 source** | 关键数据有没有 `> 数据:Source: ...` 引文? |
+| **图嵌入** | `![](_assets/charts/X.png)` 路径对吗?图本身好看吗(直接看 PNG)? |
+| **字数** | 看到 bullet 特别长 / cards body 特别短的就标出来 |
+| **action title** | 还是 outline 那 7 项的延伸:是结论句吗?≤ 24 字吗? |
+| **tone 是否一致** | 全 deck 同一语气(executive / technical 等) |
+
+**最高效的改法**:直接打开 `deck_v1_content.md` 在 VS Code / Obsidian 里改,然后告诉主线程"我改了"。markdown 容易编辑,不需要让主线程逐句重写。
 
 ### 7.2 图层规划
 
@@ -486,6 +543,34 @@ iLovePPT 默认 **结构性图形优先 draw.io**(精确配色、布局可控、
 ---
 
 ## 8. 收稿之后做什么
+
+agent build 完成,主线程会把以下三样给你:
+
+1. **`.pptx` 路径** —— 直接用 PowerPoint / Keynote 打开
+2. **`auto_md_edits[]`** —— agent 在视觉 QA 循环里自动改了哪几句 md(列表)
+3. **`review_needed[]`** —— 3 轮自检仍解不掉的问题(罕见)
+
+### 处理 auto_md_edits
+
+agent 改了 content.md 的格式类问题(字数超限 / layout 推断错等),都会列在这里:
+
+```yaml
+auto_md_edits:
+  - page: 5
+    issue: "action title 27 字超 24 限制"
+    before: "应当本季度落地 AI 4A 评审办法,5 阶段每阶段不超过 3 天"
+    after: "本季度落地 AI 4A,5 阶段 ≤ 3 天"
+```
+
+你的选项:
+
+| 选项 | 怎么做 |
+|---|---|
+| 全部接受 | "接受所有 auto_md_edits"(content.md 保持 agent 改后的版本) |
+| 回退某条 | "回退 page 5 的改动"(主线程会 revert 那一条) |
+| 全部回退 | "回退所有 auto_md_edits"(回到你批准时的 content.md;agent 改的视觉问题会重现,你得自己接受或换思路) |
+
+### 处理 review_needed
 
 ### 8.1 review_needed 清单
 
@@ -852,9 +937,15 @@ bash evals/run_eval.sh
 
 | 术语 | 意思 |
 |---|---|
-| **agent / iLovePPT agent** | Claude Code 里的 subagent,通过 `@agent-iloveppt` 派发,独立上下文跑两阶段 |
-| **brief** | 你写给 agent 的需求,可以是一句话 / YAML / 模板 .pptx |
-| **outline** | 章节大纲,Phase 1 产出物,等用户批准 |
+| **主线程 Claude(v3)** | 与你直接对话的 Claude;在 v3 流程中负责 Stage A-D(对话 / 素材摄入 / 出 outline.md / 出 content.md) |
+| **agent / iLovePPT agent(v3)** | Claude Code 里的 subagent,通过 `@agent-iloveppt` 派发,独立上下文。**v3 只做 Stage E build**,不再做 brief / outline / 文案 |
+| **brief** | 你输入的需求,v3 主要是对话(一句话起步);v2 兼容的 brief.yaml 仍可作输入 |
+| **outline.md** | Stage C 产出物(`deck_v{N}_outline.md`),章节 + Pyramid 自检 checkbox,等你批准 |
+| **content.md** | Stage D 产出物(`deck_v{N}_content.md`),全文 + 数据图嵌入,等你批准 |
+| **Stage A-E** | v3 流程的 5 个阶段:需求挖掘 / 素材摄入 / 内容规划 / 全文拓写 / 终稿构建 |
+| **auto_md_edits** | agent 在视觉 QA 循环里自动改了 content.md 的清单,返回时给你看,可批准/回退 |
+| **_assets/** | 素材文件夹,raw(原始)/ charts(生成图)/ refs(参考图)三个子目录 |
+| **outline(v2 遗留概念)** | 章节大纲。v2 是 Phase 1 yaml 输出;v3 改成 outline.md(用户可读) |
 | **action title** | 行动式标题——每页标题是完整结论句,不是话题标签。是金字塔原理"答案在前"在页级的实现 |
 | **金字塔原理(Pyramid Principle)** | 麦肯锡 Barbara Minto 提出的论证结构——iLovePPT 的内容设计核心要求。5 件套:单一顶端论点 / SCQA 开场 / 答案在前 / 横向 MECE / 纵向疑问回答链 |
 | **SCQA** | Situation 背景 → Complication 冲突 → Question 问题 → Answer 答案,金字塔原理的开场公式 |
