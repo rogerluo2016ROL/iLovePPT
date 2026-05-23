@@ -1,6 +1,6 @@
 ---
 name: pptx-deck
-description: pptx-deck 知识库 —— 11 个 layout 的主题(tech_blue)、build.py 机械构建器、文案/图层/视觉 QA/模板提取的参考文档。**主入口是 [[iloveppt]] agent**(@agent-iloveppt 派发,带大纲 checkpoint 自动跑完全程);本 SKILL.md 仅作 skill-mode 后备入口供主线程 Claude 直接读用。触发由 agent 的 description 接管;本 skill 不再做自动委派。
+description: pptx-deck 知识库 —— 12 个 layout 的主题(tech_blue)、build.py 机械构建器、文案/图层/视觉 QA/模板提取的参考文档。**主入口是 [[iloveppt]] agent**(@agent-iloveppt 派发,带大纲 checkpoint 自动跑完全程);本 SKILL.md 仅作 skill-mode 后备入口供主线程 Claude 直接读用。触发由 agent 的 description 接管;本 skill 不再做自动委派。
 ---
 
 # pptx-deck — 端到端 PPT 生成器
@@ -77,7 +77,7 @@ bash ../pptx/scripts/check_deps.sh
 |---|---|
 | [workflow.md](workflow.md) | 主流程 7 步 + build.py / deck_plan.json 衔接 |
 | [diagram-planning.md](diagram-planning.md) | 图层规划：判断哪些章节配图 + 4 类图决策规则 |
-| [content-writing.md](content-writing.md) | 11 layout 文案规则 + 拓写 prompt |
+| [content-writing.md](content-writing.md) | 12 layout 文案规则 + 拓写 prompt |
 | [visual-qa.md](visual-qa.md) | 单页 vision 自检 prompt + 12 项 checklist |
 | [template-extract.md](template-extract.md) | 从用户 .pptx 提取主色与字体 6 步流程 |
 

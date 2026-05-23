@@ -6,7 +6,7 @@
 
 ---
 
-## 11 layout 文案规则
+## 12 layout 文案规则
 
 | layout | 字数 / 句式约束 | 反例 |
 |---|---|---|
@@ -19,6 +19,7 @@
 | bullet_list | 每点 ≤ 14 字、句式一致（动宾或名词性结构） | 一点一句话一点一段 |
 | table | 列 ≤ 5、行 ≤ 7、单元格 ≤ 8 字 | 把段落塞进单元格 |
 | pic_text | 左图右文，右侧 N 个说明卡片，每卡 ≤ 20 字 | 图占满 + 文字塞角落 |
+| detail | 引导段 lead ≤ 110 字、要点 ≤ 5（title ≤ 8 字 + body ≤ 60 字）、callout.text ≤ 50 字 | 把整段教程原文塞进 lead |
 | summary | 3-5 条结论，每条 ≤ 18 字，有数字佐证 | 重复 outline 章节 |
 | closing | 极简："谢谢" + 联系方式或下一步 | 又一页要点总结 |
 
@@ -82,6 +83,7 @@ cards:            { layout, title?, cards: [{title, body}, ...] }
 bullet_list:      { layout, title, items: [str, ...] }
 table:            { layout, title, headers: [str, ...], rows: [[str, ...], ...] }
 pic_text:         { layout, title, image_path, points: [{title, body}, ...] }
+detail:           { layout, title, lead?, points: [{title, body}, ...], callout?: {label, text} }
 summary:          { layout, conclusions: [str, ...], title? }
 closing:          { layout, subtitle? }
 
