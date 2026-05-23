@@ -76,29 +76,44 @@ initial_request: "用户的一句话需求"          # 仅初次派发必填
 - `theme`: `tech_blue`(内置)/ 短名(查 `templates/<name>.pptx`)/ .pptx 绝对路径
 - `output`: .pptx 输出路径(默认 `<working_dir>/deck_v1.pptx`)
 
-### theme 字段:列可用模板给用户选
+### theme 字段:两种模式
 
-问 theme 时**不要只问"用哪个模板"**——用户不知道有哪些可选。先 enumerate:
-
-1. `Glob` `<repo>/templates/*.pptx`(+ `<working_dir>/templates/*.pptx` 若存在)→ 列短名清单
-2. 对每个短名,尝试 `Read` 对应的 `<name>.yaml` 元数据(可能不存在,best-effort)
-3. 用以下格式 prompt:
+**第一问**(必须问):
 
 ```
-你这边有几个模板可选:
-- tech_blue (内置默认科技蓝)
-- company_a (公司外部提案模板, 推荐 executive/sales) — 客户演示
-- customer_b (...)
-- 或:给 .pptx 绝对路径(用你公司私有模板)
-
-用哪个?
+对模板有要求吗?
+(a) 无要求,用默认 tech_blue(11 标准 layout,BCG 风)
+(b) 有要求,用我的 .pptx 模板(系统会深度提取媒体+token+视觉分析)
 ```
 
-若用户答的是**短名**(不是 .pptx 路径):
-- 验证该短名能解析(Read 验证 `templates/<name>.pptx` 存在)
-- 若有对应 `<name>.yaml`,把 `recommended_for` 和 `notes` 字段记到 `asset_inventory[]`(供 author 后续 Read)
+**若答 (a)** → theme = `tech_blue`,继续收其他字段。
 
-若 `templates/` 目录不存在或为空,只列 `tech_blue` 内置 + 提"或给 .pptx 路径"。
+**若答 (b)** → 进入模板模式:
+
+1. 问"模板 .pptx 路径?" / "或者从已有 templates/ 短名选?"
+2. 若用户给短名:
+   - `Glob` `<repo>/templates/*.pptx` + `<working_dir>/templates/*.pptx` 列清单
+   - 对每个短名 `Read` `<name>.yaml`(若存在),展示 desc / recommended_for / probe.visual_observations
+   - 用清单 prompt 让用户挑
+3. 若用户给 .pptx 路径(新模板,未提取过):
+   - 验证文件存在
+   - 检查 `<同目录>/<name>.yaml` 是否已存在且 enriched(有 `probe.visual_observations` 字段)
+   - 若未 enriched → **返回 next_action: dispatch_template_extractor**,主线程派发新 agent 提取模板,提取完会回到 brainstorm 继续
+
+```yaml
+# 返回示例:遇到未提取过的模板
+next_action: dispatch_template_extractor
+dispatch:
+  agent: iloveppt-template-extractor
+  args:
+    working_dir: <working_dir>
+    template_path: /abs/path/to/company_a.pptx
+message_to_user: "首次用这个模板,先让 extractor 深度学一下(~1min),然后我们继续。"
+```
+
+4. 若用户给的 .pptx 已有 enriched yaml → 直接用,记 brief.theme = 短名 / 路径
+
+若 `templates/` 空 + 用户没自带模板 → 用户只能选 (a) tech_blue。
 
 **素材摄入触发**(对话中识别):
 - 用户提到"数据 / 报表 / 增长 / 对比" → prompt 数据

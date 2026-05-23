@@ -48,10 +48,20 @@ user_response: "用户对上轮 outline/content 的反馈"  # 后续派发可能
 3. 检查 `<working_dir>/.iloveppt_author_state.json`:
    - 存在 → Read,载入 stage / outline_md_path / content_md_path / approvals / iteration
    - 不存在 → 初始化(从入参 stage / brief / asset_inventory 起)
-4. **若 `brief.theme` 是短名(不是 `tech_blue` 也不是 .pptx 路径)**:
-   - 尝试 `Read` `<repo>/templates/<theme>.yaml`(或 `<working_dir>/templates/<theme>.yaml`)
-   - 若有,把 `notes` 字段当作"本模板使用注意事项"——拓写 outline / content 时尊重(如 "封面 subtitle ≤ 25 字" 这种约束)
-   - 若无元数据,正常按 brief 拓写
+4. **若 `brief.theme` 是模板(短名或 .pptx 路径)**:
+   - `Read` `<repo>/templates/<theme>.yaml`(或同目录的 `<name>.yaml`)
+   - 若有 enriched yaml(被 template-extractor 处理过),提取以下用于拓写:
+     - `notes` —— 模板使用约束(如"封面 subtitle ≤ 25 字")
+     - `probe.visual_observations` —— 模板视觉风格观察
+     - `extracted.recommended_usage.hero_image` —— hero 插图路径,**在 cover 后第 1 页用 pic_text 嵌入**
+     - `extracted.recommended_usage.icons` —— 图标列表,**在 cards / pic_text 拓写时主动引用**
+   - `ls <working_dir>/_assets/template_<name>/` 看媒体清单(extractor L1 提取的)
+   - 若无 enriched yaml,正常按 brief 拓写
+5. **若有模板素材,Stage D 拓写时主动用**:
+   - hero 图 → 在 cover 后第 1 页用 `pic_text` layout 嵌入(`![hero](_assets/template_<name>/cover_hero.png)`)
+   - icons → cards 标题前嵌(`![icon](_assets/template_<name>/icon_X.png) **标题**: body`)
+   - decorative_bg → section_divider 备用(若模板有装饰元素)
+   - **不要硬塞**:若内容跟模板素材没关系(如纯文字论证),不用强行加图
 
 ### Step 1A · Stage C(出 outline)
 

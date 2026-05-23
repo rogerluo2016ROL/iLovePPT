@@ -40,7 +40,7 @@
 
 ## 主线程 dispatcher 协议(关键)
 
-主线程**不做 PPT 业务逻辑**。它只是个状态机:
+主线程**不做 PPT 业务逻辑**。它只是个状态机,支持 5 个 next_action:
 
 ```
 loop:
@@ -51,7 +51,8 @@ loop:
       user_reply = wait_for_user()
       current_args["user_response"] = user_reply
       # 同一个 agent,带新答案再派发
-    case "dispatch_brainstorm" | "dispatch_author" | "dispatch_builder":
+    case "dispatch_brainstorm" | "dispatch_template_extractor" |
+         "dispatch_author" | "dispatch_builder":
       current_agent = agent_return.dispatch.agent
       current_args = agent_return.dispatch.args
     case "done":
@@ -63,6 +64,24 @@ loop:
 ```
 
 主线程**不存任何中间状态**——agent 自己用 `<working_dir>/.iloveppt_dialog_state.json` / `.iloveppt_author_state.json` 跨派发记忆。
+
+**典型派发序列**(无模板):
+```
+brainstorm × N → author × M → builder × 1 → done
+```
+
+**典型派发序列**(有模板,新模板首次用):
+```
+brainstorm(收到模板路径)
+  → template_extractor × 1(Stage T 一次性提取)
+  → brainstorm(继续收齐字段)
+  → author × M → builder × 1 → done
+```
+
+**典型派发序列**(有模板,模板已 enriched 过):
+```
+brainstorm(直接用 enriched yaml)× N → author × M → builder × 1 → done
+```
 
 主线程**第一次入口**(用户扔一句话时):
 
