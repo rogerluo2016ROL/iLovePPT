@@ -22,8 +22,12 @@ for _p in [str(HERE.parent / "pptx"), str(HERE)]:
 
 import helpers as H
 from themes import tech_blue as _tech_blue
+from themes import template_a as _template_a
 
-THEMES: dict[str, ModuleType] = {"tech_blue": _tech_blue}
+THEMES: dict[str, ModuleType] = {
+    "tech_blue": _tech_blue,
+    "template_a": _template_a,
+}
 
 # 需要页脚 + 页码的 layout(规范:visual-qa.md §页脚 / 页码完整性)。
 # cover / section_divider / closing 不计入页码。

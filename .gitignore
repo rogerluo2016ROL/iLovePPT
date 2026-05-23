@@ -26,7 +26,12 @@ evals/plans/*.pptx
 evals/plans/*_render/
 skills/pptx-deck/examples/*_render/
 
-# 用户本地 .pptx 模板(机密信息防误 commit)
-# README.md / *.yaml 元数据例外保留(团队共享模板规范但不共享文件)
+# 用户本地 .pptx 模板(机密 / 版权防误 commit)
+# 仅 README.md + example.yaml 入 git,其他都不入
 templates/*.pptx
 templates/*.pptx.bak
+templates/*.yaml
+!templates/example.yaml
+
+# 模板提取 / deck 工作素材(版权 + 体积)
+_assets/
