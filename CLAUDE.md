@@ -48,7 +48,7 @@ No build step and no linter are configured.
 |---|---|
 | `iloveppt-brainstorm` | Stage A-B: collect brief + assets via dialog |
 | `iloveppt-author` | Stage C-D: produce outline.md + content.md |
-| `iloveppt-content-review` | 3rd-party audit: brief→content alignment + Pyramid (14 checks) |
+| `iloveppt-critic` | Partner-style critic: 14-check baseline + 4-dimension judgmental review (论据强度/节奏/措辞/平衡), runs at Stage C (after outline approval) and Stage D (after content approval) |
 | `iloveppt` (builder) | Stage E: build .pptx + visual QA loop |
 | `iloveppt-audience` | Simulated audience review (9-point gate) |
 | `iloveppt-template-extractor` | Bypass: ingest .pptx template tokens |

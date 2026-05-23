@@ -94,7 +94,7 @@ initial_request: "用户的一句话需求"          # 仅初次派发必填
   - 装好依赖后重试(用户处理完答 "重试 X 模板")
   - 降级用 tech_blue(用户答 "降级",你设 collected.theme=tech_blue 继续)
   - 终止本任务(用户答 "终止",你返回 `next_action: terminate`)
-- `[system] content_review_blocked\nreport_path: <路径>` → content-review 5 轮卡死,用户选了"回 brainstorm 改 brief"。Read report_path 看 fail 项,跟用户对话调整 collected 字段(常见:top_recommendation 措辞、audience 选错、duration 估错),改完重新走 brief.md gate
+- `[system] critic_blocked\nreport_path: <路径>\nstage: C | D` → critic 5 轮卡死(Stage C 或 Stage D),用户选了"回 brainstorm 改 brief"。Read report_path 看 fail / high-severity 项,跟用户对话调整 collected 字段(常见:top_recommendation 措辞、audience 选错、duration 估错、SCQA 线索不准),改完重新走 brief.md gate
 
 `[system]` 前缀触发后,**不**走正常字段解析流程,直接进对应分支。
 
@@ -286,7 +286,7 @@ dispatch:
 - **素材的二次校验**:用户给的文件路径**必须 Read 验证存在**;若文件大(CSV > 100KB)只读前 200 行做 summary
 - **拒绝越界**:用户问"那你帮我设计 outline 吧" → 答"outline 是 iloveppt-author 的工作,我先把字段收齐再交给它"
 - **不要无限问**:5-7 轮内必须收齐;轮次过多说明问法不准,反思后再问
-- **[system] 前缀响应** — 主线程通过 `[system] <event>` 前缀通知你特殊事件(extractor 失败 / content-review 卡死),识别后走对应分支,不当成普通用户输入
+- **[system] 前缀响应** — 主线程通过 `[system] <event>` 前缀通知你特殊事件(extractor 失败 / critic 卡死),识别后走对应分支,不当成普通用户输入
 
 ## anti-prompt
 

@@ -16,20 +16,20 @@
 ## 概览
 
 ```
-brainstorm → author → content-review → builder → audience
-   ↑                       ↑                        ↓
-   └─ extractor 旁路 ─┘    └── 5 轮 cap        9 分 cap
-                            (4 选 1)         (5 轮后 4 选 1)
+brainstorm → author(Stage C)→ critic(Stage C) → author(Stage D)→ critic(Stage D) → builder → audience
+   ↑                              ↑                                    ↑                          ↓
+   └─ extractor 旁路 ─────────────┘                                    └─ 5 轮 cap         9 分 cap
+                                独立 5 轮 cap                          (4 选 1)        (5 轮后 4 选 1)
 ```
 
-5 个 agent + 1 旁路:
+5 个 agent + 1 旁路(v0.5.1 起 critic 在 Stage C/D 各跑一次):
 
 | agent | 角色 | 何时派 |
 |---|---|---|
 | `iloveppt-brainstorm` | Stage A-B 收 brief + 素材 | 用户首次说"做 PPT" |
 | `iloveppt-author` | Stage C-D 出 outline + content | brainstorm 收齐后 |
-| `iloveppt-content-review` | 第三方审计:brief→content 对齐 + 金字塔结构(14 项) | author 出 content.md 用户批准后,build 前强制 gate |
-| `iloveppt`(builder) | Stage E 构建 .pptx + 视觉 QA 循环 | content-review pass 后 |
+| `iloveppt-critic` | 评审员:14 项 checklist + 4 维度判断性(论据强度 / 节奏 / 措辞 / 平衡)+ 三档 verdict | Stage C 用户批准 outline 后跑一次(轻审);Stage D 用户批准 content 后跑一次(全套) |
+| `iloveppt`(builder) | Stage E 构建 .pptx + 视觉 QA 循环 | critic Stage D pass / pass_with_notes 后 |
 | `iloveppt-audience` | 模拟受众读 deck 给评分 | builder 出 .pptx 后强制跑;评分 < 9 反馈给 author |
 | `iloveppt-template-extractor` | 旁路 · 提取 .pptx 模板 4 级 token | 用户给新 .pptx 模板时 |
 
@@ -192,89 +192,101 @@ created: 2026-05-24
 
 ---
 
-## 7. content-review 强制 gate(v0.5.1 新增)
+## 7. critic 双 gate(v0.5.1 新增)
 
-`iloveppt-content-review` 是第三方独立审计员,填的是"**author 自检之外、第三方裁判**"的空位。
+`iloveppt-critic` 是评审员 / partner critic,**不是合规检查员**。除了跑 14 项 checklist 底线,还要跑**判断性评审**(4 维度:论据强度 / 节奏感 / 措辞质感 / 整体平衡),给三档 verdict。
 
-**位置**:author Stage D content 用户批准后 → **强制 gate** → dispatch_builder
+**位置**:Stage C 和 Stage D 都跑一次
 
 ```
-author 出 content.md 用户批准
+author Stage C 出 outline.md → 用户批准
   ↓
-主线程派 iloveppt-content-review
+主线程派 critic(stage=C)
+  ↓ 评 outline 结构 + 适用对齐项 + 4 维度判断性(基于 outline 深度)
+  ↓ 写 critic_report_C.md → verdict
+  ├── pass / pass_with_notes → 主线程派 author(stage=D)拓 content
+  └── needs_revision → 用户 cherry-pick → author 改 outline → 重派 critic Stage C
+                       第 5 轮还卡 → 主线程四选一(见下)
+
+author Stage D 出 content.md → 用户批准
   ↓
-content-review 跑 14 项检查 → 写 content_review_report.md + verdict
-  ├── verdict: pass → 主线程派 builder
-  └── verdict: needs_revision → 主线程展示 report → 用户 cherry-pick
-        → 派 author(stage=C 或 D,取决于改动深度)
-        → 改完重派 content-review(第 2 轮)
-        → 5 轮上限 → 主线程问用户四选一(见下)
+主线程派 critic(stage=D)
+  ↓ 评全套(14 项 + 4 维度全套)
+  ↓ 写 critic_report_D.md → verdict
+  ├── pass / pass_with_notes → 主线程派 builder
+  └── needs_revision → 用户 cherry-pick → author 改(stage 取决于改动深度,大改 +1 iteration) → 重派 critic Stage D
+                       第 5 轮还卡 → 主线程四选一
 ```
+
+Stage C / Stage D **独立计数**,各自 5 轮 cap。
 
 **入参**:
 ```yaml
 working_dir: /abs/path
+stage: C | D                                # 必填
 brief_md_path: <working_dir>/brief.md
 outline_md_path: <working_dir>/deck_v{N}_outline.md
-content_md_path: <working_dir>/deck_v{N}_content.md
-asset_inventory: [...]   # 主线程从 brainstorm dispatch 时透传
+content_md_path: <working_dir>/deck_v{N}_content.md   # Stage D 必填,Stage C 可省
+asset_inventory: [...]                      # Stage D 必填(主线程从 brainstorm dispatch 透传)
 ```
 
-**14 项检查分两个 section,每项必须收集 evidence**(verification-before-completion):
+**checklist 底线**(每项必须 evidence):
 
-**Section A · 金字塔结构审计(7 项)**:
-- A1 单一顶端论点(动+宾+边界)
-- A2 SCQA 完整(answer == top_recommendation)
-- A3 答案在前(BLUF,顶端论点 cover/第1内容页出现)
-- A4 MECE 3-5 章节(两两不重叠)
-- A5 纵向疑问链(action title 串读)
-- A6 横向逻辑同类(章节并列同型论据)
-- A7 action title ≤ 24 字
+**Section A · 金字塔结构审计(7 项,Stage C/D 都跑)**:
+- A1 单一顶端论点 / A2 SCQA 完整 / A3 BLUF / A4 MECE 3-5 / A5 纵向疑问链 / A6 横向逻辑同类 / A7 action title ≤ 24 字
 
-**Section B · brief → content 对齐(7 项)**:
-- B1 top_recommendation 字面一致(允许压缩缩短)
-- B2 SCQA 4 字段在 content 都有承接(定位页号)
-- B3 audience tone 匹配 brief(抽 3 页验语气)
-- B4 asset_inventory 每项有交代(`used_in_page: 5` / `intentionally_unused: 理由`)
-- B5 无 brief 外新事实(反向 grep)
-- B6 duration × 1.5 ≈ 总页数(±3)
-- B7 presentation_mode 字数遵守(抽 5 页实测)
+**Section B · brief → content 对齐(Stage C/D 适用项不同)**:
+- B1 top_recommendation 字面一致(C/D 都跑)
+- B2 SCQA 在 content 有承接(仅 D)/ B3 audience tone(仅 D)/ B4 asset_inventory 交代(仅 D)/ B5 无 brief 外新事实(仅 D)
+- B6 duration × 1.5 ≈ 总页数(C/D 都跑,C 基于 outline 估算)
+- B7 字数限制(C 仅 action title;D 抽 5 页全字段)
 
-**3 层 Pyramid 防线(质量优先,接受冗余)**:
+**判断性评审(4 维度,Stage C/D 都跑)**:每个 issue 强制三要素 `severity (high/med/low) + impact + suggestion`
+
+- 维度 1 论据强度:章节论据是否 sharp?有"合 MECE 但弱论据"吗?
+- 维度 2 节奏感:章节顺序 / 过渡 / 篇幅分布
+- 维度 3 措辞质感:action title 是结论句还是话题?数字 vs 形容词比?
+- 维度 4 整体平衡:章节篇幅 / summary 收口 / BLUF
+
+**三档 verdict**:
+
+| verdict | 触发 | 主线程怎么处理 |
+|---|---|---|
+| `pass` | checklist 全过 + 无 high severity 判断性 | 派下一步(C→author Stage D;D→builder) |
+| `pass_with_notes` | checklist 全过 + 仅 low/med severity 判断性 | 展示 notes 给用户,**不阻塞**,用户选"接受 notes 进入下一步"或"先按 notes 改一遍" |
+| `needs_revision` | 任一 checklist fail **或** 任一 high severity 判断性 | 展示 report,用户 cherry-pick,派 author 改 |
+
+**3 层 Pyramid 防线**(质量优先,接受冗余):
 
 | 层 | 何时 | 阻塞性 | 角色 |
 |---|---|---|---|
-| author Stage C 自检 | Stage C 出 outline 时 | **软阻塞**(可豁免附理由) | 起草时早 catch |
-| **content-review(新)** | Stage D 批准后,build 前 | **强阻塞**(5 轮 cap) | **第三方独立审计 + brief 对齐** |
-| builder Step 0 | 构建前 | **硬阻塞**(hard stop) | 进 mechanical build 前最后保险 |
+| author Stage C 自检 | Stage C 出 outline 时 | 软阻塞(可豁免附理由) | 起草时早 catch |
+| **critic(Stage C + Stage D)** | 用户批准 outline 后 / content 后 | 强阻塞(各 5 轮 cap) | 第三方独立评审 + brief 对齐 + 判断性 |
+| builder Step 0 | 构建前 | 硬阻塞(hard stop) | 进 mechanical build 前最后保险 |
 
-3 层各跑 Pyramid 看似冗余,但角色清晰:author 自检不够独立、builder Step 0 不查 brief 对齐 —— 缺哪一层都有盲区。Pyramid 单次跑 ≈ 30s,3 层 ≈ 90s,买质量底线值得。
-
-**用户 cherry-pick 失败处理(跟 audience 一致)** — content-review fail 时主线程不直接派 author。流程:
-1. 主线程展示 `content_review_report.md` 路径 + verdict + 失败项摘要
-2. 用户 cherry-pick:"接受 A3 / B5 的指出,A6 我觉得不是问题"
+**用户 cherry-pick(跟 audience 一致)** — critic fail 时主线程不直接派 author。流程:
+1. 主线程展示 `critic_report_{C|D}.md` 摘要(must-fix + recommended)
+2. 用户 cherry-pick:"接受 A6 / 维度 1 page 5 论据弱;A4 我觉得不是问题"
 3. 用户筛过的部分作为 `user_response` 自然语言指令派给 author
 
-不允许"content-review 直接命令 author"的强耦合。
-
-**5 轮上限 + 反复改不收敛时给用户四选一**:
+**5 轮上限(各 stage 独立) + 反复改不收敛时给用户四选一**:
 
 ```
-第 5 轮 content-review 仍 fail → 主线程问用户:
+同 stage 第 5 轮 critic 仍 needs_revision → 主线程问用户:
   1) 继续改(计数器重置,新 5 轮)
-  2) 接受当前版本(标 quality_grade: B,绕过 gate 进 builder)
+  2) 接受当前版本(标 quality_grade: B,绕过 gate 进下一步)
   3) 终止保留中间态
-  4) 回 brainstorm 改 brief(很可能 brief 本身有歧义,例如 audience 标 sales 但 top_recommendation 是技术语言)
+  4) 回 brainstorm 改 brief(若 Stage C 卡死,大概率 brief 本身有歧义)
 ```
 
-选 4) 时主线程把当前 content_review_report.md 路径作为 `[system] content_review_blocked` 标记 SendMessage 给 brainstorm,brainstorm 重开窗口、Read state + report 后跟用户对话调 brief。
+选 4) 时主线程把 `critic_report_{C|D}.md` 路径作为 `[system] critic_blocked\nreport_path: ...\nstage: C|D` 标记 SendMessage 给 brainstorm,brainstorm 重开窗口、Read report 后跟用户对话调 brief。
 
-**content-review 窗口每轮新建**(跟 audience 一致) — 无状态,所有 state 在 content_review_report.md。
+**critic 窗口每轮新建**(跟 audience 一致) — 无状态,所有 state 在 `critic_report_{C|D}.md`。
 
-**builder Step 0 必须 Read content-review 报告确认 pass** — builder 启动时第一动作不是跑自己的 Pyramid,而是 Read `<working_dir>/content_review_report.md`:
-- 文件不存在 → 拒绝构建,return error `content_review_missing`
-- 存在但 verdict ≠ pass → 拒绝构建,return error `content_review_not_passed`
-- verdict == pass → 继续 builder Step 0 自跑 Pyramid(3 层防线的第 3 层)
+**builder Step 0 必须 Read critic_report_D.md 确认 pass** — builder 启动时第一动作:
+- 文件不存在 → 拒绝构建,return `error: critic_d_missing`
+- `verdict == needs_revision` → 拒绝构建,return `error: critic_d_not_passed`
+- `verdict == pass` 或 `pass_with_notes` → 继续 builder Step 0 自跑 Pyramid(3 层防线的第 3 层)
 
 ---
 
@@ -400,6 +412,8 @@ audience ≥ 9 + Pyramid pass + 无 architectural blocker
 
 辅料(供用户复盘 / 后续手改):
   audience_review.md                         ← 最后一轮 audience 报告
+  critic_report_C.md                         ← Stage C critic 评审(最后一轮)
+  critic_report_D.md                         ← Stage D critic 评审(最后一轮)
   brief.md                                   ← 起始 brief
   deck_v{N}_outline.md                       ← 章节骨架
   deck_v{N}_content.md                       ← 用户批准版(SSOT)
@@ -457,8 +471,9 @@ how_to_resume: 跟主线程说"继续 deck <slug>",会从 stage X 续接
 | 改 helpers.py / themes / build.py / pyproject / 加 tests | **主线程** | 系统改造需要 cross-file 一致性 + 完整 context |
 | 用户首次说"做 PPT" / 没有 brief | 派 **iloveppt-brainstorm** | 多轮对话收 brief,主线程不该自己脑补字段 |
 | 已有 brief,要出 outline / content | 派 **iloveppt-author** | content 拓写是独立 context 任务;主线程脑补容易跑偏 |
-| 已有 content.md,审核保真度 + 金字塔结构 | 派 **iloveppt-content-review** | 第三方独立审计;author 自检 + builder Pyramid 不足以替代 |
-| content-review pass,要构建 .pptx | 派 **iloveppt** (builder) | Pyramid 自检 + 视觉 QA 循环是 agent 内逻辑 |
+| 用户批准 outline 后 | 派 **iloveppt-critic (stage=C)** | 第三方评审 outline 结构 + 判断性问题;早 catch 代价低 |
+| 用户批准 content 后 | 派 **iloveppt-critic (stage=D)** | 第三方全套评审(14 项 + 4 维度判断性)+ build 前最后内容把关 |
+| critic Stage D pass / pass_with_notes,要构建 .pptx | 派 **iloveppt** (builder) | Pyramid 自检 + 视觉 QA 循环是 agent 内逻辑 |
 | .pptx 构建完,要评视觉 | 派 **iloveppt-audience** | 读者视角是新视角;主线程的自检是作者视角,有盲区 |
 | 用户给新 .pptx 模板 | 派 **iloveppt-template-extractor** | 模板提取是独立 4 级 token 流程 |
 
@@ -471,6 +486,6 @@ how_to_resume: 跟主线程说"继续 deck <slug>",会从 stage X 续接
 ## 附录:跟旧版本的关系
 
 - v0.5.0 引入"主线程派发规则"(本文第 12 节)
-- v0.5.1 引入 content-review gate(第 7 节)+ 各 handoff 细则(第 1-11 节)
+- v0.5.1 引入各 handoff 细则(第 1-11 节)+ critic 双 gate(第 7 节,前身 content-review,后期演进为 partner critic 跑 Stage C/D 双轮 + 4 维度判断性评审)
 - 旧 v3 markdown-first 设计(brief.md → outline.md → content.md → deck_plan.json)继续沿用,见 `2026-05-23-iloveppt-v3-markdown-first.md`
 - agent 设计的整体 rationale 见 `2026-05-23-iloveppt-agent-design.md`
