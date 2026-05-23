@@ -1,6 +1,6 @@
 """iLovePPT pptx-deck — 内置科技蓝主题。
 
-调用 [[pptx]]/helpers.py 作为底层。12 个 layout 函数(含 make_detail 成段讲解版式)。
+调用 [[pptx]]/helpers.py 作为底层。11 个 layout 函数对应 spec §3.4。
 默认字体 Microsoft YaHei（用户决策）。
 """
 import sys, warnings
@@ -286,74 +286,4 @@ def make_closing(prs: _Pres, subtitle: str = "") -> Slide:
           align=PP_ALIGN.CENTER)
     _text(s, blocks[1], subtitle, size=16, color=PRIMARY_TINT,
           font=FONT_BODY, align=PP_ALIGN.CENTER)
-    return s
-
-
-def make_detail(
-    prs: _Pres,
-    title: str,
-    lead: str = "",
-    points: list[dict[str, str]] | None = None,
-    callout: dict[str, str] | None = None,
-) -> Slide:
-    """详解版式 —— 承载成段讲解。
-
-    标题 + 引导段 lead + N 个要点(小标题 + 说明) + 可选高亮框 callout。
-    弥补 cards / bullet 的字数上限,用于培训类 deck 中需完整说明的页。
-    callout 形如 {"label": "示例指令", "text": "..."}。
-    """
-    s = _blank_slide(prs)
-    _add_title(s, title, size=28)
-    region = L.content_region()
-    pts = points or []
-
-    gap = int(Inches(0.22))
-    top = int(region.y)
-    bottom = int(region.y) + int(region.h)
-    cur = top
-
-    if lead:
-        lead_h = int(Inches(0.92))
-        _text(s, L.Box(x=region.x, y=Emu(cur), w=region.w, h=Emu(lead_h)),
-              lead, size=15, color=H.GRAY_700)
-        cur += lead_h + gap
-
-    callout_h = int(Inches(1.05)) if callout else 0
-    pts_bottom = bottom - callout_h - gap if callout else bottom
-
-    if pts:
-        pts_region = L.Box(x=region.x, y=Emu(cur), w=region.w,
-                           h=Emu(max(pts_bottom - cur, int(Inches(0.6)))))
-        rboxes = L.rows(pts_region, len(pts), gap=Inches(0.14))
-        title_h = int(Inches(0.34))
-        for rb, p in zip(rboxes, pts):
-            H.rect(s, rb.x, rb.y, Inches(0.07), rb.h, PRIMARY)
-            tx = Emu(int(rb.x) + int(Inches(0.30)))
-            tw = Emu(int(rb.w) - int(Inches(0.30)))
-            _text(s, L.Box(x=tx, y=rb.y, w=tw, h=Emu(title_h)),
-                  p.get("title", ""), size=16, bold=True, color=PRIMARY_DEEP)
-            by = int(rb.y) + title_h + int(Inches(0.03))
-            bh = int(rb.y) + int(rb.h) - by
-            if bh > 0 and p.get("body"):
-                _text(s, L.Box(x=tx, y=Emu(by), w=tw, h=Emu(bh)),
-                      p["body"], size=13, color=H.GRAY_700)
-
-    if callout:
-        co_y = bottom - callout_h
-        H.rect(s, region.x, Emu(co_y), region.w, Emu(callout_h), PRIMARY_TINT)
-        H.rect(s, region.x, Emu(co_y), Inches(0.09), Emu(callout_h), PRIMARY)
-        cx = Emu(int(region.x) + int(Inches(0.34)))
-        cw = Emu(int(region.w) - int(Inches(0.62)))
-        tb = s.shapes.add_textbox(cx, Emu(co_y + int(Inches(0.15))),
-                                  cw, Emu(callout_h - int(Inches(0.30))))
-        H.fix_textbox_margins(tb.text_frame)
-        tb.text_frame.word_wrap = True
-        para = tb.text_frame.paragraphs[0]
-        r1 = para.add_run()
-        r1.text = callout.get("label", "")
-        H.set_font(r1, name=FONT_HEADER, size=14, bold=True, color=PRIMARY)
-        r2 = para.add_run()
-        _label = callout.get("label", "")
-        r2.text = ("  " + callout.get("text", "")) if _label else callout.get("text", "")
-        H.set_font(r2, name=FONT_BODY, size=13, bold=False, color=H.GRAY_900)
     return s
