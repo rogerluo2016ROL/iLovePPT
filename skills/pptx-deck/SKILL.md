@@ -83,11 +83,10 @@ bash ../pptx/scripts/check_deps.sh
 
 ## 内置主题
 
-[themes/tech_blue.py](themes/tech_blue.py) — 12 个 make_* layout 函数：
+[themes/tech_blue.py](themes/tech_blue.py) — 11 个 make_* layout 函数：
 - `make_cover` / `make_toc` / `make_section_divider`
 - `make_single_focus` / `make_compare` / `make_cards`
 - `make_bullet_list` / `make_table` / `make_pic_text`
-- `make_detail`（成段讲解：引导段 + 要点 + 高亮框,用于培训 / 教程类 deck）
 - `make_summary` / `make_closing`
 
 切换其他色板：改 `themes/tech_blue.py` 顶部 PRIMARY_* 常量,或从 [[pptx]] design-system.md 10 色板挑一套覆盖。
