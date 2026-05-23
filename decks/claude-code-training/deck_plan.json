@@ -32,9 +32,9 @@
       "layout": "cards",
       "title": "五端可用的 agentic coding tool",
       "cards": [
-        {"title": "定义", "body": "agentic coding tool · 不是补全也不是 chat,是个能独立跑多步开发任务的 AI agent,你给一个目标它自己规划、动手、验证。"},
-        {"title": "能力", "body": "读 codebase / 改文件 / 跑命令 / 验测试 · 全套都能干。不是只给建议,而是替你按下 enter,跑完整流程,出真正可 merge 的代码。"},
-        {"title": "场景", "body": "多步开发任务 · 比如 'fix 这个 bug 并补测试'、'重构这个模块'、'按这份 spec 实现功能',Claude 自己走完闭环,不达标不停。"}
+        {"title": "定义", "icon": "info", "body": "agentic coding tool · 不是补全也不是 chat,是个能独立跑多步开发任务的 AI agent,你给一个目标它自己规划、动手、验证。"},
+        {"title": "能力", "icon": "bolt", "body": "读 codebase / 改文件 / 跑命令 / 验测试 · 全套都能干。不是只给建议,而是替你按下 enter,跑完整流程,出真正可 merge 的代码。"},
+        {"title": "场景", "icon": "triangle", "body": "多步开发任务 · 比如 'fix 这个 bug 并补测试'、'重构这个模块'、'按这份 spec 实现功能',Claude 自己走完闭环,不达标不停。"}
       ],
       "source": "code.claude.com/docs/en/overview"
     },
@@ -42,11 +42,11 @@
       "layout": "cards",
       "title": "一套 Claude · 五个 surface 跑",
       "cards": [
-        {"title": "Terminal", "body": "原生 CLI · 功能最全。所有 slash command / agent / hook / MCP 都先在这里发布,其他端逐步跟进。"},
-        {"title": "VS Code", "body": "官方插件嵌入 · 同一 Claude 但带视觉 diff 和文件树联动,代码改动可视化更直观。"},
-        {"title": "JetBrains", "body": "跨 IDE 一致体验 · IntelliJ / PyCharm / WebStorm 等共用同一插件,Java / Python 用户不用切环境。"},
-        {"title": "Desktop App", "body": "独立 Mac / Windows app · 不依赖终端,带 GUI 设置面板,适合给非工程同事用。"},
-        {"title": "Web · iOS", "body": "claude.ai/code 云端跑 · 手机也能发任务,适合 review PR、追进度、远程操作场景。"}
+        {"title": "Terminal", "icon": "▶", "body": "原生 CLI · 功能最全。所有 slash command / agent / hook / MCP 都先在这里发布,其他端逐步跟进。"},
+        {"title": "VS Code", "icon": "◆", "body": "官方插件嵌入 · 同一 Claude 但带视觉 diff 和文件树联动,代码改动可视化更直观。"},
+        {"title": "JetBrains", "icon": "◈", "body": "跨 IDE 一致体验 · IntelliJ / PyCharm / WebStorm 等共用同一插件,Java / Python 用户不用切环境。"},
+        {"title": "Desktop App", "icon": "■", "body": "独立 Mac / Windows app · 不依赖终端,带 GUI 设置面板,适合给非工程同事用。"},
+        {"title": "Web · iOS", "icon": "◉", "body": "claude.ai/code 云端跑 · 手机也能发任务,适合 review PR、追进度、远程操作场景。"}
       ],
       "source": "官方 overview 文档"
     },
@@ -79,7 +79,7 @@
       "title": "Copilot vs Claude Code · 同 AI 但本质不同",
       "left": {
         "title": "GitHub Copilot",
-        "body": "单步补全 · 给你建议按 Tab 接受。\n只生成代码,不动文件 / 不跑命令。\n绑死在 IDE 里,场景受限。"
+        "body": "单步补全 · 给你建议按 Tab 接受才生效。\n只生成代码片段,不动文件 / 不跑命令 / 不验测试。\n绑死在 IDE 里,无 CLI / Desktop / Web 端。"
       },
       "right": {
         "title": "Claude Code",
@@ -123,10 +123,10 @@
       "layout": "cards",
       "title": "Commands + Skills · 触发与复用",
       "cards": [
-        {"title": "Commands", "body": "30+ 内置 slash · /help /clear /init /agents /hooks /mcp 等。一句话触发常用动作,不用每次敲全描述。"},
-        {"title": "/help · /goal", "body": "新手必学两个:/help 看所有命令清单 + 当前可用工具;/goal 设完成条件让 Claude 持续跑。"},
-        {"title": "Skills", "body": "可复用工作流 · .md 文件 + frontmatter,Claude 读后按步骤执行,适合 'PPT 生成''代码 review' 这种多步流程。"},
-        {"title": "frontmatter", "body": "Skill 的元数据头 · 写 description / when_to_use / model / tools 等,控制 Skill 何时触发、用什么模型、能调哪些工具。"}
+        {"title": "Commands", "icon": "▶", "body": "30+ 内置 slash · /help /clear /init /agents /hooks /mcp 等。一句话触发常用动作,不用每次敲全描述。"},
+        {"title": "/help · /goal", "icon": "star", "body": "新手必学两个:/help 看所有命令清单 + 当前可用工具;/goal 设完成条件让 Claude 持续跑。"},
+        {"title": "Skills", "icon": "◇", "body": "可复用工作流 · .md 文件 + frontmatter,Claude 读后按步骤执行,适合 'PPT 生成''代码 review' 这种多步流程。"},
+        {"title": "frontmatter", "icon": "info", "body": "Skill 的元数据头 · 写 description / when_to_use / model / tools 等,控制 Skill 何时触发、用什么模型、能调哪些工具。"}
       ],
       "source": "docs 30+ commands 全集"
     },
@@ -134,21 +134,19 @@
       "layout": "cards",
       "title": "Sub-agents + Hooks · 隔离与自动化",
       "cards": [
-        {"title": "Sub-agents", "body": "独立上下文的子任务执行器 · 在主线程派一个 sub-agent 干特定活,完了把结果返回,主线程 context 不被污染。"},
-        {"title": "工具限制", "body": "Sub-agent frontmatter 可限定 tools 字段 · 比如只给 Read / Grep 不给 Write,既安全又聚焦,避免误改文件。"},
-        {"title": "Hooks", "body": "31 个事件钩子 · PreToolUse / PostToolUse / SessionStart 等,把外部 shell 脚本接入 Claude 生命周期。"},
-        {"title": "事件驱动", "body": "用法:每次 Write 后跑 lint,每次 Bash 前 audit 命令安全。把人工 review 步骤自动化,跑完不通过会自动重试或阻止。"}
+        {"title": "Sub-agents", "icon": "ring", "body": "独立上下文的子任务执行器 · 在主线程派一个 sub-agent 干特定活,完了把结果返回,主线程 context 不被污染。"},
+        {"title": "工具限制", "icon": "lock", "body": "Sub-agent frontmatter 可限定 tools 字段 · 比如只给 Read / Grep 不给 Write,既安全又聚焦,避免误改文件。"},
+        {"title": "Hooks", "icon": "⚓", "body": "31 个事件钩子 · PreToolUse / PostToolUse / SessionStart 等,把外部 shell 脚本接入 Claude 生命周期。"},
+        {"title": "事件驱动", "icon": "bolt", "body": "用法:每次 Write 后跑 lint,每次 Bash 前 audit 命令安全。把人工 review 步骤自动化,跑完不通过会自动重试或阻止。"}
       ],
       "source": "docs sub-agents + hooks"
     },
     {
-      "layout": "cards",
+      "layout": "compare",
       "title": "MCP + Plugins · 连外部与生态",
-      "cards": [
-        {"title": "MCP", "body": "Model Context Protocol · Anthropic 主导的开放标准,让 LLM 跟外部工具 / 数据源用统一协议对接,不用每个工具重写一遍。"},
-        {"title": "连外部", "body": "已有 MCP server 几百个 · GitHub / Slack / Postgres / Figma / Chrome 等,装上 Claude 就能直接调它们的 API 干活。"},
-        {"title": "Plugins", "body": "marketplace 生态 · 一个 plugin 包打包 commands + skills + sub-agents + hooks + MCP,装一包就拿到一整套工作流。"},
-        {"title": "v2.1.100+", "body": "Plugins 是 v2.1.100 引入的最新机制 · 之前要逐个 install,现在 /plugin marketplace add <url> 一行搞定。"}
+      "items": [
+        {"title": "MCP · 协议层", "body": "Model Context Protocol · Anthropic 主导的开放标准,让 LLM 跟外部工具 / 数据源用统一协议对接,不用每个工具重写一遍。已有 MCP server 几百个 · GitHub / Slack / Postgres / Figma / Chrome 等,装上 Claude 就能直接调它们的 API 干活。"},
+        {"title": "Plugins · 生态层", "body": "marketplace 生态 · 一个 plugin 包打包 commands + skills + sub-agents + hooks + MCP,装一包就拿到一整套工作流。v2.1.100+ 引入的最新机制,/plugin marketplace add <url> 一行搞定,比逐个 install MCP 更上一层。", "recommended": true}
       ],
       "source": "docs mcp + plugins"
     },

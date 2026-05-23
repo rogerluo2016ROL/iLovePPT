@@ -97,12 +97,36 @@ def make_cover(
     s = _blank_slide(prs)
     H.rect(s, 0, 0, H.SLIDE_W, H.SLIDE_H, PRIMARY_DEEP)
 
-    # 主副标(居中)
-    region = L.full_region()
-    blocks = L.stack(region, [Inches(1.4), Inches(0.8)], gap=Inches(0.3),
-                     align="middle")
-    _text(s, blocks[0], title, size=48, bold=True, color=H.WHITE)
-    _text(s, blocks[1], subtitle, size=22, color=PRIMARY_TINT)
+    # Hero 几何装饰(右上角同心圆 + 右下小方块阵列)
+    # 同心圆:大圆描边(half-transparent 通过 alpha 不易实现,用极淡 fill 圆代替)
+    for i, radius_in in enumerate([3.8, 2.6, 1.5]):
+        diam = Inches(radius_in * 2)
+        cx = H.SLIDE_W - Inches(radius_in - 0.3)  # 部分超出右边缘营造切边感
+        cy = -Inches(radius_in - 0.5)              # 部分超出上边缘
+        circle = s.shapes.add_shape(MSO_SHAPE.OVAL, cx, cy, diam, diam)
+        circle.fill.solid()
+        # 三圈渐淡的填充(从外到内逐层淡化)
+        fill_color = RGBColor(
+            min(255, PRIMARY_DEEP[0] + (i + 1) * 18),
+            min(255, PRIMARY_DEEP[1] + (i + 1) * 18),
+            min(255, PRIMARY_DEEP[2] + (i + 1) * 18),
+        )
+        circle.fill.fore_color.rgb = fill_color
+        H.no_line(circle)
+
+    # 左下细线网格(8 条短水平线营造极简纹理)
+    grid_y = Inches(6.4)
+    for i in range(6):
+        line = H.rect(s, Inches(0.55 + i * 0.18), grid_y, Inches(0.12),
+                       Inches(0.015), PRIMARY_TINT)
+
+    # 主副标(左对齐,中央偏左,更现代)
+    title_box = L.Box(Inches(0.8), Inches(2.5), Inches(11.0), Inches(1.6))
+    _text(s, title_box, title, size=54, bold=True, color=H.WHITE)
+    # 分隔线
+    H.rect(s, Inches(0.8), Inches(4.3), Inches(0.6), Inches(0.04), ACCENT)
+    sub_box = L.Box(Inches(0.8), Inches(4.5), Inches(11.0), Inches(0.8))
+    _text(s, sub_box, subtitle, size=22, color=PRIMARY_TINT)
 
     # 右上 classification 徽标
     if classification:
@@ -159,25 +183,33 @@ def make_toc(prs: _Pres, sections: list[str]) -> Slide:
 
 
 def make_section_divider(prs: _Pres, num: int | str, title: str) -> Slide:
+    """章节分隔页 — 巨型背景数字水印 + 前景章节小标 + 章节标题。
+
+    视觉层次:
+    1. 背景层:巨型 "01" 占 60% 屏幕高,极浅灰(GRAY_50),营造大气版式感
+    2. 前景:左上小字 "CHAPTER 01" + 主标题在背景数字下方居中
+    """
     s = _blank_slide(prs)
-    region = L.full_region()
-    block_h = Inches(1.6)
-    band = L.stack(region, [block_h], align="middle")[0]
-    # 左侧深色数字块
-    num_w = Inches(1.6)
-    H.rect(s, band.x, band.y, num_w, band.h, PRIMARY_DEEP)
-    num_tb = s.shapes.add_textbox(band.x, band.y, num_w, band.h)
-    H.fix_textbox_margins(num_tb.text_frame)
-    p = num_tb.text_frame.paragraphs[0]
-    p.alignment = PP_ALIGN.CENTER
-    rn = p.add_run()
-    rn.text = str(num)
-    H.set_font(rn, name=FONT_NUM, size=72, bold=True, color=H.WHITE)
-    # 右侧章节标题
-    title_x = Emu(band.x + num_w + Inches(0.5))
-    title_w = Emu(band.w - num_w - Inches(0.5))
-    title_box = L.Box(x=title_x, y=band.y, w=title_w, h=band.h)
-    _text(s, title_box, title, size=44, bold=True, color=PRIMARY_DEEP)
+    # 背景巨型数字水印(右半屏,极浅灰)
+    bg_num = f"{int(num):02d}" if isinstance(num, int) or str(num).isdigit() else str(num)
+    bg_tb = s.shapes.add_textbox(Inches(4.0), Inches(0.3), Inches(9.0), Inches(7.0))
+    H.fix_textbox_margins(bg_tb.text_frame)
+    bg_p = bg_tb.text_frame.paragraphs[0]
+    bg_p.alignment = PP_ALIGN.RIGHT
+    bg_r = bg_p.add_run(); bg_r.text = bg_num
+    H.set_font(bg_r, name=FONT_NUM, size=400, bold=True, color=H.GRAY_100)
+
+    # 左侧 vertical accent bar(细蓝竖条)
+    H.rect(s, Inches(0.55), Inches(2.3), Inches(0.08), Inches(2.9), PRIMARY)
+
+    # 前景:左上 "CHAPTER NN" 小字
+    chap_box = L.Box(Inches(0.85), Inches(2.4), Inches(6.0), Inches(0.5))
+    _text(s, chap_box, f"CHAPTER {bg_num}", size=14, bold=True, color=PRIMARY,
+          font=FONT_NUM)
+
+    # 前景:大章节标题(覆盖背景数字上层)
+    title_box = L.Box(Inches(0.85), Inches(3.0), Inches(11.0), Inches(2.0))
+    _text(s, title_box, title, size=52, bold=True, color=PRIMARY_DEEP)
     return s
 
 
@@ -402,8 +434,12 @@ def make_matrix_2x2(
     return s
 
 
-def make_cards(prs: _Pres, title: str, cards: list[dict[str, str]]) -> Slide:
-    """N 张并列卡片。handout mode body 字号降 + box 加高。"""
+def make_cards(prs: _Pres, title: str, cards: list[dict[str, Any]]) -> Slide:
+    """N 张并列卡片。handout mode body 字号降 + box 加高。
+
+    每张卡片可选字段 `icon`:unicode 字符(如 "▶")或 H.ICONS key(如 "terminal")。
+    传 icon 时,卡片左上显 28pt PRIMARY 色 icon + 标题右移让位。
+    """
     s = _blank_slide(prs)
     _add_title(s, title)
     region = L.content_region()
@@ -415,26 +451,99 @@ def make_cards(prs: _Pres, title: str, cards: list[dict[str, str]]) -> Slide:
     for col, card in zip(cols, cards):
         H.card(s, col.x, col.y, col.w, col.h, fill=H.WHITE,
                border=H.GRAY_300, accent=PRIMARY)
-        inner = L.inset(col, Inches(0.3), Inches(0.25))
-        parts = L.stack(inner, [Inches(0.6), body_box_h], gap=Inches(0.15),
-                        align="top")
-        _text(s, parts[0], card["title"], size=20, bold=True, color=PRIMARY_DEEP)
-        _text(s, parts[1], card["body"], size=body_size, color=H.GRAY_700)
+
+        # icon(可选)— 多列(≥4)放标题上方居中,少列(≤3)放标题左侧
+        icon_char = card.get("icon")
+        if icon_char:
+            icon_str = H.ICONS.get(icon_char, icon_char)
+            many_cols = len(cards) >= 4
+            if many_cols:
+                # icon 上方居中(列窄,标题需全宽)
+                icon_x = col.x + (col.w - Inches(0.55)) // 2
+                H.icon(s, icon_x, col.y + Inches(0.3), 22, icon_str,
+                       color=H.WHITE, bg=PRIMARY, box_size=Inches(0.55))
+                title_box = L.Box(col.x + Inches(0.2), col.y + Inches(1.0),
+                                    col.w - Inches(0.4), Inches(0.55))
+                _text(s, title_box, card["title"], size=18, bold=True,
+                      color=PRIMARY_DEEP, align=PP_ALIGN.CENTER)
+                body_y = col.y + Inches(1.7)
+                body_box = L.Box(col.x + Inches(0.25), body_y,
+                                  col.w - Inches(0.5), body_box_h - Inches(0.7))
+                _text(s, body_box, card["body"], size=body_size,
+                      color=H.GRAY_700)
+            else:
+                # icon 标题左侧(列宽够)
+                H.icon(s, col.x + Inches(0.3), col.y + Inches(0.3), 22,
+                       icon_str, color=H.WHITE, bg=PRIMARY,
+                       box_size=Inches(0.55))
+                title_x = col.x + Inches(1.0)
+                title_w = col.w - Inches(1.3)
+                title_box = L.Box(title_x, col.y + Inches(0.35), title_w,
+                                    Inches(0.55))
+                _text(s, title_box, card["title"], size=20, bold=True,
+                      color=PRIMARY_DEEP)
+                body_y = col.y + Inches(1.0)
+                body_box = L.Box(col.x + Inches(0.3), body_y,
+                                  col.w - Inches(0.5), body_box_h)
+                _text(s, body_box, card["body"], size=body_size,
+                      color=H.GRAY_700)
+        else:
+            inner = L.inset(col, Inches(0.3), Inches(0.25))
+            parts = L.stack(inner, [Inches(0.6), body_box_h], gap=Inches(0.15),
+                            align="top")
+            _text(s, parts[0], card["title"], size=20, bold=True, color=PRIMARY_DEEP)
+            _text(s, parts[1], card["body"], size=body_size, color=H.GRAY_700)
     return s
 
 
-def make_bullet_list(prs: _Pres, title: str, items: list[str]) -> Slide:
-    """要点列表。handout mode 字号降到 14pt + 行距加大(因长句多)"""
+def make_bullet_list(
+    prs: _Pres, title: str, items: list[Any]
+) -> Slide:
+    """要点列表。handout mode 字号降到 14pt + 行距加大(因长句多)。
+
+    items 接受两种形式:
+    - str(向后兼容):前缀是默认 "▎" 蓝色 accent 条
+    - dict {text, icon}: 前缀是指定的 icon(unicode 字符或 ICONS key)
+    混用 OK,逐项判断。
+    """
     s = _blank_slide(prs)
     _add_title(s, title)
     region = L.content_region()
-    # handout mode 14pt + 行距 1.6;speaker mode 18pt + 行距 1.45
     bullet_size = 14 if H.is_handout() else 18
     line_factor = 1.6 if H.is_handout() else 1.45
-    line_h = Emu(int(Pt(bullet_size) * line_factor))
-    block = L.stack(region, [Emu(line_h * len(items))], align="middle")[0]
-    H.bullets(s, block.x, block.y, block.w, block.h, items=items,
-              size=bullet_size, accent_color=PRIMARY, body_color=H.GRAY_700)
+
+    # 条数少(≤ 6)→ 拉大字号并按内容区均分,避免上半大量留白(v0.5.0 fix audience #14)
+    if len(items) <= 6:
+        bullet_size = max(bullet_size, 22 if H.is_handout() else 26)
+        line_factor = 1.8
+
+    # 若全是 str 走原 H.bullets(更紧凑);否则 mixed/icon mode 单独渲染
+    if all(isinstance(it, str) for it in items):
+        line_h = Emu(int(Pt(bullet_size) * line_factor))
+        block = L.stack(region, [Emu(line_h * len(items))], align="middle")[0]
+        H.bullets(s, block.x, block.y, block.w, block.h, items=items,
+                  size=bullet_size, accent_color=PRIMARY, body_color=H.GRAY_700)
+        return s
+
+    # mixed/icon mode:每行 = 左 icon + 右 text,纵向排列
+    line_h_emu = Pt(bullet_size * line_factor * 1.5)
+    total_h = line_h_emu * len(items)
+    block = L.stack(region, [Emu(int(total_h))], align="middle")[0]
+    icon_w = Inches(0.45)
+    for i, it in enumerate(items):
+        y = block.y + Emu(int(line_h_emu * i))
+        if isinstance(it, dict):
+            text = it.get("text", "")
+            icon_char = it.get("icon", "▎")
+        else:
+            text = str(it); icon_char = "▎"
+        icon_str = H.ICONS.get(icon_char, icon_char)
+        H.icon(s, block.x, y, bullet_size, icon_str, color=PRIMARY,
+               box_size=icon_w)
+        text_box = L.Box(block.x + icon_w + Inches(0.1), y,
+                          block.w - icon_w - Inches(0.1),
+                          Emu(int(line_h_emu)))
+        _text(s, text_box, text, size=bullet_size, color=H.GRAY_700)
     return s
 
 
@@ -484,29 +593,42 @@ def make_summary(
     conclusions: list[str],
     title: str = "核心结论",
 ) -> Slide:
-    """总结 N 条结论。handout mode 字号降 + 行高加大(因结论可能 60 字)"""
+    """总结 N 条结论。每条 = 紧凑数字方块 + 等高文字行,整体居中,不再均分留白。
+
+    v0.5.0 fix:audience round 2 #24 — 原 L.rows 均分让 number box 过高,
+    短结论文字撑不满,视觉失衡。改为按内容算单元高度 + 整体垂直居中。
+    """
     s = _blank_slide(prs)
     _add_title(s, title, size=36, color=PRIMARY_DEEP)
-    rboxes = L.rows(L.content_region(), len(conclusions))
-    text_size = 14 if H.is_handout() else 20
-    for i, (rb, c) in enumerate(zip(rboxes, conclusions)):
-        num_w = Inches(0.9)
-        H.rect(s, rb.x, rb.y, num_w, rb.h, PRIMARY)
-        n_tb = s.shapes.add_textbox(rb.x, rb.y, num_w, rb.h)
+    region = L.content_region()
+    text_size = 16 if H.is_handout() else 22
+    # 每条单元高度 = 数字尺寸 + padding,handout 留更多空间(因长结论可能 wrap 到 2-3 行)
+    unit_h = Inches(1.2) if H.is_handout() else Inches(0.9)
+    gap = Inches(0.25)
+    total_h = unit_h * len(conclusions) + gap * (len(conclusions) - 1)
+    start_y = region.y + (region.h - total_h) // 2  # 整体垂直居中
+    num_w = Inches(1.0)
+    text_x = region.x + num_w + Inches(0.3)
+    text_w = region.w - num_w - Inches(0.3)
+    for i, c in enumerate(conclusions):
+        y = start_y + (unit_h + gap) * i
+        # 数字方块(深蓝实色,正方形手感)
+        H.rect(s, region.x, y, num_w, unit_h, PRIMARY)
+        n_tb = s.shapes.add_textbox(region.x, y, num_w, unit_h)
         H.fix_textbox_margins(n_tb.text_frame)
+        # 垂直居中 number
+        n_tb.text_frame.vertical_anchor = 3  # MSO_ANCHOR.MIDDLE
         pn = n_tb.text_frame.paragraphs[0]
         pn.alignment = PP_ALIGN.CENTER
-        rn = pn.add_run()
-        rn.text = str(i + 1)
-        H.set_font(rn, name=FONT_NUM, size=32, bold=True, color=H.WHITE)
-        text_x = Emu(rb.x + num_w + Inches(0.25))
-        text_w = Emu(rb.w - num_w - Inches(0.25))
-        t_tb = s.shapes.add_textbox(text_x, rb.y, text_w, rb.h)
+        rn = pn.add_run(); rn.text = str(i + 1)
+        H.set_font(rn, name=FONT_NUM, size=36, bold=True, color=H.WHITE)
+        # 文字单元(垂直居中)
+        t_tb = s.shapes.add_textbox(text_x, y, text_w, unit_h)
         H.fix_textbox_margins(t_tb.text_frame)
-        t_tb.text_frame.word_wrap = True   # handout 长结论必须换行
-        rt = t_tb.text_frame.paragraphs[0].add_run()
-        rt.text = c
-        H.set_font(rt, name=FONT_HEADER, size=text_size, color=H.GRAY_700)
+        t_tb.text_frame.word_wrap = True
+        t_tb.text_frame.vertical_anchor = 3  # MSO_ANCHOR.MIDDLE
+        rt = t_tb.text_frame.paragraphs[0].add_run(); rt.text = c
+        H.set_font(rt, name=FONT_HEADER, size=text_size, color=H.GRAY_900)
     return s
 
 

@@ -61,9 +61,20 @@ GRAY_700 = RGBColor(0x4A, 0x4A, 0x4A)  # ★ 主要正文色(白底 9.7:1,AAA)
 GRAY_300 = RGBColor(0xD9, 0xD9, 0xD9)  # ★ 分隔线 / border
 GRAY_500 = RGBColor(0x6F, 0x6F, 0x6F)  # ★ 页脚 / meta 文字(原 #8C8C8C 在白底 3.5:1 不过 AA — 改 #6F6F6F = 5.7:1)
 GRAY_900 = RGBColor(0x1A, 0x1A, 0x1A)  # 极少用,标题已有 BRAND_DARK
+GRAY_100 = RGBColor(0xF2, 0xF2, 0xF2)  # 中浅灰,巨型背景水印用
 GRAY_50  = RGBColor(0xFA, 0xFA, 0xFA)  # 极少用,大色块底
 WHITE    = RGBColor(0xFF, 0xFF, 0xFF)
 BLACK    = RGBColor(0x00, 0x00, 0x00)
+
+# Muted palette(v0.5.0)— 用于 matrix_2x2 不同象限、compare 多列差异、
+# 装饰元素等"需要色彩区分但不抢主色"的场景。
+# 设计参考:Nordic muted tones,饱和度低,跟科技蓝主色不冲突。
+MUTED_BLUE     = RGBColor(0x4A, 0x7A, 0xB5)  # 灰蓝(主色 dimmed 版)
+MUTED_SAND     = RGBColor(0xC9, 0xB6, 0x8E)  # 沙色(暖中性)
+MUTED_SAGE     = RGBColor(0x7E, 0x9D, 0x91)  # 灰绿(冷中性)
+MUTED_TERRA    = RGBColor(0xB5, 0x6F, 0x5C)  # 陶土红(警示但不刺眼)
+MUTED_LAVENDER = RGBColor(0x9B, 0x8C, 0xBA)  # 灰紫(科技感)
+MUTED_OCHRE    = RGBColor(0xC9, 0x9E, 0x4F)  # 赭石(警示亮)
 
 SLIDE_W = Inches(13.333)
 SLIDE_H = Inches(7.5)
@@ -71,6 +82,55 @@ LEFT_MARGIN  = Inches(0.55)
 RIGHT_MARGIN = Inches(0.55)
 HEADER_BOTTOM = Inches(1.4)
 FOOTER_TOP    = Inches(7.0)
+
+
+# ============================================================================
+# Icon system(v0.5.0)— Unicode 几何字符 / emoji 作为轻图标
+# ============================================================================
+#
+# 跨平台稳定 + 无需外部 SVG 资产 + python-pptx 原生支持。
+# 字体回退由 FONT_FALLBACK_CHAIN 保证渲染端有 emoji 字体能显。
+#
+# 用法:H.icon(slide, x, y, size_pt, ICONS["terminal"], color=BRAND_PRIMARY)
+# 或:  H.icon(slide, x, y, 24, "▶", color=BRAND_PRIMARY)
+
+ICONS: dict[str, str] = {
+    # 端 / 平台
+    "terminal":   "▶",
+    "ide":        "◆",
+    "desktop":    "■",
+    "web":        "◉",
+    "mobile":     "▣",
+    # 状态 / 强调
+    "check":      "✓",
+    "cross":      "✗",
+    "star":       "★",
+    "flag":       "▶",
+    "warn":       "⚠",
+    "lock":       "🔒",
+    "bolt":       "⚡",
+    # 流程 / 方向
+    "arrow_r":    "→",
+    "arrow_l":    "←",
+    "arrow_u":    "↑",
+    "arrow_d":    "↓",
+    "arrow_ur":   "↗",
+    "loop":       "↻",
+    # 列表 / 标记
+    "dot":        "●",
+    "ring":       "○",
+    "diamond":    "◆",
+    "square":     "■",
+    "triangle":   "▲",
+    # 数据 / 趋势
+    "up":         "↗",
+    "down":       "↘",
+    "flat":       "→",
+    # 其他
+    "info":       "ⓘ",
+    "question":   "?",
+    "plus":       "+",
+}
 
 
 # ============================================================================
@@ -196,6 +256,113 @@ def no_fill(shape: BaseShape) -> None:
 
 def no_line(shape: BaseShape) -> None:
     shape.line.fill.background()
+
+
+def icon(
+    slide: Slide,
+    x: Length,
+    y: Length,
+    size_pt: int,
+    char: str,
+    *,
+    color: RGBColor = BRAND_PRIMARY,
+    bg: RGBColor | None = None,
+    box_size: Length | None = None,
+) -> Any:
+    """放一个 unicode 图标(几何字符或 emoji)。
+
+    char: 直接传字符串(如 "▶")或用 ICONS["terminal"] 取预定义。
+    bg: 若传,先画一个 size_pt × 1.6 的圆背景填 bg,再叠 icon。
+    box_size: 文本框尺寸(默认按 size_pt × 1.6 自动算);用于居中对齐场景。
+    """
+    if box_size is None:
+        box_size = Pt(size_pt * 1.6)
+    if bg is not None:
+        from pptx.enum.shapes import MSO_SHAPE
+        circle = slide.shapes.add_shape(MSO_SHAPE.OVAL, x, y, box_size, box_size)
+        circle.fill.solid(); circle.fill.fore_color.rgb = bg
+        no_line(circle)
+    tb = slide.shapes.add_textbox(x, y, box_size, box_size)
+    fix_textbox_margins(tb.text_frame)
+    p = tb.text_frame.paragraphs[0]
+    p.alignment = PP_ALIGN.CENTER
+    r = p.add_run(); r.text = char
+    # icon 用英文字体即可(几何字符 / emoji 不依赖 ea)
+    set_font(r, name=FONT_EN, size=size_pt, color=color, bold=False)
+    return tb
+
+
+def connector(
+    slide: Slide,
+    x1: Length, y1: Length, x2: Length, y2: Length,
+    *,
+    color: RGBColor = GRAY_500,
+    weight_pt: float = 1.0,
+    arrow: bool = False,
+    style: str = "straight",   # straight | elbow
+) -> Any:
+    """两点连线(可选箭头)。
+
+    style="elbow" 用直角折线(用于 flowchart);默认 straight 直线。
+    arrow=True 在终点加三角箭头。
+    """
+    from pptx.enum.shapes import MSO_CONNECTOR
+    kind = MSO_CONNECTOR.ELBOW if style == "elbow" else MSO_CONNECTOR.STRAIGHT
+    conn = slide.shapes.add_connector(kind, x1, y1, x2, y2)
+    conn.line.color.rgb = color
+    conn.line.width = Pt(weight_pt)
+    if arrow:
+        # 通过 lxml 给 line 加 tailEnd 三角箭头
+        spPr = conn.line._get_or_add_ln()
+        nsmap = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main"}
+        # 移除已有的 tailEnd 避免重复
+        for ex in spPr.findall(qn("a:tailEnd")):
+            spPr.remove(ex)
+        tail_end = etree.SubElement(spPr, qn("a:tailEnd"))
+        tail_end.set("type", "triangle")
+        tail_end.set("w", "med")
+        tail_end.set("len", "med")
+    return conn
+
+
+def progress_bar(
+    slide: Slide,
+    x: Length, y: Length, w: Length, h: Length,
+    pct: float,
+    *,
+    fill_color: RGBColor = BRAND_PRIMARY,
+    bg_color: RGBColor = GRAY_300,
+) -> Any:
+    """水平进度条:bg 全宽 + fill 按 pct(0-100)缩放宽度。
+
+    用于 summary 强调"完成度""达成度"等数字。
+    """
+    pct = max(0.0, min(100.0, float(pct)))
+    bg = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, y, w, h)
+    bg.fill.solid(); bg.fill.fore_color.rgb = bg_color
+    no_line(bg); bg.adjustments[0] = 0.5
+    fill_w = Emu(int(w * pct / 100))
+    if fill_w > 0:
+        fill = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, y,
+                                        fill_w, h)
+        fill.fill.solid(); fill.fill.fore_color.rgb = fill_color
+        no_line(fill); fill.adjustments[0] = 0.5
+    return bg
+
+
+def emphasis_underline(
+    slide: Slide,
+    x: Length, y: Length, w: Length,
+    *,
+    color: RGBColor = ACCENT,
+    weight_pt: float = 3.0,
+) -> Shape:
+    """强调下划线 — 替代加粗,放在关键词下方,4pt 粗 ACCENT 色。"""
+    h = Pt(weight_pt)
+    line = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, x, y, w, h)
+    line.fill.solid(); line.fill.fore_color.rgb = color
+    no_line(line)
+    return line
 
 
 def rect(slide: Slide, x: Length, y: Length, w: Length, h: Length, color: RGBColor) -> Shape:

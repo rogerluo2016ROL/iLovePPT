@@ -40,11 +40,34 @@ No build step and no linter are configured.
 
 ### Agent 层
 
-`.claude/agents/iloveppt.md` 是项目的主入口。它是一个 Claude Code subagent —— 独立上下文 orchestrator,把以下三件事串起来:(1) 读 brief / 设计大纲 / 规划图层(Phase 1,终于大纲 checkpoint 等用户批准);(2) 批准后,生成图 / 拓写 / 跑 build.py / 视觉 QA 循环 / 交付(Phase 2)。
+`.claude/agents/` 是项目的 4 agent 流水线 + 1 旁路:
 
-skill 层(`pptx-deck` / `pptx` / `diagram`)继续作为 agent 的工具与知识库存在,也可被主线程 Claude 直接用作 skill-mode 后备入口。
+| agent | 角色 | 何时派 |
+|---|---|---|
+| `iloveppt-brainstorm` | Stage A-B 收 brief + 素材 | 用户首次说"做 PPT" |
+| `iloveppt-author` | Stage C-D 出 outline + content | brainstorm 收齐后 |
+| `iloveppt`(builder) | Stage E 构建 .pptx + 视觉 QA 循环 | author 出 content.md 后 |
+| `iloveppt-audience` | 模拟受众读 deck 给评分 | builder 出 .pptx 后强制跑;评分 < 7 反馈给 author |
+| `iloveppt-template-extractor` | 旁路 · 提取 .pptx 模板 4 级 token | 用户给新 .pptx 模板时 |
 
 agent 设计见 `docs/superpowers/specs/2026-05-23-iloveppt-agent-design.md`。
+
+### 主线程派发规则(v0.5.0 新规)
+
+**主线程 Claude(你)在做 PPT 相关工作时,必须按下表派发,不允许自己干 agent 该干的事**:
+
+| 任务类型 | 谁干 | 原因 |
+|---|---|---|
+| 改 helpers.py / themes / build.py / pyproject / 加 tests | **主线程** | 系统改造需要 cross-file 一致性 + 完整 context |
+| 用户首次说"做 PPT" / 没有 brief | 派 **iloveppt-brainstorm** | 多轮对话收 brief,主线程不该自己脑补字段 |
+| 已有 brief,要出 outline / content | 派 **iloveppt-author** | content 拓写是独立 context 任务;主线程脑补容易跑偏 |
+| 已有 content.md,要构建 .pptx | 派 **iloveppt** (builder) | Pyramid 自检 + 视觉 QA 循环是 agent 内逻辑 |
+| .pptx 构建完,要评视觉 | 派 **iloveppt-audience** | 读者视角是新视角;**主线程的自检是作者视角,有盲区** |
+| 用户给新 .pptx 模板 | 派 **iloveppt-template-extractor** | 模板提取是独立 4 级 token 流程 |
+
+**反例(v0.4.0 失误)**:主线程自己重写了 claude-code-training 24 页 content + 自己跑 visual check。**应该派 author 写 content + 派 audience 评视觉**。
+
+**例外**:如果用户明确说"你自己改"/"不用派 agent",尊重决定。
 
 ### Three-skill layering
 
