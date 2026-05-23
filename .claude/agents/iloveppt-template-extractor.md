@@ -77,6 +77,8 @@ recommended_usage:
 
 ### Step 4 · 返回
 
+**成功(template_ready: true)**:
+
 ```yaml
 next_action: dispatch_brainstorm
 dispatch:
@@ -91,13 +93,38 @@ template_ready: true
 template_yaml_path: templates/<name>.yaml
 ```
 
+**失败(template_ready: false · v0.5.1 明确化)** —— 失败时仍返回 dispatch_brainstorm,但 user_response 必须用 `[system] template_extractor_failed` 前缀让 brainstorm 走兜底分支:
+
+```yaml
+next_action: dispatch_brainstorm
+dispatch:
+  agent: iloveppt-brainstorm
+  args:
+    working_dir: <working_dir>
+    user_response: |
+      [system] template_extractor_failed
+      reason: <具体原因,例:soffice 不在 PATH,probe 渲染失败>
+      yaml_partial_path: <若已写部分 yaml,给路径;若没写则省略>
+template_ready: false
+failure_reason: <reason 同上,结构化字段供主线程也能读>
+```
+
+**reason 必须具体**(不允许"出错了" / "失败了"等无信息回答),示例:
+- `soffice 不在 PATH,probe 渲染失败`
+- `模板 .pptx 文件损坏,unzip 失败`
+- `extract_template.py CLI 退出码 != 0,stderr: <最后 10 行>`
+- `probe 渲染产物缺失:page-3.jpg 等 5 张 PNG 未生成`
+
+brainstorm 收到 `[system] template_extractor_failed` 前缀后,会跟用户对话三选一(装依赖重试 / 降级 tech_blue / 终止)。
+
 ## 关键约束
 
 - **真跑 CLI 而非假装**(verification-before-completion):用 Bash 实际跑
 - **真 Read PNG 做视觉分析**:不允许凭"应该是这样"猜
 - **不写 themes/<name>.py**:那是 Phase 2 人工范围
 - **不破坏现有 yaml**:用户手填字段保留
-- **失败也要给主线程清晰反馈**:probe 失败(soffice 没装等)→ 仍返回 dispatch_brainstorm,但 template_ready: false
+- **失败必须给具体 reason**(v0.5.1):返回 `template_ready: false` 时,reason 字段必须具体可定位,不允许"出错了"等无信息回答
+- **失败返回用 `[system] template_extractor_failed` 前缀**(v0.5.1):让 brainstorm 走兜底分支,而不是当成普通 user_response
 
 ## anti-prompt
 
