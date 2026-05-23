@@ -1863,11 +1863,11 @@ iLovePPT/
 │   ├── MANUAL.zh.md                 # 本文件：详细使用手册
 │   └── superpowers/
 │       ├── specs/                   # 设计文档
-│       │   ├── 2026-05-22-iloveppt-v2-design.md  # v2 当前设计
-│       │   └── 2026-05-21-killppts-skill-design.md  # v1 初版（历史）
+│       │   ├── 2026-05-23-iloveppt-agent-design.md  # agent 层(主入口)
+│       │   └── 2026-05-22-iloveppt-v2-design.md     # v2 架构基底
 │       └── plans/                   # 实现计划
-│           ├── 2026-05-22-iloveppt-v2.md  # v2 当前计划
-│           └── 2026-05-21-killppts-skill.md  # v1 初版（历史）
+│           ├── 2026-05-23-iloveppt-agent.md
+│           └── 2026-05-22-iloveppt-v2.md
 └── skills/
     ├── pptx-deck/                   # 端到端 PPT 生成器（主入口）
     │   ├── SKILL.md                 # skill 入口描述（含触发关键词）
