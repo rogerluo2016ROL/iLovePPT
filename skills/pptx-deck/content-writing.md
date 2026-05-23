@@ -1,8 +1,19 @@
 # 每页文案拓写规范
 
-本文档定义 11 种 layout 各自的文案约束 + LLM 拓写 prompt 模板。被 [workflow.md](workflow.md) Step 4（Claude 页面拓写）引用。
+本文档定义 11 种 layout 各自的文案约束 + LLM 拓写 prompt 模板。被 [workflow.md](workflow.md) 引用。
 
-> 拓写文案**之前**先做图层规划（workflow Step 3）：判断哪些章节该配图。规则见 [diagram-planning.md](diagram-planning.md)。需配图的章节,Claude 先调 [[diagram]] skill 出 PNG,再把该页直接写成 `pic_text` 版式（左图右文）,`image_path` 指向 PNG,右侧 N 个说明卡片文案从该节要点提炼。
+> 拓写文案**之前**先做图层规划：判断哪些章节该配图。规则见 [diagram-planning.md](diagram-planning.md)。需配图的章节,主线程 Claude 先调 [[diagram]] skill 出 PNG 到 `_assets/charts/`,再在 markdown 用 `![title](_assets/charts/X.png)` 嵌入。
+
+---
+
+## 🆕 v3 流程下:本文档的两类消费者
+
+| 消费者 | 在哪步用本文档 | 用法 |
+|---|---|---|
+| **主线程 Claude**(Stage A-D) | 与用户对话 + 设计 outline + 拓写 content | 按 11 layout 文案规则写;按 Pyramid 5 件套设计 outline;按 markdown schema 输出 .md |
+| **agent**(Stage E build) | 拿到 content.md → md→JSON | 反向应用规则:验证 md 合规、推断 layout、转 JSON |
+
+v3 流程详细见 [v3 spec](../../docs/superpowers/specs/2026-05-23-iloveppt-v3-markdown-first.md)。
 
 ---
 
@@ -316,6 +327,221 @@ cover
 | `sales` | 价值主张突出，对比竞品，行动导向 | "选我们：快 3× 、省 50%" |
 
 当 `audience` 未填写时，默认 `general`。
+
+---
+
+## 🆕 v3 markdown schema(主线程 ↔ agent 接口契约)
+
+v3 流程用 markdown 文档作为用户与 agent 之间的接口。两份文件:`deck_v{N}_outline.md`(大纲)和 `deck_v{N}_content.md`(全文)。**agent 只认 content.md,outline.md 是给用户审用的中间产物。**
+
+### `deck_v{N}_outline.md` schema
+
+```markdown
+---
+title: <主标题, ≤ 20 字>
+subtitle: <副标, ≤ 24 字>
+audience: executive | technical | general | sales
+duration_min: <int>
+theme: tech_blue                       # 或 .pptx 模板绝对路径
+output: ./deck_v1.pptx
+top_recommendation: <完整推荐句>        # Pyramid ①
+scqa:                                   # Pyramid ②
+  situation: <背景>
+  complication: <冲突>
+  question: <问题>
+  answer: <= top_recommendation>
+footer_meta:                            # 可选 deck 级
+  classification: INTERNAL | CONFIDENTIAL | PUBLIC
+  project: <项目名>
+  version: v1.0
+---
+
+# Outline
+
+## 1. <action title - 句, ≤ 24 字>
+- intent: <这节要让读者明白什么>
+- layout: bullet_list | cards | compare | single_focus | table | pic_text
+- data: <关键数据点,逗号分隔>
+- diagram: <无 | drawio:flow | matplotlib:bar | ...>
+
+## 2. <action title>
+- intent: ...
+- layout: ...
+- ...
+
+# Pyramid 自检
+- [x] ① 单一顶端论点
+- [x] ② SCQA 完整
+- [x] ③ 答案在前(cover.subtitle 已含 / 第 1 内容页明示)
+- [x] ④ MECE(3-5 节,两两不重叠)
+- [x] ⑤ 纵向疑问/回答链(章节标题串读能讲完整故事)
+- [x] ⑥ 字段完整
+- [x] ⑦ 全部 action title ≤ 24 字
+```
+
+### `deck_v{N}_content.md` schema(agent 的输入)
+
+```markdown
+---
+# 完全继承 outline.md 的 frontmatter
+title: ...
+subtitle: ...
+audience: ...
+top_recommendation: ...
+scqa: {...}
+footer_meta: {...}
+output: ./deck_v1.pptx
+based_on: deck_v1_outline.md
+---
+
+# Content
+
+## [cover]
+- title: <同 frontmatter.title>
+- subtitle: <同 frontmatter.subtitle>
+- prepared_by: 技术部
+- date: 2026-05-23
+- version: v1.0
+- classification: INTERNAL
+
+## [toc]
+- <章节 1 title>
+- <章节 2 title>
+- ...
+
+## [section_divider]
+- num: 1
+- title: 背景
+
+## 1. <action title 与 outline 保持一致>
+<!-- layout: bullet_list -->
+
+- <bullet 1, ≤ 12 字>
+- <bullet 2>
+- <bullet 3>
+
+> 数据:Source: <数据来源>
+
+## 2. <action title>
+<!-- layout: cards -->
+
+- **<卡标题, ≤ 6 字>**: <body, ≤ 18 字>
+- **<卡标题>**: <body>
+- **<卡标题>**: <body>
+
+## 3. <action title>
+<!-- layout: pic_text -->
+
+![<图描述>](_assets/charts/<filename>.png)
+
+- **<点标题, ≤ 6 字>**: <body, ≤ 15 字>
+- **<点标题>**: <body>
+
+> 数据:Source: <数据来源>
+
+## [summary]
+- <结论 1, ≤ 15 字, 含数字>
+- <结论 2>
+- <结论 3>
+
+## [closing]
+- subtitle: <联系方式 / 行动号召, ≤ 24 字>
+- next_steps:                          # 可选 - 结构化 closing
+  - action: <动作>
+    owner: <负责人>
+    due: <YYYY-MM-DD>
+  - action: ...
+```
+
+### h2 命名约定
+
+| h2 形式 | 含义 |
+|---|---|
+| `## [cover]` / `## [toc]` / `## [section_divider]` / `## [summary]` / `## [closing]` | 特殊 layout slide,**不**含 action title |
+| `## N. <action title>` | 内容页,N 是章节序号(对应 outline),后跟 ≤ 24 字 action title |
+| `## <非 N. 开头, 也非 [xxx]>` | **非法**,agent 应报错 |
+
+### layout 推断规则(agent 用)
+
+`<!-- layout: X -->` HTML 注释指定时,**直接用**;无注释时按下表推断:
+
+| md 结构信号 | 推断 layout |
+|---|---|
+| 单层 `-` list,无加粗,每项短 | `bullet_list` |
+| `-` list,每项形如 `**xxx**: yyy` | `cards`(若 ≥ 3 项)或 `compare`(若 = 2 项) |
+| 一个 `![alt](path)` + 后续 list | `pic_text` |
+| 含 `|` 表格语法 | `table` |
+| 仅 1 个加粗大字 + 1 行说明 | `single_focus`(看 frontmatter 是否有 big_number) |
+
+推断无果 → 默认 `bullet_list`;agent 应在 review_needed 标注"layout 默认推断,请人审"。
+
+### 图片引用约定
+
+- `![alt](_assets/charts/X.png)` —— 数据图(matplotlib 生成)
+- `![alt](_assets/refs/X.png)` —— 用户提供的图
+- 路径必须**相对 markdown 文件所在目录**
+- agent 在 md→JSON 转换时,把相对路径解析为绝对路径写入 `image_path`
+
+### 数据来源约定
+
+任何 `## N. xxx` 标题下,若该 slide 含数据(数字 / 图表),**必须**在 list 之后加一条:
+
+```markdown
+> 数据:Source: <具体来源>
+```
+
+build.py 自动识别为 source citation,渲染在 footer 上方 italic GRAY_500。
+
+### 字数限制(同上方"11 layout 文案规则"表)
+
+agent 在 md→JSON 转换时**必须强制校验**:超限的字段触发 auto_md_edit(自动截短),并记录到 `auto_md_edits[]`。
+
+---
+
+## 🆕 v3 素材文件夹布局
+
+每份 deck 在工作目录下应有如下结构:
+
+```
+<deck-工作目录>/
+├── deck_v1_outline.md           # 用户审 outline 用
+├── deck_v1_content.md           # 用户审 content 用,agent 的输入
+├── deck_v1.pptx                 # build.py 产出
+├── deck_v1_render/              # 渲染图(.gitignore'd)
+│   ├── page-01.jpg
+│   └── ...
+├── _assets/
+│   ├── raw/                     # 用户提供的原始素材(对话中收集)
+│   │   ├── q4_revenue.csv
+│   │   ├── customer_logos.png
+│   │   └── industry_report.pdf
+│   ├── charts/                  # matplotlib / draw.io 生成的图
+│   │   ├── q4_revenue.png
+│   │   └── review_flow.png
+│   └── refs/                    # 用户直接给的参考图(不重做)
+│       └── existing_diagram.png
+└── deck_v2_*.md / deck_v2.pptx  # 后续迭代版本(决策 7a)
+```
+
+### 素材摄入(主线程 Stage B)
+
+主线程在 Stage A 对话中识别用户有素材时,**主动 prompt**:
+
+| 信号 | prompt 模板 |
+|---|---|
+| 用户提到"数据 / 报表 / 增长 / 对比" | "你这边有具体数据吗?可以:① 直接粘贴(我现场 parse) ② 给文件路径(.csv / .xlsx) ③ 让我帮你编合理数据(标注 '示意')" |
+| 用户提到"我们的架构 / 现有图 / 流程图" | "已有图的话告诉我路径(.png / .jpg);否则我用 draw.io 现画,你审了再用" |
+| 用户提到"按某个模板 / 我们公司 PPT" | "把模板 .pptx 路径给我,我提取色板和字体(不复制内容)" |
+| 用户提到"参考 / 之前的报告" | "可以给参考文档路径,我提取关键论点供拓写参考" |
+
+提供后,主线程负责把素材**落到正确文件夹**(`mv` 或 `cp` 到 `_assets/raw/`),然后才进 Stage C 内容规划。
+
+### 多版本管理(决策 7a)
+
+- 第一稿:`deck_v1_outline.md` / `deck_v1_content.md` / `deck_v1.pptx`
+- 用户大改 → 新版:`deck_v2_*.md`(不覆盖 v1,留对照)
+- 小改(改一个字)→ 直接改 `deck_v1_content.md`,重 build → 覆盖 `deck_v1.pptx`(允许)
+- `_assets/` 跨版本共享(charts 重生成的话覆盖即可)
 
 ---
 
