@@ -24,7 +24,7 @@ Claude 产出、build.py 消费。schema：
 
 1. **读 brief** —— 用户的自由描述或 brief.yaml。确认有：主题、章节大纲、输出路径意图。
 2. **图层规划** —— 按 [diagram-planning.md](diagram-planning.md) 判断哪些章节配图。需图的，先调 [[diagram]] skill 出 PNG。
-3. **逐页拓写** —— 在展开每页之前，先按 [content-writing.md](content-writing.md) 的「deck 级论证结构」设计好行动式标题与 Minto 论证弧（通过 Ghost deck test 后再逐页拓写）。每页选合适 layout（11 种，见 SKILL.md）。配图页用 `pic_text`，`image_path` 指向第 2 步生成的 PNG。
+3. **逐页拓写** —— 在展开每页之前，先按 [content-writing.md](content-writing.md) 的「deck 级论证结构」（**核心要求:麦肯锡金字塔原理 5 件套**——单一顶端论点 / SCQA / 答案在前 / 横向 MECE / 纵向疑问回答链）设计 outline，通过 Pyramid 自检表 7 项后再逐页拓写。每页选合适 layout（11 种，见 SKILL.md）。配图页用 `pic_text`，`image_path` 指向第 2 步生成的 PNG。
 4. **写 deck_plan.json** —— 把 theme / output / slides 写成 JSON 文件。
 5. **构建** —— `python3 build.py deck_plan.json`，产出 .pptx + 每页渲染 PNG。
 6. **视觉自检** —— 按 [visual-qa.md](visual-qa.md) 逐页 Read 渲染 PNG，发现问题改 deck_plan.json，重跑 build.py。至多 3 轮，仍不过的页标 review-needed。
@@ -34,7 +34,7 @@ Claude 产出、build.py 消费。schema：
 
 当通过 `@agent-iloveppt` 派发时,上述 7 步分到两次 agent 派发里:
 
-- **Phase 1**(第 1 次派发) = 步骤 1 + 2 + 3(部分):读 brief → 图层规划 → 设计大纲(action title / Minto / ghost deck test)。**出完大纲即终止,等用户批准。**
+- **Phase 1**(第 1 次派发) = 步骤 1 + 2 + 3(部分):读 brief → 图层规划 → **按金字塔原理 5 件套设计大纲 + 跑 Pyramid 自检 7 项**。**出完大纲即终止,等用户批准。**
 - **Phase 2**(第 2 次派发,入参带已批准 outline) = 步骤 3(余) + 4 + 5 + 6 + 7:生成图 → 写 deck_plan.json → build.py → 视觉 QA 循环(≤ 3 轮)→ 交付。
 
 主线程 Claude 模式(直接读本 SKILL.md 跑)= 一气跑完 7 步,中间不强制 checkpoint。

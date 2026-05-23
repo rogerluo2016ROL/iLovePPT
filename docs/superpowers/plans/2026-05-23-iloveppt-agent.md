@@ -66,7 +66,7 @@ iLovePPT 仓库布局(可能在主线程项目目录,或链接到 `.claude/skill
 - `skills/pptx-deck/build.py` —— 纯机械构建器,读 `deck_plan.json` 出 `.pptx + PNG`
 - `skills/pptx-deck/themes/tech_blue.py` —— 默认主题(11 个 `make_*` layout)
 - `skills/pptx-deck/workflow.md` —— 完整工作流 SSOT(开工前先读)
-- `skills/pptx-deck/content-writing.md` —— 11 layout 文案规则 + 「deck 级论证结构」(action title / Minto / ghost deck test)
+- `skills/pptx-deck/content-writing.md` —— 11 layout 文案规则 + 「deck 级论证结构」(**核心要求:麦肯锡金字塔原理 5 件套** + action title + Pyramid 自检表)
 - `skills/pptx-deck/diagram-planning.md` —— 图层规划(哪节配图 + 4 类图决策表;结构性图形优先 draw.io)
 - `skills/pptx-deck/visual-qa.md` —— 单页 12 项视觉 checklist
 - `skills/pptx-deck/template-extract.md` —— 从用户 .pptx 提主色 + 字体
@@ -88,10 +88,15 @@ iLovePPT 仓库布局(可能在主线程项目目录,或链接到 `.claude/skill
    - `skills/pptx-deck/workflow.md` —— 全流程概貌
    - `skills/pptx-deck/content-writing.md` —— 「deck 级论证结构」+「11 layout 文案规则」
    - `skills/pptx-deck/diagram-planning.md` —— 4 类图决策表
-3. **设计论证结构**:
-   - Minto 金字塔(背景 → 问题 → 方案 → 证据 → 结论)或"结论先行"
-   - 每节给一条 **action title**(完整结论句,不是话题标签)
-   - 过 **ghost deck test**:只读 action title 顺序应能独立讲完整故事;过不了就重排
+3. **按金字塔原理设计论证结构(核心要求,5 件套缺一不可)**:
+   完整规则见 `content-writing.md` 「deck 级论证结构」。执行要点:
+   - **① 单一顶端论点**:整 deck 只服务于一个核心推荐句(完整动宾 + 具体边界),不是议题陈述。落到 `top_recommendation` 字段
+   - **② SCQA 开场**:Situation / Complication / Question / Answer 四要素全填,A == 顶端论点。落到 `scqa` 字段
+   - **③ 答案在前(BLUF)**:cover.subtitle 或第 1 内容页明示顶端论点;每个 section_divider 标题是结论句
+   - **④ 横向 MECE 支撑**:3-5 个章节,两两不重叠,加起来完整支撑顶端论点。自检后落到 `mece_check_passed` 字段
+   - **⑤ 纵向疑问/回答链**:章节标题 + 页面 action title 串起来应能独立讲出顶端论点的完整论据链(即 ghost deck test)
+   - 跑完 `content-writing.md` 的 **Pyramid 自检表 7 项**,任一不过 → 在 `missing_fields` 列出该项,不交付 Phase 1
+   - **例外**:用户在 brief 中显式声明 `structure_mode: data_report | tutorial | catalog`,可设 `bypass_pyramid: true` 跳过自检 1-6 项(action title 仍要求)
 4. **图层规划**:逐节按 `diagram-planning.md` 决策表判断是否配图,记 `diagram_plan`。**结构性图形(arch / flow / matrix / decision tree / relation)优先 draw.io**;数据图用 matplotlib;Mermaid 仅备选。
 5. **页数预估**:按 `content-writing.md` 时长公式 `total ≈ duration_min × 1.5`(含 cover / toc / divider × N / summary / closing)。
 6. **返回 Phase 1 输出**(YAML 结构,严格按下面字段):
@@ -102,9 +107,22 @@ theme: tech_blue                      # 或 .pptx 模板的绝对路径
 output: /abs/path/to/deck.pptx
 audience: executive | technical | general | sales
 target_page_count: 12
+
+# === 金字塔原理 5 件套(核心要求,bypass_pyramid=false 时全部必填) ===
+top_recommendation: "完整推荐句:动宾结构 + 具体边界"
+scqa:
+  situation: "听众认同的客观背景"
+  complication: "打破现状的冲突 / 变化 / 风险"
+  question: "由 C 产生的关键问题(可隐含)"
+  answer: "= top_recommendation"
+mece_check_passed: true               # 章节横向 MECE 自检:3-5 节,两两不重叠
+pyramid_check_passed: true            # Pyramid 自检表 7 项全过
+bypass_pyramid: false                 # 仅 structure_mode in {data_report, tutorial, catalog} 可设 true
+# === 金字塔字段结束 ===
+
 sections:
   - title: "节标题(≤ 12 字)"
-    action_title: "完整结论句"
+    action_title: "完整结论句(对顶端论点的'为什么/怎么做/是什么'回答)"
     intent: "这节要让读者明白什么"
     layout: cards | compare | bullet_list | single_focus | table | pic_text | summary
     needs_diagram: true | false
@@ -113,8 +131,8 @@ diagram_plan:
     diagram_type: arch_diagram | flow | chart | simple_relation
     tool: drawio | mermaid | matplotlib | pptx-native
     intent: "这张图要表达什么"
-ghost_deck_test_passed: true
-missing_fields: []                    # 若 brief 缺字段,列在这里;非空则用户应先补
+ghost_deck_test_passed: true          # 即 Pyramid 自检第 6 项;保留独立字段供旧消费方使用
+missing_fields: []                    # 若 brief 缺字段 或 Pyramid 自检某项不过,列在这里;非空则不交付 Phase 1
 ```
 
 返回完即**终止 Phase 1**。**不要继续生成图或写 deck_plan.json** —— 那是 Phase 2 的事。
@@ -166,11 +184,12 @@ design_score: "M/N (M 项通过 / N 总检查)"
 - **draw.io 优先**:流程 / 架构 / 矩阵 / 决策树 / 关系 → draw.io;Mermaid 仅备选;数据 → matplotlib。
 - **中文字体默认 Microsoft YaHei**:macOS 渲染需装雅黑(参 `pptx/SKILL.md`)。
 - **action title**:每页 `title` 是完整结论句。反例"市场背景";对例"SaaS 市场三年翻倍,渗透率仍不足 15%"。
+- **金字塔原理是核心要求**:Phase 1 不交付未通过 Pyramid 自检表 7 项的 outline。`top_recommendation` / `scqa` / `mece_check_passed` / `pyramid_check_passed` 任一缺失或不过 → 在 `missing_fields` 列出,要求用户补 brief 或重排 outline。仅 `bypass_pyramid=true`(由用户 brief 显式声明 `structure_mode`) 可豁免。
 
 ## anti-prompt
 
 - 不要在 Phase 1 就开始出图 / 写 deck_plan.json —— 那是 Phase 2 的活
-- 不要在 Phase 2 跳过 ghost deck test 之前直接开拓 —— 但若 outline 是用户批过的,默认它过了
+- 不要在 Phase 2 跳过 Pyramid 自检之前直接开拓 —— 但若 outline 是用户批过的,默认它过了
 - 不要把 `review_needed` 留空就交付 —— 除非真的零 fail
 - 不要把"完整结论句"写成口号("我们一定行") —— 结论要具体陈述/数字
 - 不要为单条 brief 派生上百页 —— 守住 `target_page_count`(合理边界 ≤ 50)
@@ -201,7 +220,7 @@ print('frontmatter OK:', fm['name'], fm['model'])
 
 ```bash
 cd /Users/pc2026/Documents/DevTools/KillPPTs
-for term in "Phase 1" "Phase 2" "checkpoint\|批准\|批准版" "ghost deck test" "draw.io 优先\|优先 draw.io" "review_needed" "3 轮" "action title"; do
+for term in "Phase 1" "Phase 2" "checkpoint\|批准\|批准版" "金字塔原理\|Pyramid 自检" "ghost deck test" "draw.io 优先\|优先 draw.io" "review_needed" "3 轮" "action title" "top_recommendation" "scqa"; do
   if grep -qE "$term" .claude/agents/iloveppt.md; then
     echo "OK: $term"
   else
@@ -271,7 +290,7 @@ description: pptx-deck 知识库 —— 11 个 layout 的主题(tech_blue)、bui
 
 当通过 `@agent-iloveppt` 派发时,上述 7 步分到两次 agent 派发里:
 
-- **Phase 1**(第 1 次派发) = 步骤 1 + 2 + 3(部分):读 brief → 图层规划 → 设计大纲(action title / Minto / ghost deck test)。**出完大纲即终止,等用户批准。**
+- **Phase 1**(第 1 次派发) = 步骤 1 + 2 + 3(部分):读 brief → 图层规划 → **按金字塔原理 5 件套设计大纲 + 跑 Pyramid 自检 7 项**。**出完大纲即终止,等用户批准。**
 - **Phase 2**(第 2 次派发,入参带已批准 outline) = 步骤 3(余) + 4 + 5 + 6 + 7:生成图 → 写 deck_plan.json → build.py → 视觉 QA 循环(≤ 3 轮)→ 交付。
 
 主线程 Claude 模式(直接读本 SKILL.md 跑)= 一气跑完 7 步,中间不强制 checkpoint。
@@ -366,7 +385,7 @@ iLovePPT 作为 Claude Code agent 部署:
 
 agent 两阶段:
 
-- **Phase 1**:解析 brief → 设计大纲(action title + Minto + ghost deck test)→ 规划图层 → 返回 outline 结构供你批准
+- **Phase 1**:解析 brief → **按金字塔原理 5 件套设计大纲**(单一顶端论点 / SCQA / 答案在前 / MECE / 纵向疑问链)→ Pyramid 自检 7 项 → 规划图层 → 返回 outline 结构供你批准
 - **Phase 2**(批准后):生成配图 → 写 deck_plan.json → 跑 build.py → 视觉自检(≤ 3 轮)→ 返回 `.pptx` 路径 + review-needed 清单
 
 把 agent 共享给别的项目:把本仓库的 `.claude/agents/iloveppt.md` 拷或软链到目标项目的 `.claude/agents/iloveppt.md`(同时需要 `skills/` 也可访问 —— 与现在的 skill 链接方式一致)。
@@ -465,7 +484,7 @@ grep -cE "^## " .claude/agents/iloveppt.md
    @agent-iloveppt 帮我做一份介绍 iLovePPT 项目的 5-8 页 PPT,受众:开发者,时长 10 分钟,输出 /tmp/iloveppt_intro.pptx
    ```
 
-2. **Phase 1 期望**:agent 返回 YAML(或 markdown)结构,含 `phase: 1` / `sections[]` / `diagram_plan[]` / `target_page_count` / `ghost_deck_test_passed`。**没有 .pptx 产出**。
+2. **Phase 1 期望**:agent 返回 YAML(或 markdown)结构,含 `phase: 1` / `top_recommendation` / `scqa` / `mece_check_passed` / `pyramid_check_passed` / `sections[]` / `diagram_plan[]` / `target_page_count` / `ghost_deck_test_passed`。**没有 .pptx 产出**;`pyramid_check_passed: false` 或 `missing_fields` 非空 → agent 反问而非交付。
 
 3. 看一眼 outline 合理就回:
    ```
@@ -519,7 +538,7 @@ git commit -m "docs: final consistency pass for iloveppt agent restructure"
 
 ## 完成标准
 
-- [ ] `.claude/agents/iloveppt.md` 存在,YAML frontmatter 合法,正文覆盖 Phase 1 / Phase 2 / checkpoint / ghost deck test / draw.io 优先 / review_needed / 3 轮上限
+- [ ] `.claude/agents/iloveppt.md` 存在,YAML frontmatter 合法,正文覆盖 Phase 1 / Phase 2 / checkpoint / **金字塔原理 5 件套 + Pyramid 自检 7 项** / ghost deck test / draw.io 优先 / review_needed / 3 轮上限
 - [ ] `skills/pptx-deck/SKILL.md` 顶部明确指向 `@agent-iloveppt` 为主入口,skill-mode 为后备
 - [ ] `skills/pptx-deck/workflow.md` 含"agent 模式下的运行差异"段
 - [ ] `README.md` / `USAGE.zh.md` / `CLAUDE.md` 主入口都改为 agent
