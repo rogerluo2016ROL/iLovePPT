@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**This is a navigation file** — high-level architecture + invariants live here; substantive protocol / handoff / gate rules are in linked specs.
+
 ## What this repository is
 
 iLovePPT is a **Claude Code skill library** — not a standalone application. The deliverable is the `skills/` directory: three skills (`pptx-deck`, `pptx`, `diagram`), each consisting of a `SKILL.md` entry doc, child `.md` docs, and Python helper modules. When installed into a project's `.claude/skills/`, Claude reads these docs at runtime to generate PowerPoint decks end-to-end.
@@ -38,36 +40,30 @@ No build step and no linter are configured.
 
 ## Architecture
 
-### Agent 层
+### Agent pipeline (5 agents + 1 bypass)
 
-`.claude/agents/` 是项目的 4 agent 流水线 + 1 旁路:
+`.claude/agents/` holds the runtime pipeline:
 
-| agent | 角色 | 何时派 |
-|---|---|---|
-| `iloveppt-brainstorm` | Stage A-B 收 brief + 素材 | 用户首次说"做 PPT" |
-| `iloveppt-author` | Stage C-D 出 outline + content | brainstorm 收齐后 |
-| `iloveppt`(builder) | Stage E 构建 .pptx + 视觉 QA 循环 | author 出 content.md 后 |
-| `iloveppt-audience` | 模拟受众读 deck 给评分 | builder 出 .pptx 后强制跑;评分 < 7 反馈给 author |
-| `iloveppt-template-extractor` | 旁路 · 提取 .pptx 模板 4 级 token | 用户给新 .pptx 模板时 |
+| agent | role |
+|---|---|
+| `iloveppt-brainstorm` | Stage A-B: collect brief + assets via dialog |
+| `iloveppt-author` | Stage C-D: produce outline.md + content.md |
+| `iloveppt-content-review` | 3rd-party audit: brief→content alignment + Pyramid (14 checks) |
+| `iloveppt` (builder) | Stage E: build .pptx + visual QA loop |
+| `iloveppt-audience` | Simulated audience review (9-point gate) |
+| `iloveppt-template-extractor` | Bypass: ingest .pptx template tokens |
 
-agent 设计见 `docs/superpowers/specs/2026-05-23-iloveppt-agent-design.md`。
+👉 **Runtime pipeline protocol (dispatch sequence, handoffs, gates, exit conditions)** — AI-readable, lives in `.claude/`: [`.claude/pipeline-protocol.md`](.claude/pipeline-protocol.md)
 
-### 主线程派发规则(v0.5.0 新规)
+👉 **Agent design rationale (human-readable, why we have N agents)**: [`docs/superpowers/specs/2026-05-23-iloveppt-agent-design.md`](docs/superpowers/specs/2026-05-23-iloveppt-agent-design.md)
 
-**主线程 Claude(你)在做 PPT 相关工作时,必须按下表派发,不允许自己干 agent 该干的事**:
+👉 **Markdown-first design (brief.md / outline.md / content.md schemas)**: [`docs/superpowers/specs/2026-05-23-iloveppt-v3-markdown-first.md`](docs/superpowers/specs/2026-05-23-iloveppt-v3-markdown-first.md)
 
-| 任务类型 | 谁干 | 原因 |
-|---|---|---|
-| 改 helpers.py / themes / build.py / pyproject / 加 tests | **主线程** | 系统改造需要 cross-file 一致性 + 完整 context |
-| 用户首次说"做 PPT" / 没有 brief | 派 **iloveppt-brainstorm** | 多轮对话收 brief,主线程不该自己脑补字段 |
-| 已有 brief,要出 outline / content | 派 **iloveppt-author** | content 拓写是独立 context 任务;主线程脑补容易跑偏 |
-| 已有 content.md,要构建 .pptx | 派 **iloveppt** (builder) | Pyramid 自检 + 视觉 QA 循环是 agent 内逻辑 |
-| .pptx 构建完,要评视觉 | 派 **iloveppt-audience** | 读者视角是新视角;**主线程的自检是作者视角,有盲区** |
-| 用户给新 .pptx 模板 | 派 **iloveppt-template-extractor** | 模板提取是独立 4 级 token 流程 |
+### Main thread dispatch rule (one-line summary)
 
-**反例(v0.4.0 失误)**:主线程自己重写了 claude-code-training 24 页 content + 自己跑 visual check。**应该派 author 写 content + 派 audience 评视觉**。
+When user signals "做 PPT" intent → main thread **must** `TeamCreate` and dispatch to agents (don't write brief / content / do visual QA yourself). When modifying repo code (helpers.py / themes / build.py / tests) → main thread does it directly (cross-file consistency).
 
-**例外**:如果用户明确说"你自己改"/"不用派 agent",尊重决定。
+Full table + reasoning: see [pipeline protocol §12](.claude/pipeline-protocol.md#12-主线程派发表v050-引入v051-扩展).
 
 ### Three-skill layering
 
@@ -85,7 +81,7 @@ The most important thing to understand: `build.py` is an **honest mechanical bui
 
 - **The seam is `deck_plan.json`**: `{theme, output, slides: [{layout, ...fields}]}`. Claude produces it; `build.py` consumes it.
 - **Content expansion** (brief → full per-page `deck_plan.json`) is a Claude-executed process documented in `content-writing.md` — not a Python function.
-- **Visual QA** (read rendered PNG → score against 12-point checklist → edit `deck_plan.json` → rerun `build.py`) is a Claude-executed process documented in `visual-qa.md` — not a Python function.
+- **Visual QA** (read rendered PNG → score against 17-point checklist → edit `deck_plan.json` → rerun `build.py`) is a Claude-executed process documented in `visual-qa.md` — not a Python function.
 
 When improving generation *quality*, edit the prompt docs (`content-writing.md`, `visual-qa.md`), not `build.py`.
 
@@ -126,4 +122,4 @@ Structural diagrams (flowcharts, architecture, matrices, decision trees, relatio
 
 - Commit messages use conventional commits with a scope: `feat(pptx-deck):`, `fix(pptx):`, `docs(diagram):`, `refactor:`, `test(pptx):`, `chore:`.
 - `pyproject.toml` sets `pythonpath = ["skills/pptx", "skills/pptx-deck"]`, so tests import `helpers` / `layout` / `themes.tech_blue` / `build` directly with no `sys.path` hacks. Non-test modules keep an idempotent `sys.path.insert` for direct script execution.
-- The design spec and implementation plan live in `docs/superpowers/specs/` and `docs/superpowers/plans/` — read them for the rationale behind the three-skill split and the per-page visual-QA loop.
+- Design specs live in `docs/superpowers/specs/`, implementation plans in `docs/superpowers/plans/`. The pipeline protocol spec (link above) is the authority for agent dispatch / handoff behavior.
