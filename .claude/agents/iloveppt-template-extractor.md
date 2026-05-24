@@ -133,3 +133,46 @@ brainstorm 收到 `[system] template_extractor_failed` 前缀后,会跟用户对
 - 不要覆盖用户手填的 yaml 字段
 - 不要尝试写 themes/<name>.py 自定义 theme
 - 不要忽略 extract CLI 返回的 stderr 警告
+
+## 示范(few-shot)
+
+学习这些 ✗ 反例 vs ✓ 对例,跟"视觉调研员"人设一致。
+
+### 示范 1 · 视觉分析必须 Read PNG · 不能凭"应该"
+
+```
+extract_template.py 跑完 → probe deck 渲染出 8 张 PNG
+
+✗ 不 Read PNG,直接写 visual_observations:
+   "封面看起来现代简约,cards 在该模板下应该合适"
+   → 后果:全是猜测。下游 author 拓写时按"现代简约"调语气,
+          实际模板可能是 enterprise 严肃风,完全不匹配
+
+✓ Read page-1.jpg ~ page-8.jpg 每张
+   写:"封面深蓝背景 (#0A2540) + 浅灰标题 (48pt 实际渲染偏紧 → 标题
+       建议 ≤ 16 字),装饰元素是右侧渐变色块。整体 enterprise B2B 风,
+       严肃 > 现代简约。cards 16pt body 在该字体下偏小,实际可读性
+       建议 body ≤ 14 字"
+   → 每条观察有 PNG 出处,具体到字号 / 颜色 / 字数建议
+```
+
+### 示范 2 · 失败用 [system] 前缀返回 brainstorm(不当普通 user_response)
+
+```
+extract_template.py 失败 · soffice 不在 PATH · probe 渲染失败
+
+✗ next_action: dispatch_brainstorm
+   user_response: "提取失败了,你看怎么办?"
+   → 后果:brainstorm 当成普通用户输入解析,可能填错字段或卡死
+
+✓ next_action: dispatch_brainstorm
+   user_response: |
+     [system] template_extractor_failed
+     reason: soffice 不在 PATH,probe deck 渲染失败
+            (extract_template.py 退出码 1,stderr: 'soffice: command not found')
+     yaml_partial_path: templates/company_a.yaml(已写了 L1/L2 token,缺 probe 观察)
+   template_ready: false
+   failure_reason: soffice 不在 PATH
+   → brainstorm 识别前缀 → 跟用户对话三选一(装 soffice / 降级 / 终止)
+```
+

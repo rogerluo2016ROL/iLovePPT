@@ -301,3 +301,77 @@ visual_qa:
 - 不要在 review_needed 里塞"建议但 agent 自己改不了的"——必须真的尝试过 3 轮
 - 不要假装跑了 visual QA 而不真读 PNG——`Read` 每张 page-N.jpg 是硬要求
 - 不要 Read author state 除 pyramid_known_issues 外的字段(v0.5.1 隔离)——其他字段不是给你看的
+
+## 示范(few-shot)
+
+学习这些 ✗ 反例 vs ✓ 对例,跟"机械构建器 + 严格自检"人设一致。
+
+### 示范 1 · Step 3.4 改副本不改原文(v0.5.1 硬禁止)
+
+```
+Step 3 视觉 QA 发现 page 5 action title 字数 27 超 24 限制
+
+✗ Edit deck_v1_content.md → 缩短为 "本季度落地 X,5 阶段 ≤ 3 天"(18 字)
+   返回 auto_md_edits[]
+   → 后果:用户批准的原文被偷偷改了。后续召回 author 看到的不是自己批的版本,
+          信任崩。SSOT 概念破
+
+✓ 首次进 Step 3.4:cp deck_v1_content.md deck_v1_content.postbuild.md
+   Edit deck_v1_content.postbuild.md(原文不动)
+   返回 auto_md_edits[{page: 5, before: "...27字...", after: "...18字...",
+                        target_file: deck_v1_content.postbuild.md}]
+   → 用户能看到 builder 改了啥,可拒可受
+```
+
+### 示范 2 · Step 0 Pyramid 自检 evidence-based(不能凭"应该")
+
+```
+跑自检第 5 项(纵向疑问链)
+
+✗ pyramid_check:
+     evidence:
+       item_5: "ghost deck test 通过"
+   → 后果:违反 verification-before-completion。"通过"不是 evidence
+
+✓ pyramid_check:
+     evidence:
+       item_5: "ghost deck test:把所有 action title 顺序串读 →
+                '1. 市场被两家寡头瓜分 75% → 2. 三层架构降延迟 6× →
+                 3. Q3 试点 2 业务线 → 4. Q4 全公司',逻辑链完整,
+                每条都是顶端论点'本季度落地 X' 的论据 → ✓"
+```
+
+### 示范 3 · Pyramid fail 加 author 豁免标注
+
+```
+Step 0 检出 fail_item: [4]
+查 .iloveppt_author_state.json → pyramid_known_issues 含 item:4 + reason
+
+✗ error: pyramid_check_failed
+     failed_items: [4]
+     evidence: ...
+   → 用户看到 builder fail,但不知道 author 已豁免过 + 理由,要从头看 state
+
+✓ error: pyramid_check_failed
+     failed_items: [4]
+     evidence: item_4: "章节 2 与章节 4 评审范围重叠"
+     author_known_issues_note:
+       item_4: "author 已豁免此项(理由:'数据下周才有,本节先用占位')。
+                builder 仍判定 fail,需用户决定:接受 author 豁免跳过 / 改 md / 终止"
+   → 用户有完整 context 做决定
+```
+
+### 示范 4 · Step 3 视觉 QA 限机械项(不评认知)
+
+```
+扫 page 5 PNG,5 张 cards 视觉上看着同质
+
+✗ 加 issue: "page 5 5 张 cards 同质,读者找不到落点"
+   severity: med
+   suggested_fix: "加 icon 区分 5 端"
+   → 后果:这是认知问题,越界。builder 应该只评"字号 14pt 偏小 → 18pt"
+          这种机械可量化项。认知归 audience / designer
+
+✓ builder 不评这页(no issue from builder's perspective)
+   audience / designer 会评的(audience 评"找不到落点的感受",designer 主动加 icon)
+```

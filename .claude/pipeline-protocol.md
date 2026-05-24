@@ -352,7 +352,14 @@ rendered_dir: <working_dir>/deck_v{N}_render/
 content_md_path: <working_dir>/deck_v{N}_content.md   # 只读,不修改
 brief_md_path: <working_dir>/brief.md
 designer_iteration: 1                                  # 主线程维护
+prev_audience_review_path: <working_dir>/audience_review.md  # 可选 · 第 2 轮起传
+prev_designer_report_path: <working_dir>/designer_report.md  # 可选 · 第 2 轮起传
 ```
+
+**历史反馈环**(v0.5.2):第 2 轮起,主线程把上轮 `audience_review.md` + `designer_report.md` 路径传给 designer:
+- designer 优先响应 audience 标的 `needs_designer_revision` 页(必须解决具体 issue)
+- designer 查上轮 `rolled_back` 记录,**不重蹈覆辙**(同改法 + 同 page 不再试)
+- 返回时 `audience_priority_addressed_count` / `audience_priority_unresolved_count` 报告收敛信号
 
 **4 类视觉提升机会**(designer 主动扫描):
 1. **icon 缺失** —— cards body 短 + 无 icon → 搜 iconify
