@@ -264,7 +264,27 @@ message_to_user: |
 **触发**:`state.stage == "D"`(或 stage="C" 但 approvals.outline=true 时自动转)。
 
 1. `Read` `<working_dir>/deck_v{N}_outline.md`(确认 frontmatter + 章节)
-2. **逐章拓写**(按 content-writing.md 11 layout 字数规则):
+2. **(v0.5.3 新)查 visual patterns library**(若存在):
+   - 检查 `<iloveppt_root>/library/visual-patterns/INDEX.md` 是否存在
+   - 存在 → Read INDEX.md 全文(给 LLM 选用)
+   - 对每个内容章节,**先想清楚 content intent**(2-3 关键词),按 INDEX 找最匹配 pattern
+   - 库大(50+ pattern)走 RAG:`Bash: python3 <iloveppt_root>/library/visual-patterns/search.py --query "<intent>" --category <process|cycle|...> --top-k 5 --format json`
+   - 找到匹配 → Read 对应 `patterns/<id>/pattern.yaml` 看 fallback_rendering
+   - **在 content.md 章节 layout 注释后嵌入** `<!-- pattern: <id> -->`,builder 看到会按 pattern 渲染:
+
+     ```markdown
+     ## 3. PDCA 持续改进
+     <!-- layout: cards -->
+     <!-- pattern: pdca-loop -->
+
+     - **Plan**: 定 Q3 目标
+     - **Do**: 试点 2 业务线
+     - **Check**: 周度复盘指标
+     - **Act**: 修正 / Q4 全公司
+     ```
+
+   - 若**没有合适 pattern** → 走原 11 layout(cards / compare / pic_text 等),**不要强行套**
+3. **逐章拓写**(按 content-writing.md 11 layout 字数规则):
    - 每节 1-3 内容页
    - 节奏感:≥3 连续相同 layout 才警告
    - 配图节:**先调工具出图**

@@ -564,5 +564,6 @@ how_to_resume: 跟主线程说"继续 deck <slug>",会从 stage X 续接
 - v0.5.0 引入"主线程派发规则"(本文第 12 节)
 - v0.5.1 引入各 handoff 细则(第 1-11 节)+ critic 双 gate(第 7 节,前身 content-review,后期演进为 partner critic 跑 Stage C/D 双轮 + 4 维度判断性评审)
 - v0.5.2 引入 designer 自动视觉优化(第 8.5 节)+ audience 反馈三类分流(needs_author_rewrite / needs_designer_revision / needs_theme_fix)
+- v0.5.3 引入 **Visual Patterns 知识库 + RAG**(`library/visual-patterns/`):author Stage D 拓写时 / designer Step 1 视觉扫描时,查 library 找最匹配 pattern;`<!-- pattern: <id> -->` 注释驱动 builder Step 1 渲染。详见 `library/visual-patterns/README.md`
 - 旧 v3 markdown-first 设计(brief.md → outline.md → content.md → deck_plan.json)继续沿用,见 `2026-05-23-iloveppt-v3-markdown-first.md`
 - agent 设计的整体 rationale 见 `2026-05-23-iloveppt-agent-design.md`

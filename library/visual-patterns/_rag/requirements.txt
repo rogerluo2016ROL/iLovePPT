@@ -1,0 +1,15 @@
+# Visual Patterns RAG · Python 依赖
+#
+# 安装:cd library/visual-patterns/_rag && pip install -r requirements.txt
+#
+# 首次运行 embed_text.py 会下载 BAAI/bge-small-zh-v1.5 模型(~100MB)
+# 缓存到 ~/.cache/huggingface/,后续运行直接复用
+
+sentence-transformers>=2.7.0    # 文本 embedding(BGE 中文模型)
+sqlite-vec>=0.1.0               # sqlite 向量扩展(轻量,无需独立服务)
+pyyaml>=6.0                     # 读 pattern.yaml
+
+# Phase 3 · 多模态(CLIP 图像 embedding)· 当前 stub,暂不安装
+# open-clip-torch>=2.20.0
+# torch>=2.0.0
+# pillow>=10.0.0

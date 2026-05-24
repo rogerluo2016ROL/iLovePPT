@@ -1162,6 +1162,10 @@ T+22m    主线程写 STATUS.md(quality_grade: A)
 | Agent eval 5 维评分标准 | `evals/agents/score_rubric.md` |
 | Agent eval 手动 runner | `evals/agents/runners/manual_runner.md` |
 | Agent eval 5 个 fixture | `evals/agents/fixtures/` |
+| **Visual Patterns 知识库(v0.5.3 新)** | `library/visual-patterns/README.md` |
+| Visual Patterns INDEX(LLM 友好语义索引) | `library/visual-patterns/INDEX.md` |
+| Visual Patterns RAG 检索 CLI | `library/visual-patterns/search.py` |
+| Visual Patterns ingest 流程(怎么入库) | `library/visual-patterns/ingest_workflow.md` |
 
 ---
 

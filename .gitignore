@@ -40,3 +40,16 @@ _assets/
 decks/*/deck_v*.pptx
 decks/*/deck_v*_render/
 decks/*/.~*
+
+# library/visual-patterns/ RAG 生成产物(由 _rag/embed_text.py 重生)
+library/visual-patterns/_rag/text.sqlite
+library/visual-patterns/_rag/image.sqlite
+library/visual-patterns/_rag/.cache/
+
+# library/visual-patterns/patterns/*/preview.png 是 pattern 资产,**保留**
+!library/visual-patterns/patterns/*/preview.png
+# library/visual-patterns/_source_inspiration/ 用户上传的 .pptx 模板可能含机密 → 不入 git
+library/visual-patterns/_source_inspiration/*.pptx
+library/visual-patterns/_source_inspiration/*.pdf
+# 但保留用户给的 .png 截图作为入库参考(无版权风险且文件小)
+!library/visual-patterns/_source_inspiration/*.png

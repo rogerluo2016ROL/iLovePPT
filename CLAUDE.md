@@ -62,6 +62,8 @@ pdftoppm -jpeg -r 120 /tmp/<file>.pdf /tmp/slide
 
 👉 **agent 工作原理(给人看,系统怎么跑)**:[`docs/agent-internals.zh.md`](docs/agent-internals.zh.md)
 
+👉 **Visual Patterns 知识库(v0.5.3 新)**:[`library/visual-patterns/README.md`](library/visual-patterns/README.md) —— RAG + INDEX.md 双路检索,agent 拓写 / 加视觉时可查 library 找最匹配 pattern
+
 ### 主线程派发规则(一句话总结)
 
 用户表达"做 PPT"意图时 → 主线程**必须** `TeamCreate` 建 team 并派 agent(**不要**自己写 brief / 写 content / 跑视觉 QA)。改仓库代码(helpers.py / themes / build.py / tests)时 → 主线程直接干(跨文件一致性)。
