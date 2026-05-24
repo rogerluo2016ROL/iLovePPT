@@ -1158,6 +1158,10 @@ T+22m    主线程写 STATUS.md(quality_grade: A)
 | 设计 token(SSOT 源头) | `skills/pptx/helpers.py` |
 | 仓库架构 / 三层职责区分(.claude / skills / docs) | `CLAUDE.md`(根目录,导航) |
 | 用户操作手册(v0.5.1 流程) | `docs/MANUAL.zh.md` |
+| **Agent eval 框架(量化 prompt 改动效果)** | `evals/agents/README.md` |
+| Agent eval 5 维评分标准 | `evals/agents/score_rubric.md` |
+| Agent eval 手动 runner | `evals/agents/runners/manual_runner.md` |
+| Agent eval 5 个 fixture | `evals/agents/fixtures/` |
 
 ---
 
