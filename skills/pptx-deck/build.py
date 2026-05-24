@@ -22,11 +22,11 @@ for _p in [str(HERE.parent / "pptx"), str(HERE)]:
 
 import helpers as H
 from themes import tech_blue as _tech_blue
-from themes import template_a as _template_a
+from themes import template_training as _template_training
 
 THEMES: dict[str, ModuleType] = {
     "tech_blue": _tech_blue,
-    "template_a": _template_a,
+    "template_training": _template_training,
 }
 
 # 需要页脚 + 页码的 layout(规范:visual-qa.md §页脚 / 页码完整性)。
@@ -34,6 +34,7 @@ THEMES: dict[str, ModuleType] = {
 FOOTERED_LAYOUTS: frozenset[str] = frozenset({
     "toc", "single_focus", "compare", "compare_pk", "matrix_2x2", "cards",
     "bullet_list", "table", "pic_text", "summary",
+    "timeline_band_3", "tri_pyramid_4sub_3", "cards_flag_3",
 })
 
 
