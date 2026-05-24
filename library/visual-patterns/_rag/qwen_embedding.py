@@ -19,8 +19,8 @@ Schema(sqlite-vec):
     text_emb       · id (PK,vec0) · embedding FLOAT[1152]
     image_emb      · id (PK,vec0) · embedding FLOAT[1152]
 
-(文件名 qwen_embedding.py 保留以避免 cross-file import 重写;实际用的是
-通义 tongyi-embedding-vision-plus 模型,跟 qwen3-vl-embedding 同属 Qwen 系列。)
+(文件名 qwen_embedding.py 保留以避免 cross-file import 重写;实际默认模型是
+通义 tongyi-embedding-vision-plus,跟 Qwen 同属阿里通义系列,可通过 .env 切换。)
 """
 
 from __future__ import annotations
@@ -97,7 +97,7 @@ def _post_json(payload: dict, api_key: str, timeout: int = 30) -> dict:
 
 
 def embed_text(text: str, *, api_key: str | None = None, retry: int = 3) -> list[float]:
-    """调用 qwen3-vl-embedding embed 一段文本,返回 2560 维向量。"""
+    """调用多模态 embedding API embed 一段文本,返回 EMBED_DIM 维向量(默认 1152)。"""
     api_key = api_key or get_api_key()
     payload = {"model": MODEL, "input": {"contents": [{"text": text}]}}
     last_err = None
@@ -113,7 +113,7 @@ def embed_text(text: str, *, api_key: str | None = None, retry: int = 3) -> list
 
 
 def embed_image(image_path: Path | str, *, api_key: str | None = None, retry: int = 3) -> list[float]:
-    """调用 qwen3-vl-embedding embed 一张本地图像,返回 2560 维向量。
+    """调用多模态 embedding API embed 一张图像,返回 EMBED_DIM 维向量(默认 1152)。
 
     image_path 可为本地路径(自动 base64)或公网 URL(以 http:// / https:// 开头)。
     """

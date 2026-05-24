@@ -20,7 +20,7 @@
     - DASHSCOPE_API_KEY env var 或 _rag/.env 文件
 
 向量来源:
-    _rag/patterns.sqlite · text_emb + image_emb 两表(qwen3-vl-embedding · dim 2560)
+    _rag/patterns.sqlite · text_emb + image_emb 两表(模型 / dim 由 .env 决定,默认 tongyi-embedding-vision-plus · dim 1152)
 索引建立:
     .venv/bin/python _rag/embed_text.py    # text 入库
     .venv/bin/python _rag/embed_image.py   # image 入库(只 embed 有 preview.png 的)
