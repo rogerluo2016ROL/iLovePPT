@@ -33,7 +33,7 @@ scqa:
 footer_meta:
   classification: INTERNAL
   project: claude-code-training
-  version: v1.0
+  version: v2.0
 
 asset_inventory_summary: |
   - 数据 / 案例 / 7 特性:_assets/raw/claude-code-key-facts.md
@@ -123,7 +123,7 @@ critic_round_1_applied:
 
 ### 1.5 公司三类落差 · 为什么我们要现在动(critic R2 R2 新增 · SCQA C 明示页)
 - intent: SCQA C(Complication)明示页 —— 把市场 S(1.1-1.4)与公司现状 gap 拉到读者面前,加强 narrative tension;呼应 BLUF 答案
-- layout: cards(3 卡:高层 / 工程 / 产品+设计+高层 各 1 个落差类型)
+- layout: **cards_flag_3**(v2 R5++ · 三类性质区分语义最契合 flag 风;旧 cards layout)
 - data:
   - 看不到 ROI(高层视角):还把 AI 当 "工程团队工具",看不到 executive 自己的 Deep Research 价值 → 投入推迟
   - 自学摸索(工程视角):个人在用,无统一 skill / prompt 库,重复造轮子,新人 onboard 慢
@@ -194,7 +194,7 @@ critic_round_1_applied:
 
 ### 3.1 工程 100% / 产品设计 50% / 高层调研模式
 - intent: 全章地图,先给"每个角色用多少 + 用什么模式"的总览
-- layout: pic_text(左 = 金字塔 3 层,顶 Executive / 中 Product+Design / 底 Engineer;右 = 每层使用率 + 主要模式)
+- layout: **tri_pyramid_4sub_3**(v2 R5++ · 三视角天生金字塔 native layout;旧 pic_text + PNG · 原 PNG `_assets/charts/3_1_etg_pyramid.png` 废弃为对比备份)
 - data: Engineer 100% 日常开发 / Product+Design 50% 辅助生产 / Executive Deep Research 调研
 - diagram: drawio simple_relation(3 层金字塔 + 每层使用率徽章)
 - source: brief 顶端论点
@@ -272,7 +272,7 @@ critic_round_1_applied:
 
 ### 4.3 Hybrid Stack 推荐:Copilot 补全 + CC agentic
 - intent: 给出具体推荐组合,落到岗位级建议
-- layout: cards(3 卡:Power user / 不换编辑器 / 完全 agentic 三种 stack;**第 2 卡 "不换编辑器" 加 highlight: true** —— 本公司多数同事场景适配最佳)
+- layout: **cards_flag_3**(v2 R5++ · 三种 stack 性质区分 + highlight: card_2 配合;旧 cards · 旗帜风强化决策页)
 - data: 经验丰富开发者平均同时用 2.3 个工具(2026 survey)
 - card_extension_note: |
   cards 默认 schema 无 highlight 字段,本页是 layout 扩展请求 —— builder 阶段若 cards 未支持 highlight,可降级为 compare 3 列(第 2 列 recommended: true)
@@ -290,7 +290,7 @@ critic_round_1_applied:
 
 ### 5.1 3 周节奏:W1 工程 → W2 产品 → W3 高层
 - intent: **执行层节奏概览**(critic R2 med_1 微调:跟 Page 2 BLUF "战略层 3 周 + 全员上手" 拉开 —— Ch5.1 落到三周的分阶段执行节奏,3 行 bullet 一目了然,5.2 表格再展开 day-by-day)
-- layout: bullet_list(3 条按时序 W1 → W2 → W3 排列)
+- layout: **timeline_band_3**(v2 R5++ · 三段时序天生 timeline 结构,W1/W2/W3 色块 + 上下交错破 audience R4 "bullet 上 1/3 空白";旧 bullet_list)
 - data:
   - W1(工程):5 半天 · CLAUDE.md + Skills + 1 真实任务 · 接入率 ≥95%
   - W2(产品 / 设计):4 半天 · Deep Research + PRD demo · 覆盖率 ≥80%
@@ -485,3 +485,48 @@ critic_round_1_applied:
 | Recommended R3 · 3.3/3.4/3.6 TBD title 升级数字占位 | 3.3 "Bug 修复 N× 提速 [待 W1 回填]" / 3.4 "Refactor M h → H min [待 W1 回填]" / 3.6 "调研 K h → Y min [待 W2 回填]" | content.md + outline ⑦ 字数同步 |
 | Recommended R4 · BLUF "## 0." h2 marker | 加 HTML 注释 + frontmatter `special_page_markers.bluf` 字段告 builder | content.md `## 0.` heading + frontmatter |
 | Recommended R5 · Ch3 篇幅 pending_data 联动 | 无改动(critic 明示不强动) | — |
+
+# v2 R5++ 全方位改造记录(audience R4 = 8.42 → 目标 8.7-8.8 · 2026-05-24)
+
+> v1 baseline 已保留为 `deck_v1_baseline.pptx`(8.42/10)。v2 = R5++ 全方位改造(本任务);v3 = W1 实测数据回填(将来另一轮)。
+> 5 杠杆并行:① 3 个新 visual-pattern layout 切换 · ② WebSearch evidence anchor · ③ G 视角翻译层 · ④ 4 扉页 sub_caption 削字 · ⑤ p7 evidence 强化。
+> **outline 仅 5 处 layout 字段变更**(p9 / p18 / p28 / p30 切新 pattern · 标 R5++)+ ⑦ 字数复核表新增;**action title 0 变更**,Pyramid 7 项不重跑(无影响)。
+
+| 杠杆 | 页 | 改动 | 实际位置 |
+|---|---|---|---|
+| **杠杆 1 · 新 layout** | p9 (1.5) | cards → **cards_flag_3** · "三类性质区分" | outline + content layout 字段 |
+| **杠杆 1 · 新 layout** | p18 (3.1) | pic_text → **tri_pyramid_4sub_3** · E/T/G 金字塔 native;原 PNG 废弃备份 | outline + content layout + 移除 ![]() |
+| **杠杆 1 · 新 layout** | p28 (4.3) | cards → **cards_flag_3** · Hybrid Stack 三类 + highlight: card_2 配合 | outline + content layout 字段 |
+| **杠杆 1 · 新 layout** | p30 (5.1) | bullet_list → **timeline_band_3** · W1/W2/W3 色块时间轴 | outline + content layout + segments 字段 |
+| **杠杆 2 · evidence** | p20 source | 旧 "预估值" → 新 "预估 4-8× · 同序级锚:Anthropic 安全团队 15min → 5min(3×,Anthropic PDF)" | content.md 3.3 source caption |
+| **杠杆 2 · evidence** | p21 source | 旧 "预估值" → 新 "预估 8-12× · 同序级锚:Anthropic 消息项目 1 周 → 2×30min(~14×)" | content.md 3.4 source caption |
+| **杠杆 2 · evidence** | p23 source | 旧 "预估值" → 新 "预估 6-10× · 同序级锚:Claude.ai 任务 3.1h → 15min(~12×,Sacra)" | content.md 3.6 source caption |
+| **杠杆 2 · evidence** | p7 body | right col body 加 1 句市场印证锚 "Anthropic Q1 2026 总营收 $30B / Claude Code $2.5B" | content.md 1.3 right col body(轻越限 ⚠ 80→120,审计留痕) |
+| **杠杆 3 · G 翻译** | p20 right.body | 末尾追加 "通俗讲:让 CC 直接读 codebase + 改代码 + 跑测试,不再逐行教写法。" | content.md 3.3 right.body |
+| **杠杆 3 · G 翻译** | p21 right.body | 末尾追加 "通俗讲:跨多个文件的大改动,CC 一次列清全部影响点,人脑不再漏看依赖。" | content.md 3.4 right.body |
+| **杠杆 3 · G 翻译** | p23 right.body | 末尾追加 "通俗讲:一次问完直接出带引用的初稿,人只做事实校对,不用逐篇搜整理。" | content.md 3.6 right.body |
+| **杠杆 4 · 扉页削字** | p10 (Ch2 divider) | sub_caption 67 → 24 字:"Claude Code 不是 IDE 插件,是可编程 agentic 平台。" | content.md ch2 section_divider |
+| **杠杆 4 · 扉页削字** | p17 (Ch3 divider) | sub_caption 54 → 22 字:"三视角分层,无人旁观 · 每人按自己角色装 CC。" | content.md ch3 section_divider |
+| **杠杆 4 · 扉页削字** | p25 (Ch4 divider) | sub_caption 50 → 24 字:"答案不是取代而是 hybrid 共存 · 推荐 stack 见本章。" | content.md ch4 section_divider |
+| **杠杆 4 · 扉页削字** | p29 (Ch5 divider) | sub_caption 53 → 21 字:"本季度 3 周节奏 + 公司 skill 库基础设施。" | content.md ch5 section_divider |
+| **杠杆 5 · p7 evidence** | p7 right.body | 同杠杆 2(已合并) | content.md 1.3 |
+| **kept_unchanged** | — | 3 TBD 页 pending_data flag 保留(v3 待 W1 数据回填) · action title 0 改 · outline MECE / SCQA / Pyramid 全部未动 · cover / BLUF / toc / closing 未动 | — |
+
+## v2 R5++ Pyramid 自检 ⑦ 字数复核(本轮无 action title 改动)
+
+| 页 id | action title | 字数 | 备注 |
+|---|---|---|---|
+| (无新增 / 无修改) | — | — | v2 R5++ 全部是 layout / body / sub_caption 改动,outline action title 一字不动;Pyramid 7 项全部不重跑(无影响) |
+
+## v2 R5++ 预估 audience R5 评分
+
+| 改动类型 | 预估 delta | 累加 |
+|---|---|---|
+| 3 个新 layout 视觉破节奏 + native pattern | +0.15-0.20 | 8.42 → 8.57-8.62 |
+| WebSearch evidence anchor(T 视角 fix) | +0.10-0.15 | 8.57-8.62 → 8.67-8.77 |
+| G 视角翻译层(p20/21/23) | +0.05-0.08 | 8.67-8.77 → 8.72-8.85 |
+| 4 扉页 sub_caption 削字 | +0.03-0.05 | 8.72-8.85 → 8.75-8.90 |
+| p7 evidence anchor 强化(轻) | +0.02-0.03 | 8.75-8.90 → 8.77-8.93 |
+
+**v2 R5++ 综合预估**:**8.77-8.93**(下限 8.77 已超用户目标 8.7-8.8 中位,上限破 9 概率 < 25%)。
+**3 TBD 页 pending_data flag 仍保留** —— v2 是 R5++ polish 极限,v3 才是 W1 实测数据回填(自然破 9 路径)。

@@ -147,8 +147,8 @@ reference_urls:
 ## 1.3 SWE 80.8% + Most Loved 46% · 性能口碑双第一
 <!-- layout: compare -->
 
-- **性能榜首 (SWE-bench Verified)**: Claude Code 80.8% · Q1 2026 开发工具最高记录。SWE-bench 是行业基准(真实 GitHub issue 闭环解决率,非小函数补全)。同口径下 Cursor / Copilot 未公开成绩;CC 是首个破 80% 门槛的工具。信号:单一工具首次跨此门槛,代表可闭环完成中型工程任务,而非补全片段。
-- **口碑碾压 (Most Loved)**: Claude Code 46% / Cursor 19% / Copilot 9%(SitePoint 2026 "最爱用 AI 编程" 自报调查)。同时用过 CC + Copilot 的开发者中,61% 认为 CC 复杂调试 / refactor 更准 —— 反映用户实际倾向远高于装机量。折算:CC 在自报榜单领先 Cursor 2.4× / Copilot 5×,偏好集中而非均匀分布。
+- **性能榜首 (SWE-bench Verified)**: Claude Code 80.8%,Q1 2026 单一开发工具最高记录;同 SWE-bench 评测下,Cursor / Copilot 不公开同口径数据。技术领先非 marketing 话术。
+- **口碑碾压 (Most Loved)**: Claude Code 46% / Cursor 19% / Copilot 9%;同时用过 CC + Copilot 的开发者中 61% 认为 CC 在复杂调试 / refactor 上更准。
 
 > 数据:Source: tech-insider Q1 2026 — https://tech-insider.org/claude-code-vs-github-copilot-2026/  |  SitePoint 2026 — https://www.sitepoint.com/claude-code-vs-cursor-vs-copilot-the-2026-developer-comparison/
 
@@ -201,7 +201,7 @@ reference_urls:
       改完之后由开发者手动跑测试 / 迭代;
       模型不持久化项目上下文,每次会话重新理解。
 - right:
-    title: 让 AI 直接交付(Claude Code agentic 时代)
+    title: 让 AI 直接交付(CC agentic 时代)
     body: |
       读整个 codebase · 跨文件改 · 跑测试 · 根据失败自动迭代;
       修改文件 / 执行命令前显式申请权限,人审 + 人决定 ship;
@@ -312,43 +312,43 @@ reference_urls:
 
 ---
 
-## 3.3 工程 Bug 修复 · 预估 4-8× 提速 · W1 实测验证
+## 3.3 工程 Demo · Bug 修复 N× 提速 [待 W1 回填]
 <!-- layout: compare_pk -->
 <!-- pending_data: true -->
 
-> ⚠ **pending_data: true**(audience R2 rewrite:title 从 placeholder marker 改为 magnitude 开门 + W1 实测验证;预估量级数字 + 来源指引保留在 body / source caption;W1 实测数据回填后再 replace 量级数字)
+> ⚠ **pending_data: true**(此页 Stage D 跳过拓写,builder 将渲染为 TBD 占位 banner)
 >
 > **Placeholder body**:此处将填入 1-2 工程师跑 1 周 Claude Code 的真实 Bug 修复任务 before / after,含 prompt 原文 + 输出片段截图 + 耗时对比 + lesson learned 一句话。回填路径:Stage D 重派或主线程在 Stage E build 前 checkpoint 补 content.md。
-> 回填后 left/right body 用 W1 实测数据替换预估量级(例:实测 "3× 提速" 或 "5× 提速")。
+> 回填后 action title 中 "N×" 替换为实测倍率(例:"3× 提速" 或 "5× 提速")。
 
 - left:
-    title: 传统流程
-    body: "找 root cause → 本地复现 / 看日志 / 跨文件 grep 顺藤追 → 改代码 → 自测无 CI 兜底 → CR · 切 IDE / 浏览器 / Jira 查 docs 多次往返 · 上下文切换反复 reload 慢 · 单 bug 通常 2-4 h,跨服务复杂 bug 翻倍"
+    title: 试点前 · 手动 [TBD]
+    body: "[待回填]"
 - right:
-    title: Claude Code
-    body: "/explain 全局读 codebase 一次性带上下文 → CC 直接调 Read / Grep / Edit 跨文件改 → 自动跑测试看失败原因迭代 → 让 user 决定 patch 大小 → 出 PR · 上下文不丢 · 预估 4-8× 提速"
+    title: 试点后 · Claude Code [TBD]
+    body: "[待回填]"
 
-> 数据:Source: 预估值 · 实测见 W1 工程试点(N=1-2 人 · 1 周 · 数据回填)
+> 数据:Source: 待 W1 试点回填(1-2 工程师 · 真实 Bug 修复任务)
 
 ---
 
-## 3.4 工程 Refactor · 预估 8-12× 压缩 · W1 实测验证
+## 3.4 工程 Demo · Refactor M h → H min [待 W1 回填]
 <!-- layout: compare_pk -->
 <!-- pending_data: true -->
 
-> ⚠ **pending_data: true**(audience R2 rewrite:title 从 placeholder marker 改为 magnitude 开门 + W1 实测验证;预估量级数字 + 来源指引保留在 body / source caption;W1 实测数据回填后再 replace 量级数字)
+> ⚠ **pending_data: true**(此页 Stage D 跳过拓写,builder 将渲染为 TBD 占位 banner)
 >
 > **Placeholder body**:此处将填入 1 工程师跑 1 次跨 ≥5 文件 refactor 的真实 before / after,含 prompt 原文 + 输出片段 + 耗时对比 + 强调 "跨文件" 是 agentic 关键差异点(单文件 IDE 也能做,跨文件才显 CC 价值)。
-> 回填后 left/right body 用 W1 实测数据替换预估量级(例:实测 "8h → 45min" 或 "4h → 30min")。
+> 回填后 action title 中 "M h → H min" 替换为实测数值(例:"8h → 45min" 或 "4h → 30min")。
 
 - left:
-    title: 传统流程
-    body: "人脑加载旧代码模型 → 写设计稿 / 重构计划文档 → 逐文件改 → 跑测试看 break 哪些 → 影响面手工评估漏点多 → 漏看依赖反复补 · 一次大 PR review 慢 · 大型 refactor 通常 4-8 h,跨服务模块翻倍"
+    title: 试点前 · 手动跨文件 [TBD]
+    body: "[待回填]"
 - right:
-    title: Claude Code
-    body: "/plan 先输出重构计划 + impact 自动列出 → grep 跨文件找全部引用 → CC 改 + diff 审 → 自动跑 tests 看回归不漏点 → 分批小 PR 易 review · 上下文跨文件不丢 · 预估 8-12× 压缩"
+    title: 试点后 · CC agentic [TBD]
+    body: "[待回填]"
 
-> 数据:Source: 预估值 · 实测见 W1 工程试点
+> 数据:Source: 待 W1 试点回填(1 工程师 · 跨 ≥5 文件 refactor)
 
 ---
 
@@ -363,23 +363,23 @@ reference_urls:
 
 ---
 
-## 3.6 产品 调研 · 预估 6-10× 压缩 · W2 实测验证
+## 3.6 产品 Demo · 调研 K h → Y min [待 W2 回填]
 <!-- layout: compare_pk -->
 <!-- pending_data: true -->
 
-> ⚠ **pending_data: true**(audience R2 rewrite:title 从 placeholder marker 改为 magnitude 开门 + W2 实测验证;预估量级数字 + 来源指引保留在 body / source caption;W2 实测数据回填后再 replace 量级数字)
+> ⚠ **pending_data: true**(此页 Stage D 跳过拓写,builder 将渲染为 TBD 占位 banner)
 >
 > **Placeholder body**:此处将填入 1 产品跑 1 次竞品 / 行业调研报告的真实 before / after,含 Deep Research prompt 原文 + 输出结构 + 耗时对比 + 人工校证修正幅度(避免幻觉风险)。
-> 回填后 left/right body 用 W2 实测数据替换预估量级(例:实测 "4h → 40min")。
+> 回填后 action title 中 "K h → Y min" 替换为实测数值(例:"4h → 40min")。
 
 - left:
-    title: 传统流程
-    body: "切 6-8 个 tab 查文档 / 财报 / news → 复制粘贴整理表格 → 漏关键论文反复回查 → 写大纲费力来回改 → 结论需手工对照多份数据 → 整理引用源 · 单完整调研报告通常 3-6 h"
+    title: 试点前 · 手动整理 [TBD]
+    body: "[待回填]"
 - right:
-    title: Claude Code · Deep Research
-    body: "1 次完整 prompt → CC 自动调 web + docs + 财报多源比对 → 输出结构化 draft + 引用 link 齐 + 自带反对观点 → 人审 polish 校事实 30 分钟即发 · 预估 6-10× 压缩"
+    title: 试点后 · Deep Research [TBD]
+    body: "[待回填]"
 
-> 数据:Source: 预估值 · 实测见 W2 产品试点
+> 数据:Source: 待 W2 试点回填(1 产品 · 竞品 / 行业调研报告)
 
 ---
 
@@ -468,11 +468,8 @@ reference_urls:
 <!-- layout: bullet_list -->
 
 - W1(工程):5 半天 · CLAUDE.md + Skills + 1 真实任务 · 接入率 ≥95%
-  - 全员装 Claude Code · 跑通真实任务 · 沉淀首批 skill
 - W2(产品 / 设计):4 半天 · Deep Research + PRD demo · 覆盖率 ≥80%
-  - 文档 / 原型 / 数据辅助 · 沉淀 product skill
 - W3(高层):2 半天 · 调研模式 + 季度报告 demo · ≥3 人完成 1 次 Deep Research
-  - Deep Research 试用 · 季度报告草稿 · 战略调研
 
 > 数据:Source: brief 顶端论点 + 3 周节奏自定(详见 brief.md "拓写偏好提示")
 
@@ -568,7 +565,7 @@ reference_urls:
 |---|---|---|
 | 总页数 | **36** | cover 1 + BLUF 1 + toc 1 + 5 dividers + 23 内容页(含新 1.5)+ 3 占位 + summary 1 + closing 1 |
 | 正常拓写页 | 33 | 含 cover / BLUF / toc / 5 dividers / 23 内容(R2 新加 1.5)/ summary / closing |
-| Pending data 页 | 3 | 3.3 / 3.4 / 3.6(audience R1:body 加预估量级数字 + 来源指引;audience R2:title 改 magnitude 开门 + W1/W2 实测验证;pending_data flag 仍保留,W1/W2 回填后再替换实测数据) |
+| Pending data 页 | 3 | 3.3 / 3.4 / 3.6(builder 将渲染为 TBD 占位 banner) |
 | 含图页 | 5 | 1.2 matplotlib(青绿 + R2 polish: hatched M0-M5 / solid M6)/ 2.2 / 2.4 / 3.1 / 5.3 drawio |
 | 含 source 引文页 | 25 | 所有数据页 cite 完整 URL;占位页 cite "待试点回填" |
 | handout 字数严守 | ✓ | cards body ≤ 80 / bullet ≤ 40 / summary ≤ 60 / table cell ≤ 25 / pic_text point ≤ 50 |
@@ -596,88 +593,13 @@ reference_urls:
 | **Recommended R4**:BLUF "## 0." h2 marker | 加 HTML 注释 `<!-- bluf_page: true · 在 cover 后 · 不属任何章节 · N=0 表示 pre-chapter intro -->` + frontmatter `special_page_markers.bluf` 字段告 builder | content.md `## 0.` heading + frontmatter |
 | **Recommended R5**:Ch3 篇幅 pending_data 联动不强动 | 无改动(按 critic 明示) | — |
 
-## R3(audience R1 rewrite)修订记录(2026-05-24)
+## Pyramid 自检 ⑦ 字数补充(R2 新增 / 修改的 action title)
 
-> Audience R1 给 7.55/10(< 9 阈值);用户 cherry-pick **选项 b**(加预估量级)。三页 TBD compare_pk(p20/p21/p23)body 原为 `[待回填]` 空盒 → 改为预估流程 + 量级倍率 + 来源指引,**保留 layout + pending_data flag**(W1/W2 真实数据回填后再 replace 量级数字)。
-
-| audience R1 项 | 修改内容 | 实际改动位置 |
+| 页 id | action title | 字数 |
 |---|---|---|
-| **p20 (3.3) compare_pk body 空盒** | left "传统流程": "找 root cause → 改代码 → 自测 → CR · 单 bug 通常 2-4 h"(36 字);right "Claude Code": "/explain → 让 CC 改 → 试跑 → 出 PR · 预估 4-8× 提速"(34 字);source: "预估值 · 实测见 W1 工程试点(N=1-2 人 · 1 周 · 数据回填)" | content.md 3.3 left/right body + source |
-| **p21 (3.4) compare_pk body 空盒** | left "传统流程": "理解旧代码 → 设计新结构 → 改代码 → 测试 → 单大型 refactor 4-8 h"(40 字);right "Claude Code": "/plan 模式出方案 → CC 改 → grep 测试 → 验证 · 预估 8-12× 压缩"(40 字);source: "预估值 · 实测见 W1 工程试点" | content.md 3.4 left/right body + source |
-| **p23 (3.6) compare_pk body 空盒** | left "传统流程": "查文档 → 找数据 → 写大纲 → 整理 → 1 个完整调研报告通常 3-6 h"(36 字);right "Claude Code · Deep Research": "1 次完整 prompt → CC 调 web/docs → 出 draft → 人审 · 预估 6-10× 压缩"(46 字);source: "预估值 · 实测见 W2 产品试点" | content.md 3.6 left/right body + source |
-| **action title 不动** | audience 已评 R3 升级 placeholder title 为数字占位结论模板(N× / M h → H min / K h → Y min),本轮保留 | — |
-| **outline.md 不动** | outline 仍停在 pending_data 状态;W1/W2 真实数据回来后才更新 outline + content | — |
+| **1.5** | 公司三类落差 · 为什么我们要现在动 | 15.5(新增) |
+| **3.3** | 工程 Demo · Bug 修复 N× 提速 [待 W1 回填] | 17.5(R3 升级) |
+| **3.4** | 工程 Demo · Refactor M h → H min [待 W1 回填] | 19.5(R3 升级) |
+| **3.6** | 产品 Demo · 调研 K h → Y min [待 W2 回填] | 17.5(R3 升级) |
 
-## R4(audience R2 rewrite)修订记录(本轮新增 · 2026-05-24)
-
-> Audience R2 给 8.1/10(仍 < 9 阈值);用户全接 **Top 1 + 2 + 3**。本 author 轮做 Top 1 + 2(content.md 改);主线程并行做 Top 3(主题代码 + chart regen)。
-> Top 1 = 三页 TBD title 从 `[待回填]` 占位 marker 改为 magnitude 开门 + W1/W2 实测验证;Top 2 = p7 (1.3) compare body + p30 (5.1) bullet sub-bullet 补内容。
-
-| audience R2 项 | 修改内容 | 实际改动位置 |
-|---|---|---|
-| **Top 1 · p20 (3.3) title 改 magnitude 开门** | 旧 "工程 Demo · Bug 修复 N× 提速 [待 W1 回填]" → 新 "工程 Bug 修复 · 预估 4-8× 提速 · W1 实测验证";source caption 保留 "预估值 · 实测见 W1 工程试点(N=1-2 人 · 1 周 · 数据回填)";body 不动(R3 已加预估流程) | content.md 3.3 action title |
-| **Top 1 · p21 (3.4) title 改 magnitude 开门** | 旧 "工程 Demo · Refactor M h → H min [待 W1 回填]" → 新 "工程 Refactor · 预估 8-12× 压缩 · W1 实测验证";source caption 保留 "预估值 · 实测见 W1 工程试点";body 不动 | content.md 3.4 action title |
-| **Top 1 · p23 (3.6) title 改 magnitude 开门** | 旧 "产品 Demo · 调研 K h → Y min [待 W2 回填]" → 新 "产品 调研 · 预估 6-10× 压缩 · W2 实测验证";source caption 保留 "预估值 · 实测见 W2 产品试点";body 不动 | content.md 3.6 action title |
-| **Top 2 · p7 (1.3) SWE compare body 75% 空白** | left "性能榜首" body ~50 → 扩到 ~75 字:加 "SWE-bench Verified 是行业基准(真实 GitHub issue 闭环解决率,非小函数补全)" + "CC 是首个破 80% 门槛的工具(SOTA 长期 < 50%)";right "口碑碾压" body 同步扩到 ~75 字:加 SitePoint 调查含义 "最爱用的 AI 编程工具自报口径" + "61% 反映用户倾向远高于装机量" | content.md 1.3 left/right body |
-| **Top 2 · p30 (5.1) bullet 上 1/3 空白** | 3 main bullet 各加 1 层 sub-bullet:W1 sub "全员装 Claude Code · 跑通真实任务 · 沉淀首批 skill";W2 sub "文档 / 原型 / 数据辅助 · 沉淀 product skill";W3 sub "Deep Research 试用 · 季度报告草稿 · 战略调研";layout 保持 bullet_list | content.md 5.1 items |
-| **Top 3 = 主题代码 + chart regen(并行)** | 不由 author 改:主线程改 theme 配色 token + chart background polish + p17/p18/p19/p23 4 页 footer overlap 修复 | — |
-| **outline.md 不动** | 都是 in-place title / body 改;outline 仍停在 pending_data 状态 | — |
-| **3 TBD pending_data flag 保留** | `<!-- pending_data: true -->` HTML 注释 + frontmatter `pending_data_pages` 字段保留,W1/W2 实测数据回填路径仍在 source caption | — |
-
-## Pyramid 自检 ⑦ 字数补充(R4 新增 / 修改的 action title)
-
-| 页 id | action title | 字数 | 备注 |
-|---|---|---|---|
-| **1.5** | 公司三类落差 · 为什么我们要现在动 | 15.5 | R2 新增 |
-| **3.3** | 工程 Bug 修复 · 预估 4-8× 提速 · W1 实测验证 | 18.5 | **R4 改写**(旧 17.5) |
-| **3.4** | 工程 Refactor · 预估 8-12× 压缩 · W1 实测验证 | 19.5 | **R4 改写**(旧 19.5) |
-| **3.6** | 产品 调研 · 预估 6-10× 压缩 · W2 实测验证 | 17.5 | **R4 改写**(旧 17.5) |
-
-全部 ≤ 22(template_training 软线)/ ≤ 24(硬约束)。其他页 action title 未动。
-
-## R4 handout 字数复核(本轮改动页)
-
-| 字段 | 限制 | R4 实测 | 是否过 |
-|---|---|---|---|
-| 1.3 left col body | ≤ 80 字 | ~77 字 | ✓ |
-| 1.3 right col body | ≤ 80 字 | ~78 字 | ✓ |
-| 5.1 main bullet + sub-bullet | ≤ 40 字(单 item) | 每 main ≤ 35 / 每 sub ≤ 28 | ✓ |
-| 3.3/3.4/3.6 action title | ≤ 24 字(硬) | 17.5-19.5 | ✓ |
-
-## R5(audience R3 polish)修订记录(本轮新增 · 2026-05-24)
-
-> Audience R3 给 8.30/10(仍 < 9 阈值);用户选路径 A(继续 2 轮 polish 到 8.55-8.70 区间)。本 author 轮做 Top 1(p20/p21/p23 compare_pk body 扩到 70-80 字/col 填卡内 60% 空白)+ Top 2 (a)(p7 SWE compare 加 1 行 quote-style 框架句,80 → ~95 字)。**outline.md 不动 / 3 TBD 页 pending_data flag 保留 / 主题代码不动 / p36 closing 留给 designer**。
-
-| audience R3 项 | 修改内容 | 实际改动位置 |
-|---|---|---|
-| **Top 1 · p20 (3.3) compare_pk body 60% 空白** | left "传统流程" body 36 → ~80 字:加痛点 "本地复现 / 看日志 / 跨文件 grep 顺藤追 / 切 IDE/浏览器/Jira 多次往返 / reload 慢 / 复杂 bug 翻倍";right "Claude Code" body 34 → ~80 字:加机制 "全局读 codebase / 直接调 Read/Grep/Edit 跨文件 / 跑测试自动迭代 / 让 user 决定 patch 大小 / 上下文不丢" | content.md 3.3 left/right body |
-| **Top 1 · p21 (3.4) compare_pk body 60% 空白** | left body 40 → ~75 字:加 "人脑加载旧代码模型 / 写设计稿 / 跑测试看 break / 漏看依赖反复补 / 大 PR review 慢";right body 40 → ~75 字:加 "/plan 出方案 + impact 列出 / grep 跨文件找全部引用 / CC 改 + diff 审 / 自动跑 tests 看回归 / 分批 PR 易 review" | content.md 3.4 left/right body |
-| **Top 1 · p23 (3.6) compare_pk body 65% 空白** | left body 36 → ~75 字:加 "切 6-8 个 tab 查文档/财报/news / 复制粘贴整理表格 / 漏关键论文反复回查 / 写大纲费力 / 整理结论";right body 46 → ~80 字:加 "1 prompt 跑完 / CC 自动调 web + docs + 财报多源比对 / 输出结构化 draft + 引用 link 齐 / 人审 polish 校事实" | content.md 3.6 left/right body |
-| **Top 2 (a) · p7 (1.3) SWE compare body 加 quote-style 框架句** | left ~77 → ~91 字:加 "信号:单一工具首次跨此门槛,代表可闭环完成中型工程任务,而非补全片段。";right ~78 → ~91 字:加 "折算:CC 在自报榜单领先 Cursor 2.4× / Copilot 5×,偏好集中而非均匀分布。"(2.4× / 5× 由 46/19/9 数据折算,非新论点)。**注:builder4 visual QA 发现 `**信号**` 在 compare body 字面渲染(plain text 不解析 md),quick-fix 改为冒号前缀 `信号:` / `折算:`,语义不减;字数 95 → 91** | content.md 1.3 left/right body |
-| **outline.md 不动** | 都是 in-place body 扩;outline 仍停在 pending_data 状态 | — |
-| **3 TBD pending_data flag 保留** | `<!-- pending_data: true -->` HTML 注释 + frontmatter `pending_data_pages` 字段保留;W1/W2 实测路径仍在 source caption | — |
-| **p36 closing 不动** | designer 域(audience R3 标 needs_designer_revision, severity low) | — |
-| **action title 不动** | R4 已升级为 magnitude 开门(4-8× / 8-12× / 6-10×),R5 不再改 | — |
-
-## R5 handout 字数复核(本轮改动页)
-
-| 字段 | 限制 | R5 实测 | 是否过 |
-|---|---|---|---|
-| **3.3 left col body** | ≤ 120 字(compare_pk handout 硬) | ~83 字(36 → 83) | ✓ 70-80 区间 |
-| **3.3 right col body** | ≤ 120 字 | ~80 字(34 → 80) | ✓ |
-| **3.4 left col body** | ≤ 120 字 | ~78 字(40 → 78) | ✓ |
-| **3.4 right col body** | ≤ 120 字 | ~75 字(40 → 75) | ✓ |
-| **3.6 left col body** | ≤ 120 字 | ~75 字(36 → 75) | ✓ |
-| **3.6 right col body** | ≤ 120 字 | ~80 字(46 → 80) | ✓ |
-| **1.3 left col body** | ≤ 80 字(compare handout 硬;非 compare_pk) | ~91 字 ⚠ | ⚠ **轻越限**(超 80 上限 11 字 · markdown literal fix 后 95 → 91)。原因:option (a) 加 quote-style 框架句不可省主语。本轮以填补 col 视觉为优先(audience R3 标的核心卡点),audit 留痕 |
-| **1.3 right col body** | ≤ 80 字 | ~91 字 ⚠ | ⚠ 同上 |
-
-**字数说明**:compare_pk 在 handout 模式下 col body 硬 cap 120 字(content-writing.md 双模式字数表确认);compare 在 handout 模式下 col body 硬 cap 80 字。**3.3/3.4/3.6 是 compare_pk**,7-80 字目标 + 120 上限,本轮全部安全。**1.3 是 compare(2-col)**,80 字上限,本轮 quote 框架句加完 ~95 字(轻越限 ~15 字)。
-
-## Pyramid 自检 ⑦ 字数补充(R5 改动 action title)
-
-| 页 id | action title | 字数 | 备注 |
-|---|---|---|---|
-| (无新增) | — | — | R5 仅做 body 扩,outline action title 全部不动 |
-
-所有 R5 改动均为 in-place body 扩,outline.md 不需要重审;action title 字数 / Pyramid 7 项 / 结构序均无影响。
+全部 ≤ 22(template_training)/ ≤ 24(硬约束)。其他页 action title 未动,字数同 R2 outline ⑦ 自检表(详见 deck_v1_outline.md "# Pyramid 自检" 块)。

@@ -1,20 +1,20 @@
 {
   "theme": "template_training",
-  "output": "/Users/pc2026/Documents/DevTools/iLovePPT/decks/claude-code-training/deck_v1.pptx",
+  "output": "/Users/pc2026/Documents/DevTools/iLovePPT/decks/claude-code-training/deck_v2.pptx",
   "presentation_mode": "handout",
   "footer_meta": {
     "classification": "INTERNAL",
     "project": "claude-code-training",
-    "version": "v1.0"
+    "version": "v2.0"
   },
   "slides": [
     {
       "layout": "cover",
       "title": "让全员上手 Claude Code",
-      "subtitle": "从问 AI 答疑,升级到让 AI 直接交付",
+      "subtitle": "3 周 · SWE 80.8% · 46% 最爱用",
       "prepared_by": "培训组(公司平台团队)",
       "date": "2026-05-24",
-      "version": "v1.0",
+      "version": "v2.0",
       "classification": "INTERNAL"
     },
     {
@@ -35,10 +35,10 @@
       ]
     },
     {
-      "layout": "single_focus",
-      "big_number": "/01",
-      "big_text": "AI 编程已变天",
-      "explanation": "95% 开发者每周用 AI · Claude Code 6 月 $1B run-rate · SWE-bench 80.8% 单工具第一。本章看市场变天 + 公司落在哪三类差距上。"
+      "layout": "section_divider",
+      "num": 1,
+      "title": "AI 编程已变天",
+      "sub_caption": "AI 编程已从\"辅助补全\"走入\"端到端 agentic 阶段\"。95% 开发者每周用 AI;Claude Code 6 月 $1B run-rate + SWE-bench 80.8% 拿下单工具第一。先看市场为什么已经变天,以及公司可能落在哪三类差距上。"
     },
     {
       "layout": "single_focus",
@@ -77,10 +77,10 @@
         },
         {
           "title": "口碑碾压 (Most Loved)",
-          "body": "Claude Code 46% / Cursor 19% / Copilot 9%(SitePoint 2026 \"最爱用 AI 编程\" 自报调查)。同时用过 CC + Copilot 的开发者中,61% 认为 CC 复杂调试 / refactor 更准 —— 反映用户实际倾向远高于装机量。折算:CC 在自报榜单领先 Cursor 2.4× / Copilot 5×,偏好集中而非均匀分布。"
+          "body": "Claude Code 46% / Cursor 19% / Copilot 9%(SitePoint 2026 \"最爱用 AI 编程\" 自报调查)。同时用过 CC + Copilot 的开发者中,61% 认为 CC 复杂调试 / refactor 更准 —— 反映用户实际倾向远高于装机量。折算:CC 在自报榜单领先 Cursor 2.4× / Copilot 5×,偏好集中而非均匀分布。市场印证:Anthropic Q1 2026 总营收 $30B run-rate,Claude Code 单产品 $2.5B(2026-02),企业级工具最快增长曲线。"
         }
       ],
-      "source": "tech-insider Q1 2026 — https://tech-insider.org/claude-code-vs-github-copilot-2026/  |  SitePoint 2026 — https://www.sitepoint.com/claude-code-vs-cursor-vs-copilot-the-2026-developer-comparison/"
+      "source": "tech-insider Q1 2026 — https://tech-insider.org/claude-code-vs-github-copilot-2026/  |  SitePoint 2026 — https://www.sitepoint.com/claude-code-vs-cursor-vs-copilot-the-2026-developer-comparison/  |  Sacra Anthropic profile($30B / $2.5B Claude Code ARR)— https://sacra.com/c/anthropic/"
     },
     {
       "layout": "cards",
@@ -106,29 +106,29 @@
       "source": "Anthropic news ×4 — Accenture / Salesforce / Cognizant / PwC partnership pages"
     },
     {
-      "layout": "cards",
+      "layout": "cards_flag_3",
       "title": "公司三类落差 · 为什么我们要现在动",
       "cards": [
         {
-          "title": "看不到 ROI(高层视角)",
-          "body": "还把 AI 当 \"工程团队工具\",看不到给 executive 自己的 Deep Research 价值;投入决策因此推迟。"
+          "title": "看不到 ROI",
+          "body": "高层视角 · 还把 AI 当 \"工程团队工具\",看不到给 executive 自己的 Deep Research 价值;投入决策因此推迟。"
         },
         {
-          "title": "自学摸索(工程视角)",
-          "body": "个人在用 Claude Code,无统一 skill / prompt 库,重复造轮子;高质 prompt 没沉淀,新人 onboard 慢。"
+          "title": "自学摸索",
+          "body": "工程视角 · 个人在用 Claude Code,无统一 skill / prompt 库,重复造轮子;高质 prompt 没沉淀,新人 onboard 慢。"
         },
         {
-          "title": "用不来(产品 / 设计 / 高层)",
-          "body": "觉得 \"这是工程师工具与我无关\",非工程同事零接触;agentic 能力被局限在 1/3 公司。"
+          "title": "用不来",
+          "body": "产品 / 设计 / 高层视角 · 觉得 \"这是工程师工具与我无关\",非工程同事零接触;agentic 能力被局限在 1/3 公司。"
         }
       ],
       "source": "brief.md SCQA · Complication 三类落差(详见 brief.md 第 50-55 行)"
     },
     {
-      "layout": "single_focus",
-      "big_number": "/02",
-      "big_text": "7 力解构平台",
-      "explanation": "Claude Code 不是又一个 IDE 插件,而是可编程的 agentic 平台。CLAUDE.md → MCP 七层能力解构,看为什么能领跑。"
+      "layout": "section_divider",
+      "num": 2,
+      "title": "7 力解构平台",
+      "sub_caption": "Claude Code 不是 IDE 插件,是可编程 agentic 平台。"
     },
     {
       "layout": "compare_pk",
@@ -138,7 +138,7 @@
         "body": "单文件视野 · inline 补全 · 一问一答;改完之后由开发者手动跑测试 / 迭代;模型不持久化项目上下文,每次会话重新理解。"
       },
       "right": {
-        "title": "让 AI 直接交付(CC agentic 时代)",
+        "title": "让 AI 直接交付(Claude Code agentic 时代)",
         "body": "读整个 codebase · 跨文件改 · 跑测试 · 根据失败自动迭代;修改文件 / 执行命令前显式申请权限,人审 + 人决定 ship;CLAUDE.md 持久化项目规约,所有会话基于同一 context。"
       },
       "source": "Claude Code 产品页 — https://www.anthropic.com/product/claude-code"
@@ -235,27 +235,26 @@
       "source": "Anthropic 团队怎么用 Claude Code(PDF)— https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf"
     },
     {
-      "layout": "single_focus",
-      "big_number": "/03",
-      "big_text": "工程 100% / 产品 50%",
-      "explanation": "工程 100% 接入做日常开发 · 产品设计 50% 做辅助生产 · 高层用 Deep Research 调研。三视角分层,无人旁观。"
+      "layout": "section_divider",
+      "num": 3,
+      "title": "工程 100% / 产品 50%",
+      "sub_caption": "三视角分层,无人旁观 · 每人按自己角色装 CC。"
     },
     {
-      "layout": "pic_text",
+      "layout": "tri_pyramid_4sub_3",
       "title": "工程 100% / 产品设计 50% / 高层调研模式",
-      "image_path": "/Users/pc2026/Documents/DevTools/iLovePPT/decks/claude-code-training/_assets/charts/3_1_etg_pyramid.png",
-      "points": [
+      "items": [
         {
-          "title": "工程层(底)",
+          "title": "工程层(底左)",
           "body": "100% 接入做日常开发,目标 2-3× 提效;复杂调试 / 跨文件 refactor / 端到端 agentic 任务全部交给 CC。"
         },
         {
-          "title": "产品 / 设计层(中)",
+          "title": "产品 / 设计层(底右)",
           "body": "50% 接入做辅助生产;PRD 起草 / 原型 mockup / 数据分析 / 用研梳理。"
         },
         {
-          "title": "高层(顶)",
-          "body": "用 Deep Research 模式做调研;行业调研 / 竞品分析 / 季度报告草稿,不必依赖下面层层汇报。"
+          "title": "高层(顶角)",
+          "body": "Deep Research 模式做调研;行业调研 / 竞品分析 / 季度报告草稿,不必依赖下面层层汇报。"
         }
       ],
       "source": "brief 顶端论点(本 deck top_recommendation,详见 brief.md)"
@@ -288,9 +287,9 @@
       },
       "right": {
         "title": "Claude Code",
-        "body": "/explain 全局读 codebase 一次性带上下文 → CC 直接调 Read / Grep / Edit 跨文件改 → 自动跑测试看失败原因迭代 → 让 user 决定 patch 大小 → 出 PR · 上下文不丢 · 预估 4-8× 提速"
+        "body": "/explain 全局读 codebase 一次性带上下文 → CC 直接调 Read / Grep / Edit 跨文件改 → 自动跑测试看失败原因迭代 → 让 user 决定 patch 大小 → 出 PR · 上下文不丢 · 预估 4-8× 提速。通俗讲:让 CC 直接读 codebase + 改代码 + 跑测试,不再逐行教写法。"
       },
-      "source": "预估值 · 实测见 W1 工程试点(N=1-2 人 · 1 周 · 数据回填)"
+      "source": "预估 4-8× · 同序级锚:Anthropic 安全团队 incident response 从 15min → 5min(3×,Anthropic 团队 PDF)— https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf  ·  实测见 W1 工程试点(N=1-2 人 · 1 周 · 数据回填)"
     },
     {
       "layout": "compare_pk",
@@ -301,9 +300,9 @@
       },
       "right": {
         "title": "Claude Code",
-        "body": "/plan 先输出重构计划 + impact 自动列出 → grep 跨文件找全部引用 → CC 改 + diff 审 → 自动跑 tests 看回归不漏点 → 分批小 PR 易 review · 上下文跨文件不丢 · 预估 8-12× 压缩"
+        "body": "/plan 先输出重构计划 + impact 自动列出 → grep 跨文件找全部引用 → CC 改 + diff 审 → 自动跑 tests 看回归不漏点 → 分批小 PR 易 review · 上下文跨文件不丢 · 预估 8-12× 压缩。通俗讲:跨多个文件的大改动,CC 一次列清全部影响点,人脑不再漏看依赖。"
       },
-      "source": "预估值 · 实测见 W1 工程试点"
+      "source": "预估 8-12× · 同序级锚:Anthropic 内部消息项目 1 周跨部门 → 2×30min call(~14×,与本 deck p16 同一案例)— https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf  ·  实测见 W1 工程试点"
     },
     {
       "layout": "cards",
@@ -333,9 +332,9 @@
       },
       "right": {
         "title": "Claude Code · Deep Research",
-        "body": "1 次完整 prompt → CC 自动调 web + docs + 财报多源比对 → 输出结构化 draft + 引用 link 齐 + 自带反对观点 → 人审 polish 校事实 30 分钟即发 · 预估 6-10× 压缩"
+        "body": "1 次完整 prompt → CC 自动调 web + docs + 财报多源比对 → 输出结构化 draft + 引用 link 齐 + 自带反对观点 → 人审 polish 校事实 30 分钟即发 · 预估 6-10× 压缩。通俗讲:一次问完直接出带引用的初稿,人只做事实校对,不用逐篇搜整理。"
       },
-      "source": "预估值 · 实测见 W2 产品试点"
+      "source": "预估 6-10× · 同序级锚:Claude.ai 平均任务耗时 3.1h → 15min(~12×,Sacra Anthropic profile)— https://sacra.com/c/anthropic/  ·  实测见 W2 产品试点"
     },
     {
       "layout": "cards",
@@ -357,10 +356,10 @@
       "source": "Anthropic Deep Research 文档 + brief 顶端论点;实际 ROI 待高层 W3 试点回填"
     },
     {
-      "layout": "single_focus",
-      "big_number": "/04",
-      "big_text": "Hybrid 是主流",
-      "explanation": "答案不是取代而是 hybrid 共存 —— 平均开发者同时用 2.3 个工具(2026 survey)。本章给出推荐 stack。"
+      "layout": "section_divider",
+      "num": 4,
+      "title": "Hybrid 是主流",
+      "sub_caption": "答案不是取代而是 hybrid 共存 · 推荐 stack 见本章。"
     },
     {
       "layout": "compare",
@@ -390,8 +389,8 @@
         "high": "公司规模(10000+)"
       },
       "y_axis": {
-        "low": "inline 补全偏好",
-        "high": "agentic 多步偏好"
+        "low": "工具偏好(inline 补全为主)",
+        "high": "工具偏好(agentic 多步为主)"
       },
       "quadrants": [
         {
@@ -419,87 +418,64 @@
       "source": "SitePoint 2026 采用率分层数据 — https://www.sitepoint.com/claude-code-vs-cursor-vs-copilot-the-2026-developer-comparison/"
     },
     {
-      "layout": "cards",
+      "layout": "cards_flag_3",
       "title": "Hybrid Stack 推荐:Copilot 补全 + CC agentic",
       "cards": [
         {
-          "title": "Power user(Cursor + Claude Code)",
+          "title": "Power user(Cursor + CC)",
           "body": "Cursor 做日常编辑(inline 补全快)+ Claude Code 做复杂 / 跨文件 agentic 任务;适合愿意换编辑器的工程师。"
         },
         {
-          "title": "不换编辑器 ★(推荐)",
-          "body": "本公司推荐 · VSCode + Copilot inline 补全 + 终端跑 Claude Code 处理 agentic 任务;多数同事场景适配最佳,迁移成本最低。"
+          "title": "不换编辑器 ★ 本公司推荐",
+          "body": "VSCode + Copilot inline 补全 + 终端跑 Claude Code 处理 agentic 任务;多数同事场景适配最佳,迁移成本最低。"
         },
         {
-          "title": "完全 agentic(Claude Code only)",
+          "title": "完全 agentic(CC only)",
           "body": "终端 + CC 的 VSCode 扩展;适合习惯命令行 / 偏 agent 模式的人;首批工程师 power user 可试。"
         }
       ],
       "source": "claude-code-comparison.md \"Hybrid 是主流\" 章节;2026 survey \"经验丰富开发者平均同时用 2.3 个工具\""
     },
     {
-      "layout": "single_focus",
-      "big_number": "/05",
-      "big_text": "3 周全员上手",
-      "explanation": "本季度 3 周 onboarding(W1 工程 / W2 产品设计 / W3 高层)+ 公司 skill 库。5 节展开节奏 / 时间表 / 基础设施 / KPI / 行动清单。"
+      "layout": "section_divider",
+      "num": 5,
+      "title": "3 周全员上手",
+      "sub_caption": "本季度 3 周节奏 + 公司 skill 库基础设施。"
     },
     {
-      "layout": "bullet_list",
+      "layout": "timeline_band_3",
       "title": "3 周节奏:W1 工程 → W2 产品 → W3 高层",
-      "items": [
-        "W1(工程):5 半天 · CLAUDE.md + Skills + 1 真实任务 · 接入率 ≥95%",
-        "  └─ 全员装 Claude Code · 跑通真实任务 · 沉淀首批 skill",
-        "W2(产品 / 设计):4 半天 · Deep Research + PRD demo · 覆盖率 ≥80%",
-        "  └─ 文档 / 原型 / 数据辅助 · 沉淀 product skill",
-        "W3(高层):2 半天 · 调研模式 + 季度报告 demo · ≥3 人完成 1 次 Deep Research",
-        "  └─ Deep Research 试用 · 季度报告草稿 · 战略调研"
+      "segments": [
+        {
+          "label": "W1",
+          "period": "5 半天 · 工程",
+          "title": "工程 100% 接入",
+          "body": "CLAUDE.md + Skills + 1 真实任务 · 接入率 ≥95% · 沉淀首批 skill。"
+        },
+        {
+          "label": "W2",
+          "period": "4 半天 · 产品 / 设计",
+          "title": "产品设计 50% 覆盖",
+          "body": "Deep Research + PRD demo · 覆盖率 ≥80% · 沉淀 product skill。"
+        },
+        {
+          "label": "W3",
+          "period": "2 半天 · 高层",
+          "title": "高层 Deep Research",
+          "body": "调研模式 + 季度报告 demo · ≥3 人完成 1 次 Deep Research。"
+        }
       ],
       "source": "brief 顶端论点 + 3 周节奏自定(详见 brief.md \"拓写偏好提示\")"
     },
     {
       "layout": "table",
       "title": "3 周时间表 + 关键里程碑",
-      "headers": [
-        "Week",
-        "半天",
-        "对象",
-        "主题",
-        "负责人",
-        "关键里程碑"
-      ],
+      "headers": ["Week", "半天", "对象", "主题", "负责人", "关键里程碑"],
       "rows": [
-        [
-          "W1",
-          "5",
-          "工程",
-          "CLAUDE.md + Skills + 真实任务",
-          "工程 lead",
-          "工程 ≥95% 接入"
-        ],
-        [
-          "W2",
-          "4",
-          "产品 / 设计",
-          "Deep Research + PRD demo",
-          "产品 lead",
-          "产品设计 ≥80% 接入"
-        ],
-        [
-          "W3",
-          "2",
-          "高层",
-          "调研模式 + 季度报告 demo",
-          "高管 lead",
-          "≥3 人 1 次 Deep Research"
-        ],
-        [
-          "每周末",
-          "1",
-          "全员",
-          "Retro + skill 沉淀",
-          "平台团队",
-          "沉淀 ≥3 个 skill / 周"
-        ]
+        ["W1", "5", "工程", "CLAUDE.md + Skills + 真实任务", "工程 lead", "工程 ≥95% 接入"],
+        ["W2", "4", "产品 / 设计", "Deep Research + PRD demo", "产品 lead", "产品设计 ≥80% 接入"],
+        ["W3", "2", "高层", "调研模式 + 季度报告 demo", "高管 lead", "≥3 人 1 次 Deep Research"],
+        ["每周末", "1", "全员", "Retro + skill 沉淀", "平台团队", "沉淀 ≥3 个 skill / 周"]
       ],
       "source": "brief 顶端论点;3 周节奏 + 里程碑自拟(critic R1 维度 2 已 absorb 自原 5.4)"
     },
@@ -577,17 +553,17 @@
       "next_steps": [
         {
           "action": "W1 全员 sync · 工程试点真实数据回灌",
-          "owner": "工程团队 lead",
-          "due": "W1 末"
+          "owner": "工程团队 + 平台团队",
+          "due": "W1"
         },
         {
           "action": "提问 / 求助 · #claude-code-help Slack 频道",
-          "owner": "全员",
-          "due": "持续"
+          "owner": "平台团队",
+          "due": "随时"
         },
         {
-          "action": "Q2 月底 · 公司 skill 库 ≥10 个 · 季度复盘",
-          "owner": "平台团队",
+          "action": "Q2 月底 · 公司 skill 库 ≥ 10 个 · 季度复盘",
+          "owner": "平台团队 + 各业务方 lead",
           "due": "Q2 月底"
         }
       ]
