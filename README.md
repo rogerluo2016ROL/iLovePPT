@@ -3,8 +3,15 @@
 > Claude Code 多 agent 流水线,把一句话需求变成 BCG 咨询稿质感的 `.pptx`。
 
 [![Release](https://img.shields.io/github/v/release/pcliangx/iLovePPT)](https://github.com/pcliangx/iLovePPT/releases/latest)
+[![Stars](https://img.shields.io/github/stars/pcliangx/iLovePPT?style=flat&logo=github)](https://github.com/pcliangx/iLovePPT/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/pcliangx/iLovePPT)](https://github.com/pcliangx/iLovePPT/commits/main)
 [![Tests](https://img.shields.io/badge/tests-72%20passed-brightgreen)](#)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+[![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-D97757)](https://claude.com/claude-code)
+[![Content: Pyramid Principle](https://img.shields.io/badge/content-Pyramid%20Principle-0A52BF)](https://en.wikipedia.org/wiki/Pyramid_principle)
+[![Visual Patterns: Multimodal RAG](https://img.shields.io/badge/RAG-multimodal%20(text%2Fimage)-FBCFE8)](library/visual-patterns/README.md)
 
 让 LLM 一次性出完整 .pptx,通常是"看着像但读起来空、视觉糙、论据弱"。**iLovePPT 把"写 PPT"拆成 6 专业 agent + 1 旁路接力流水线**:brainstorm 收需求 → author 出稿 → critic 评审 → builder 构建 → designer 加视觉 → audience 评分,四重 markdown 接缝 + 双闸门质量门(critic 14 项 + audience 9 分硬阈值),内容遵循麦肯锡金字塔原理,视觉对标 BCG/McKinsey。
 
