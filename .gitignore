@@ -44,7 +44,15 @@ decks/*/.~*
 # library/visual-patterns/ RAG 生成产物(由 _rag/embed_text.py 重生)
 library/visual-patterns/_rag/text.sqlite
 library/visual-patterns/_rag/image.sqlite
+library/visual-patterns/_rag/patterns.sqlite
 library/visual-patterns/_rag/.cache/
+
+# library/visual-patterns/ RAG · API key + 任何 .env(NEVER commit)
+library/visual-patterns/_rag/.env
+library/visual-patterns/_rag/.env.*
+**/.env
+**/.env.local
+**/.env.*.local
 
 # library/visual-patterns/patterns/*/preview.png 是 pattern 资产,**保留**
 !library/visual-patterns/patterns/*/preview.png

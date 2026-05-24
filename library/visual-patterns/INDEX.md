@@ -78,11 +78,23 @@
 
 ---
 
-## 当前 infrastructure(已就绪)
+## 当前 infrastructure(已就绪 · v0.5.4 多模态)
 
-✅ Python 3.11 venv:`_rag/.venv/`(sentence-transformers / sqlite-vec / torch / BGE-zh 全装)
-✅ RAG 脚本:`_rag/embed_text.py`(扫 patterns/ 全部 → 写 text.sqlite)
-✅ 查询 CLI:`search.sh`(自动用 venv,agent 通过 Bash 调)
+✅ Python 3.11 venv:`_rag/.venv/`(sqlite-vec + pyyaml,精简版 < 10MB · 不再要 torch)
+✅ Embedding 模型:**阿里云 DashScope · tongyi-embedding-vision-plus-2026-03-06**(dim 1152 · 文本图像同 API)
+✅ RAG 脚本:`_rag/embed_text.py`(文本)+ `_rag/embed_image.py`(图像 · 多模态!)
+✅ 查询 CLI:`search.sh`(支持 text / image / hybrid 3 mode)
+✅ API key:`_rag/.env`(gitignored)
 ✅ ingest 文档:`ingest_workflow.md`
 
-入库新 pattern → embed → search 全链路已通,只等用户提供素材。
+入库新 pattern → 双向 embed → 多模态 search 全链路已通,只等用户提供素材。
+
+## 3 mode 用法 quick ref
+
+| mode | query 类型 | 表 | 用途 |
+|---|---|---|---|
+| text(默认) | 文本 | text_emb | 按 content intent 找匹配 pattern |
+| image | 文本 or 图像 | image_emb | 按视觉风格找(text→image 描述 or image-image 上传参考图) |
+| hybrid | 文本 | text_emb + image_emb 融合 | 综合 content + 视觉匹配 |
+
+`search.sh --query "..." --mode <text|image|hybrid>` 或 `search.sh --query-image <path>`。

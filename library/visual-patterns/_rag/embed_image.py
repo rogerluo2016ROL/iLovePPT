@@ -1,52 +1,95 @@
 #!/usr/bin/env python3
-"""CLIP 图像 embedding · Phase 3 stub。
+"""扫 library/visual-patterns/patterns/<id>/preview.png,调 Qwen3-VL embedding API
+生成图像 embedding 写入 patterns.sqlite 的 image_emb 表。
 
-当 library 视觉风格多样化(用户加入手绘 / 卡通 / 黑白极简等),启用此脚本:
-扫 patterns/*/preview.png 跑 CLIP image embedding → image.sqlite
+Qwen3-VL 是多模态 embedding,跟 text 用同一 API,但 input 传 image 而非 text。
+本地 PNG 会自动 base64 后塞进 data URI。
 
-启用步骤:
-1. 解开 requirements.txt 里 CLIP 相关注释
-   open-clip-torch>=2.20.0
-   torch>=2.0.0
-   pillow>=10.0.0
-2. pip install -r requirements.txt
-3. 实现下方 main()(参考注释里的 pseudo code)
-4. search.py --mode image 才能用
+用法:
+    cd library/visual-patterns/_rag
+    .venv/bin/python embed_image.py            # 全量重建(image_emb)
+    .venv/bin/python embed_image.py --only <id>  # 增量
 
-当前 stub:跑会抛 NotImplementedError。这是有意的 —— 让用户明确决定何时启用。
-
-设计参考:
-    import open_clip
-    import torch
-    from PIL import Image
-
-    model, _, preprocess = open_clip.create_model_and_transforms(
-        'ViT-B-32', pretrained='openai'
-    )
-    tokenizer = open_clip.get_tokenizer('ViT-B-32')
-
-    # 对每个 pattern 的 preview.png:
-    image = preprocess(Image.open(png_path)).unsqueeze(0)
-    with torch.no_grad():
-        image_features = model.encode_image(image)
-        image_features /= image_features.norm(dim=-1, keepdim=True)
-    # → embed 512 维 float32,存 image.sqlite
-
-    # query 时(在 search.py --mode image):
-    # text → tokenizer + model.encode_text(...) → 跟 image.sqlite 找最近邻
-    # 或 image → preprocess + model.encode_image(...) → 找最近邻
-
-启用时:跟 embed_text.py 复用同一 schema 结构(独立 sqlite 文件)。
+要求每个 pattern dir 有 preview.png(无的 skip + warn)。
 """
 
+from __future__ import annotations
+
+import argparse
+import struct
 import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+# 本地 lib
+sys.path.insert(0, str(Path(__file__).parent))
+from qwen_embedding import embed_image, get_api_key, open_db  # noqa: E402
+
+
+PATTERNS_DIR = Path(__file__).parent.parent / "patterns"
 
 
 def main():
-    raise NotImplementedError(
-        "CLIP 图像 embedding 是 Phase 3。当前 library 还以文本 RAG 为主(embed_text.py)。\n"
-        "启用步骤见本文件顶部 docstring。"
-    )
+    parser = argparse.ArgumentParser(description="(Re)build IMAGE embeddings via Qwen3-VL API")
+    parser.add_argument("--only", help="只更新某 1 个 pattern id(增量)")
+    args = parser.parse_args()
+
+    api_key = get_api_key()
+
+    if not PATTERNS_DIR.exists():
+        print(f"ERROR: patterns 目录不存在: {PATTERNS_DIR}", file=sys.stderr)
+        sys.exit(1)
+
+    pattern_dirs: list[Path] = []
+    if args.only:
+        candidate = PATTERNS_DIR / args.only
+        if not candidate.exists():
+            print(f"ERROR: {candidate} 不存在", file=sys.stderr)
+            sys.exit(1)
+        pattern_dirs = [candidate]
+    else:
+        pattern_dirs = sorted(d for d in PATTERNS_DIR.iterdir() if d.is_dir())
+
+    if not pattern_dirs:
+        print(f"没有找到 pattern dir({PATTERNS_DIR}/*)")
+        return
+
+    db = open_db()
+    now = datetime.now(timezone.utc).isoformat()
+
+    count = 0
+    skipped = 0
+    for pd in pattern_dirs:
+        pid = pd.name
+        preview = pd / "preview.png"
+        if not preview.exists():
+            print(f"  - {pid}: 无 preview.png,skip")
+            skipped += 1
+            continue
+
+        try:
+            vec = embed_image(preview, api_key=api_key)
+        except (RuntimeError, FileNotFoundError) as e:
+            print(f"  ✗ {pid}: {e}", file=sys.stderr)
+            continue
+
+        emb_blob = struct.pack(f"{len(vec)}f", *vec)
+
+        # 确保 patterns 表里有 row(允许 image_emb 在 text_emb 之前跑)
+        db.execute(
+            "INSERT OR IGNORE INTO patterns(id, preview_path, updated_at) VALUES (?, ?, ?)",
+            (pid, str(preview), now),
+        )
+        db.execute(
+            "INSERT OR REPLACE INTO image_emb(id, embedding) VALUES (?, ?)",
+            (pid, emb_blob),
+        )
+        count += 1
+        print(f"  ✓ {pid}  ←  {preview.relative_to(PATTERNS_DIR.parent)}")
+
+    db.commit()
+    db.close()
+    print(f"\n完成 · embed {count} 个 pattern (image) · skip {skipped} → patterns.sqlite")
 
 
 if __name__ == "__main__":

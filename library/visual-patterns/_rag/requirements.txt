@@ -1,15 +1,17 @@
-# Visual Patterns RAG · Python 依赖
+# Visual Patterns RAG · Python 依赖(v0.5.4 起 hosted API · 不再需要 torch / sentence-transformers)
 #
-# 安装:cd library/visual-patterns/_rag && pip install -r requirements.txt
+# 安装(全新 venv):
+#   cd library/visual-patterns/_rag
+#   python3.11 -m venv .venv
+#   .venv/bin/pip install -r requirements.txt
 #
-# 首次运行 embed_text.py 会下载 BAAI/bge-small-zh-v1.5 模型(~100MB)
-# 缓存到 ~/.cache/huggingface/,后续运行直接复用
+# API key 配置:
+#   把 DASHSCOPE_API_KEY 写到 _rag/.env(gitignored)或 export 到环境
 
-sentence-transformers>=2.7.0    # 文本 embedding(BGE 中文模型)
 sqlite-vec>=0.1.0               # sqlite 向量扩展(轻量,无需独立服务)
 pyyaml>=6.0                     # 读 pattern.yaml
 
-# Phase 3 · 多模态(CLIP 图像 embedding)· 当前 stub,暂不安装
-# open-clip-torch>=2.20.0
-# torch>=2.0.0
-# pillow>=10.0.0
+# 注:
+# - 不再需要 sentence-transformers / torch(模型托管在阿里云 DashScope)
+# - urllib + json 是 stdlib · API 调用无需 requests 包
+# - base64 是 stdlib · 本地 PNG 转 data URI 无需额外依赖

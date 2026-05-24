@@ -1,106 +1,40 @@
 #!/usr/bin/env python3
-"""扫 library/visual-patterns/patterns/ 全部 pattern.yaml,生成文本 embedding 写入 text.sqlite。
+"""扫 library/visual-patterns/patterns/ 全部 pattern.yaml,调 Qwen3-VL embedding API
+生成文本 embedding 写入 patterns.sqlite 的 text_emb 表。
 
 用法:
     cd library/visual-patterns/_rag
-    python3 embed_text.py            # 全量重建
-    python3 embed_text.py --only <id>  # 只更新某 1 个 pattern(增量)
+    .venv/bin/python embed_text.py            # 全量重建(text_emb)
+    .venv/bin/python embed_text.py --only <id>  # 只更新某 1 个 pattern
 
-依赖:requirements.txt
-首次跑会下载 BGE 中文模型 ~100MB(~/.cache/huggingface/)。
+依赖:
+    requirements.txt(sqlite-vec + pyyaml,不再需要 sentence-transformers / torch)
+API key:
+    DASHSCOPE_API_KEY env var,或 _rag/.env 文件(gitignored)
 
-Schema:
-- patterns  · id (PK) · doc · yaml_path · preview_path · category · updated_at
-- pattern_embeddings · id (PK,vec0) · embedding FLOAT[512]
-
-embed 的 document(给 BGE 看的文本)= name + category + content_intent + when_to_use + keywords
-拼成一行。pattern.yaml 其他字段(visual_structure / fallback_rendering 等)不进 embed,
-那些是 agent 看 yaml 时用的细节。
+embed 的 document(给 Qwen3-VL 看的文本)= name + category + content_intent
++ when_to_use + keywords 拼成一行。
 """
 
 from __future__ import annotations
 
 import argparse
-import json
-import sqlite3
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-# 检测可选依赖,缺了给清晰错误
 try:
     import yaml
 except ImportError:
-    print("ERROR: pyyaml 未装。pip install -r requirements.txt", file=sys.stderr)
+    print("ERROR: pyyaml 未装。.venv/bin/pip install -r requirements.txt", file=sys.stderr)
     sys.exit(1)
 
-try:
-    from sentence_transformers import SentenceTransformer
-except ImportError:
-    print("ERROR: sentence-transformers 未装。pip install -r requirements.txt", file=sys.stderr)
-    sys.exit(1)
-
-try:
-    import sqlite_vec
-except ImportError:
-    print("ERROR: sqlite-vec 未装。pip install -r requirements.txt", file=sys.stderr)
-    sys.exit(1)
+# 本地 lib(同目录)
+sys.path.insert(0, str(Path(__file__).parent))
+from qwen_embedding import build_text_doc, embed_text, get_api_key, open_db  # noqa: E402
 
 
-SCRIPT_DIR = Path(__file__).parent
-LIBRARY_DIR = SCRIPT_DIR.parent
-PATTERNS_DIR = LIBRARY_DIR / "patterns"
-DB_PATH = SCRIPT_DIR / "text.sqlite"
-MODEL_NAME = "BAAI/bge-small-zh-v1.5"
-EMBED_DIM = 512
-
-
-def build_doc(p: dict) -> str:
-    """把 pattern.yaml 关键字段拼成 embed 用的 document。
-
-    BGE-zh 对短文本 + 中文关键词敏感,所以重复关键概念是好事(不是 noise)。
-    """
-    parts: list[str] = []
-
-    if name := p.get("name"):
-        parts.append(name)
-
-    if category := p.get("category"):
-        parts.append(f"类别 {category}")
-
-    for intent in p.get("content_intent", []):
-        parts.append(intent)
-
-    for w in p.get("when_to_use", []):
-        parts.append(f"适用 {w}")
-
-    for kw in p.get("keywords", []):
-        parts.append(kw)
-
-    return " · ".join(parts)
-
-
-def open_db() -> sqlite3.Connection:
-    db = sqlite3.connect(DB_PATH)
-    db.enable_load_extension(True)
-    sqlite_vec.load(db)
-    db.execute(
-        """CREATE TABLE IF NOT EXISTS patterns (
-            id TEXT PRIMARY KEY,
-            doc TEXT,
-            yaml_path TEXT,
-            preview_path TEXT,
-            category TEXT,
-            updated_at TEXT
-        )"""
-    )
-    db.execute(
-        f"""CREATE VIRTUAL TABLE IF NOT EXISTS pattern_embeddings USING vec0(
-            id TEXT PRIMARY KEY,
-            embedding FLOAT[{EMBED_DIM}]
-        )"""
-    )
-    return db
+PATTERNS_DIR = Path(__file__).parent.parent / "patterns"
 
 
 def load_pattern(yaml_path: Path) -> dict | None:
@@ -119,12 +53,11 @@ def load_pattern(yaml_path: Path) -> dict | None:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="(Re)build text embeddings for pattern library")
-    parser.add_argument(
-        "--only",
-        help="只更新某 1 个 pattern id(增量);省略 = 全量扫 patterns/",
-    )
+    parser = argparse.ArgumentParser(description="(Re)build TEXT embeddings via Qwen3-VL API")
+    parser.add_argument("--only", help="只更新某 1 个 pattern id(增量)")
     args = parser.parse_args()
+
+    api_key = get_api_key()  # 验证 key 在 env 或 .env
 
     if not PATTERNS_DIR.exists():
         print(f"ERROR: patterns 目录不存在: {PATTERNS_DIR}", file=sys.stderr)
@@ -144,9 +77,6 @@ def main():
         print(f"没有找到 pattern.yaml(查的:{PATTERNS_DIR}/*/pattern.yaml)")
         return
 
-    print(f"加载 BGE 中文模型 {MODEL_NAME}(首次会下载 ~100MB)...")
-    model = SentenceTransformer(MODEL_NAME)
-
     db = open_db()
     now = datetime.now(timezone.utc).isoformat()
 
@@ -157,26 +87,32 @@ def main():
             continue
 
         pid = p["id"]
-        doc = build_doc(p)
+        doc = build_text_doc(p)
         preview = yp.parent / "preview.png"
 
-        embedding = model.encode(doc, normalize_embeddings=True).astype("float32")
-        assert embedding.shape == (EMBED_DIM,), f"unexpected dim {embedding.shape}"
+        try:
+            vec = embed_text(doc, api_key=api_key)
+        except RuntimeError as e:
+            print(f"  ✗ {pid}: {e}", file=sys.stderr)
+            continue
 
+        import struct
+
+        emb_blob = struct.pack(f"{len(vec)}f", *vec)
         db.execute(
-            "INSERT OR REPLACE INTO patterns(id, doc, yaml_path, preview_path, category, updated_at) VALUES (?,?,?,?,?,?)",
+            "INSERT OR REPLACE INTO patterns(id, text_doc, yaml_path, preview_path, category, updated_at) VALUES (?,?,?,?,?,?)",
             (pid, doc, str(yp), str(preview), p.get("category", ""), now),
         )
         db.execute(
-            "INSERT OR REPLACE INTO pattern_embeddings(id, embedding) VALUES (?, ?)",
-            (pid, embedding.tobytes()),
+            "INSERT OR REPLACE INTO text_emb(id, embedding) VALUES (?, ?)",
+            (pid, emb_blob),
         )
         count += 1
         print(f"  ✓ {pid}  ←  {doc[:80]}{'...' if len(doc) > 80 else ''}")
 
     db.commit()
     db.close()
-    print(f"\n完成 · embed {count} 个 pattern → {DB_PATH}")
+    print(f"\n完成 · embed {count} 个 pattern (text) → patterns.sqlite")
 
 
 if __name__ == "__main__":
