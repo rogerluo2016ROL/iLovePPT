@@ -176,7 +176,7 @@ asset_inventory:                                    # Stage D 必填(透传自 b
 **evidence 模板**:`page X 章节 "Y": author selected <id-A>,但 intent 是 "5 阶段串行",<id-A> 是 matrix pattern,RAG search.sh 重跑 top-5 含 <id-B> linear pattern,后者 fallback_rendering 跟 layout: pic_text 更兼容。建议 alternative`
 
 **怎么查**:
-1. Read `${CLAUDE_PROJECT_DIR}/library/visual-patterns/patterns/<author selected id>/pattern.yaml`,看 intent / fallback_rendering
+1. Read `${CLAUDE_PROJECT_DIR}/library/visual-patterns/items/<author selected id>/meta.yaml`,看 intent / fallback_rendering
 2. 若 author selected 跟章节明显不符,重跑 `Bash bash ${CLAUDE_PROJECT_DIR}/library/visual-patterns/search.sh --query "<章节 intent>" --mode hybrid --top-k 5 --format json`
 3. parse top-5,选出 1 个明显更优的 alternative(若 top-5 都不如 author 已选,**不**报 alternative,这维度 0 issue)
 4. 在 yaml return 加 `suggested_alternative_patterns` 字段(advisory):

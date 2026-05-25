@@ -448,7 +448,7 @@ visual_step4:                         # 2026-05-25 新增 · Step 4 三路 + RAG
   rag_fallback_used:                  # 第 4 路实际使用(三路全降级 + 该页 visual_qa 低分时触发)
     - page: 6
       pattern_id: cards-flag-3
-      preview_path: library/visual-patterns/patterns/cards-flag-3/preview.png
+      preview_path: library/visual-patterns/items/cards-flag-3/preview.png
       usage: hero_reference | reference_only
 ```
 

@@ -172,7 +172,7 @@ flowchart TB
 
 *hosted multimodal RAG · 21 patterns · 5 agent 共享*
 
-**用途**:Visual Patterns 库是输出**高质量 PPT** 的关键知识库 —— 21 个 BCG-style 模式(arrow-chain / cards-flag / matrix / process-step / cycle 等),每个 pattern 含 `pattern.yaml`(元数据 + fallback_rendering)+ `preview.png`(预览图)。
+**用途**:Visual Patterns 库是输出**高质量 PPT** 的关键知识库 —— 21 个 BCG-style 模式(arrow-chain / cards-flag / matrix / process-step / cycle 等),每个 pattern 含 `meta.yaml`(元数据 + fallback_rendering)+ `preview.png`(预览图)。
 
 **底层实现**:阿里云 tongyi-embedding-vision-plus(dim 1152,text + image 同 API)+ sqlite 索引 + 3 search mode(text / image / hybrid)。
 
@@ -194,9 +194,9 @@ bash ${CLAUDE_PROJECT_DIR}/library/visual-patterns/search.sh \
 |---|---|---|---|---|
 | **brainstorm** | Step 3.5(dispatch_author 之前) | top_recommendation + SCQA 关键词 | 取 top-5 category(去重)→ Edit brief.md frontmatter + dispatch_author yaml `pattern_hints_for_author` | 决策(category 列表,给 author 参考)|
 | **author Stage C** | Step 1A.5(写完 outline + Pyramid 之前)| 每章 action title + intent | 从 top-5 选 1-2 个,Edit outline.md per-chapter `pattern_hints.selected/alternatives` | **决策**(author 唯一写者) |
-| **author Stage D** | Step 1C(已有,继承自 v1 设计) | 章节 content intent | Read pattern.yaml 看 fallback_rendering;嵌入 content.md `<!-- pattern: <id> -->` 注释 | **决策** |
+| **author Stage D** | Step 1C(已有,继承自 v1 设计) | 章节 content intent | Read meta.yaml 看 fallback_rendering;嵌入 content.md `<!-- pattern: <id> -->` 注释 | **决策** |
 | **critic Stage C/D** | 维度 5(2026-05-25 新增)| 验 author selected 不匹配时,重跑章节 intent | yaml `suggested_alternative_patterns` 数组 | **advisory**(不改 .md,主线程 cherry-pick) |
-| **iloveppt** | Step 4.2.5(三路降级 + 该页 visual_qa 低分时)| 该页 章节 intent | 拿 preview.png 作 hero(若 layout 支持)或 reference_only;Step 2 渲染时按 pattern.yaml fallback_rendering 渲 | 决策(嵌 preview)|
+| **iloveppt** | Step 4.2.5(三路降级 + 该页 visual_qa 低分时)| 该页 章节 intent | 拿 preview.png 作 hero(若 layout 支持)或 reference_only;Step 2 渲染时按 meta.yaml fallback_rendering 渲 | 决策(嵌 preview)|
 | **audience** | Step 3.5(triage 后) | 每个 needs_visual_redo 页的 issue 关键词 | yaml `needs_visual_redo_pages[N].suggested_alternative_pattern` | **advisory**(主线程 cherry-pick → 若用户接受,Task author rework) |
 
 **降级路径**(所有 agent 共享):search.sh 失败(库不存在 / sqlite 未初始化 / venv 缺失)→ 该 agent 字段为空/null + 标 `source: search_failed`,**不阻塞流水线**继续。
@@ -247,7 +247,7 @@ flowchart TB
     BS2["brainstorm:续聊收完 brief<br/>dispatch_author 时透传 template path"]
     AD["**author Stage D**:<br/>Read templates/company_a.yaml(visual_observations)<br/>+ Read library/visual-patterns/INDEX.md(RAG)"]
     A2["author:检索 patterns/<id><br/>content.md 嵌 `<!-- pattern -->` 注释<br/>+ 用 templates 推荐字号"]
-    BD["**iloveppt**:build.py 用 templates/company_a.pptx 作 base<br/>+ Read pattern.yaml 渲染"]
+    BD["**iloveppt**:build.py 用 templates/company_a.pptx 作 base<br/>+ Read meta.yaml 渲染"]
 
     U --> BS --> EX --> BS2 --> AD --> A2 --> BD
 
@@ -373,8 +373,8 @@ flowchart LR
 | `brainstorm/state.json` | brainstorm | 仅 brainstorm 自读自写 |
 | `author/state.json` | author | 仅 author 自读自写(iloveppt Step 0.1 唯一例外,见 §4.4) |
 | `templates/<name>.yaml` | extractor(唯一写) | author / iloveppt / brainstorm 读(见 §2.2) |
-| `library/visual-patterns/patterns/<id>/pattern.yaml` | (库存,人工 ingest) | author / iloveppt / critic / audience 读(RAG 检索后) |
-| `library/visual-patterns/patterns/<id>/preview.png` | (库存,人工 ingest) | iloveppt 读(可能嵌 hero)+ audience 读(triage 找 alternative) |
+| `library/visual-patterns/items/<id>/meta.yaml` | (库存,人工 ingest) | author / iloveppt / critic / audience 读(RAG 检索后) |
+| `library/visual-patterns/items/<id>/preview.png` | (库存,人工 ingest) | iloveppt 读(可能嵌 hero)+ audience 读(triage 找 alternative) |
 
 **SSOT 规则**(2026-05-25 起):
 
@@ -636,7 +636,7 @@ state_round: <int>
 | **模型** | sonnet |
 | **Tools** | Bash / Read / Write / Edit / Glob / Grep / WebSearch / Skill |
 | **state file** | `decks/<slug>/author/state.json`(详见 §2.3) |
-| **读哪些 markdown** | brief.md / outline.md(Stage D)/ content.md(rework)/ content-writing.md / diagram skill docs / templates/<theme>.yaml(若 ≠ tech_blue)/ library/visual-patterns/INDEX.md + patterns/<id>/pattern.yaml |
+| **读哪些 markdown** | brief.md / outline.md(Stage D)/ content.md(rework)/ content-writing.md / diagram skill docs / templates/<theme>.yaml(若 ≠ tech_blue)/ library/visual-patterns/INDEX.md + patterns/<id>/meta.yaml |
 | **写哪些 markdown** | `author/deck_v{N}_outline.md`(Stage C 唯一写者)/ `author/deck_v{N}_content.md`(Stage D 唯一写者)/ `author/state.json` / `author/charts/*.png`(配图)|
 | **调 RAG** | ✓ Step 1A.5(Stage C per chapter top-5,LLM 选 1-2)+ Step 1C(Stage D 拓写时已有调用) |
 | **调 templates 库** | ✓ Stage D Step 1C 若 theme ≠ tech_blue → Read templates/<theme>.yaml 取 visual_observations |
@@ -732,9 +732,9 @@ pattern_hints:                         # 2026-05-25 新增 · per-chapter
 | **模型** | **opus**(深度推理 + 5 维度判断性评审)|
 | **Tools** | Read / Grep / Glob / Write / WebSearch(**无 Edit / Bash** · read-only agent)|
 | **state file** | **无**(每次派发独立,产出全在 critic_report_*.md)|
-| **读哪些 markdown** | brief.md / outline.md / content.md(Stage D)/ content-writing.md(取 Pyramid 5 件套 + 13 layout 字数规则)/ library/visual-patterns/patterns/<id>/pattern.yaml(维度 5)|
+| **读哪些 markdown** | brief.md / outline.md / content.md(Stage D)/ content-writing.md(取 Pyramid 5 件套 + 13 layout 字数规则)/ library/visual-patterns/items/<id>/meta.yaml(维度 5)|
 | **写哪些 markdown** | `critic/critic_report_{C|D}_r{N}.md`(唯一写者)|
-| **调 RAG** | ✓ 维度 5(2026-05-25):Read author selected pattern.yaml 验匹配 → 不符则重跑 search.sh top-5 选 1 alternative |
+| **调 RAG** | ✓ 维度 5(2026-05-25):Read author selected meta.yaml 验匹配 → 不符则重跑 search.sh top-5 选 1 alternative |
 | **调 templates 库** | **不用** |
 | **advisory 来源** | 无(critic 是评者,不接 advisory)|
 | **是否唯一写者** | **critic_report 唯一写者**;.md 源文件**只读不改** |
@@ -772,7 +772,7 @@ flowchart TB
     S0["Step 0 · 启动<br/>Read brief / outline / content / content-writing.md"] --> S1
     S1["Step 1 · 跑 checklist(底线)<br/>Section A 金字塔 7 项<br/>+ Section B brief 对齐 7 项<br/>(Stage C 跳过 B2/B3/B4/B5)"]
     S1 --> S2["Step 2 · 5 维度判断性评审<br/>每个 issue 必有 severity + impact + suggestion"]
-    S2 --> S25["维度 5 · pattern 适配性<br/>Read author selected pattern.yaml<br/>若不符 → search.sh 找 alternative"]
+    S2 --> S25["维度 5 · pattern 适配性<br/>Read author selected meta.yaml<br/>若不符 → search.sh 找 alternative"]
     S25 --> S3{verdict 判定}
     S3 -->|全 pass + 无 high judgmental| P["pass"]
     S3 -->|全 pass + 仅 low/med| PN["pass_with_notes"]
@@ -823,7 +823,7 @@ suggested_alternative_patterns:   # 2026-05-25 新增 · advisory(维度 5 输�
 | **模型** | **opus**(多职责:Step 0 Pyramid + Step 1 md→JSON + Step 2 build + Step 3 视觉 QA + Step 4 主动加视觉)|
 | **Tools** | Bash / Read / Write / Edit / Glob / Grep / Skill(**无 WebSearch**)|
 | **state file** | **无**(单次派发跑完,状态全在 visual_report_r{N}.md + auto_md_edits / rolled_back)|
-| **读哪些 markdown** | critic_report_D_r{N}.md(Step 0 必读 gate)/ content.md / content-writing.md / visual-qa.md / **author/state.json**(唯一跨 agent 读 state file 的 case)/ templates/<name>.yaml(若 theme ≠ tech_blue)/ patterns/<id>/pattern.yaml(看到 `<!-- pattern -->` 注释时)|
+| **读哪些 markdown** | critic_report_D_r{N}.md(Step 0 必读 gate)/ content.md / content-writing.md / visual-qa.md / **author/state.json**(唯一跨 agent 读 state file 的 case)/ templates/<name>.yaml(若 theme ≠ tech_blue)/ patterns/<id>/meta.yaml(看到 `<!-- pattern -->` 注释时)|
 | **写哪些 markdown** | `builder/deck_v{N}.pptx`(通过 build.py)/ `builder/deck_plan.json` / `builder/deck_v{N}_content.postbuild.md`(auto_md_edits 副本,**不动 author/content.md**)/ `builder/visual_report_r{N}.md` |
 | **调 RAG** | ✓ Step 4.2.5(2026-05-25)· 第 4 路 fallback:三路全 disable + 该页 visual_qa 低分时,search.sh top-3 取 preview.png 作 hero |
 | **调 templates 库** | ✓ Step 2 build.py 解析 theme 字段:tech_blue → 内置;短名 → templates/<name>.pptx 作 base |
@@ -844,7 +844,7 @@ suggested_alternative_patterns:   # 2026-05-25 新增 · advisory(维度 5 输�
 | 1 · brand_assets(优先级最高) | `<working_dir>/_assets/brand/*` | 用户自带 brand |
 | 2 · iconify | api.iconify.design(免费)| 需 cairosvg |
 | 3 · Unsplash | api.unsplash.com | 需 UNSPLASH_KEY |
-| 4 · RAG patterns(2026-05-25 新增) | library/visual-patterns/patterns/<id>/preview.png | 上 3 路全 disable + 该页 visual_qa.passed < 14/17 + library 可用 |
+| 4 · RAG patterns(2026-05-25 新增) | library/visual-patterns/items/<id>/preview.png | 上 3 路全 disable + 该页 visual_qa.passed < 14/17 + library 可用 |
 
 **节制原则**:咨询稿是**文字驱动**,没合适资产就不加(BCG/McKinsey style)。
 
