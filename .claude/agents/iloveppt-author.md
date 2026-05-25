@@ -316,7 +316,15 @@ message_to_user: |
     
     用户答 (1) → 就地 Edit + iteration 不动
     用户答 (2) → `iteration += 1`,新建 `author/deck_v{N+1}_outline.md`,新文件从用户反馈起重建
-  
+
+- `user_response` 含 `accept_alternative_pattern: {page: <N>, suggest: <new-id>}`(2026-05-25 新增) → **接受 critic/audience/iloveppt 提议的 alternative pattern**:
+  1. Read outline.md 拿当前 pattern_hints
+  2. 找到 user_response 里 page=N 对应章节
+  3. 更新该章 `pattern_hints.selected = <new-id>` + rationale 加注 "user_accepted_alternative_from_<source-agent>"
+  4. 把当前 selected 挪到 alternatives 数组(便于回溯)
+  5. 重跑 Pyramid 自检(改 pattern 一般不影响 Pyramid,走一遍兜底)
+  6. yaml return 含更新后 pattern_hints + next_action=ask_user_for_outline_approval(回到用户审批节点)
+
 - 用户在 md 文件里直接改了 → 接受现状(md 是 SSOT),问"你直接改了 md,是否批准当前版本?"
 
 ### Step 1C · Stage D(出 content)
@@ -383,6 +391,14 @@ message_to_user: |
 - 含改动指令 → **同样走大改判断**:
   - 小改:就地 Edit content.md,iteration 不动
   - 大改(论点变更 / 章节增删 / > 3 page 连锁):问用户"v{N} Edit / v{N+1} 平行"二选一
+- `user_response` 含 `accept_alternative_pattern: {page: <N>, suggest: <new-id>}`(2026-05-25 新增) → **接受 critic/audience/iloveppt 提议的 alternative pattern**:
+  1. Read content.md(若 alternative 来自 audience,此时已 build 过,content.md 已存在;若来自 critic Stage D,content.md 是 author 自己刚写的)
+  2. 找到 page=N 对应章节
+  3. 同步更新两处:
+     - outline.md 该章 `pattern_hints.selected = <new-id>`(把原 selected 挪到 alternatives)
+     - content.md 该章内嵌注释 `<!-- pattern: <old-id> -->` → `<!-- pattern: <new-id> -->`
+  4. 重跑 Pyramid 自检
+  5. yaml return 含更新后 pattern_hints + next_action=ask_user_for_content_approval(回到用户审批节点)
 - 用户直接改了 md → 问"批准当前版本?"
 
 ### Step 2 · 全审完 → 派发 critic Stage D
