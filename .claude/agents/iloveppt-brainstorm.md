@@ -118,7 +118,7 @@ initial_request: "用户的一句话需求"          # 仅初次派发必填
 - `audience`: executive | technical | general | sales
 - `duration_min`: 整数(常见 10/15/20/30/45)
 - `top_recommendation`: 完整推荐句(动宾结构 + 边界)
-- `theme`: `tech_blue`(内置)/ 短名(查 `${CLAUDE_PROJECT_DIR}/templates/<name>.pptx`)/ .pptx 绝对路径
+- `theme`: `tech_blue`(内置)/ 短名(查 `${CLAUDE_PROJECT_DIR}/library/pptx-templates/_source/<name>.pptx`)/ .pptx 绝对路径
 - `output`: .pptx 输出路径(默认 `<working_dir>/builder/deck_v1.pptx`)
 - **`presentation_mode`**:`speaker`(默认,BCG 演讲风,文字提纲化)/ `handout`(阅读手册风,文字 3-4×,讲者不在场也能读懂)
 
@@ -150,15 +150,26 @@ initial_request: "用户的一句话需求"          # 仅初次派发必填
 
 **若答 (b)** → 进入模板模式:
 
-1. 问"模板 .pptx 路径?" / "或者从已有 templates/ 短名选?"
-2. 若用户给短名:
-   - `Glob` `<repo>/templates/*.pptx` + `<working_dir>/templates/*.pptx` 列清单
-   - 对每个短名 `Read` `<name>.yaml`(若存在),展示 desc / recommended_for / probe.visual_observations
-   - 用清单 prompt 让用户挑
-3. 若用户给 .pptx 路径(新模板,未提取过):
+1. 问"模板 .pptx 路径?" / "或者从已有模板库选?"
+2. 若用户给短名 / 想从库里选:
+   - **优先**用 RAG 按用户主题相关性排序(若 brief 已有 `top_recommendation` 或主题描述):
+     ```bash
+     library/search.sh --kb pptx-templates --type template \
+         --query "<用户主题或 top_recommendation>" \
+         --top-k 5 --format text
+     ```
+     按 score 展示候选,例如:
+     ```
+     按你的主题相关性排,可用模板:
+     1. template_golden       (~85% 匹配) · enterprise-modern · 推荐 ★
+     2. template_high-end-vibe (~62% 匹配) · high-end
+     3. template_training     (~31% 匹配) · training
+     ```
+   - **后备**(DB 空 / 搜索失败时):`Glob` `library/pptx-templates/items/*/meta.yaml` 列短名,Read 取 desc / recommended_for / visual_signature 展示
+3. 若用户给 .pptx 路径(新模板,未入库):
    - 验证文件存在
-   - 检查 `<同目录>/<name>.yaml` 是否已存在且 enriched(有 `probe.visual_observations` 字段)
-   - 若未 enriched → **返回 next_action: dispatch_template_extractor**,主线程派发新 agent 提取模板,提取完会回到 brainstorm 继续
+   - 检查 `library/pptx-templates/items/<name>/meta.yaml` 是否已存在
+   - 若不存在 → **返回 next_action: dispatch_template_extractor**,主线程派发 extractor 走完整 ingest 入库,完成后回到 brainstorm 继续
 
 ```yaml
 # 返回示例:遇到未提取过的模板
@@ -173,7 +184,7 @@ message_to_user: "首次用这个模板,先让 extractor 深度学一下(~1min),
 
 4. 若用户给的 .pptx 已有 enriched yaml → 直接用,记 brief.theme = 短名 / 路径
 
-若 `${CLAUDE_PROJECT_DIR}/templates/` 空 + 用户没自带模板 → 用户只能选 (a) tech_blue。
+若 `${CLAUDE_PROJECT_DIR}/library/pptx-templates/items/` 空 + 用户没自带模板 → 用户只能选 (a) tech_blue。
 
 **素材摄入触发**(对话中识别):
 - 用户提到"数据 / 报表 / 增长 / 对比" → prompt 数据
