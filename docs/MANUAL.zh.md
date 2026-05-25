@@ -707,55 +707,54 @@ theme: /Users/me/templates/company.pptx
 
 ### 9.4 预制多个模板(短名引用)
 
-如果你有多份模板(公司外部 / 客户演示 / 内部评审),不必每次贴长路径。**放进仓库 `${CLAUDE_PROJECT_DIR}/templates/` 目录**:
+如果你有多份模板(公司外部 / 客户演示 / 内部评审),不必每次贴长路径。**放进 `${CLAUDE_PROJECT_DIR}/library/pptx-templates/_source/` 目录**:
 
 ```
-templates/
-├── README.md           # 进 git(门牌)
-├── example.yaml        # 进 git(元数据 schema 示例)
-├── company_a.pptx      # 你放(.gitignore,本地)
-├── company_a.yaml      # 可选元数据(本地)
-├── customer_b.pptx
-└── roadshow.pptx
+library/pptx-templates/
+├── README.md  INDEX.md  ingest_workflow.md   # 进 git
+├── items/<name>/                              # ingest 产物 · 进 git
+│   ├── meta.yaml                              # 模板级 metadata
+│   ├── preview.png                            # cover 缩略图
+│   └── pages/<NN-slug>/{meta.yaml, preview.png}  # 每页拆出来的资产
+└── _source/<name>.pptx                        # 你放(.gitignored)
 ```
 
-`.pptx` / `.yaml` 都 **不进 git**(防机密 logo/disclaimer 误 commit)。
+`_source/*.pptx` **不进 git**(防机密 logo/disclaimer 误 commit)。`items/<id>/*.yaml + preview.png` 进 git(产品资产)。
 
 brief 里用**短名**:
 
 ```yaml
-theme: company_a       # 自动解析 templates/company_a.pptx
+theme: company_a       # 自动解析 library/pptx-templates/_source/company_a.pptx
 ```
 
-agent 在 Stage A 问 theme 时**自动列出可用模板**:
+agent 在 Stage A 问 theme 时**按主题相关性 RAG 排序展示**:
 
 ```
-你这边有几个模板可选:
-- tech_blue (内置默认科技蓝)
-- company_a (公司外部提案模板,推荐 executive/sales)
-- customer_b (...)
+按你的主题相关性排,可用模板:
+1. company_a (~85% 匹配) · enterprise-modern · 推荐 ★
+2. customer_b (~62% 匹配) · marketing
+3. roadshow (~31% 匹配) · sales
 
 用哪个?
 ```
 
-**元数据文件 `<name>.yaml`(可选,推荐配)**:
+**Ingest 新模板**:让 Claude 跑 `iloveppt-template-extractor`:
+1. agent 复制 .pptx 到 `library/pptx-templates/_source/<name>.pptx`
+2. 渲染每页 PNG + LLM 起草 meta.yaml.draft
+3. 你审 draft → 改名去 `.draft` 后缀
+4. 跑 embed:
+   ```bash
+   library/_rag/.venv/bin/python library/_rag/embed_text.py  --kb pptx-templates --id <name>
+   library/_rag/.venv/bin/python library/_rag/embed_image.py --kb pptx-templates --id <name>
+   ```
 
-```yaml
-# templates/company_a.yaml
-name: 公司外部提案模板
-desc: 用于客户演示 / 销售提案 / 路演
-recommended_for: [executive, sales]
-owner: 销售部 (alice@example.com)
-notes: |
-  封面深色,subtitle 字号偏小(建议 ≤ 25 字)
-  数据图建议浅色背景
-```
+完整流程见 [`library/pptx-templates/ingest_workflow.md`](../library/pptx-templates/ingest_workflow.md)。
 
 agent 会读 `notes` 用于拓写时尊重模板约束(比如 subtitle 字数收紧)。
 
-**查找顺序**:`<deck 工作目录>/templates/` 优先 → `<iLovePPT repo>/templates/` 兜底。
+**查找顺序**:`<deck 工作目录>/templates/` 优先(deck 项目本地)→ `<iLovePPT repo>/library/pptx-templates/_source/` 兜底(全局共享)。
 
-详细见仓库 [`${CLAUDE_PROJECT_DIR}/templates/README.md`](${CLAUDE_PROJECT_DIR}/templates/README.md)。
+详细见 [`${CLAUDE_PROJECT_DIR}/library/pptx-templates/README.md`](../library/pptx-templates/README.md)。
 
 ### 9.5 想要彻底自定义视觉?
 

@@ -227,8 +227,8 @@ def _find_template(name: str, plan_dir: str | None = None) -> Path | None:
     """按短名查找 .pptx 模板。
 
     优先级:
-      1. <plan_dir>/templates/<name>.pptx  (deck 项目专属)
-      2. <repo>/templates/<name>.pptx      (全局共享)
+      1. <plan_dir>/templates/<name>.pptx                       (deck 项目专属, 向后兼容)
+      2. <repo>/library/pptx-templates/_source/<name>.pptx      (全局共享, 新位置)
 
     找到返回 Path,找不到返回 None。
     """
@@ -243,7 +243,7 @@ def _find_template(name: str, plan_dir: str | None = None) -> Path | None:
 
 
 def _list_available_templates() -> list[str]:
-    """返回 <repo>/templates/ 下所有 .pptx 短名(不含扩展名)。"""
+    """返回 <repo>/library/pptx-templates/_source/ 下所有 .pptx 短名(不含扩展名)。"""
     tdir = _repo_templates_dir()
     if not tdir.exists():
         return []
@@ -256,7 +256,8 @@ def load_theme(theme_id: str, plan_dir: str | None = None) -> ModuleType:
     Args:
         theme_id: 三种形式之一
             - 内置 theme 名(如 "tech_blue")
-            - 短名(如 "company_a")—— 查找 templates/<name>.pptx
+            - 短名(如 "company_a")—— 查找 library/pptx-templates/_source/<name>.pptx(全局)
+              或 <plan_dir>/templates/<name>.pptx(deck 项目本地)
             - 路径(含 "/" 或以 ".pptx" 结尾)—— 直接当 .pptx 路径
         plan_dir: deck plan 所在目录,影响相对路径解析 + 短名查找优先级
     """
@@ -270,7 +271,7 @@ def load_theme(theme_id: str, plan_dir: str | None = None) -> ModuleType:
         if not path.exists():
             raise FileNotFoundError(f"theme .pptx 不存在: {path}")
         return _extract_theme_from_pptx(str(path))
-    # 短名 → 查 templates/
+    # 短名 → 查 library/pptx-templates/_source/ + <plan_dir>/templates/
     found = _find_template(theme_id, plan_dir)
     if found is not None:
         return _extract_theme_from_pptx(str(found))
