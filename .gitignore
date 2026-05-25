@@ -44,6 +44,9 @@ decks/*/deck_v*.pptx
 decks/*/deck_v*_render/
 decks/*/.~*
 
+# eval 跑产生的工作目录(在仓库内但不入 git)
+decks/eval-*/
+
 # library/visual-patterns/ RAG 生成产物(由 _rag/embed_text.py 重生)
 library/visual-patterns/_rag/text.sqlite
 library/visual-patterns/_rag/image.sqlite

@@ -812,8 +812,8 @@ T+22m    主线程写 STATUS.md(quality_grade: A)
 working_dir: /abs/path/to/decks/<slug>/
 
 # brainstorm 初次派发
-iloveppt_root: /abs/path/to/${CLAUDE_PROJECT_DIR}/
 initial_request: "<用户原话逐字粘贴>"
+# 注:iloveppt_root 已于 2026-05-25 废弃(cwd = iLovePPT 仓库根 = ${CLAUDE_PROJECT_DIR})
 
 # brainstorm 续轮
 user_response: "<用户答内容>"

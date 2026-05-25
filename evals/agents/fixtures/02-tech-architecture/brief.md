@@ -24,7 +24,7 @@
 ## 准备素材
 
 ```bash
-WORKDIR=/tmp/eval_<timestamp>/decks/02-tech-architecture
+WORKDIR=decks/eval-<timestamp>-02-tech-architecture
 mkdir -p $WORKDIR/_assets/raw
 
 cat > $WORKDIR/_assets/raw/bench.csv <<EOF

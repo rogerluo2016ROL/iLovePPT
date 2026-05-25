@@ -33,7 +33,7 @@
 
 ```bash
 # 在 fixture 跑前 mock 数据
-WORKDIR=/tmp/eval_<timestamp>/decks/01-exec-decision
+WORKDIR=decks/eval-<timestamp>-01-exec-decision
 mkdir -p $WORKDIR/_assets/{raw,refs}
 cat > $WORKDIR/_assets/raw/q4_reviews.csv <<EOF
 month,reviews_count,review_days_avg,passed_first_round_pct,reviewer_hours

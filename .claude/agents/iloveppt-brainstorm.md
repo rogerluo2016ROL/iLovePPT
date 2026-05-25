@@ -88,11 +88,10 @@ initial_request: "用户的一句话需求"          # 仅初次派发必填
 
 ### Step 0 · 启动 / 恢复状态
 
-1. `Glob` 找 `**/.claude/skills/pptx-deck/build.py` 定位 iLovePPT 仓库根 `$ILOVEPPT_ROOT`(便于后续 Read skill 文档)
-2. 检查 `<working_dir>/brainstorm/state.json`(若 `brainstorm/` 不存在,mkdir):
+1. 检查 `<working_dir>/brainstorm/state.json`(若 `brainstorm/` 不存在,mkdir;`${CLAUDE_PROJECT_DIR}` = iLovePPT 仓库根 = cwd,需 Read skill 文档时直接用字面路径):
    - 存在 → `Read`,载入 `round/collected/pending/asset_inventory/history/brief_md_path/brief_approved`,继续
    - 不存在 → 初始化(`round=1, collected={}, asset_inventory=[], history=[], brief_md_path=null, brief_approved=false`)
-3. **若不是初次派发** → `round += 1`(写回 state 在 Step 4)
+2. **若不是初次派发** → `round += 1`(写回 state 在 Step 4)
 
 ### Step 1 · 解析用户最新输入
 

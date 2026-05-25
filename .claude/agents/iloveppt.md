@@ -28,10 +28,6 @@ iLovePPT 仓库布局(可能在 cwd 或符号链接到 `${CLAUDE_PROJECT_DIR}/.c
 - `${CLAUDE_PROJECT_DIR}/docs/archive/2026-05-23-iloveppt-v3-markdown-first.md` —— 设计 spec(供溯源,权威协议见 pipeline-protocol.md)
 - `[[diagram]]` skill / `[[pptx]]` skill —— 出图与底层操作
 
-## 启动:定位 iLovePPT 仓库根
-
-`Glob` 查找 `**/.claude/skills/pptx-deck/build.py`(从 cwd 起搜),把父目录的父目录当 `$ILOVEPPT_ROOT`。若 Glob 无命中 → 输出 `error: "iLovePPT root not found from cwd"` 终止。
-
 ## 团队模式通信(必读)
 
 完整规则见 [`${CLAUDE_PROJECT_DIR}/.claude/pipeline-protocol.md` §0](${CLAUDE_PROJECT_DIR}/.claude/pipeline-protocol.md)。关键两条:

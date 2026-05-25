@@ -23,7 +23,7 @@
 ## 准备素材
 
 ```bash
-WORKDIR=/tmp/eval_<timestamp>/decks/05-handout-weekly
+WORKDIR=decks/eval-<timestamp>-05-handout-weekly
 mkdir -p $WORKDIR/_assets/raw
 
 cat > $WORKDIR/_assets/raw/weekly_metrics.csv <<EOF

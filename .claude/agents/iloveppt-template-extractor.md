@@ -40,9 +40,10 @@ template_path: /abs/path/to/company_a.pptx # 必填 — 用户给的模板
 
 ### Step 0 · 启动
 
-1. `Glob` 找 iLovePPT 仓库根,定位 `extract_template.py`
-2. 验证 `template_path` 存在
-3. 若不存在 → 返回 error
+`extract_template.py` 在固定路径 `${CLAUDE_PROJECT_DIR}/.claude/skills/pptx-deck/extract_template.py`(cwd = iLovePPT 仓库根)。
+
+1. 验证入参 `template_path` 存在
+2. 若不存在 → 返回 error
 
 ### Step 1 · 跑 extract_template.py CLI
 

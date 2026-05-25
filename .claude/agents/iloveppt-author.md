@@ -87,12 +87,11 @@ critic Stage C 第 2 轮发现 A6 横向逻辑不齐(章节 2 是 because 句式
 
 ### Step 0 · 启动 / 恢复状态
 
-1. `Glob` 找 iLovePPT 仓库根
-2. `Read` 必备文档(每次派发都要,因为是新 context):
+1. `Read` 必备文档(每次派发都要,因为是新 context · `${CLAUDE_PROJECT_DIR}` = iLovePPT 仓库根 = cwd):
    - `${CLAUDE_PROJECT_DIR}/.claude/skills/pptx-deck/content-writing.md`(Pyramid 5 件套 + 13 layout 字数规则 + markdown schema)
    - `${CLAUDE_PROJECT_DIR}/.claude/skills/pptx-deck/diagram-planning.md`(4 类图决策表)
    - 若 Stage D + 需出图 → 同时 Read `${CLAUDE_PROJECT_DIR}/.claude/skills/diagram/matplotlib.md` + `${CLAUDE_PROJECT_DIR}/.claude/skills/diagram/drawio.md`
-3. 检查 `<working_dir>/author/state.json`(若 `author/` 不存在,mkdir):
+2. 检查 `<working_dir>/author/state.json`(若 `author/` 不存在,mkdir):
    - 存在 → Read,载入 `stage / outline_md_path / content_md_path / approvals / iteration / pyramid_known_issues`
    - 不存在 → 初始化(从入参 stage / brief / asset_inventory 起,`approvals: {outline: false, content: false}`, `iteration: 1`, `pyramid_known_issues: []`)
 

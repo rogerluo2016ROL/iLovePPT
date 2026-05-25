@@ -22,7 +22,7 @@
 ## 准备素材
 
 ```bash
-WORKDIR=/tmp/eval_<timestamp>/decks/03-sales-pitch
+WORKDIR=decks/eval-<timestamp>-03-sales-pitch
 mkdir -p $WORKDIR/_assets/{raw,brand}
 
 cat > $WORKDIR/_assets/raw/competitor.csv <<EOF

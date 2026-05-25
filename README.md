@@ -20,23 +20,27 @@
 ## Quick Start
 
 ```bash
+# 1. clone + 装依赖
 git clone https://github.com/pcliangx/iLovePPT.git
 cd iLovePPT
-bash .claude/skills/pptx/scripts/check_deps.sh                                    # 检查依赖
-python3 .claude/skills/pptx-deck/build.py .claude/skills/pptx-deck/examples/demo_plan.json   # → demo .pptx + PNG
+pip install -e ".[diagram,dev]"
+
+# 2. 检查外部依赖(LibreOffice / poppler / Microsoft YaHei)
+bash .claude/skills/pptx/scripts/check_deps.sh
+
+# 3. (可选)跑一遍 demo 验证安装
+python3 .claude/skills/pptx-deck/build.py .claude/skills/pptx-deck/examples/demo_plan.json
+
+# 4. 在仓库根目录打开 Claude Code,跟主线程说一句话:
+#    "帮我做个 Claude Code 培训的 PPT,15 分钟,技术受众"
+#    主线程会自动派 5 agent 接力,产出在 decks/<slug>/builder/deck_v1.pptx
 ```
 
-依赖:`python-pptx` / `lxml` / LibreOffice / poppler / Microsoft YaHei(macOS 需手动装)。
+依赖:`python-pptx` / `lxml` / LibreOffice / poppler / Microsoft YaHei(macOS 需手动装,Linux 通常自带)。
 
-## Agent 用法
+## 流水线一览
 
-把仓库的 `.claude/agents/` 链接到你目标项目的 `.claude/agents/` 下(或直接在仓库内用),然后在 Claude Code 里说一句话:
-
-```
-帮我做个 Claude Code 培训的 PPT,15 分钟,技术受众
-```
-
-主线程自动派发 5 agent 接力,从需求挖掘到 .pptx 交付:
+在仓库根目录跟 Claude Code 说一句话(如"帮我做个 Claude Code 培训的 PPT,15 分钟,技术受众"),主线程自动派 5 agent + 1 旁路接力:
 
 ```mermaid
 flowchart TB
@@ -65,6 +69,7 @@ flowchart TB
 |---|---|
 | [docs/MANUAL.zh.md](docs/MANUAL.zh.md) | **用户** — 怎么对话、审稿、收稿 |
 | [docs/agent-internals.zh.md](docs/agent-internals.zh.md) | **改造者** — 流水线架构(5 agent + 1 旁路)+ agent 职责 + 4 协作机制 + 6 设计决策 |
+| [docs/agent-team-evaluation-checklist.zh.md](docs/agent-team-evaluation-checklist.zh.md) | **评审者** — 8 维度(A-H)审计框架 + L1-L3 母法则,适用任何 multi-agent system |
 | [.claude/pipeline-protocol.md](.claude/pipeline-protocol.md) | **Claude Code 主线程 AI** — 派发顺序 / handoff / gate 权威活协议 |
 | [CLAUDE.md](CLAUDE.md) | **Claude Code** — 仓库导航 + 不变式 + 约定 |
 | [library/visual-patterns/README.md](library/visual-patterns/README.md) | Visual Patterns RAG(hosted multimodal,text/image/hybrid 3 mode) |

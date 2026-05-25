@@ -20,9 +20,10 @@ iLovePPT 流水线需要 Claude Code agent infra 才能跑,**没有 fully automa
 # 选定 fixture
 FIXTURE_ID="01-exec-decision"
 
-# 准备临时工作目录(不污染 decks/ 真实项目)
-mkdir -p /tmp/eval_$(date +%Y%m%d-%H%M)/decks/$FIXTURE_ID/_assets/{raw,charts,icons,hero,brand,refs}
-cd /tmp/eval_$(date +%Y%m%d-%H%M)/decks/$FIXTURE_ID
+# 准备工作目录(在仓库内 decks/eval-* 下,被 .gitignore 自动忽略)
+WORKDIR=decks/eval-$FIXTURE_ID-$(date +%Y%m%d-%H%M)
+mkdir -p $WORKDIR/_assets/{raw,charts,icons,hero,brand,refs}
+cd $WORKDIR
 
 # 复制 fixture 的 brief 进来(brainstorm 不读这个文件,但你要照着输 initial_request)
 cp /Users/pc2026/Documents/DevTools/iLovePPT/evals/agents/fixtures/$FIXTURE_ID/brief.md ./reference_brief.md

@@ -73,12 +73,13 @@ asset_inventory:                                    # Stage D 必填(透传自 b
 
 ### Step 0 · 启动
 
-1. `Glob` 找 iLovePPT 仓库根 `$ILOVEPPT_ROOT`
-2. `Read` `<repo>/.claude/skills/pptx-deck/content-writing.md`(取 Pyramid 5 件套 + 13 layout 字数 + 双模式字数表参照)
-3. `Read` 输入 md 全文:
+`${CLAUDE_PROJECT_DIR}` = iLovePPT 仓库根 = cwd,直接用字面路径。
+
+1. `Read` `${CLAUDE_PROJECT_DIR}/.claude/skills/pptx-deck/content-writing.md`(取 Pyramid 5 件套 + 13 layout 字数 + 双模式字数表参照)
+2. `Read` 输入 md 全文:
    - Stage C → `brief_md_path` + `outline_md_path`
    - Stage D → `brief_md_path` + `outline_md_path` + `content_md_path`
-4. **无 state file** —— 每次派发都是新一轮独立评审,所有产出在 report.md
+3. **无 state file** —— 每次派发都是新一轮独立评审,所有产出在 report.md
 
 ### Step 1 · 跑 checklist(底线)
 
