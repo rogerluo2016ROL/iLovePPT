@@ -1,0 +1,25 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+id: template_training__19-timeline
+name: "Timeline · 5-point date sequence"
+layout_type: timeline
+content_intent:
+  - Chronological milestone or event sequence (5 dates)
+  - Historical progression with wave background
+when_to_use:
+  - Company history or project milestones
+  - Product release timeline
+keywords:
+  - timeline
+  - 5 points
+  - dates
+  - milestones
+  - chronological
+native_elements:
+  - 5 circular nodes on wave/timeline
+  - Dates below each node (2014.12, 2015.06, 2016.08, 2017.02, 2018.03)
+  - Gray wavy background for visual interest
+  - Text labels above each milestone
+page_number: 19
+template_name: template_training

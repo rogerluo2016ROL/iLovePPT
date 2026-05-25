@@ -1,0 +1,33 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.90
+needs_manual_review: false
+
+# === P0 必填:进 embedding ===
+id: template_high-end-vibe__05-comparison
+name: "左右对比 · 图文混合"
+layout_type: comparison
+content_intent:
+  - Before/After 对比展示
+  - 左侧图像 + 右侧关键文案(3-4 个要点框)
+when_to_use:
+  - 方案对比、时间对比、问题与方案
+  - 视觉对标型内容
+keywords:
+  - 对比
+  - 左右
+  - 图文
+  - 人物
+  - 橙色
+native_elements:
+  - 黑色背景,左侧黑白人物照
+  - 右侧大面积橙色渐变
+  - 右侧 2 个竖形文字框(上下排列)
+  - 底部导航点
+
+# === 辅助字段 ===
+layout_hint: null
+variant: null
+page_number: 5
+template_name: template_high-end-vibe

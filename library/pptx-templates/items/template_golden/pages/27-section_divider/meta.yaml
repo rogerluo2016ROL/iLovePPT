@@ -1,0 +1,23 @@
+status: approved
+confidence: 0.94
+needs_manual_review: false
+
+id: template_golden__27-section_divider
+name: Section Divider · Golden "05"
+layout_type: section_divider
+content_intent:
+  - Fifth section transition
+when_to_use:
+  - Between final sections
+keywords:
+  - section
+  - divider
+  - number
+native_elements:
+  - Large golden number (05)
+  - City skyline watermark
+
+page_number: 27
+template_name: template_golden
+variant: null
+layout_hint: null

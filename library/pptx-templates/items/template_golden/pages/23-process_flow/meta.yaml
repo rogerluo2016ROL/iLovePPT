@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.89
+needs_manual_review: false
+
+id: template_golden__23-process_flow
+name: Process Flow · Vertical Sequence with Branching
+layout_type: process_flow
+content_intent:
+  - Linear vertical process with branches
+  - Top-to-bottom workflow with side inputs
+  - Gated process steps
+when_to_use:
+  - Decision workflows
+  - Process documentation
+  - System flows with branches
+keywords:
+  - process
+  - flow
+  - vertical
+  - sequence
+  - branching
+native_elements:
+  - Top rounded box
+  - Multiple rectangular step boxes
+  - Vertical connecting arrows
+  - Side connecting arrows from edges
+  - Text placeholders
+  - Bottom rounded end box
+
+page_number: 23
+template_name: template_golden
+variant: null
+layout_hint: null

@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: template_golden__30-cards
+name: Cards · 3-Card Grid with Building Photo
+layout_type: cards
+content_intent:
+  - Three featured items/offerings
+  - Cards with icon emphasis
+  - Service/product trio
+when_to_use:
+  - Three main benefits
+  - Service tiers
+  - Feature groups
+keywords:
+  - cards
+  - 3-card
+  - grid
+  - photo
+  - features
+native_elements:
+  - 3 rounded cards (light gray background)
+  - Icon boxes with symbol (fire, person, building)
+  - Text label and description
+  - Center building/background photo
+  - Top title area
+  - Light clean layout
+
+page_number: 30
+template_name: template_golden
+variant: 3-cols
+layout_hint: null

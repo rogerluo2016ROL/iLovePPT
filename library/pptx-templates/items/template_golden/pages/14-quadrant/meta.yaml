@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.89
+needs_manual_review: false
+
+id: template_golden__14-quadrant
+name: Quadrant · 2×2 Matrix with Center Icon
+layout_type: quadrant
+content_intent:
+  - 2×2 positioning matrix
+  - Four-quadrant analysis (strategic, capability, etc.)
+  - SWOT or BCG matrix
+when_to_use:
+  - Market segmentation
+  - Priority/impact matrices
+  - Strategic positioning
+keywords:
+  - quadrant
+  - 2x2
+  - matrix
+  - analysis
+  - positioning
+native_elements:
+  - Central icon with text
+  - 4 circular quadrants with labels/text
+  - Dotted horizontal/vertical axis lines
+  - 70% values in corner circles
+  - Person icons integrated
+  - Left/right/top/bottom text areas
+
+page_number: 14
+template_name: template_golden
+variant: null
+layout_hint: null

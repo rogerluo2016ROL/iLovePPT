@@ -1,0 +1,26 @@
+status: approved
+confidence: 0.94
+needs_manual_review: false
+id: template_training__03-section_divider
+name: "Section 01 Divider · Orange block with team"
+layout_type: section_divider
+content_intent:
+  - Section break marker
+  - Chapter introduction with visual prominence
+when_to_use:
+  - Transition between major sections or topics
+  - Part introduction in multi-part presentation
+keywords:
+  - section divider
+  - chapter
+  - break
+  - "01"
+  - transition
+native_elements:
+  - Orange (#F56954) colored block on left with "/01" large number
+  - Section title header with supporting text
+  - Light blue bar at bottom
+  - Team collaboration illustration on right side
+  - Chart/graph element in background
+page_number: 3
+template_name: template_training

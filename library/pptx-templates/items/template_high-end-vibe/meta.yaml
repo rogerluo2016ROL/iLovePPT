@@ -1,0 +1,85 @@
+# === Gate ===
+status: approved
+# === Provenance ===
+provenance:
+  schema_version: v1
+  embedding_model: tongyi-embedding-vision-plus
+  embedding_dim: 1152
+  ingested_at: 2026-05-26T12:00:00Z
+  source_pptx_sha256: 9ececee8d0f14bfdce67bc0674e3feb8f4e3155d30b26d8354ab2c218500d7fd
+  source_pptx_size_bytes: 3467060
+
+# === Extraction summary ===
+extraction:
+  declared_pages: 11
+  rendered_pages: 11
+  discrepancy: 0
+  discrepancy_resolution: confirmed_clean
+  low_confidence_pages: []
+  failed_pages: []
+
+# === P0 必填:进 embedding ===
+id: template_high-end-vibe
+name: "High-End Vibe · 高端科技渐变模板"
+category: enterprise-modern
+content_intent:
+  - 高科技产品发布会、行业峰会演讲 deck
+  - B2B 企业级商务展示
+  - 前沿技术、品牌形象展示
+when_to_use:
+  - 目标受众为高管、投资人、合作伙伴
+  - 需要高端、现代、科技感的视觉呈现
+  - 演讲时长 20-40 分钟的完整方案
+keywords:
+  - 渐变
+  - 高端
+  - 科技感
+  - 企业
+  - 深蓝
+  - 橙色
+  - 现代
+  - VR
+  - 沉浸式
+  - 五彩斑斓
+recommended_for:
+  - executive
+  - sales
+  - product_launch
+  - tech_conference
+  - investor_pitch
+visual_signature:
+  - 主色深蓝 (#1a3a7f 至 #234666 渐变) + 橙色点缀 (#ff6b35 ~ #ff8800)
+  - 浓郁渐变背景,模糊光源,高层次感
+  - 科技感装饰元素(椭圆轨迹、纵条纹、星点)
+  - 大留白 + 高对比度文字排版
+  - VR / 赛博风格图片融合
+
+# === 辅助字段(不进 embedding) ===
+desc: "五彩斑斓的高端现代 PPT 模板,融合渐变、科技元素、多维视觉,适合企业级演讲。"
+visual_tokens:
+  primary: "#234666"
+  accent: "#ff6b35"
+  secondary_blue: "#1a3a7f"
+  secondary_cyan: "#00bcd4"
+  font_ea: "Microsoft YaHei"
+  title_size_pt: 48
+  body_size_pt: 18
+assets:
+  source_pptx: ../../_source/template_high-end-vibe.pptx
+  total_pages: 11
+  cover_thumbnail: pages/01-cover/preview.png
+pages:
+  - 01-cover
+  - 02-toc
+  - 03-section_divider
+  - 04-cards
+  - 05-comparison
+  - 06-cards
+  - 07-cards
+  - 08-cards
+  - 09-cards
+  - 10-cards
+  - 11-closing
+implementation:
+  tier2_python_theme: null
+  iLovePPT_can_replicate_pct: null

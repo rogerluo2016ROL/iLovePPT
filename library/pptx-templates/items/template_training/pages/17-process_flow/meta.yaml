@@ -1,0 +1,25 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+id: template_training__17-process_flow
+name: "Process Flow · 3-loop horizontal cycle"
+layout_type: process_flow
+content_intent:
+  - Cyclical process or feedback loop with 3 stages
+  - Horizontal flow with curved return arrows
+when_to_use:
+  - Continuous improvement cycle
+  - Repeating process with 3 phases
+keywords:
+  - process flow
+  - cycle
+  - 3 stages
+  - loop
+  - continuous
+native_elements:
+  - 3 business figures at bottom with upward facing icons
+  - 2 business figures at top
+  - Curved connecting arrows showing cycle
+  - Text labels for each phase
+page_number: 17
+template_name: template_training

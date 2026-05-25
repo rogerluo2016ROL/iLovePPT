@@ -1,0 +1,26 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+id: template_training__07-process_flow
+name: "Process Flow · 3-stage horizontal with business icons"
+layout_type: process_flow
+content_intent:
+  - Business process with 3 key stages
+  - Left-to-right transformation or workflow
+when_to_use:
+  - Customer journey or process flow
+  - Project workflow or implementation stages
+keywords:
+  - process flow
+  - workflow
+  - 3 stages
+  - horizontal flow
+  - business process
+native_elements:
+  - 3 business figures with connecting arrows
+  - Blue (#1F3A62) circle icons for each stage
+  - Growth/chart icons indicating progress
+  - Connecting horizontal arrows
+  - Text labels and descriptions
+page_number: 7
+template_name: template_training

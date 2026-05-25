@@ -1,0 +1,25 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+id: template_training__09-pyramid
+name: "Pyramid · 3-level hierarchy with icons"
+layout_type: pyramid
+content_intent:
+  - Hierarchy or maturity levels
+  - 3-tier classification with detailed callouts
+when_to_use:
+  - Maslow-style needs hierarchy
+  - Organization levels or capabilities
+keywords:
+  - pyramid
+  - hierarchy
+  - 3 levels
+  - layered
+  - classification
+native_elements:
+  - Central gray/blue pyramid with 3 sections
+  - Text labels on both sides of pyramid
+  - Supporting description text left and right
+  - Clean geometric triangle shape
+page_number: 9
+template_name: template_training

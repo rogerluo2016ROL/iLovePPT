@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: template_golden__29-process_flow
+name: Process Flow · Diagonal Step Cascade
+layout_type: process_flow
+content_intent:
+  - Diagonal/cascading step process
+  - Offset progression flow
+  - Multi-parallel workflow
+when_to_use:
+  - Pipeline stages
+  - Phased rollout
+  - Waterfall process
+keywords:
+  - process
+  - flow
+  - diagonal
+  - cascade
+  - steps
+native_elements:
+  - Left sidebar text
+  - Center diagonal blue/gray boxes
+  - Diagonal connecting arrows
+  - Right sidebar text areas
+  - Offset rectangular boxes
+
+page_number: 29
+template_name: template_golden
+variant: null
+layout_hint: null

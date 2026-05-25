@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.91
+needs_manual_review: false
+
+id: template_golden__05-timeline
+name: Timeline · 7-Step Horizontal Process
+layout_type: timeline
+content_intent:
+  - Sequential process/roadmap (7 milestones)
+  - Project phases and deliverables
+  - Timeline evolution
+when_to_use:
+  - Project planning slides
+  - Roadmap presentations
+  - Process flow across time
+keywords:
+  - timeline
+  - process
+  - 7-step
+  - sequential
+  - horizontal
+native_elements:
+  - Horizontal timeline with 7 numbered nodes
+  - Connection line joining nodes
+  - Person icons above numbered nodes
+  - Top text labels for each step
+  - Bottom supporting text sections
+  - Alternating node styles
+
+page_number: 5
+template_name: template_golden
+variant: null
+layout_hint: null

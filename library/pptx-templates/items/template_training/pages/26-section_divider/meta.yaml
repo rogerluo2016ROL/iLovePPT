@@ -1,0 +1,24 @@
+status: approved
+confidence: 0.94
+needs_manual_review: false
+id: template_training__26-section_divider
+name: "Section 05 Divider · Orange block with team"
+layout_type: section_divider
+content_intent:
+  - Fifth and final section boundary
+  - Consistent transition design for last major topic
+when_to_use:
+  - Section 05 introduction
+  - Final content area marker
+keywords:
+  - section divider
+  - chapter 05
+  - final section
+  - transition
+native_elements:
+  - Orange (#F56954) left block with "/05" number
+  - Section title header
+  - Light blue footer bar
+  - Team illustration and background
+page_number: 26
+template_name: template_training

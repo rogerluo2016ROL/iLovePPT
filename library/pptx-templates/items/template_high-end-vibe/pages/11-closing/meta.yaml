@@ -1,0 +1,33 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.96
+needs_manual_review: false
+
+# === P0 必填:进 embedding ===
+id: template_high-end-vibe__11-closing
+name: "结束页 · 感谢 + VR 人物"
+layout_type: closing
+content_intent:
+  - 演讲收尾,感谢观看,展示主讲人或品牌
+  - 高端商务闭幕
+when_to_use:
+  - Deck 最后一页
+  - 企业演讲、发布会结尾
+keywords:
+  - 结束
+  - 感谢
+  - Thank you
+  - 人物
+  - 渐变
+native_elements:
+  - 左侧蓝+橙渐变,右侧 VR 人物图片
+  - 大号"感谢观看 Thank you"文字
+  - 底部日期 + 演讲者名
+  - 右上角白色装饰星点
+
+# === 辅助字段 ===
+layout_hint: null
+variant: null
+page_number: 11
+template_name: template_high-end-vibe

@@ -1,0 +1,27 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+id: template_training__32-closing
+name: "Closing · Thank you with team illustration"
+layout_type: closing
+content_intent:
+  - Presentation conclusion with gratitude message
+  - Team celebration and contact information
+when_to_use:
+  - Final slide of presentation
+  - Closing statement with team visual
+keywords:
+  - closing
+  - thanks
+  - thank you
+  - conclusion
+  - final slide
+native_elements:
+  - '"Thanks And Your Slogan Here" large heading'
+  - Team of 5 illustrated people with "TEAM" letters
+  - Orange (#F56954) diagonal banner base
+  - Light blue support bar
+  - Speaker name and title placeholder
+  - Logo placeholder top right
+page_number: 32
+template_name: template_training

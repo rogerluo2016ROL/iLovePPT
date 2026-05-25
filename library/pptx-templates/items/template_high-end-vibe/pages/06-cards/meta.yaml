@@ -1,0 +1,33 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.88
+needs_manual_review: false
+
+# === P0 必填:进 embedding ===
+id: template_high-end-vibe__06-cards
+name: "图文卡片 · 左暗右彩"
+layout_type: cards
+content_intent:
+  - 展示科技、影像相关内容,左侧图片 + 右侧多行文字框
+  - 沉浸式影像 + 说明组合
+when_to_use:
+  - 产品特性、技术展示
+  - 视觉冲击型内容
+keywords:
+  - 卡片
+  - 图文混
+  - 科技
+  - 彩色
+  - 影像
+native_elements:
+  - 黑色背景,左侧暗沉光影
+  - 右侧 2 张彩色科技图片(竖排)
+  - 下方多行文字说明框(黄色标记)
+  - 底部导航
+
+# === 辅助字段 ===
+layout_hint: null
+variant: "2-image-right"
+page_number: 6
+template_name: template_high-end-vibe

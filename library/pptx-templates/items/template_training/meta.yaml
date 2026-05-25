@@ -1,0 +1,108 @@
+status: approved
+provenance:
+  schema_version: v1
+  embedding_model: tongyi-embedding-vision-plus
+  embedding_dim: 1152
+  ingested_at: 2026-05-26T10:30:00Z
+  source_pptx_sha256: e1c85aa0445dd9be5441c3ed0c573813c7d03e4d9be8d86449b3da15a53d8b8f
+  source_pptx_size_bytes: 1202949
+
+extraction:
+  declared_pages: 38
+  rendered_pages: 32
+  discrepancy: 6
+  discrepancy_resolution: confirmed_tool_pages
+  low_confidence_pages: [33, 35, 36, 37, 38]
+  failed_pages: []
+
+id: template_training
+name: "iSlide Team Training Template · Orange + Blue Corporate"
+category: training
+content_intent:
+  - Corporate training and team collaboration presentations
+  - Multi-section structured deck with team/process focus
+  - Business communication with organizational/HR themes
+when_to_use:
+  - Employee onboarding and training programs
+  - Team workshop or departmental presentations
+  - Corporate communication with multiple sections (5 sections + intro/close)
+keywords:
+  - training
+  - team
+  - orange
+  - blue
+  - corporate
+  - collaboration
+  - iSlide
+  - process flow
+  - diagrams
+  - illustration
+recommended_for:
+  - training
+  - hr
+  - corporate communication
+  - internal presentations
+  - organizational development
+visual_signature:
+  - Orange (#F56954) and blue (#1F3A62) dual color accent scheme
+  - Flat illustration style with 4-person team graphic (appears on section dividers and closing)
+  - Geometric diagram emphasis (timeline, pyramid, venn, quadrant, radial, process flow)
+  - Large typography with numbered section markers (/01-/05)
+  - Clean professional layout with generous whitespace
+  - Illustrated personas and icons for human-centric messaging
+
+visual_tokens:
+  primary: '#F56954'
+  accent: '#1F3A62'
+  secondary_teal: '#4FA89F'
+  secondary_green: '#6BA87E'
+  secondary_brown: '#6B5344'
+  font_ea: 'Microsoft YaHei'
+  font_latin: 'Arial'
+  title_size_pt: 36
+  body_size_pt: 18
+
+assets:
+  source_pptx: ../../_source/template_training.pptx
+  total_pages: 32
+  cover_thumbnail: pages/01-cover/preview.png
+  pages:
+    - 01-cover
+    - 02-toc
+    - 03-section_divider
+    - 04-radial
+    - 05-radial
+    - 06-timeline
+    - 07-process_flow
+    - 08-section_divider
+    - 09-pyramid
+    - 10-pyramid
+    - 11-cards
+    - 12-quadrant
+    - 13-data
+    - 14-section_divider
+    - 15-comparison
+    - 16-quote
+    - 17-process_flow
+    - 18-venn
+    - 19-timeline
+    - 20-section_divider
+    - 21-comparison
+    - 22-quadrant
+    - 23-process_flow
+    - 24-radial
+    - 25-single_focus
+    - 26-section_divider
+    - 27-radial
+    - 28-venn
+    - 29-process_flow
+    - 30-data
+    - 31-single_focus
+    - 32-closing
+
+implementation:
+  tier2_python_theme: null
+  iLovePPT_can_replicate_pct: 65
+  notes: "iSlide-created template with heavy use of illustrated elements and geometric diagrams. Orange and blue color scheme is core identity. Template includes 5 structural sections + intro/closing. Pages 33-38 are iSlide documentation/instruction pages (not for presentation use). High-quality illustration library but limited customization to layout structure without custom theme."
+
+desc: "Professional team-focused corporate training template with consistent section structure (5 sections) featuring diverse diagram types (timeline, pyramid, venn, radial, quadrant, process flow) and illustrated team collaboration elements."

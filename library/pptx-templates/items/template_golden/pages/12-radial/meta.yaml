@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: template_golden__12-radial
+name: Radial · 4-Point Circular Process
+layout_type: radial
+content_intent:
+  - Four-step circular process/cycle
+  - Iterative workflow with feedback loop
+  - Continuous improvement cycle (4 phases)
+when_to_use:
+  - Process cycles (Plan-Do-Check-Act)
+  - Agile/iterative methodologies
+  - Four-phase projects
+keywords:
+  - radial
+  - circular
+  - 4-point
+  - process
+  - cycle
+native_elements:
+  - Central icon area
+  - 4 blue circles connected by gray arrows (circular)
+  - Text placeholders for each node
+  - Central text area
+  - Curved connection arrows showing flow
+  - Left/right sidebar text sections
+
+page_number: 12
+template_name: template_golden
+variant: null
+layout_hint: null

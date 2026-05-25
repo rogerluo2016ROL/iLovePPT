@@ -1,0 +1,26 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+id: template_training__13-data
+name: "Data KPI · 4 metrics with wave chart"
+layout_type: data
+content_intent:
+  - Key performance indicator display (4 metrics)
+  - Data visualization with trend wave background
+when_to_use:
+  - Results dashboard or metrics summary
+  - Business scorecard or quarterly review
+keywords:
+  - data
+  - kpi
+  - metrics
+  - 4 columns
+  - chart
+native_elements:
+  - 4 circular numbered KPI boxes (21K, 56K, 78K, 90K)
+  - Gray wavy background indicating trend
+  - Text labels above each metric
+  - Supporting descriptions
+  - Clean numeric focus
+page_number: 13
+template_name: template_training

@@ -1,0 +1,33 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.91
+needs_manual_review: false
+
+# === P0 必填:进 embedding ===
+id: template_high-end-vibe__04-cards
+name: "内容卡片 · 双栏编号框"
+layout_type: cards
+content_intent:
+  - 展示 2-4 个平行内容维度,如"文字编制信息A / 文字编制信息B"
+  - 对标、对比、分类展示
+when_to_use:
+  - 概念对标页
+  - 多维度内容分组
+keywords:
+  - 卡片
+  - 双栏
+  - 编号框
+  - 内容
+  - 对比
+native_elements:
+  - 黑色背景,左上"市场分析"标题
+  - 右侧纵条纹渐变装饰(紫+红)
+  - 左侧 2 列编号文字框
+  - 底部点状导航
+
+# === 辅助字段 ===
+layout_hint: null
+variant: "2-cols"
+page_number: 4
+template_name: template_high-end-vibe

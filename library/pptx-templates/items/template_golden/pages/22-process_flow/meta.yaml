@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: template_golden__22-process_flow
+name: Process Flow · Hierarchical Tree Structure
+layout_type: process_flow
+content_intent:
+  - Organizational or functional hierarchy
+  - Top-down decision tree
+  - Role/responsibility cascade
+when_to_use:
+  - Org charts
+  - Functional decomposition
+  - System architecture
+keywords:
+  - process
+  - flow
+  - hierarchy
+  - tree
+  - structure
+native_elements:
+  - Top rounded box (parent/root)
+  - Multiple tier boxes below
+  - Vertical and horizontal connecting lines
+  - Person icons in circles
+  - Text labels for each node
+  - 3-level depth typical
+
+page_number: 22
+template_name: template_golden
+variant: null
+layout_hint: null

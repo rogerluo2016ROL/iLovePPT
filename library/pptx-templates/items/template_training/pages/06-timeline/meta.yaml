@@ -1,0 +1,26 @@
+status: approved
+confidence: 0.94
+needs_manual_review: false
+id: template_training__06-timeline
+name: "Timeline · 4-stage progression with evolution"
+layout_type: timeline
+content_intent:
+  - Historical progression or maturity stages
+  - 4-step evolution from left to right
+when_to_use:
+  - Company/product evolution story
+  - Training progression or development stages
+keywords:
+  - timeline
+  - progression
+  - evolution
+  - 4 stages
+  - journey
+native_elements:
+  - Horizontal baseline with 4 anchor points
+  - Running figures showing progression (gray → red final)
+  - Step titles below each figure
+  - Supporting text descriptions
+  - Simple, clear linear layout
+page_number: 6
+template_name: template_training

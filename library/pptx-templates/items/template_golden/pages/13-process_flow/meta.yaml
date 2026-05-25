@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.89
+needs_manual_review: false
+
+id: template_golden__13-process_flow
+name: Process Flow · Vertical Steps with Sidebar
+layout_type: process_flow
+content_intent:
+  - Vertical sequential process (4-6 steps)
+  - Top-to-bottom workflow
+  - Step-by-step implementation guide
+when_to_use:
+  - Process documentation
+  - How-to guides
+  - Setup/implementation steps
+keywords:
+  - process
+  - flow
+  - vertical
+  - steps
+  - sequential
+native_elements:
+  - Left sidebar rounded box with title
+  - Vertical rectangular boxes in center
+  - Connecting arrow lines
+  - Text placeholders in boxes
+  - Right sidebar supporting text areas
+  - Professional spacing and alignment
+
+page_number: 13
+template_name: template_golden
+variant: null
+layout_hint: null

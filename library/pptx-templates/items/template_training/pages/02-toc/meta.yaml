@@ -1,0 +1,26 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+id: template_training__02-toc
+name: "Table of Contents · Numbered diamond boxes"
+layout_type: toc
+content_intent:
+  - Agenda or outline page with numbered items
+  - Clear structure preview for presentation flow
+when_to_use:
+  - Second page after cover · Presentation outline
+  - Training agenda or meeting structure overview
+keywords:
+  - contents
+  - agenda
+  - toc
+  - outline
+  - numbered list
+native_elements:
+  - '"CONTENTS" title on left white box'
+  - 5 numbered diamond-shaped boxes (01-05) with gray/orange accents
+  - Supporting text under each item
+  - Clean geometric layout
+  - Light gray map background watermark
+page_number: 2
+template_name: template_training

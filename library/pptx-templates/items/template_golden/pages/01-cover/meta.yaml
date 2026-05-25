@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: template_golden__01-cover
+name: Cover · Dark Blue Skyline with Gold Accent
+layout_type: cover
+content_intent:
+  - Presentation opening/title slide with company/project name
+  - Executive presentation kickoff
+when_to_use:
+  - First slide of business/enterprise deck
+  - Modern professional introductions
+  - Product launch presentations
+keywords:
+  - cover
+  - dark blue
+  - skyline
+  - enterprise
+  - modern
+  - professional
+  - gold accent
+native_elements:
+  - Dark blue (#1a3a52) background with subtle gradient
+  - Golden cityscape/skyline silhouette in bottom right
+  - Large white sans-serif title text
+  - Subtitle area with reduced opacity text
+  - LOGO placeholder in bottom right corner
+  - Decorative horizontal line separator
+
+page_number: 1
+template_name: template_golden
+variant: null
+layout_hint: null

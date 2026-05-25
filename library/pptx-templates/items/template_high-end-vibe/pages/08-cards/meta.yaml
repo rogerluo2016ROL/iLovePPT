@@ -1,0 +1,33 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.87
+needs_manual_review: false
+
+# === P0 必填:进 embedding ===
+id: template_high-end-vibe__08-cards
+name: "左图下文 · 3 栏编号"
+layout_type: cards
+content_intent:
+  - 左侧 2 张图片堆叠 + 下方 3 栏编号说明
+  - 多维视觉展示 + 结构化文案
+when_to_use:
+  - 案例展示、应用场景
+  - 多媒体内容汇聚
+keywords:
+  - 卡片
+  - 3栏
+  - 图片
+  - 混合
+  - 蓝色
+native_elements:
+  - 蓝色渐变底,左侧 2 张竖排图片(建筑+空间)
+  - 下方 3 栏文字框(编号排列)
+  - 右下角装饰元素
+  - 底部导航
+
+# === 辅助字段 ===
+layout_hint: null
+variant: "3-cols-below"
+page_number: 8
+template_name: template_high-end-vibe

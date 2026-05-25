@@ -1,0 +1,25 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+id: template_training__22-quadrant
+name: "Quadrant · 4-segment circle with percentages"
+layout_type: quadrant
+content_intent:
+  - Market share or distribution showing 4 segments
+  - Pie chart style with percentages for each quadrant
+when_to_use:
+  - Data distribution across 4 categories
+  - Market or resource allocation visualization
+keywords:
+  - quadrant
+  - 4 segments
+  - pie chart
+  - percentage
+  - distribution
+native_elements:
+  - 4-segment circle (red, blue, teal, green)
+  - Percentage labels (93%, 56%, 30%, 76%)
+  - Icons above each segment (phone, camera, gamepad, globe)
+  - Text labels left and right sides
+page_number: 22
+template_name: template_training

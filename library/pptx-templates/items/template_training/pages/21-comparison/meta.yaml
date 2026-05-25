@@ -1,0 +1,25 @@
+status: approved
+confidence: 0.90
+needs_manual_review: false
+id: template_training__21-comparison
+name: "Comparison · Priority pyramid with hexagon layers"
+layout_type: comparison
+content_intent:
+  - Priority or importance ranking with 5 levels
+  - Hexagonal stacking showing emphasis (center is key)
+when_to_use:
+  - Priority matrix or value hierarchy
+  - Center-focused emphasis model
+keywords:
+  - comparison
+  - priority
+  - hierarchy
+  - pyramid
+  - hexagon
+native_elements:
+  - 5 stacked hexagon shapes (gray and red)
+  - Central red hexagon highlighting key item
+  - 5 numbered text callouts (01-05)
+  - Left/right supporting descriptions
+page_number: 21
+template_name: template_training

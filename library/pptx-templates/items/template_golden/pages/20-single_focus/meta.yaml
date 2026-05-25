@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.91
+needs_manual_review: false
+
+id: template_golden__20-single_focus
+name: Single Focus · Mountain Peak Goal Climb
+layout_type: single_focus
+content_intent:
+  - Single focal point (achievement/goal)
+  - Motivational peak/summit message
+  - Hero image or large visual focus
+when_to_use:
+  - Primary goal highlighting
+  - Achievement/success messaging
+  - Single key message reinforcement
+keywords:
+  - single
+  - focus
+  - mountain
+  - peak
+  - goal
+  - achievement
+native_elements:
+  - Large mountain/peak shape (gray)
+  - Flag at top with circles (1,2,3 progress)
+  - Left sidebar with 3 items and icons
+  - Title text
+  - Motivational messaging
+
+page_number: 20
+template_name: template_golden
+variant: null
+layout_hint: null

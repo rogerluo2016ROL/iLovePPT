@@ -1,0 +1,26 @@
+status: approved
+confidence: 0.91
+needs_manual_review: false
+id: template_training__23-process_flow
+name: "Process Flow · Funnel arrow with 3 steps"
+layout_type: process_flow
+content_intent:
+  - Funnel or filtering process with 3 sequential items
+  - Right-pointing arrow with side callouts
+when_to_use:
+  - Filtering or narrowing process
+  - 3-step customer journey leading to outcome
+keywords:
+  - process flow
+  - funnel
+  - arrow
+  - 3 steps
+  - sequential
+native_elements:
+  - Large red arrow pointing right
+  - Brick wall background indicating filtering
+  - 3 red vehicle/transportation icons on right
+  - Text labels and descriptions
+  - Numbered sequence (01, 02, 03)
+page_number: 23
+template_name: template_training

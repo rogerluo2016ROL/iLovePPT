@@ -1,0 +1,25 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+id: template_training__25-single_focus
+name: "Single Focus · Large silhouette with 3-card callouts"
+layout_type: single_focus
+content_intent:
+  - Feature or capability spotlight with 3 supporting points
+  - Large left visual with right-side detailed callouts
+when_to_use:
+  - Primary feature announcement
+  - User/persona deep dive with capabilities
+keywords:
+  - single focus
+  - spotlight
+  - large image
+  - 3 callouts
+  - feature
+native_elements:
+  - Large orange/red silhouette of person on left
+  - 3 cards with circular icons on right (location, speech, connection)
+  - Light gray background divider
+  - Text labels and descriptions
+page_number: 25
+template_name: template_training

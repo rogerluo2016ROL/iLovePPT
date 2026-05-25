@@ -1,0 +1,25 @@
+status: approved
+confidence: 0.91
+needs_manual_review: false
+id: template_training__27-radial
+name: "Radial · Large center icon with 3 satellites"
+layout_type: radial
+content_intent:
+  - Central concept/role with 3 supporting elements
+  - Hub and spoke model with emphasis on center
+when_to_use:
+  - Core value with 3 supporting attributes
+  - Main role with 3 satellite functions
+keywords:
+  - radial
+  - hub and spoke
+  - 3 satellites
+  - central focus
+  - relationships
+native_elements:
+  - Large red center circle with person/megaphone icon
+  - 3 blue circles surrounding at cardinal points
+  - Connecting curved lines
+  - Text labels above each outer node
+page_number: 27
+template_name: template_training

@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: template_golden__06-radial
+name: Radial · 3-Node Center Point Design
+layout_type: radial
+content_intent:
+  - Three core competencies/pillars
+  - Central connecting concept with branches
+  - Triangular relationship diagram
+when_to_use:
+  - Competitive advantages (3 pillars)
+  - Service/product features (3 core areas)
+  - Team capabilities
+keywords:
+  - radial
+  - 3-node
+  - circular
+  - center
+  - triangle
+native_elements:
+  - Central radial point with light gray background
+  - 3 blue circles with icons (wallet, package, person)
+  - Gray arcs connecting nodes
+  - Text placeholders next to each node
+  - Left sidebar section with quote format
+  - Right sidebar section
+
+page_number: 6
+template_name: template_golden
+variant: null
+layout_hint: null

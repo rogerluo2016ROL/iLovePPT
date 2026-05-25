@@ -1,0 +1,25 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+id: template_training__30-data
+name: "Data · KPI with gears and metrics"
+layout_type: data
+content_intent:
+  - Business metrics dashboard with 2 main KPIs
+  - Operational/performance data visualization
+when_to_use:
+  - Results presentation with key numbers
+  - Business performance dashboard
+keywords:
+  - data
+  - metrics
+  - gears
+  - kpi
+  - dashboard
+native_elements:
+  - 4 gear shapes of varying sizes (gray and red)
+  - 2 large numbers in red (1559K) and gray (1176K)
+  - Text labels and supporting descriptions
+  - Mechanical/operational theme
+page_number: 30
+template_name: template_training

@@ -1,0 +1,30 @@
+status: approved
+confidence: 0.94
+needs_manual_review: false
+
+id: template_golden__09-section_divider
+name: Section Divider · Golden "02" with Skyline
+layout_type: section_divider
+content_intent:
+  - Second section transition marker
+  - Chapter 2 introduction
+when_to_use:
+  - Between major content sections
+  - After first section completes
+  - Multi-chapter presentations
+keywords:
+  - section
+  - divider
+  - chapter
+  - number
+  - transition
+native_elements:
+  - Large golden section number (02)
+  - Section title and subtitle areas
+  - City skyline watermark
+  - Light professional background
+
+page_number: 9
+template_name: template_golden
+variant: null
+layout_hint: null
