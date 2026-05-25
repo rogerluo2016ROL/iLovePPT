@@ -72,7 +72,8 @@ flowchart TB
 | [docs/agent-team-evaluation-checklist.zh.md](docs/agent-team-evaluation-checklist.zh.md) | **评审者** — 8 维度(A-H)审计框架 + L1-L3 母法则,适用任何 multi-agent system |
 | [.claude/pipeline-protocol.md](.claude/pipeline-protocol.md) | **Claude Code 主线程 AI** — 派发顺序 / handoff / gate 权威活协议 |
 | [CLAUDE.md](CLAUDE.md) | **Claude Code** — 仓库导航 + 不变式 + 约定 |
-| [library/visual-patterns/README.md](library/visual-patterns/README.md) | Visual Patterns RAG(hosted multimodal,text/image/hybrid 3 mode) |
+| [library/visual-patterns/README.md](library/visual-patterns/README.md) | Visual Patterns 知识库(跨模板视觉模式) |
+| [library/pptx-templates/README.md](library/pptx-templates/README.md) | PPTX Templates 知识库(用户预置模板 + 拆出的每页 · `load_theme()` 读 `_source/`) |
 
 ## License
 
