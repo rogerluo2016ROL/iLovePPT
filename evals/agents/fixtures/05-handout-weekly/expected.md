@@ -20,9 +20,9 @@ top_recommendation: 本周技术部交付 3 大里程碑 ...
 
 - 总页数 10 × 1.5 = **15 页 ± 2**(短 deck)
 - **handout 字数遵守**:
-  - cards body **≤ 80 字**(speaker 是 18)
-  - bullet items **≤ 40 字**(speaker 是 12)
-  - summary **≤ 60 字**(speaker 是 15)
+  - cards body **≤ 150 字**(speaker 是 18)
+  - bullet items **≤ 70 字**(speaker 是 12)
+  - summary **≤ 100 字**(speaker 是 15)
 - **每 bullet 是完整可读句子**(handout 不写关键词)
   - ✗ "订单 v2 上线 → 完成"(关键词风,speaker 写法)
   - ✓ "订单系统 v2 已于周三完成全量上线,首日处理 28400 单同比 +8.8%,无 P0 故障"(完整句,handout 写法)
@@ -31,13 +31,13 @@ top_recommendation: 本周技术部交付 3 大里程碑 ...
 
 ## critic 应有
 
-- **B7 字数检查关键** —— 必须按 handout 模式查 cards body ≤ 80 / bullet ≤ 40
+- **B7 字数检查关键** —— 必须按 handout 模式查 cards body ≤ 150 / bullet ≤ 70
 - **维度 3 措辞质感**:句子是否完整可读(不是关键词)
 
 ## audience 应有
 
 - **按 executive + handout profile**:VP 读时希望"每页一眼能 grasp + 数字 verify"
-- info_density 应该高(handout 模式信息密度 3-4× speaker)
+- info_density 应该高(handout 模式信息密度 5-8× speaker)
 - `comprehension_5s` 不是"5 秒抓要点"(读手册可以慢慢看),改测"每条 bullet 自洽可读"
 - **overall_score ≥ 8.0**
 

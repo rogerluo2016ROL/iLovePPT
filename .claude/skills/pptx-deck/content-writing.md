@@ -42,16 +42,16 @@
 
 ## 双模式字数表(brief.presentation_mode 控制)
 
-上表是 **speaker 模式**(默认,BCG 现场演讲风,讲者补充,文字关键词化)的字数限制。**handout 模式**(无讲者,读者自读手册风)字数限制约 **3-4×**:
+上表是 **speaker 模式**(默认,BCG 现场演讲风,讲者补充,文字关键词化)的字数限制。**handout 模式**(无讲者,读者自读手册风)字数限制约 **5-8×**:
 
 | 字段 | speaker | handout |
 |---|---|---|
-| cards body | ≤ 18 字 | ≤ 80 字 |
-| bullet items | ≤ 12 字 | ≤ 40 字 |
-| summary 条目 | ≤ 15 字 | ≤ 60 字 |
-| compare body | ≤ 22 字 | ≤ 80 字 |
+| cards body | ≤ 18 字 | ≤ 150 字 |
+| bullet items | ≤ 12 字 | ≤ 70 字 |
+| summary 条目 | ≤ 15 字 | ≤ 100 字 |
+| compare body | ≤ 22 字 | ≤ 150 字 |
 | compare_pk left/right body | ≤ 40 字 | ≤ 120 字 |
-| matrix_2x2 quadrant body | ≤ 25 字 | ≤ 80 字 |
+| matrix_2x2 quadrant body | ≤ 25 字 | ≤ 150 字 |
 | table 单元格 | ≤ 8 字 | ≤ 25 字 |
 | pic_text point body | ≤ 15 字 | ≤ 50 字 |
 | single_focus explanation | ≤ 20 字 | ≤ 60 字 |

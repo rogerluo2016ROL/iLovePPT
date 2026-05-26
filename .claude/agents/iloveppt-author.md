@@ -142,10 +142,10 @@ critic Stage C 第 2 轮发现 A6 横向逻辑不齐(章节 2 是 because 句式
 
 | 字段 | speaker | handout |
 |---|---|---|
-| cards body | ≤ 18 字 | ≤ 80 字 |
-| bullet items | ≤ 12 字 | ≤ 40 字 |
-| summary | ≤ 15 字 | ≤ 60 字 |
-| compare body | ≤ 22 字 | ≤ 80 字 |
+| cards body | ≤ 18 字 | ≤ 150 字 |
+| bullet items | ≤ 12 字 | ≤ 70 字 |
+| summary | ≤ 15 字 | ≤ 100 字 |
+| compare body | ≤ 22 字 | ≤ 150 字 |
 | table 单元格 | ≤ 8 字 | ≤ 25 字 |
 | pic_text body | ≤ 15 字 | ≤ 50 字 |
 | action_title | ≤ 24 字 **(两种 mode 都一样,硬约束)** | ≤ 24 字 |

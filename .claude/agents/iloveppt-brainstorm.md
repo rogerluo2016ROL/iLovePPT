@@ -135,7 +135,7 @@ initial_request: "用户的一句话需求"          # 仅初次派发必填
 ```
 
 若用户答 (a) → `presentation_mode: speaker`(默认)
-若用户答 (b) → `presentation_mode: handout`,**author 会按 handout 字数限制拓写**(cards body ≤ 80 字而非 18 字 等)
+若用户答 (b) → `presentation_mode: handout`,**author 会按 handout 字数限制拓写**(cards body ≤ 150 字而非 18 字 等)
 
 ### theme 字段:两种模式
 
