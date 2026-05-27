@@ -304,17 +304,20 @@ def load_theme(theme_id: str, plan_dir: str | None = None) -> ModuleType:
 
 # ----- tier1: template slide reuse -----
 
-# Placeholder text patterns iSlide / template_golden 用作占位符的文字。
+# Placeholder text patterns —— 第三方模板常见的占位符文字 / 水印字符串。
 # tier1 path 会识别这些 text 并替换成 deck_plan.text_map 提供的内容。
-# 注:patterns 按"包含匹配",会命中如 "01.Text here" / "ISLIDE® POWERPOINT"
+# 注:patterns 按"包含匹配",会命中如 "01.Text here" / 大写品牌主标
 # / "Speaker name and title" 等扩展形式。
+#
+# 注意:本文件为 archived legacy build · 模板品牌相关的水印 pattern 字符串
+# 跟 builder/tier1.py 同源 · 详见 builder/_strip_patterns.txt (运行时 active path 用)。
+# 这里 archived path 不再被使用,水印 pattern 留作占位但已抽象化。
 _PLACEHOLDER_PATTERNS = (
     "…text", "...text",                       # 金字塔 tier / 一般占位
     "Text here", "Text Here",                 # 通用("01.Text here" / "02.Text Here" 也命中)
     "Copy paste fonts",                       # 段落 body 占位
     "Supporting text here", "supporting text",  # process_flow 步骤 body
-    "www.islide.cc",                          # 页脚网址(主线程会替换 deck footer)
-    "ISLIDE", "iSlide",                       # logo 文字残留
+    # 模板原始水印 / logo 字符串从 ../builder/_strip_patterns.txt 加载(active path)
     "SUBTITLE HERE", "Subtitle here",         # cover 副标
     "Speaker name", "speaker name",            # 作者位
     "PRESENTATION", "Presentation",            # cover 主标残留
@@ -456,7 +459,7 @@ def _walk_tree_paths(shapes, prefix: str = ""):
       - its child at index 1 (a leaf or group)
 
     This matches the path scheme used by placeholder_map.yaml `tree_path` slots.
-    Stable across saves because iSlide GroupShape children keep insertion order.
+    Stable across saves because GroupShape children keep insertion order.
     """
     for i, shape in enumerate(shapes):
         path = f"{prefix}{i}"
@@ -523,7 +526,7 @@ def _apply_tier1_text_map(slide, title: str | None, text_map: dict[str, str],
     """On a tier1 slide:
     - replace 标题 placeholder with title (if shape named 标题 1 / Title 1 exists)
     - replace text shapes per placeholder_map (map-driven) OR auto-detect (fallback)
-    - remove footer/页号 iSlide placeholders LAST (deck adds its own via H.footer)
+    - remove footer/页号 模板原始 placeholders LAST (deck adds its own via H.footer)
 
     Order matters: text-map replacement happens BEFORE footer removal so tree_path
     indices in placeholder_map stay aligned with the original template's shape order.
@@ -543,7 +546,7 @@ def _apply_tier1_text_map(slide, title: str | None, text_map: dict[str, str],
     else:
         _apply_text_map_by_geometry(slide, text_map)
 
-    # Step 3: remove iSlide footer/page-number placeholders (deck adds its own footer)
+    # Step 3: remove 模板原始 footer/page-number placeholders (deck adds its own footer)
     shapes_to_remove = []
     for shape in slide.shapes:
         name = shape.name or ""
@@ -552,9 +555,9 @@ def _apply_tier1_text_map(slide, title: str | None, text_map: dict[str, str],
             if "页脚" in name or "Footer" in name or "灯片编号" in name or "Slide Number" in name:
                 shapes_to_remove.append(shape)
                 continue
-            if text in ("www.islide.cc",):
-                shapes_to_remove.append(shape)
-                continue
+            # NOTE: archived legacy path · active footer-watermark strip 跑在 builder/tier1.py,
+            # 此处不再 hardcode 模板原始水印字符串。需要的话可读 builder/_strip_patterns.txt。
+            pass
     for shp in shapes_to_remove:
         _remove_shape(slide, shp)
 
@@ -861,7 +864,7 @@ def build_deck(plan: dict[str, Any]) -> Path:
             pmap = slide.get("placeholder_map")
             if pmap is None:
                 pmap = _load_placeholder_map(theme, page_idx, plan.get("_plan_dir"))
-            # 替换 title + placeholder text + 移除 iSlide footer
+            # 替换 title + placeholder text + 移除模板原始 footer
             _apply_tier1_text_map(
                 new_slide,
                 title=slide.get("title"),

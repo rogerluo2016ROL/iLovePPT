@@ -83,7 +83,7 @@ provenance:
 extraction:
   declared_pages: 39                             # unzip <p:sldId 数
   rendered_pages: 32                             # ls preview.png 数
-  discrepancy: 7                                 # 非 0 时用户审,可能是 iSlide 工具页 / 真渲染失败
+  discrepancy: 7                                 # 非 0 时用户审,可能是模板工具页 / 真渲染失败
   discrepancy_resolution: pending                # pending | confirmed_tool_pages | confirmed_real_loss
   low_confidence_pages: []
   failed_pages: []
@@ -164,7 +164,7 @@ fallback_rendering:
 | `PAGE_READ_TIMEOUT` | 某页 Read PNG timeout | 可重派 |
 | `SCHEMA_VALIDATION_FAILED` | Step 3.3 self-check 失败(YAML 语法 / 必填字段缺 / enum 违规 / id 重复 / confidence 非数字) | 不放行,详见 errors[].message |
 
-**注意**:**Step 2.5 declared vs rendered mismatch 不再是 error**(advisory 设计 · v1 → v2 改动)。`declared != rendered` 时仍跑 Step 3,数字记进 `extraction.{declared_pages, rendered_pages, discrepancy, discrepancy_resolution: pending}`,**让用户审 gate 判断**是"iSlide 工具页(confirmed_tool_pages)"还是"真渲染失败(confirmed_real_loss)"。唯一 hard_stop 是 `rendered == 0`(`RENDER_TOTAL_FAILURE`)。
+**注意**:**Step 2.5 declared vs rendered mismatch 不再是 error**(advisory 设计 · v1 → v2 改动)。`declared != rendered` 时仍跑 Step 3,数字记进 `extraction.{declared_pages, rendered_pages, discrepancy, discrepancy_resolution: pending}`,**让用户审 gate 判断**是"模板工具页(confirmed_tool_pages)"还是"真渲染失败(confirmed_real_loss)"。唯一 hard_stop 是 `rendered == 0`(`RENDER_TOTAL_FAILURE`)。
 
 失败时,extractor agent 通过 `[system] template_extractor_failed` 前缀的 SendMessage 回 brainstorm team,brainstorm 走兜底分支(用户三选一:装好依赖后重试 / 降级 tech_blue / 终止)。
 
