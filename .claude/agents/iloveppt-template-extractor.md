@@ -436,13 +436,24 @@ Self-check 的具体校验项见 `library/pptx-templates/scripts/extractor_self_
 
 任一非 0 exit → `status: error` + 把 stdout 贴进 errors[].message · 等用户决策 · **不允许**自动重试修复。
 
-### Step 4 · 复制 cover 缩略
+### Step 4 · 复制 cover 缩略(layout-aware · 不依赖 NN 顺序)
 
 ```bash
-cp library/pptx-templates/items/<name>/pages/01-cover/preview.png library/pptx-templates/items/<name>/preview.png
+# 找 layout_type==cover 的页(模板设计师常把 cover 放 02/03)
+COVER_DIR=$(grep -lE "^layout_type: cover$" \
+  library/pptx-templates/items/<name>/pages/*/meta.yaml.draft 2>/dev/null \
+  | head -1 | xargs dirname)
+
+if [ -n "$COVER_DIR" ]; then
+  cp $COVER_DIR/preview.png library/pptx-templates/items/<name>/preview.png
+else
+  # 兜底:用 NN 最小的页(通常 01-*)
+  FALLBACK=$(ls library/pptx-templates/items/<name>/pages/01-*/preview.png 2>/dev/null | head -1)
+  [ -n "$FALLBACK" ] && cp "$FALLBACK" library/pptx-templates/items/<name>/preview.png
+fi
 ```
 
-(若没 01-cover 页就用 01-* 的 preview。)
+若都失败 · skip · 不阻塞 Step 5 return。
 
 ### Step 5 · 返回 draft 给主线程
 
