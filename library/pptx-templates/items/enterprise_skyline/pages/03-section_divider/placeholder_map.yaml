@@ -2,6 +2,7 @@ template_page_index: 2
 layout_class: '?'
 slots:
 - id: '?'
+  shape_id: 16
   tree_path: '2'
   raw_text_sample: '01'
   bbox:
@@ -9,10 +10,11 @@ slots:
     top: 2.49
     width: 1.04
     height: 0.92
-  font_size_pt: 13.5
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 13.5
 - id: '?'
+  shape_id: 5
   tree_path: '0'
   raw_text_sample: Section Header Here
   bbox:
@@ -20,10 +22,11 @@ slots:
     top: 3.26
     width: 5.93
     height: 0.98
-  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: null
 - id: '?'
+  shape_id: 6
   tree_path: '1'
   raw_text_sample: 'Supporting text here.
 
@@ -33,7 +36,6 @@ slots:
     top: 4.24
     width: 5.93
     height: 1.11
-  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-
+  font_size_pt: null

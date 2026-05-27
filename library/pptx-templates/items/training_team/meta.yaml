@@ -10,7 +10,9 @@ extraction:
   declared_pages: 38
   rendered_pages: 38
   discrepancy: 0
-  discrepancy_resolution: pending
+  discrepancy_resolution: confirmed_no_loss
+  discrepancy_note: |
+    declared_pages == rendered_pages,confirmed_no_loss.
   low_confidence_pages:
   - 16
   - 21

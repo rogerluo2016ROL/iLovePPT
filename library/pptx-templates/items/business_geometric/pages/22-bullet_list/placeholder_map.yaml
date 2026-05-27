@@ -1,38 +1,45 @@
 template_page_index: 21
 layout_class: bullet_list
 slots:
-  - id: title
-    tree_path: '0'
-    capacity_chars: 30
-    text_color_override: null
-    font_size_pt: null
-  - id: intro_title
-    tree_path: '3.1.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 24
-  - id: intro_body
-    tree_path: '3.1.0'
-    capacity_chars: 160
-    text_color_override: null
-    font_size_pt: 14
-  - id: bullet_1_title
-    tree_path: '3.3.1'
-    capacity_chars: 30
-    text_color_override: null
-    font_size_pt: 20
-  - id: bullet_1_body
-    tree_path: '3.3.2'
-    capacity_chars: 100
-    text_color_override: null
-    font_size_pt: 11
-  - id: bullet_2_title
-    tree_path: '3.4.1'
-    capacity_chars: 30
-    text_color_override: null
-    font_size_pt: 20
-  - id: bullet_2_body
-    tree_path: '3.4.2'
-    capacity_chars: 100
-    text_color_override: null
-    font_size_pt: 11
+- id: title
+  shape_id: 2
+  tree_path: '0'
+  capacity_chars: 30
+  text_color_override: null
+  font_size_pt: null
+- id: intro_title
+  shape_id: 19
+  tree_path: 3.1.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 24
+- id: intro_body
+  shape_id: 18
+  tree_path: 3.1.0
+  capacity_chars: 160
+  text_color_override: null
+  font_size_pt: 14
+- id: bullet_1_title
+  shape_id: 16
+  tree_path: 3.3.1
+  capacity_chars: 30
+  text_color_override: null
+  font_size_pt: 20
+- id: bullet_1_body
+  shape_id: 17
+  tree_path: 3.3.2
+  capacity_chars: 100
+  text_color_override: null
+  font_size_pt: 11
+- id: bullet_2_title
+  shape_id: 13
+  tree_path: 3.4.1
+  capacity_chars: 30
+  text_color_override: null
+  font_size_pt: 20
+- id: bullet_2_body
+  shape_id: 14
+  tree_path: 3.4.2
+  capacity_chars: 100
+  text_color_override: null
+  font_size_pt: 11

@@ -1,38 +1,45 @@
 template_page_index: 22
 layout_class: cards
 slots:
-  - id: center_label
-    tree_path: '3.4'
-    capacity_chars: 6
-    text_color_override: null
-    font_size_pt: null
-  - id: card_1_title
-    tree_path: '3.3.2'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: card_1_body
-    tree_path: '3.3.1'
-    capacity_chars: 50
-    text_color_override: null
-    font_size_pt: null
-  - id: card_2_title
-    tree_path: '3.5.2'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: card_2_body
-    tree_path: '3.5.1'
-    capacity_chars: 50
-    text_color_override: null
-    font_size_pt: null
-  - id: card_3_title
-    tree_path: '3.6.2'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: card_3_body
-    tree_path: '3.6.1'
-    capacity_chars: 50
-    text_color_override: null
-    font_size_pt: null
+- id: center_label
+  shape_id: 10
+  tree_path: '3.4'
+  capacity_chars: 6
+  text_color_override: null
+  font_size_pt: null
+- id: card_1_title
+  shape_id: 29
+  tree_path: 3.3.2
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: card_1_body
+  shape_id: 28
+  tree_path: 3.3.1
+  capacity_chars: 50
+  text_color_override: null
+  font_size_pt: null
+- id: card_2_title
+  shape_id: 24
+  tree_path: 3.5.2
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: card_2_body
+  shape_id: 23
+  tree_path: 3.5.1
+  capacity_chars: 50
+  text_color_override: null
+  font_size_pt: null
+- id: card_3_title
+  shape_id: 19
+  tree_path: 3.6.2
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: card_3_body
+  shape_id: 18
+  tree_path: 3.6.1
+  capacity_chars: 50
+  text_color_override: null
+  font_size_pt: null

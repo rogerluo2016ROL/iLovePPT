@@ -1,23 +1,27 @@
 template_page_index: 25
 layout_class: single_focus
 slots:
-  - id: title
-    tree_path: '0'
-    capacity_chars: 30
-    text_color_override: null
-    font_size_pt: null
-  - id: hero_metric
-    tree_path: '3.1'
-    capacity_chars: 4
-    text_color_override: null
-    font_size_pt: 14
-  - id: focus_label
-    tree_path: '3.2'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 24
-  - id: focus_body
-    tree_path: '3.3'
-    capacity_chars: 60
-    text_color_override: null
-    font_size_pt: 15
+- id: title
+  shape_id: 2
+  tree_path: '0'
+  capacity_chars: 30
+  text_color_override: null
+  font_size_pt: null
+- id: hero_metric
+  shape_id: 7
+  tree_path: '3.1'
+  capacity_chars: 4
+  text_color_override: null
+  font_size_pt: 14
+- id: focus_label
+  shape_id: 8
+  tree_path: '3.2'
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 24
+- id: focus_body
+  shape_id: 9
+  tree_path: '3.3'
+  capacity_chars: 60
+  text_color_override: null
+  font_size_pt: 15

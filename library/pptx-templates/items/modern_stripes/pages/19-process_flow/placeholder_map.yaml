@@ -1,48 +1,57 @@
 template_page_index: 18
 layout_class: process_flow
 slots:
-  - id: source_label
-    tree_path: '3.0'
-    capacity_chars: 6
-    text_color_override: null
-    font_size_pt: null
-  - id: source_title
-    tree_path: '3.7.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: source_body
-    tree_path: '3.7.1'
-    capacity_chars: 70
-    text_color_override: null
-    font_size_pt: null
-  - id: branch_1_title
-    tree_path: '3.4.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: branch_1_body
-    tree_path: '3.4.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: branch_2_title
-    tree_path: '3.5.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: branch_2_body
-    tree_path: '3.5.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: branch_3_title
-    tree_path: '3.6.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: branch_3_body
-    tree_path: '3.6.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
+- id: source_label
+  shape_id: 6
+  tree_path: '3.0'
+  capacity_chars: 6
+  text_color_override: null
+  font_size_pt: null
+- id: source_title
+  shape_id: 14
+  tree_path: 3.7.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: source_body
+  shape_id: 15
+  tree_path: 3.7.1
+  capacity_chars: 70
+  text_color_override: null
+  font_size_pt: null
+- id: branch_1_title
+  shape_id: 20
+  tree_path: 3.4.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: branch_1_body
+  shape_id: 21
+  tree_path: 3.4.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: branch_2_title
+  shape_id: 18
+  tree_path: 3.5.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: branch_2_body
+  shape_id: 19
+  tree_path: 3.5.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: branch_3_title
+  shape_id: 16
+  tree_path: 3.6.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: branch_3_body
+  shape_id: 17
+  tree_path: 3.6.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null

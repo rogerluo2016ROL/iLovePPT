@@ -1,53 +1,63 @@
 template_page_index: 24
 layout_class: timeline
 slots:
-  - id: step_1_title
-    tree_path: '3.6.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: step_1_body
-    tree_path: '3.6.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: step_2_title
-    tree_path: '3.7.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: step_2_body
-    tree_path: '3.7.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: step_3_title
-    tree_path: '3.8.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: step_3_body
-    tree_path: '3.8.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: step_4_title
-    tree_path: '3.9.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: step_4_body
-    tree_path: '3.9.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: step_5_title
-    tree_path: '3.10.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: step_5_body
-    tree_path: '3.10.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
+- id: step_1_title
+  shape_id: 25
+  tree_path: 3.6.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: step_1_body
+  shape_id: 26
+  tree_path: 3.6.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: step_2_title
+  shape_id: 23
+  tree_path: 3.7.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: step_2_body
+  shape_id: 24
+  tree_path: 3.7.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: step_3_title
+  shape_id: 21
+  tree_path: 3.8.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: step_3_body
+  shape_id: 22
+  tree_path: 3.8.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: step_4_title
+  shape_id: 19
+  tree_path: 3.9.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: step_4_body
+  shape_id: 20
+  tree_path: 3.9.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: step_5_title
+  shape_id: 17
+  tree_path: 3.10.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: step_5_body
+  shape_id: 18
+  tree_path: 3.10.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null

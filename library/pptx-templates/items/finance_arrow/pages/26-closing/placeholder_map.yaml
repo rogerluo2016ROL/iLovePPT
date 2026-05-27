@@ -1,23 +1,27 @@
 template_page_index: 25
 layout_class: closing
 slots:
-  - id: thanks_word
-    tree_path: '0'
-    capacity_chars: 10
-    text_color_override: null
-    font_size_pt: null
-  - id: slogan
-    tree_path: '1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: speaker
-    tree_path: '2'
-    capacity_chars: 30
-    text_color_override: null
-    font_size_pt: null
-  - id: footer_url
-    tree_path: '3'
-    capacity_chars: 24
-    text_color_override: null
-    font_size_pt: null
+- id: thanks_word
+  shape_id: 3
+  tree_path: '0'
+  capacity_chars: 10
+  text_color_override: null
+  font_size_pt: null
+- id: slogan
+  shape_id: 2
+  tree_path: '1'
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: speaker
+  shape_id: 5
+  tree_path: '2'
+  capacity_chars: 30
+  text_color_override: null
+  font_size_pt: null
+- id: footer_url
+  shape_id: 7
+  tree_path: '3'
+  capacity_chars: 24
+  text_color_override: null
+  font_size_pt: null

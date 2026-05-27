@@ -1,43 +1,51 @@
 template_page_index: 1
 layout_class: toc
 slots:
-  - id: ch1_title
-    tree_path: '0'
-    capacity_chars: 20
-    text_color_override: null
-    font_size_pt: null
-  - id: ch1_desc
-    tree_path: '1'
-    capacity_chars: 56
-    text_color_override: null
-    font_size_pt: null
-  - id: ch2_title
-    tree_path: '2'
-    capacity_chars: 20
-    text_color_override: null
-    font_size_pt: null
-  - id: ch2_desc
-    tree_path: '3'
-    capacity_chars: 56
-    text_color_override: null
-    font_size_pt: null
-  - id: ch3_title
-    tree_path: '4'
-    capacity_chars: 20
-    text_color_override: null
-    font_size_pt: null
-  - id: ch3_desc
-    tree_path: '5'
-    capacity_chars: 56
-    text_color_override: null
-    font_size_pt: null
-  - id: ch4_title
-    tree_path: '6'
-    capacity_chars: 20
-    text_color_override: null
-    font_size_pt: null
-  - id: ch4_desc
-    tree_path: '7'
-    capacity_chars: 56
-    text_color_override: null
-    font_size_pt: null
+- id: ch1_title
+  shape_id: 34
+  tree_path: '0'
+  capacity_chars: 20
+  text_color_override: null
+  font_size_pt: null
+- id: ch1_desc
+  shape_id: null
+  tree_path: '1'
+  capacity_chars: 56
+  text_color_override: null
+  font_size_pt: null
+- id: ch2_title
+  shape_id: null
+  tree_path: '2'
+  capacity_chars: 20
+  text_color_override: null
+  font_size_pt: null
+- id: ch2_desc
+  shape_id: null
+  tree_path: '3'
+  capacity_chars: 56
+  text_color_override: null
+  font_size_pt: null
+- id: ch3_title
+  shape_id: null
+  tree_path: '4'
+  capacity_chars: 20
+  text_color_override: null
+  font_size_pt: null
+- id: ch3_desc
+  shape_id: null
+  tree_path: '5'
+  capacity_chars: 56
+  text_color_override: null
+  font_size_pt: null
+- id: ch4_title
+  shape_id: null
+  tree_path: '6'
+  capacity_chars: 20
+  text_color_override: null
+  font_size_pt: null
+- id: ch4_desc
+  shape_id: null
+  tree_path: '7'
+  capacity_chars: 56
+  text_color_override: null
+  font_size_pt: null

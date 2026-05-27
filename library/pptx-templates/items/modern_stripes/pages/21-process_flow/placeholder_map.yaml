@@ -1,58 +1,69 @@
 template_page_index: 20
 layout_class: process_flow
 slots:
-  - id: step_1_label
-    tree_path: '3.6'
-    capacity_chars: 6
-    text_color_override: null
-    font_size_pt: null
-  - id: step_1_title
-    tree_path: '3.11'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: step_1_body
-    tree_path: '3.10'
-    capacity_chars: 50
-    text_color_override: null
-    font_size_pt: null
-  - id: step_2_label
-    tree_path: '3.4'
-    capacity_chars: 6
-    text_color_override: null
-    font_size_pt: null
-  - id: step_2_body
-    tree_path: '3.14'
-    capacity_chars: 50
-    text_color_override: null
-    font_size_pt: null
-  - id: step_3_label
-    tree_path: '3.5'
-    capacity_chars: 6
-    text_color_override: null
-    font_size_pt: null
-  - id: step_3_title
-    tree_path: '3.9'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: step_3_body
-    tree_path: '3.15'
-    capacity_chars: 50
-    text_color_override: null
-    font_size_pt: null
-  - id: step_4_label
-    tree_path: '3.7'
-    capacity_chars: 6
-    text_color_override: null
-    font_size_pt: null
-  - id: step_4_title
-    tree_path: '3.13'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: step_4_body
-    tree_path: '3.12'
-    capacity_chars: 50
-    text_color_override: null
-    font_size_pt: null
+- id: step_1_label
+  shape_id: 12
+  tree_path: '3.6'
+  capacity_chars: 6
+  text_color_override: null
+  font_size_pt: null
+- id: step_1_title
+  shape_id: 17
+  tree_path: '3.11'
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: step_1_body
+  shape_id: 16
+  tree_path: '3.10'
+  capacity_chars: 50
+  text_color_override: null
+  font_size_pt: null
+- id: step_2_label
+  shape_id: 10
+  tree_path: '3.4'
+  capacity_chars: 6
+  text_color_override: null
+  font_size_pt: null
+- id: step_2_body
+  shape_id: 20
+  tree_path: '3.14'
+  capacity_chars: 50
+  text_color_override: null
+  font_size_pt: null
+- id: step_3_label
+  shape_id: 11
+  tree_path: '3.5'
+  capacity_chars: 6
+  text_color_override: null
+  font_size_pt: null
+- id: step_3_title
+  shape_id: 15
+  tree_path: '3.9'
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: step_3_body
+  shape_id: 21
+  tree_path: '3.15'
+  capacity_chars: 50
+  text_color_override: null
+  font_size_pt: null
+- id: step_4_label
+  shape_id: 13
+  tree_path: '3.7'
+  capacity_chars: 6
+  text_color_override: null
+  font_size_pt: null
+- id: step_4_title
+  shape_id: 19
+  tree_path: '3.13'
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: step_4_body
+  shape_id: 18
+  tree_path: '3.12'
+  capacity_chars: 50
+  text_color_override: null
+  font_size_pt: null

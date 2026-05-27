@@ -1,68 +1,81 @@
 template_page_index: 30
 layout_class: cards
 slots:
-  - id: footer_title
-    tree_path: '3.3'
-    capacity_chars: 40
-    text_color_override: null
-    font_size_pt: null
-  - id: card_1_title
-    tree_path: '3.1.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: card_1_body_a
-    tree_path: '3.1.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: card_1_body_b
-    tree_path: '3.1.2'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: card_2_title
-    tree_path: '3.5.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: card_2_body_a
-    tree_path: '3.5.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: card_2_body_b
-    tree_path: '3.5.2'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: card_3_title
-    tree_path: '3.7.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: card_3_body_a
-    tree_path: '3.7.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: card_3_body_b
-    tree_path: '3.7.2'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: card_4_title
-    tree_path: '3.9.0'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: null
-  - id: card_4_body_a
-    tree_path: '3.9.1'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: card_4_body_b
-    tree_path: '3.9.2'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
+- id: footer_title
+  shape_id: 9
+  tree_path: '3.3'
+  capacity_chars: 40
+  text_color_override: null
+  font_size_pt: null
+- id: card_1_title
+  shape_id: 27
+  tree_path: 3.1.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: card_1_body_a
+  shape_id: 28
+  tree_path: 3.1.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: card_1_body_b
+  shape_id: 29
+  tree_path: 3.1.2
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: card_2_title
+  shape_id: 24
+  tree_path: 3.5.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: card_2_body_a
+  shape_id: 25
+  tree_path: 3.5.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: card_2_body_b
+  shape_id: 26
+  tree_path: 3.5.2
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: card_3_title
+  shape_id: 21
+  tree_path: 3.7.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: card_3_body_a
+  shape_id: 22
+  tree_path: 3.7.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: card_3_body_b
+  shape_id: 23
+  tree_path: 3.7.2
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: card_4_title
+  shape_id: 18
+  tree_path: 3.9.0
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: null
+- id: card_4_body_a
+  shape_id: 19
+  tree_path: 3.9.1
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: card_4_body_b
+  shape_id: 20
+  tree_path: 3.9.2
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null

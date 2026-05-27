@@ -2,6 +2,7 @@ template_page_index: 31
 layout_class: '?'
 slots:
 - id: '?'
+  shape_id: 5
   tree_path: '2'
   raw_text_sample: "Thanks\vAnd Your Slogan Here"
   bbox:
@@ -9,10 +10,11 @@ slots:
     top: 1.24
     width: 10.79
     height: 1.77
-  font_size_pt: 80.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 80.0
 - id: '?'
+  shape_id: 6
   tree_path: '4'
   raw_text_sample: Speaker name and title
   bbox:
@@ -20,10 +22,11 @@ slots:
     top: 3.44
     width: 10.79
     height: 0.32
-  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: null
 - id: '?'
+  shape_id: 7
   tree_path: '3'
   raw_text_sample: www.islide.cc
   bbox:
@@ -31,7 +34,6 @@ slots:
     top: 3.76
     width: 10.79
     height: 0.34
-  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-
+  font_size_pt: null

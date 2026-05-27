@@ -1,75 +1,75 @@
-template_page_index: 32   # 0-indexed; slide 33 = index 32
+template_page_index: 32
 layout_class: other
 slots:
-  - id: page_title
-    tree_path: '15'
-    capacity_chars: 32
-    text_color_override: null
-    font_size_pt: null
-    # "设计标准 Design Criteria" - top banner title
-  - id: note_warning
-    tree_path: '16'
-    capacity_chars: 80
-    text_color_override: null
-    font_size_pt: null
-    # 红色警示框: "本页为说明页,使用时请删除本页内容 / This slide is an instruction..."
-  - id: theme_colors_header
-    tree_path: '1'
-    capacity_chars: 24
-    text_color_override: null
-    font_size_pt: null
-    # "主题色彩 THEME COLORS"
-  - id: theme_colors_label_text_bg
-    tree_path: '3'
-    capacity_chars: 24
-    text_color_override: null
-    font_size_pt: null
-    # "文字/背景 Text/Background"
-  - id: theme_colors_label_fill
-    tree_path: '4'
-    capacity_chars: 24
-    text_color_override: null
-    font_size_pt: null
-    # "填充色 Fill Colors"
-  - id: theme_colors_note
-    tree_path: '12'
-    capacity_chars: 100
-    text_color_override: null
-    font_size_pt: null
-    # "可以通过 iSlide 【色彩库】功能,快速应用更多色彩 / More color schemes are optional..."
-  - id: theme_fonts_header
-    tree_path: '5'
-    capacity_chars: 24
-    text_color_override: null
-    font_size_pt: null
-    # "主题字体 THEME FONTS"
-  - id: theme_fonts_body
-    tree_path: '7'
-    capacity_chars: 80
-    text_color_override: null
-    font_size_pt: null
-    # 中/英文字体规范条: 中文字体: 微软雅黑 / 英文字体: Arial
-  - id: theme_fonts_note
-    tree_path: '13'
-    capacity_chars: 120
-    text_color_override: null
-    font_size_pt: null
-    # "可以在【设计】菜单【字体】中改变,或应用 iSlide【统一字体】功能改变设置..."
-  - id: guides_header
-    tree_path: '8'
-    capacity_chars: 48
-    text_color_override: null
-    font_size_pt: null
-    # "预设参考线 (2016 版本及以上) GUIDES (Office 2016 and later)"
-  - id: guides_shortcut_label
-    tree_path: '11'
-    capacity_chars: 64
-    text_color_override: null
-    font_size_pt: null
-    # "ALT+F9 开启和查看本主题预设的参考线 / Press Alt + F9 to show/hide guides"
-  - id: guides_note
-    tree_path: '14'
-    capacity_chars: 100
-    text_color_override: null
-    font_size_pt: null
-    # "可以通过 iSlide【一键优化】(智能参考线)功能,应用更多预设参考线..."
+- id: page_title
+  shape_id: 48
+  tree_path: '15'
+  capacity_chars: 32
+  text_color_override: null
+  font_size_pt: null
+- id: note_warning
+  shape_id: 51
+  tree_path: '16'
+  capacity_chars: 80
+  text_color_override: null
+  font_size_pt: null
+- id: theme_colors_header
+  shape_id: 18
+  tree_path: '1'
+  capacity_chars: 24
+  text_color_override: null
+  font_size_pt: null
+- id: theme_colors_label_text_bg
+  shape_id: 21
+  tree_path: '3'
+  capacity_chars: 24
+  text_color_override: null
+  font_size_pt: null
+- id: theme_colors_label_fill
+  shape_id: 22
+  tree_path: '4'
+  capacity_chars: 24
+  text_color_override: null
+  font_size_pt: null
+- id: theme_colors_note
+  shape_id: 39
+  tree_path: '12'
+  capacity_chars: 100
+  text_color_override: null
+  font_size_pt: null
+- id: theme_fonts_header
+  shape_id: 25
+  tree_path: '5'
+  capacity_chars: 24
+  text_color_override: null
+  font_size_pt: null
+- id: theme_fonts_body
+  shape_id: 27
+  tree_path: '7'
+  capacity_chars: 80
+  text_color_override: null
+  font_size_pt: null
+- id: theme_fonts_note
+  shape_id: 44
+  tree_path: '13'
+  capacity_chars: 120
+  text_color_override: null
+  font_size_pt: null
+- id: guides_header
+  shape_id: 32
+  tree_path: '8'
+  capacity_chars: 48
+  text_color_override: null
+  font_size_pt: null
+- id: guides_shortcut_label
+  shape_id: 47
+  tree_path: '11'
+  capacity_chars: 64
+  text_color_override: null
+  font_size_pt: null
+- id: guides_note
+  shape_id: 6
+  tree_path: '14'
+  capacity_chars: 100
+  text_color_override: null
+  font_size_pt: null

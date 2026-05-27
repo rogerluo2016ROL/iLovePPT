@@ -1,48 +1,57 @@
 template_page_index: 28
 layout_class: cards
 slots:
-  - id: title
-    tree_path: '0'
-    capacity_chars: 30
-    text_color_override: null
-    font_size_pt: null
-  - id: card_tl_title
-    tree_path: '3.10.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 16
-  - id: card_tl_body
-    tree_path: '3.10.0'
-    capacity_chars: 100
-    text_color_override: null
-    font_size_pt: 11
-  - id: card_tr_title
-    tree_path: '3.8.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 16
-  - id: card_tr_body
-    tree_path: '3.8.0'
-    capacity_chars: 100
-    text_color_override: null
-    font_size_pt: 11
-  - id: card_bl_title
-    tree_path: '3.15.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 16
-  - id: card_bl_body
-    tree_path: '3.15.0'
-    capacity_chars: 100
-    text_color_override: null
-    font_size_pt: 11
-  - id: card_br_title
-    tree_path: '3.9.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 16
-  - id: card_br_body
-    tree_path: '3.9.0'
-    capacity_chars: 100
-    text_color_override: null
-    font_size_pt: 11
+- id: title
+  shape_id: 2
+  tree_path: '0'
+  capacity_chars: 30
+  text_color_override: null
+  font_size_pt: null
+- id: card_tl_title
+  shape_id: 39
+  tree_path: 3.10.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 16
+- id: card_tl_body
+  shape_id: 38
+  tree_path: 3.10.0
+  capacity_chars: 100
+  text_color_override: null
+  font_size_pt: 11
+- id: card_tr_title
+  shape_id: 43
+  tree_path: 3.8.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 16
+- id: card_tr_body
+  shape_id: 42
+  tree_path: 3.8.0
+  capacity_chars: 100
+  text_color_override: null
+  font_size_pt: 11
+- id: card_bl_title
+  shape_id: 23
+  tree_path: 3.15.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 16
+- id: card_bl_body
+  shape_id: 22
+  tree_path: 3.15.0
+  capacity_chars: 100
+  text_color_override: null
+  font_size_pt: 11
+- id: card_br_title
+  shape_id: 41
+  tree_path: 3.9.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 16
+- id: card_br_body
+  shape_id: 40
+  tree_path: 3.9.0
+  capacity_chars: 100
+  text_color_override: null
+  font_size_pt: 11

@@ -1,18 +1,21 @@
 template_page_index: 31
 layout_class: closing
 slots:
-  - id: title
-    tree_path: '2'
-    capacity_chars: 28
-    text_color_override: null
-    font_size_pt: null
-  - id: speaker
-    tree_path: '4'
-    capacity_chars: 22
-    text_color_override: null
-    font_size_pt: null
-  - id: site
-    tree_path: '3'
-    capacity_chars: 18
-    text_color_override: null
-    font_size_pt: null
+- id: title
+  shape_id: 5
+  tree_path: '2'
+  capacity_chars: 28
+  text_color_override: null
+  font_size_pt: null
+- id: speaker
+  shape_id: 6
+  tree_path: '4'
+  capacity_chars: 22
+  text_color_override: null
+  font_size_pt: null
+- id: site
+  shape_id: 7
+  tree_path: '3'
+  capacity_chars: 18
+  text_color_override: null
+  font_size_pt: null

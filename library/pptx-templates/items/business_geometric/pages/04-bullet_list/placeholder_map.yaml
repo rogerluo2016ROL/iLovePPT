@@ -1,48 +1,57 @@
 template_page_index: 3
 layout_class: bullet_list
 slots:
-  - id: title
-    tree_path: '0'
-    capacity_chars: 30
-    text_color_override: null
-    font_size_pt: null
-  - id: row_1_label
-    tree_path: '3.0.0.0'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: null
-  - id: row_1_body
-    tree_path: '3.0.0.1'
-    capacity_chars: 60
-    text_color_override: null
-    font_size_pt: 11
-  - id: row_2_label
-    tree_path: '3.1.0.0'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: null
-  - id: row_2_body
-    tree_path: '3.1.0.1'
-    capacity_chars: 60
-    text_color_override: null
-    font_size_pt: 11
-  - id: row_3_label
-    tree_path: '3.2.0.0'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: null
-  - id: row_3_body
-    tree_path: '3.2.0.1'
-    capacity_chars: 60
-    text_color_override: null
-    font_size_pt: 11
-  - id: row_4_label
-    tree_path: '3.3.0.0'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: null
-  - id: row_4_body
-    tree_path: '3.3.0.1'
-    capacity_chars: 60
-    text_color_override: null
-    font_size_pt: 11
+- id: title
+  shape_id: 2
+  tree_path: '0'
+  capacity_chars: 30
+  text_color_override: null
+  font_size_pt: null
+- id: row_1_label
+  shape_id: 70
+  tree_path: 3.0.0.0
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: null
+- id: row_1_body
+  shape_id: 71
+  tree_path: 3.0.0.1
+  capacity_chars: 60
+  text_color_override: null
+  font_size_pt: 11
+- id: row_2_label
+  shape_id: 62
+  tree_path: 3.1.0.0
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: null
+- id: row_2_body
+  shape_id: 63
+  tree_path: 3.1.0.1
+  capacity_chars: 60
+  text_color_override: null
+  font_size_pt: 11
+- id: row_3_label
+  shape_id: 37
+  tree_path: 3.2.0.0
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: null
+- id: row_3_body
+  shape_id: 38
+  tree_path: 3.2.0.1
+  capacity_chars: 60
+  text_color_override: null
+  font_size_pt: 11
+- id: row_4_label
+  shape_id: 29
+  tree_path: 3.3.0.0
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: null
+- id: row_4_body
+  shape_id: 30
+  tree_path: 3.3.0.1
+  capacity_chars: 60
+  text_color_override: null
+  font_size_pt: 11

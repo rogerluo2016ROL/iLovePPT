@@ -2,6 +2,7 @@ template_page_index: 12
 layout_class: '?'
 slots:
 - id: '?'
+  shape_id: 8
   tree_path: '3.2'
   raw_text_sample: Text here
   bbox:
@@ -9,10 +10,11 @@ slots:
     top: 2.47
     width: 1.52
     height: 3.0
-  font_size_pt: 20.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 20.0
 - id: '?'
+  shape_id: 9
   tree_path: '3.3'
   raw_text_sample: Text here
   bbox:
@@ -20,10 +22,11 @@ slots:
     top: 2.47
     width: 1.52
     height: 3.0
-  font_size_pt: 20.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 20.0
 - id: '?'
+  shape_id: 32
   tree_path: 3.6.1.0
   raw_text_sample: Supporting text here.
   bbox:
@@ -31,10 +34,11 @@ slots:
     top: 2.65
     width: 2.45
     height: 1.03
-  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 12.0
 - id: '?'
+  shape_id: 30
   tree_path: 3.6.2.0
   raw_text_sample: Supporting text here.
   bbox:
@@ -42,10 +46,11 @@ slots:
     top: 2.65
     width: 2.45
     height: 1.03
-  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 12.0
 - id: '?'
+  shape_id: 28
   tree_path: 3.6.3.0
   raw_text_sample: Supporting text here.
   bbox:
@@ -53,10 +58,11 @@ slots:
     top: 2.65
     width: 2.45
     height: 1.03
-  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 12.0
 - id: '?'
+  shape_id: 22
   tree_path: 3.7.1.0
   raw_text_sample: Supporting text here.
   bbox:
@@ -64,10 +70,11 @@ slots:
     top: 2.65
     width: 2.45
     height: 1.03
-  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 12.0
 - id: '?'
+  shape_id: 20
   tree_path: 3.7.2.0
   raw_text_sample: Supporting text here.
   bbox:
@@ -75,10 +82,11 @@ slots:
     top: 2.65
     width: 2.45
     height: 1.03
-  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 12.0
 - id: '?'
+  shape_id: 18
   tree_path: 3.7.3.0
   raw_text_sample: Supporting text here.
   bbox:
@@ -86,10 +94,11 @@ slots:
     top: 2.65
     width: 2.45
     height: 1.03
-  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 12.0
 - id: '?'
+  shape_id: 3
   tree_path: '1'
   raw_text_sample: www.islide.cc
   bbox:
@@ -97,10 +106,11 @@ slots:
     top: 6.82
     width: 4.53
     height: 0.23
-  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: null
 - id: '?'
+  shape_id: 4
   tree_path: '2'
   raw_text_sample: '13'
   bbox:
@@ -108,7 +118,6 @@ slots:
     top: 6.82
     width: 3.18
     height: 0.23
-  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-
+  font_size_pt: null

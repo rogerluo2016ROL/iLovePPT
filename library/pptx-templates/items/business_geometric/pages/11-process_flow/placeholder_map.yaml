@@ -1,58 +1,69 @@
 template_page_index: 10
 layout_class: process_flow
 slots:
-  - id: title
-    tree_path: '0'
-    capacity_chars: 30
-    text_color_override: null
-    font_size_pt: null
-  - id: intro_title
-    tree_path: '3.20.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 20
-  - id: intro_body
-    tree_path: '3.20.0'
-    capacity_chars: 120
-    text_color_override: null
-    font_size_pt: 11
-  - id: step_1_title
-    tree_path: '3.16.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 20
-  - id: step_1_body
-    tree_path: '3.16.0'
-    capacity_chars: 60
-    text_color_override: null
-    font_size_pt: 11
-  - id: step_2_title
-    tree_path: '3.17.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 20
-  - id: step_2_body
-    tree_path: '3.17.0'
-    capacity_chars: 60
-    text_color_override: null
-    font_size_pt: 11
-  - id: step_3_title
-    tree_path: '3.18.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 20
-  - id: step_3_body
-    tree_path: '3.18.0'
-    capacity_chars: 60
-    text_color_override: null
-    font_size_pt: 11
-  - id: step_4_title
-    tree_path: '3.19.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 20
-  - id: step_4_body
-    tree_path: '3.19.0'
-    capacity_chars: 60
-    text_color_override: null
-    font_size_pt: 11
+- id: title
+  shape_id: 2
+  tree_path: '0'
+  capacity_chars: 30
+  text_color_override: null
+  font_size_pt: null
+- id: intro_title
+  shape_id: 46
+  tree_path: 3.20.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 20
+- id: intro_body
+  shape_id: 45
+  tree_path: 3.20.0
+  capacity_chars: 120
+  text_color_override: null
+  font_size_pt: 11
+- id: step_1_title
+  shape_id: 54
+  tree_path: 3.16.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 20
+- id: step_1_body
+  shape_id: 53
+  tree_path: 3.16.0
+  capacity_chars: 60
+  text_color_override: null
+  font_size_pt: 11
+- id: step_2_title
+  shape_id: 52
+  tree_path: 3.17.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 20
+- id: step_2_body
+  shape_id: 51
+  tree_path: 3.17.0
+  capacity_chars: 60
+  text_color_override: null
+  font_size_pt: 11
+- id: step_3_title
+  shape_id: 50
+  tree_path: 3.18.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 20
+- id: step_3_body
+  shape_id: 49
+  tree_path: 3.18.0
+  capacity_chars: 60
+  text_color_override: null
+  font_size_pt: 11
+- id: step_4_title
+  shape_id: 48
+  tree_path: 3.19.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 20
+- id: step_4_body
+  shape_id: 47
+  tree_path: 3.19.0
+  capacity_chars: 60
+  text_color_override: null
+  font_size_pt: 11

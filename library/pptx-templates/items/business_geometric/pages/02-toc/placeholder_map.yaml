@@ -1,48 +1,57 @@
 template_page_index: 1
 layout_class: toc
 slots:
-  - id: section_label
-    tree_path: '0.1.1'
-    capacity_chars: 12
-    text_color_override: null
-    font_size_pt: 44
-  - id: item_1_title
-    tree_path: '0.6.0'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 11
-  - id: item_1_body
-    tree_path: '0.6.1'
-    capacity_chars: 40
-    text_color_override: null
-    font_size_pt: 10
-  - id: item_2_title
-    tree_path: '0.7.0'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 11
-  - id: item_2_body
-    tree_path: '0.7.1'
-    capacity_chars: 40
-    text_color_override: null
-    font_size_pt: 10
-  - id: item_3_title
-    tree_path: '0.8.0'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 11
-  - id: item_3_body
-    tree_path: '0.8.1'
-    capacity_chars: 40
-    text_color_override: null
-    font_size_pt: 10
-  - id: item_4_title
-    tree_path: '0.9.0'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 11
-  - id: item_4_body
-    tree_path: '0.9.1'
-    capacity_chars: 40
-    text_color_override: null
-    font_size_pt: 10
+- id: section_label
+  shape_id: 22
+  tree_path: 0.1.1
+  capacity_chars: 12
+  text_color_override: null
+  font_size_pt: 44
+- id: item_1_title
+  shape_id: 19
+  tree_path: 0.6.0
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 11
+- id: item_1_body
+  shape_id: 20
+  tree_path: 0.6.1
+  capacity_chars: 40
+  text_color_override: null
+  font_size_pt: 10
+- id: item_2_title
+  shape_id: 17
+  tree_path: 0.7.0
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 11
+- id: item_2_body
+  shape_id: 18
+  tree_path: 0.7.1
+  capacity_chars: 40
+  text_color_override: null
+  font_size_pt: 10
+- id: item_3_title
+  shape_id: 15
+  tree_path: 0.8.0
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 11
+- id: item_3_body
+  shape_id: 16
+  tree_path: 0.8.1
+  capacity_chars: 40
+  text_color_override: null
+  font_size_pt: 10
+- id: item_4_title
+  shape_id: 13
+  tree_path: 0.9.0
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 11
+- id: item_4_body
+  shape_id: 14
+  tree_path: 0.9.1
+  capacity_chars: 40
+  text_color_override: null
+  font_size_pt: 10

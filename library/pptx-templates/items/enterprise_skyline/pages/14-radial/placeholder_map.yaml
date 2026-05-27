@@ -2,6 +2,7 @@ template_page_index: 13
 layout_class: '?'
 slots:
 - id: '?'
+  shape_id: 32
   tree_path: 3.12.1
   raw_text_sample: Text here
   bbox:
@@ -9,10 +10,11 @@ slots:
     top: 3.38
     width: 2.82
     height: 0.35
-  font_size_pt: 16.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 16.0
 - id: '?'
+  shape_id: 30
   tree_path: 3.13.1
   raw_text_sample: Text here
   bbox:
@@ -20,10 +22,11 @@ slots:
     top: 3.38
     width: 2.82
     height: 0.35
-  font_size_pt: 16.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 16.0
 - id: '?'
+  shape_id: 28
   tree_path: 3.14.1
   raw_text_sample: Text here
   bbox:
@@ -31,10 +34,11 @@ slots:
     top: 3.38
     width: 2.82
     height: 0.35
-  font_size_pt: 16.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 16.0
 - id: '?'
+  shape_id: 26
   tree_path: 3.15.1
   raw_text_sample: Text here
   bbox:
@@ -42,10 +46,11 @@ slots:
     top: 3.38
     width: 2.82
     height: 0.35
-  font_size_pt: 16.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 16.0
 - id: '?'
+  shape_id: 17
   tree_path: '3.11'
   raw_text_sample: Text
   bbox:
@@ -53,10 +58,11 @@ slots:
     top: 3.43
     width: 0.9
     height: 0.9
-  font_size_pt: 14.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 14.0
 - id: '?'
+  shape_id: 31
   tree_path: 3.12.0
   raw_text_sample: 'Copy paste fonts. Choose the only option to retain text.
 
@@ -66,10 +72,11 @@ slots:
     top: 3.73
     width: 2.82
     height: 0.79
-  font_size_pt: 11.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 11.0
 - id: '?'
+  shape_id: 29
   tree_path: 3.13.0
   raw_text_sample: 'Copy paste fonts. Choose the only option to retain text.
 
@@ -79,10 +86,11 @@ slots:
     top: 3.73
     width: 2.82
     height: 0.79
-  font_size_pt: 11.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 11.0
 - id: '?'
+  shape_id: 27
   tree_path: 3.14.0
   raw_text_sample: 'Copy paste fonts. Choose the only option to retain text.
 
@@ -92,10 +100,11 @@ slots:
     top: 3.73
     width: 2.82
     height: 0.79
-  font_size_pt: 11.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 11.0
 - id: '?'
+  shape_id: 25
   tree_path: 3.15.0
   raw_text_sample: 'Copy paste fonts. Choose the only option to retain text.
 
@@ -105,10 +114,11 @@ slots:
     top: 3.73
     width: 2.82
     height: 0.79
-  font_size_pt: 11.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 11.0
 - id: '?'
+  shape_id: 3
   tree_path: '1'
   raw_text_sample: www.islide.cc
   bbox:
@@ -116,10 +126,11 @@ slots:
     top: 6.82
     width: 4.53
     height: 0.23
-  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: null
 - id: '?'
+  shape_id: 4
   tree_path: '2'
   raw_text_sample: '14'
   bbox:
@@ -127,7 +138,6 @@ slots:
     top: 6.82
     width: 3.18
     height: 0.23
-  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-
+  font_size_pt: null

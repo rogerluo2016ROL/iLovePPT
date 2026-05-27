@@ -1,48 +1,57 @@
 template_page_index: 15
 layout_class: process_flow
 slots:
-  - id: title
-    tree_path: '0'
-    capacity_chars: 30
-    text_color_override: null
-    font_size_pt: null
-  - id: intro_title
-    tree_path: '3.1.1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: 20
-  - id: intro_body
-    tree_path: '3.1.0'
-    capacity_chars: 80
-    text_color_override: null
-    font_size_pt: 11
-  - id: node_1_label
-    tree_path: '3.0.3'
-    capacity_chars: 8
-    text_color_override: null
-    font_size_pt: 16
-  - id: node_2_label
-    tree_path: '3.0.23'
-    capacity_chars: 8
-    text_color_override: null
-    font_size_pt: 16
-  - id: node_3_label
-    tree_path: '3.0.7'
-    capacity_chars: 8
-    text_color_override: null
-    font_size_pt: 16
-  - id: node_4_label
-    tree_path: '3.0.15'
-    capacity_chars: 8
-    text_color_override: null
-    font_size_pt: 16
-  - id: node_5_label
-    tree_path: '3.0.19'
-    capacity_chars: 8
-    text_color_override: null
-    font_size_pt: 16
-  - id: node_6_label
-    tree_path: '3.0.11'
-    capacity_chars: 8
-    text_color_override: null
-    font_size_pt: 16
+- id: title
+  shape_id: 2
+  tree_path: '0'
+  capacity_chars: 30
+  text_color_override: null
+  font_size_pt: null
+- id: intro_title
+  shape_id: 60
+  tree_path: 3.1.1
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: 20
+- id: intro_body
+  shape_id: 59
+  tree_path: 3.1.0
+  capacity_chars: 80
+  text_color_override: null
+  font_size_pt: 11
+- id: node_1_label
+  shape_id: 64
+  tree_path: 3.0.3
+  capacity_chars: 8
+  text_color_override: null
+  font_size_pt: 16
+- id: node_2_label
+  shape_id: 84
+  tree_path: 3.0.23
+  capacity_chars: 8
+  text_color_override: null
+  font_size_pt: 16
+- id: node_3_label
+  shape_id: 68
+  tree_path: 3.0.7
+  capacity_chars: 8
+  text_color_override: null
+  font_size_pt: 16
+- id: node_4_label
+  shape_id: 76
+  tree_path: 3.0.15
+  capacity_chars: 8
+  text_color_override: null
+  font_size_pt: 16
+- id: node_5_label
+  shape_id: 80
+  tree_path: 3.0.19
+  capacity_chars: 8
+  text_color_override: null
+  font_size_pt: 16
+- id: node_6_label
+  shape_id: 72
+  tree_path: 3.0.11
+  capacity_chars: 8
+  text_color_override: null
+  font_size_pt: 16

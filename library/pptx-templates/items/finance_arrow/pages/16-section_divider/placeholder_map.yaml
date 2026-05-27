@@ -1,18 +1,21 @@
 template_page_index: 15
 layout_class: section_divider
 slots:
-  - id: section_number
-    tree_path: '0'
-    capacity_chars: 4
-    text_color_override: null
-    font_size_pt: null
-  - id: section_title
-    tree_path: '1'
-    capacity_chars: 16
-    text_color_override: null
-    font_size_pt: null
-  - id: subitems
-    tree_path: '2'
-    capacity_chars: 56
-    text_color_override: null
-    font_size_pt: null
+- id: section_number
+  shape_id: 5
+  tree_path: '0'
+  capacity_chars: 4
+  text_color_override: null
+  font_size_pt: null
+- id: section_title
+  shape_id: 6
+  tree_path: '1'
+  capacity_chars: 16
+  text_color_override: null
+  font_size_pt: null
+- id: subitems
+  shape_id: 9
+  tree_path: '2'
+  capacity_chars: 56
+  text_color_override: null
+  font_size_pt: null

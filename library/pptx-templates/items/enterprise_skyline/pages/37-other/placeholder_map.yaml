@@ -2,6 +2,7 @@ template_page_index: 36
 layout_class: '?'
 slots:
 - id: '?'
+  shape_id: 2
   tree_path: '11'
   raw_text_sample: 填充图示中的图片  Fill Pictures in Diagram
   bbox:
@@ -9,10 +10,11 @@ slots:
     top: 0.0
     width: 11.88
     height: 1.12
-  font_size_pt: 28.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 28.0
 - id: '?'
+  shape_id: 4
   tree_path: '12'
   raw_text_sample: 'Note:
 
@@ -24,10 +26,11 @@ slots:
     top: 0.14
     width: 2.78
     height: 0.84
-  font_size_pt: 8.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 8.0
 - id: '?'
+  shape_id: 332
   tree_path: 2.2.1
   raw_text_sample: 图片库 / Picture Library
   bbox:
@@ -35,10 +38,11 @@ slots:
     top: 2.23
     width: 1.69
     height: 0.17
-  font_size_pt: 10.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 10.0
 - id: '?'
+  shape_id: 613
   tree_path: '3'
   raw_text_sample: '点击 iSlide【图片库】中的图片替换
 
@@ -48,10 +52,11 @@ slots:
     top: 5.89
     width: 2.8
     height: 0.61
-  font_size_pt: 10.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 10.0
 - id: '?'
+  shape_id: 753
   tree_path: '6'
   raw_text_sample: '自动填充，图片保持比例不变
 
@@ -61,10 +66,11 @@ slots:
     top: 5.89
     width: 3.47
     height: 0.61
-  font_size_pt: 10.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 10.0
 - id: '?'
+  shape_id: 351
   tree_path: '0.0'
   raw_text_sample: '选中图示中的占位形状
 
@@ -74,10 +80,11 @@ slots:
     top: 5.98
     width: 3.47
     height: 0.44
-  font_size_pt: 10.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 10.0
 - id: '?'
+  shape_id: 350
   tree_path: '0.1'
   raw_text_sample: '1'
   bbox:
@@ -85,10 +92,11 @@ slots:
     top: 6.04
     width: 0.3
     height: 0.3
-  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 12.0
 - id: '?'
+  shape_id: 614
   tree_path: '4'
   raw_text_sample: '2'
   bbox:
@@ -96,10 +104,11 @@ slots:
     top: 6.04
     width: 0.3
     height: 0.3
-  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
+  font_size_pt: 12.0
 - id: '?'
+  shape_id: 754
   tree_path: '7'
   raw_text_sample: '3'
   bbox:
@@ -107,7 +116,6 @@ slots:
     top: 6.04
     width: 0.3
     height: 0.3
-  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-
+  font_size_pt: 12.0
