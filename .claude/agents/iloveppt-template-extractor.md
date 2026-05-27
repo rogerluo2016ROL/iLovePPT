@@ -113,11 +113,22 @@ fi
 
 `source_pptx_sha256` 字段(Step 3.2 写)取 cp 后的 sha,确保 provenance 跟实际 .pptx 一致。
 
-### Step 2 · 渲染每页 PNG
+### Step 2 · 渲染每页 PNG(idempotent)
 
+**mode=placeholder_map_only 跳过此 step**。
+
+**Idempotency check**:
 ```bash
-library/_rag/.venv/bin/python library/_rag/render_pages.py <name> --dpi 120
+DECLARED=$(unzip -p library/pptx-templates/_source/<name>.pptx ppt/presentation.xml | grep -oc '<p:sldId ')
+EXISTING=$(ls library/pptx-templates/items/<name>/pages/*/preview.png 2>/dev/null | wc -l | tr -d ' ')
+if [ "$EXISTING" -gt 0 ] && [ "$EXISTING" = "$DECLARED" ] && [ "<mode>" != "re_render_only" ]; then
+  echo "[step2] $EXISTING PNG 已存在 = declared · skip render"
+else
+  library/_rag/.venv/bin/python library/_rag/render_pages.py <name> --dpi 120
+fi
 ```
+
+`render_pages.py` 内部 soffice / pdftoppm 已加 timeout=300s/180s(见 Task 3),超时 return `code: RENDER_TIMEOUT`。
 
 产物:`library/pptx-templates/items/<name>/pages/01-page/preview.png ~ NN-page/preview.png`(占位名,LLM 后续 rename)。
 
@@ -145,6 +156,19 @@ echo "declared=$declared_pages rendered=$rendered_pages discrepancy=$discrepancy
 - `unzip` 命令失败 → return `code: PPTX_CORRUPTED`
 
 `declared_pages != rendered_pages` 但 `rendered > 0` 时 **不停**,继续跑 Step 3。
+
+**mode=dry_run 出口**:Step 2.5 完成后,**不进 Step 3**,直接 return:
+```yaml
+status: ok
+next_action: dry_run_preview
+declared_pages: <N>
+rendered_pages: <M>
+discrepancy: <N-M>
+estimated_full_run_minutes: <M * 0.5>   # 每页 LLM 视觉分析 ~30s 经验值
+artifacts:
+  - path: library/pptx-templates/items/<name>/pages/*/preview.png
+    kind: rendered_preview
+```
 
 ### Step 3 · LLM 视觉分析 + 起草 meta.yaml
 
@@ -487,6 +511,8 @@ errors:
     message: "soffice 不在 PATH"
   - code: RENDER_TOTAL_FAILURE            # 主线程应报环境问题(soffice/pdftoppm 全军覆没)
     message: "渲染 0 页,可能 soffice 崩了或 .pptx 完全无法解析"
+  - code: RENDER_TIMEOUT                  # 主线程应排查 LibreOffice / pptx 复杂度
+    message: "soffice 或 pdftoppm 渲染超时 (300s/180s),可能 LibreOffice 卡死或 pptx 复杂"
   - code: PAGE_READ_TIMEOUT               # 主线程可重派
     message: "第 5 页 Read PNG timeout"
     page: 5
