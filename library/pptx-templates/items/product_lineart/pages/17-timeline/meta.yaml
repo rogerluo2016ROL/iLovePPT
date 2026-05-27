@@ -1,0 +1,38 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: product_lineart__17-timeline
+name: "Timeline · 横向 5 节点 (大地标 icon) + 蓝黄交错"
+layout_type: timeline
+
+content_intent:
+  - 5 步骤旅程式时间轴
+  - 每节点大圆形地标 icon 强化"打卡"感
+  - 蓝/黄交错强调节奏
+
+when_to_use:
+  - 5 步流程,顺序明确
+  - 旅程类(用户旅程 / 项目里程碑 / 体验路径)
+  - 配左右 2 段补充说明
+
+keywords:
+  - timeline
+  - 5 节点
+  - 地标
+  - 旅程
+  - 用户旅程
+  - 里程碑
+  - milestone
+  - journey
+
+native_elements:
+  - 中央 5 个大圆带地标 (location pin) icon,蓝 (1/3/5) / 黄 (2/4) 上下交错
+  - 蓝色圆位上方,黄色圆位下方
+  - 节点旁有小圆 + 编号 1-5
+  - 顶部左右各 1 段 "Text here" + 描述
+  - 底部 3 段 "Text here" + 描述对应中间 3 个节点
+
+layout_hint: null
+page_number: 17
+template_name: product_lineart

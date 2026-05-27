@@ -1,0 +1,37 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.78
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__30-cards
+name: "Cards · header 大图 + 4 icon cards 横排"
+layout_type: cards
+content_intent:
+  - 4 项业务模块横排展示(头部大图烘托主题)
+  - 服务清单 / 产品矩阵 / 4 大模块对比
+  - 偏 corporate 商务气质的 4 cards
+when_to_use:
+  - 4 项同质内容横排展示
+  - 顶部需要大图烘托(建筑 / 办公 / 团队场景)
+  - 较紧凑布局(单行 4 卡)
+keywords:
+  - 4 项
+  - cards
+  - 横排
+  - 大图
+  - 商务
+  - 服务
+  - 模块
+native_elements:
+  - 顶部建筑/室内大堂大图作 banner
+  - banner 上叠加深蓝半透明矩形 + 白字 "Text here" 标题
+  - 下方 4 个 cards 横排(灰色 icon + 标题 + 1 行描述)
+  - icon 灰色矩形装饰 + 简洁字体
+
+# === 辅助(不进 embedding)===
+layout_hint: null
+variant: 4-cards-with-header-image
+page_number: 30
+template_name: business_geometric

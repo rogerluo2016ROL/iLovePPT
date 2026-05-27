@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.94
+needs_manual_review: false
+
+id: enterprise_skyline__17-pyramid
+name: "金字塔 · 3-tier 三角形 + 右侧 2 列 bullets"
+layout_type: pyramid
+content_intent:
+  - 3 层级展示 + 每层 4 条 bullet 详情
+  - 战略 / 战术 / 执行三层框架
+  - Maslow 需求层级简化版 + 详细 bullet
+when_to_use:
+  - 3 层级 hierarchy + 每层多个细分点
+  - 战略框架 + 详细要点列举
+  - 教学:层级模型 + 案例 bullet
+keywords:
+  - 金字塔
+  - pyramid
+  - 3层
+  - hierarchy
+  - bullets
+  - 双列
+  - 层级
+  - 三段
+native_elements:
+  - 左侧大型 3-tier 浅灰三角金字塔(顶 / 中 / 底各一层 "Text")
+  - 每层右侧外接 1 个圆形人物 + 美元图标(顶蓝灰边 / 中深蓝边 / 底深蓝边)
+  - 右侧 2 列 × 3 行 bullet 列表(每层对应 2 列共 4 条 supporting text)
+  - 行间细线分隔
+  - 整体左右"形 + 文"对称
+
+layout_hint: null
+variant: 3-tier-with-bullets
+page_number: 17
+template_name: enterprise_skyline

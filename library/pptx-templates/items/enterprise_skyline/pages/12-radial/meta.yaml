@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: enterprise_skyline__12-radial
+name: "辐射 · 中心圆 + 4 节点环绕 + 左右各 1 段落"
+layout_type: radial
+content_intent:
+  - 4 元素环绕中心展示
+  - 中心目标 + 4 维度支撑
+  - 战略中心 + 4 大行动
+when_to_use:
+  - 4 元素围绕一个中心论点
+  - 战略地图 / 价值四要素
+  - 中心议题 + 4 方面阐述
+keywords:
+  - 辐射
+  - radial
+  - 4节点
+  - 中心
+  - 环绕
+  - 4要素
+  - hub-spoke
+native_elements:
+  - 中央灰色圆环 + 中心 "Text here" 标签 + 调研放大镜小图标
+  - 上下左右 4 个深蓝边框白底圆 (Text)
+  - 灰色圆环箭头形成循环动线
+  - 左侧 2 段 "Text Here + bullets" 段落
+  - 右侧 2 段 "Text Here + bullets" 段落
+  - 中段灰色横条衬底强化对称
+
+layout_hint: null
+variant: 4-nodes-cycle
+page_number: 12
+template_name: enterprise_skyline

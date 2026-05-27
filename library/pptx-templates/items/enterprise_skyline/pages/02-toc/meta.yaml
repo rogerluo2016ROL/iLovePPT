@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: enterprise_skyline__02-toc
+name: "目录 · 左侧标题 + 右侧 5 项编号清单"
+layout_type: toc
+content_intent:
+  - 企业 deck 的"目录 / Content"页,5 章节议程
+  - 培训 / 报告 / 提案的章节预览
+  - 给受众建立全篇心智地图
+when_to_use:
+  - deck 第 2 页 · 目录页
+  - 章节数 4-5(05 重复编号实为 5 项)
+  - 需要中英双语标题(目录 CONTENT)
+keywords:
+  - 目录
+  - 议程
+  - contents
+  - agenda
+  - 章节
+  - TOC
+  - 5项
+  - 编号
+  - 双栏
+native_elements:
+  - 左侧 "目录 CONTENT" 中英双语大标题 + 一行说明小字
+  - 右侧 5 行 "01 / 02 / 03 / 04 / 04 Text here + 副标说明" 列表
+  - 灰色大编号 + 深蓝文字标题
+  - 底部金色城市天际线线稿装饰
+  - 顶部横线分隔
+
+layout_hint: null
+variant: null
+page_number: 2
+template_name: enterprise_skyline

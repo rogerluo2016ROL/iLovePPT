@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.90
+needs_manual_review: false
+
+id: finance_arrow__05-data
+name: "Data · 业务利润同比对比表(5 列 + 报告期高亮)"
+layout_type: data
+content_intent:
+  - 5 列数据对比表 · 业务利润 · 报告期 · 去年同期 · 增减额度 · 增减幅度
+  - 报告期列用橙黄高亮表头作为视觉焦点
+  - 每列 7 行小项,适合按业务 / 按月 / 按产品分行
+when_to_use:
+  - 主营业务利润 / 收入 / 费用同比表
+  - 财务报表数据行对比
+  - 任何 5 列 × 多行的会计数据汇总
+keywords:
+  - 数据表
+  - 同比表
+  - 业务利润
+  - 报告期
+  - 同期对比
+  - 增减额度
+  - 增减幅度
+  - 5 列表格
+variant: 5-cols-7-rows
+native_elements:
+  - 左上深黑粗体标题 主营业务利润
+  - 5 列横向表头 业务利润 / 报告期(橙黄高亮)/ 去年同期 / 增减额度 / 增减幅度
+  - 每列下 7 行 □ ... 占位符(用户填入数据)
+  - 报告期列内每行有橙色边框,中部一行实心橙色填充作重点高亮
+  - 整体纯文字表格,无背景色,大量留白
+  - 页底 www.islide.cc 水印 + 页码 5
+layout_hint: null
+page_number: 5
+template_name: finance_arrow

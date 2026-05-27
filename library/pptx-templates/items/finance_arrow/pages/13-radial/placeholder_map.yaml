@@ -1,0 +1,73 @@
+template_page_index: 12
+layout_class: radial
+slots:
+  - id: title
+    tree_path: '0'
+    capacity_chars: 24
+    text_color_override: null
+    font_size_pt: null
+  - id: center_text
+    tree_path: '1'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: item_1_title
+    tree_path: '2'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: item_1_body
+    tree_path: '3'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null
+  - id: item_2_title
+    tree_path: '4'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: item_2_body
+    tree_path: '5'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null
+  - id: item_3_title
+    tree_path: '6'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: item_3_body
+    tree_path: '7'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null
+  - id: item_4_title
+    tree_path: '8'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: item_4_body
+    tree_path: '9'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null
+  - id: item_5_title
+    tree_path: '10'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: item_5_body
+    tree_path: '11'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null
+  - id: item_6_title
+    tree_path: '12'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: item_6_body
+    tree_path: '13'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null

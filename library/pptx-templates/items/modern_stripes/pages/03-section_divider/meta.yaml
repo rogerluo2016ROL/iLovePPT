@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: modern_stripes__03-section_divider
+name: "Section Divider · /01 章节起始页"
+layout_type: section_divider
+content_intent:
+  - 第一章节起始页 · 大号 "/01" 编号 + 章节标题 + 副描述
+  - 章节切换时承上启下的视觉转场
+  - 给听众明确"进入新主题"的提示
+when_to_use:
+  - 章节 1 起始
+  - 演讲流程中需要明显视觉断点
+  - 标题简短(章节名 1-2 行)
+keywords:
+  - 章节起始
+  - section divider
+  - 大编号
+  - "/01"
+  - 转场页
+  - 章节标题
+native_elements:
+  - 左上大尺寸 navy 加粗 "/01" 编号字
+  - 编号下大字 "Section Header Here" 章节标题
+  - 标题下两行小字 supporting text
+  - 右侧大尺寸蓝色 / navy / 浅灰几何拼贴块(跟封面共用)
+  - 整体留白多
+layout_hint: null
+variant: null
+page_number: 3
+template_name: modern_stripes

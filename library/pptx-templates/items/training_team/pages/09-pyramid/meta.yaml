@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.87
+needs_manual_review: false
+
+id: training_team__09-pyramid
+name: "Pyramid · 3D 金字塔 4 层 multicolor + 右侧 4 icon 列表"
+layout_type: pyramid
+content_intent:
+  - 4 层级体系展开(战略→战术→执行→反馈)
+  - 培训内容分层结构(基础→进阶→高阶→精通)
+  - 团队能力金字塔
+when_to_use:
+  - 内容呈"层级 / 优先级"结构
+  - 4 tier 且每 tier 有 icon 解释
+keywords:
+  - 金字塔
+  - pyramid
+  - 4 层
+  - 层级
+  - 体系
+  - 优先级
+  - tier
+  - 能力分层
+native_elements:
+  - 中央 3D 金字塔 4 层(橙红 / 深绿 / 蓝 / 青)
+  - 左侧 unified fonts + theme color 描述文
+  - 右侧 4 个圆形 icon(橙 / 蓝 / 暗绿 / 青)+ Text here + bullets
+  - 灰色椭圆形底座阴影
+
+layout_hint: null
+variant: 4-tier-3d-multicolor
+page_number: 9
+template_name: training_team

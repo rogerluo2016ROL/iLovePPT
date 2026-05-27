@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.90
+needs_manual_review: false
+
+id: finance_arrow__11-cards
+name: "Cards · 4 圆环数字 01-04 横向并列(每环 + 情况标题 + 描述)"
+layout_type: cards
+content_intent:
+  - 4 个分析维度 / 4 个情况分类横向并列
+  - 每项用大号橙黄圆环 + 中心 01-04 数字编号
+  - 圆环下方"...情况"标题 + 描述
+when_to_use:
+  - 4 个分析维度并列(如 4 类资产情况 / 4 季度对比 / 4 项指标分析)
+  - 财务"基本情况"标准 4 项框架
+  - 任何 4-item 编号 + 描述场景
+keywords:
+  - 4 圆环
+  - 4 数字
+  - 横向 4 列
+  - 财务情况
+  - 编号卡片
+  - 圆环编号
+variant: 4-circle-numbered
+native_elements:
+  - 左上深黑粗体标题"基本财务情况分析"
+  - 中部 4 个橙黄空心圆环横向并列,中心 01-04 黑色粗体数字
+  - 每环外圈灰色虚线作装饰
+  - 圆环下方"...情况"黑色粗体标题
+  - 标题下 2 行 supporting text + 灰色省略点
+layout_hint: null
+page_number: 11
+template_name: finance_arrow

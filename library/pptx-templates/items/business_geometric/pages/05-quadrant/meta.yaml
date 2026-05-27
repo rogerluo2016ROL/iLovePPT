@@ -1,0 +1,36 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.85
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__05-quadrant
+name: "Quadrant · SWOT 矩阵(X 型布局 + 中心菱形)"
+layout_type: quadrant
+content_intent:
+  - SWOT 分析(Strength/Weakness/Opportunity/Threat 4 维度)
+  - 4 象限战略评估(中心是主题,4 角是维度)
+  - 任何 2x2 维度分析(成本/收益、优劣对比等)
+when_to_use:
+  - SWOT 战略分析
+  - 4 维度评估(均衡 4 角)
+  - 商业决策展示
+keywords:
+  - SWOT
+  - 矩阵
+  - 4 象限
+  - quadrant
+  - 战略
+  - X 型
+native_elements:
+  - 中心深蓝菱形 "Text"(主题)
+  - 4 角灰色 X 形连接线 + 端点圆形(S/W/T/O 字母深蓝圆)
+  - 左右两侧各 2 行 "Text here" 标题 + 描述
+  - 中间分隔横线分上下两块
+
+# === 辅助(不进 embedding)===
+layout_hint: null
+variant: swot
+page_number: 5
+template_name: business_geometric

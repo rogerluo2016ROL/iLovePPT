@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: training_team__15-comparison
+name: "Comparison · 男女 silhouette · 3 橙(左) + 3 蓝(右)"
+layout_type: comparison
+content_intent:
+  - 男女 / 双 persona 对比
+  - 销售 vs 技术 / 新人 vs 老员工
+  - 2 个角色各 3 项特征对比
+when_to_use:
+  - 内容是双角色 (2 列) 对比,每列 3 项
+  - 想可视化两种 persona 的差异
+keywords:
+  - 对比
+  - comparison
+  - 双 persona
+  - 男女
+  - 双轨
+  - 角色对比
+  - 3 vs 3
+  - silhouette
+native_elements:
+  - 中央两个商务 silhouette (男西装 + 女西装,灰色)
+  - 左侧 3 个橙红 icon + Text here + 段落
+  - 右侧 3 个深蓝 icon + Text here + 段落
+  - 灰色竖虚线连接 icons
+
+layout_hint: null
+variant: dual-persona-3plus3
+page_number: 15
+template_name: training_team

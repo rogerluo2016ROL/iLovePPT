@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: modern_stripes__04-cards
+name: "Cards · 4 列角色 / 受众卡片"
+layout_type: cards
+content_intent:
+  - 4 个团队角色 / 用户画像 / 受众分群并列展示
+  - 每卡含 icon + 编号圆盘 + 1-2 行描述
+  - 跨产品功能介绍 4 维度并列对比
+when_to_use:
+  - 4 项内容并列 · 各自有 icon + 简短文字
+  - 角色分群 / 受众分群 / 功能模块清单
+  - 各项无明显顺序关系(并列而非递进)
+keywords:
+  - 4 卡
+  - 角色
+  - persona
+  - 受众
+  - 并列对比
+  - icon 卡片
+  - xxx 标签
+native_elements:
+  - 顶部 "...Text" 矩形标题框 + 上方下划线小字 "Supporting text here"
+  - 4 列垂直布局,每列含:用户群组 icon + 圆形大号"XXX"标签 + 2 行 supporting text + 省略号
+  - 颜色:第 1 / 4 列 navy,第 2 / 3 列 red(中间双红)
+  - 横向浅灰背景条贯穿卡片
+layout_hint: null
+variant: 4-cols-persona-icons
+page_number: 4
+template_name: modern_stripes

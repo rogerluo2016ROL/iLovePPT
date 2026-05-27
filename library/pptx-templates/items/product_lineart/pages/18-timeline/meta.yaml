@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: product_lineart__18-timeline
+name: "Timeline · 横线 + 5 大数字编号 (01-05) + 上下交错 icon 卡"
+layout_type: timeline
+
+content_intent:
+  - 5 步骤纯结构化时间轴
+  - 每节点上方或下方挂 icon 卡片
+  - 大灰色数字 01-05 是视觉锚点
+
+when_to_use:
+  - 5 步流程,只用 icon + 短标题表达
+  - 高度抽象的时序展示
+  - 强调"5 步走" / "5 阶段方法论"
+
+keywords:
+  - timeline
+  - 5 步
+  - 01 02 03 04 05
+  - 时间轴
+  - icon 卡
+  - 流程
+
+native_elements:
+  - 中央水平细灰线 + 5 个大灰色数字 "01" "02" "03" "04" "05" 等距排列
+  - 数字 02 / 04 上方挂蓝/黄圆 icon 卡 (含 icon + Text here + 说明)
+  - 数字 01 / 03 / 05 下方挂蓝/黄圆 icon 卡
+  - 整体形成"上下交错挂果"结构
+
+layout_hint: null
+page_number: 18
+template_name: product_lineart

@@ -1,0 +1,38 @@
+status: approved
+confidence: 0.78
+needs_manual_review: false
+
+id: product_lineart__31-timeline
+name: "Timeline · 垂直 4 节点 + 中央油井装饰 (喷涌喻意)"
+layout_type: timeline
+
+content_intent:
+  - 4 步垂直时间轴
+  - 中央油井装饰隐喻"价值喷涌"
+  - 适合产能 / 输出 / 增长类叙事
+
+when_to_use:
+  - 4 步骤垂直推进
+  - 强调"投入 → 产出"或"挖掘 → 喷涌"喻意
+  - 需要中央有视觉锚点装饰
+
+keywords:
+  - timeline
+  - 4 节点
+  - 垂直
+  - 油井
+  - 喷涌
+  - 价值挖掘
+  - 增长
+  - 产能
+
+native_elements:
+  - 中央灰色 3D 油井 (oil rig) 装饰图
+  - 油井顶部 3 颗蓝色水滴 (喷涌效果)
+  - 油井两侧各 2 个交错节点 (左 2 / 右 2),通过黄色小圆 + 折线图 icon 标记
+  - 每节点旁 "Text here" 标题 + supporting text
+  - 节点间细灰横线分隔
+
+layout_hint: null
+page_number: 31
+template_name: product_lineart

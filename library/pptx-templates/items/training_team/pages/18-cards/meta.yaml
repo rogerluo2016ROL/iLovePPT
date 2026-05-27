@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.82
+needs_manual_review: false
+
+id: training_team__18-cards
+name: "Cards · 中央西装领带插画 + 4 cards(职业素养 4 维度)"
+layout_type: cards
+content_intent:
+  - 4 项职业素养 / 商务能力维度
+  - 团队成员 4 项核心 attribute
+  - 培训目标 4 个 quality
+when_to_use:
+  - 围绕"职业 / 商务 / 礼仪 / 着装"主题
+  - 4 个 quality 平行展开
+keywords:
+  - 4 卡片
+  - cards
+  - 职业素养
+  - 商务礼仪
+  - 西装
+  - 4 维度
+  - profession
+  - 员工形象
+native_elements:
+  - 中央橙红西装领带大插画
+  - 4 个灰色 person icon 在角落
+  - 4 段 Text here + 描述,左 2 右 2
+  - 灰色横线分上下两 row
+
+layout_hint: null
+variant: 4-cards-center-suit
+page_number: 18
+template_name: training_team

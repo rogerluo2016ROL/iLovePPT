@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: finance_arrow__08-data
+name: "Data · 投资收益 85/15 占比 donut(中心文本 + 左右描述)"
+layout_type: data
+content_intent:
+  - 2 项占比 donut(主体 85% 橙黄 + 辅 15% 蓝)
+  - 中心 "Text here" 标题(可填核心结论)
+  - 左右各 1 段 "... 收益" 标题 + bullets 描述
+when_to_use:
+  - 投资收益 / 收益结构 2 项占比
+  - 任何 "主体 + 辅项" 2 元对比 donut(如 营收 vs 成本 / 主营 vs 副业)
+  - 需要中心文本承载核心数字 / 标语
+keywords:
+  - donut
+  - 占比
+  - 85/15
+  - 投资收益
+  - 2 元对比
+  - 圆环图
+  - 中心文本
+variant: donut-2-segments
+native_elements:
+  - 左上深黑粗体标题"投资收益"
+  - 中部大号橙黄 donut(85% 主体)+ 右上蓝色 15% 切片(凸出)
+  - donut 中心白色圆 + "Text here" 黑色粗体
+  - donut 左下 85% 橙黄圆形 badge,右上 15% 蓝色圆形 badge
+  - 左侧 "... 收益" 标题(白底深色字)+ 2 段 bullets
+  - 右侧 "... 收益" 标题(白底深色字)+ 2 段 bullets
+layout_hint: null
+page_number: 8
+template_name: finance_arrow

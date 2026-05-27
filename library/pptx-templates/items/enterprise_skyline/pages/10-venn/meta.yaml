@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: enterprise_skyline__10-venn
+name: "文氏图 · 2 圆相交 + 左右各 4 行说明"
+layout_type: venn
+content_intent:
+  - 2 组概念的交集 / 共性差异展示
+  - 左集 vs 右集 + 共性中间圆
+  - 比较两个产品 / 部门 / 策略的重叠区域
+when_to_use:
+  - 2 元素 venn diagram(深蓝 vs 蓝灰 vs 共性)
+  - 每侧需 4 行细分要点
+  - 对比 + 共性 两个维度都要传达
+keywords:
+  - 文氏图
+  - venn
+  - 交集
+  - 2圆
+  - 对比
+  - 共性
+  - intersection
+  - 差异
+native_elements:
+  - 中央 2 圆 venn:左圆深蓝 (Text Here) + 右圆蓝灰 (Text Here) + 交集白色 (Text Here)
+  - 左侧 4 行 "Text Here + Supporting text + 用户图标"
+  - 右侧 4 行 "Text Here + Supporting text + 用户图标"
+  - 行间横线分隔
+  - 整体对称构图
+
+layout_hint: null
+variant: 2-circle-with-8-bullets
+page_number: 10
+template_name: enterprise_skyline

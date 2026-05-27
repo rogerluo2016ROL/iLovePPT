@@ -1,0 +1,38 @@
+template_page_index: 17
+layout_class: single_focus
+slots:
+  - id: title
+    tree_path: '0'
+    capacity_chars: 24
+    text_color_override: null
+    font_size_pt: null
+  - id: main_text
+    tree_path: '1'
+    capacity_chars: 10
+    text_color_override: null
+    font_size_pt: null
+  - id: main_body
+    tree_path: '2'
+    capacity_chars: 120
+    text_color_override: null
+    font_size_pt: null
+  - id: sub_1_title
+    tree_path: '3'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: sub_1_body
+    tree_path: '4'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null
+  - id: sub_2_title
+    tree_path: '5'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: sub_2_body
+    tree_path: '6'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null

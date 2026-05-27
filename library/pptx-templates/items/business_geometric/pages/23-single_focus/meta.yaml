@@ -1,0 +1,37 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.75
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__23-single_focus
+name: "Single focus · 95% 主指标 + 火箭/平板插画 + 3 辅助"
+layout_type: single_focus
+content_intent:
+  - 1 个核心 percentage(95%)+ 3 个辅助 icon 支撑
+  - 单一核心指标驱动 + 多角度解释
+  - 增长 / 起飞 / 跃迁式叙事(火箭隐喻)
+when_to_use:
+  - 1 个核心数字主导,3 项辅助细分
+  - 增长汇报 / 突破性成绩展示
+  - 需要"起飞 / 跃迁"激励气质
+keywords:
+  - 95%
+  - 单一核心
+  - single focus
+  - 火箭
+  - 增长
+  - 跃迁
+  - KPI
+native_elements:
+  - 左侧火箭 + 平板 + 烟雾插画(起飞瞬间)+ 95% 深蓝大圆气泡
+  - 右上 "Text here" 标题 + 3 行说明
+  - 右下 3 个圆形 icon(灯泡 / 增长图 / 奖杯)+ "Text here" 标题 + 描述
+  - 三色 icon(亮蓝 / 浅蓝 / 橙红)增加节奏
+
+# === 辅助(不进 embedding)===
+layout_hint: null
+variant: percentage-hero-with-supporting
+page_number: 23
+template_name: business_geometric

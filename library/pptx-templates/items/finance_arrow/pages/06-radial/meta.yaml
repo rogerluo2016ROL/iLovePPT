@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.90
+needs_manual_review: false
+
+id: finance_arrow__06-radial
+name: "Radial · 管理费用 6 项六边形辐射(中心 01-06 编号 + 右侧 3 列描述)"
+layout_type: radial
+content_intent:
+  - 6 个费用类别 / 6 个分项围绕中心展开(蜂窝六边形)
+  - 中心 1-6 数字编号 + 右侧 3 列费用描述(交替灰白)
+  - 适合"管理费用按部门/类别 6 个细项"
+when_to_use:
+  - 6 项费用 / 6 个成本分项分类展示
+  - 任何 6-item 围绕中心主题的辐射式信息
+  - 中心数字编号 + 外圈名称 + 旁注描述
+keywords:
+  - 辐射图
+  - 蜂窝六边形
+  - 6 项
+  - 管理费用
+  - 费用分类
+  - radial
+  - 中心编号
+variant: 6-hex
+native_elements:
+  - 左上深黑粗体标题"管理费用"
+  - 中部左侧"Unified fonts make reading more fluent."大号黑色副标题 + 灰色小字描述
+  - 中部 6 个六边形围绕中心,中心 01-06 数字编号
+  - 六边形交替灰色 + 橙黄,内文"Text"(可改名)
+  - 右侧 3 行 "... 费用" 描述,每行带垃圾桶 icon + 2 行 supporting text
+  - 整体橙黄 + 灰主色,蓝色对话气泡装饰已淡化
+layout_hint: null
+page_number: 6
+template_name: finance_arrow

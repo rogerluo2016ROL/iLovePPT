@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.9
+needs_manual_review: false
+
+id: modern_stripes__21-process_flow
+name: "Process Flow · 4 节点循环闭环"
+layout_type: process_flow
+content_intent:
+  - 4 阶段循环过程(PDCA / 4 步迭代)
+  - 强调闭环 / 持续改进
+  - 各阶段含详细 bullets
+when_to_use:
+  - 4 阶段循环过程(无明确起点终点)
+  - PDCA / 迭代流程 / 持续优化
+  - 需要标识"持续循环"的视觉
+keywords:
+  - 闭环
+  - 循环
+  - PDCA
+  - 4 阶段
+  - cycle
+  - process flow
+  - 持续优化
+native_elements:
+  - 中心 4 个白色 navy 描边圆 "Text"(上 / 右 / 下 / 左)
+  - 圆之间红色弧形箭头(顺时针方向连接)
+  - 圆环中心放红色 icon(检验 / 监督)+ "Text here" 字
+  - 4 角文字 block:左上 / 右上 / 左下 / 右下 配"Text Here" + bullets
+  - 横向浅灰背景条贯穿中部
+layout_hint: null
+variant: 4-step-cycle
+page_number: 21
+template_name: modern_stripes

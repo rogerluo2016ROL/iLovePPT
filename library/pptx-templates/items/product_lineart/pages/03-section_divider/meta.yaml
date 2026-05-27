@@ -1,0 +1,29 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+id: product_lineart__03-section_divider
+name: Section Divider 01 · 蓝色线稿产品图标 + 大数字 01
+layout_type: section_divider
+content_intent:
+- 第 1 章开始的过渡页
+- 给章节起名 + 一句辅助说明
+- 视觉节奏断点
+when_to_use:
+- 章节转场
+- 需要明显的"开新篇"视觉信号
+- 整 deck 有 5 个章节时配套使用 (03/09/15/21/27)
+keywords:
+- section divider
+- 章节封面
+- 过渡页
+- '1'
+- 蓝色线稿
+native_elements:
+- 左侧蓝色线稿产品图标 group(电脑/钻石/齿轮/秒表/放大镜等)
+- 中间黑色加粗 "Section Header Here" 大标题
+- 标题下方两行灰色 supporting text
+- 右侧巨大黄色加粗数字 "01"
+- 底部浅蓝色色块作为脚部装饰
+layout_hint: null
+page_number: 3
+template_name: product_lineart

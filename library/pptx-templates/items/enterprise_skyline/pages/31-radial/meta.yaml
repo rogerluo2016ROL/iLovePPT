@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.78
+needs_manual_review: false
+
+id: enterprise_skyline__31-radial
+name: "辐射 · 顶部 1 中心 + 底部 2 弧形扇形 + 3 段说明"
+layout_type: radial
+content_intent:
+  - 1 中心议题 + 3 维度展开
+  - 上方主张 + 下方两个支撑选项
+  - 三角辐射 + 半圆扇形组合
+when_to_use:
+  - 1 顶 + 2 底 + 1 中央枢纽的关系
+  - 中心论点 + 三方阐述
+  - 替代传统 venn (但更偏 radial)
+keywords:
+  - 辐射
+  - radial
+  - 半圆
+  - 扇形
+  - 3要素
+  - 1+2
+  - hub
+native_elements:
+  - 顶部中央灰色圆形人物美元图标 + 头顶 Text here 标题 + Supporting text 副标
+  - 底部 2 个大半圆扇形(左深蓝 / 右蓝灰),各有白字 "Text" 标签
+  - 半圆扇形外侧各有 1 段 Text here + Supporting text 副标
+  - 圆形与扇形通过浅灰弧线连接
+  - 底部强调引言 "Unified fonts make reading more fluent." 大字
+
+layout_hint: null
+variant: 1-hub-2-arc
+page_number: 31
+template_name: enterprise_skyline

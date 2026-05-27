@@ -1,0 +1,48 @@
+template_page_index: 24
+layout_class: data
+slots:
+  - id: title
+    tree_path: '0'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: null
+  - id: max_value
+    tree_path: '3.16'
+    capacity_chars: 6
+    text_color_override: null
+    font_size_pt: 14
+  - id: min_value
+    tree_path: '3.14'
+    capacity_chars: 6
+    text_color_override: null
+    font_size_pt: 14
+  - id: legend_1
+    tree_path: '3.18'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 18
+  - id: legend_2
+    tree_path: '3.20'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 18
+  - id: legend_3
+    tree_path: '3.22'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 18
+  - id: legend_4
+    tree_path: '3.24'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 18
+  - id: legend_5
+    tree_path: '3.26'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 18
+  - id: legend_6
+    tree_path: '3.28'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 18

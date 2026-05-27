@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.94
+needs_manual_review: false
+
+id: training_team__02-toc
+name: "TOC · 左 CONTENTS 框 + 右 5 菱形编号列表"
+layout_type: toc
+content_intent:
+  - 5 章节 deck 目录页
+  - 培训课程模块导览
+  - 团建活动议程纲要
+when_to_use:
+  - deck 第 2 页紧跟封面
+  - 章节数恰好是 5(若 4/6 章节,需 build 时增删 row)
+  - 想强调 "CONTENTS" 标语 + 数字感
+keywords:
+  - 目录
+  - 章节
+  - CONTENTS
+  - 菱形编号
+  - 5-step
+  - 议程
+  - agenda
+native_elements:
+  - 左侧 "CONTENTS" 描边方框 + 副标题描述
+  - 右侧垂直排列 5 个灰色菱形编号(01-05),第 3 个橙色高亮表当前
+  - 每条 "Text here" + "Copy paste fonts" 描述行
+  - 分隔灰线在每条之间
+
+layout_hint: null
+variant: vertical-5-diamonds
+page_number: 2
+template_name: training_team

@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+id: creative_aurora__03-section_divider
+name: Section Divider · 蓝绿极光球 + 大标题
+layout_type: section_divider
+content_intent:
+- 章节起始过渡页,引导观众注意力到新章节
+- 提供章节大标题 + 一句副标题描述当前章节主旨
+- 创意 / 设计类长 deck 的章节间过渡
+when_to_use:
+- '每个章节开始处 (例: 第 03 / 07 / 11 页 等)'
+- 需要强视觉过渡的演讲节奏
+- 不适合短 deck (没有章节) 或正文页
+keywords:
+- 章节分隔
+- section divider
+- 过渡页
+- 蓝绿极光
+- aurora gradient
+- 大标题
+- 创意
+native_elements:
+- 纯黑底色
+- 左侧中部蓝紫 / 绿色 blurred 极光圆球渐变
+- 左上角小蓝色矩形装饰条
+- 右上角细线椭圆环 + 星形装饰
+- 居中大白色章节标题 (~48pt)
+- 标题下方一行灰白小字副标题
+- 底部一条横向蓝色装饰带 + 圆点 / 短线作 footer
+layout_hint: null
+variant: null
+page_number: 3
+template_name: creative_aurora

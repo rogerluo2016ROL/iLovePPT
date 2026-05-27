@@ -1,0 +1,48 @@
+template_page_index: 29
+layout_class: process_flow
+slots:
+  - id: step_1_title
+    tree_path: '3.8.1'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: step_2_title
+    tree_path: '3.9.1'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: step_3_title
+    tree_path: '3.10.1'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: branch_1_body_a
+    tree_path: '3.13'
+    capacity_chars: 28
+    text_color_override: null
+    font_size_pt: null
+  - id: branch_1_body_b
+    tree_path: '3.14'
+    capacity_chars: 28
+    text_color_override: null
+    font_size_pt: null
+  - id: branch_2_body_a
+    tree_path: '3.11'
+    capacity_chars: 28
+    text_color_override: null
+    font_size_pt: null
+  - id: branch_2_body_b
+    tree_path: '3.12'
+    capacity_chars: 28
+    text_color_override: null
+    font_size_pt: null
+  - id: branch_3_body_a
+    tree_path: '3.15'
+    capacity_chars: 28
+    text_color_override: null
+    font_size_pt: null
+  - id: branch_3_body_b
+    tree_path: '3.16'
+    capacity_chars: 28
+    text_color_override: null
+    font_size_pt: null

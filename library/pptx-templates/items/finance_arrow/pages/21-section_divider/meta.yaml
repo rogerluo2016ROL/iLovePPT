@@ -1,0 +1,30 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: finance_arrow__21-section_divider
+name: "Section Divider · /04 重要问题及建议(章节扉页 + 子项列表)"
+layout_type: section_divider
+content_intent:
+  - 章节 04 扉页:重要问题及建议
+  - 大号橙黄 "/04" 数字 + 章节标题
+  - 子项含:重要问题 / 收入增长分析 / 国债跌价幅度大 / 管理费用和财务费用的期间影响
+when_to_use:
+  - 第四章扉页(问题与建议)
+  - 财报 4 章节结构的第 4 节进入页(最后一章前)
+  - 跟 03/10/16 共用相同章节扉页布局
+keywords:
+  - 章节扉页
+  - section divider
+  - 第四章
+  - 重要问题
+  - 改进建议
+  - "/04"
+native_elements:
+  - 左中橙黄超大号 "/04" 数字编号
+  - 编号下方深蓝灰粗体"重要问题及建议"
+  - 子项小灰字列表(重要问题 / 收入增长分析 / 国债跌价幅度大 / 管理费用和财务费用的期间影响)
+  - 右侧 1/2 模板招牌"上升箭头 + megaphone 人物"插画
+layout_hint: null
+page_number: 21
+template_name: finance_arrow

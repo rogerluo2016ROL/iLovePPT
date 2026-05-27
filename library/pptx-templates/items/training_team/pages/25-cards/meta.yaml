@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.85
+needs_manual_review: false
+
+id: training_team__25-cards
+name: "Cards · 3-col + 顶部大标 + 左侧 leader silhouette + 3 location pin"
+layout_type: cards
+content_intent:
+  - 团队 3 个 location / region 计划
+  - 3 个目标 / 3 个 milestone
+  - 培训师对 3 个团队 / 区域的安排
+when_to_use:
+  - 内容是 3 项规划 + 有"主导人物"叙事
+  - 想用 location pin 隐喻"地点 / 目标点"
+keywords:
+  - 3 cards
+  - 3 维度
+  - 3 location
+  - 团队规划
+  - leader silhouette
+  - 地图标记
+  - pin
+native_elements:
+  - 顶部大标题 "Unified fonts make reading more fluent" + 橙红下划线
+  - 左侧大橙红 leader silhouette
+  - 右侧 3 个 location pin icon(灰 / 橙红 / 灰),中间高亮
+  - 每 icon 下 Text here 标题 + 描述
+  - 灰底色块分上下
+
+layout_hint: null
+variant: 3-cols-with-leader-silhouette
+page_number: 25
+template_name: training_team

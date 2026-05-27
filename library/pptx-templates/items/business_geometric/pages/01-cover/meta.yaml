@@ -1,0 +1,39 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.95
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__01-cover
+name: "Cover · 几何蓝白 + 笔记本插画"
+layout_type: cover
+content_intent:
+  - 商务报告 / 工作汇报开场,展示主标题 + 副标题 + 演讲人
+  - 产品/方案介绍封面,搭配科技感笔记本插画
+  - 季度/年度总结 deck 第 1 页 KV 视觉
+when_to_use:
+  - deck 第 1 页 · 封面 KV
+  - 需要"商务 + 几何科技感"基调的开场
+  - 主题色为蓝色系的企业演讲
+keywords:
+  - 封面
+  - 商务
+  - 几何
+  - 深蓝
+  - 亮蓝
+  - 笔记本插画
+  - KV
+native_elements:
+  - 左侧主标题(深色大字)+ 副标题(中灰)+ Subtitle here
+  - 右侧亮蓝色三角形大色块 + 深蓝/亮蓝几何装饰
+  - 笔记本电脑插画(含 PowerPoint 仪表板 mock)
+  - 左下深蓝胶囊按钮 "Speaker name and title"
+  - 左下亮蓝胶囊按钮 "Designed by iSlide"(模板水印)
+  - 浅蓝半透明三角形点缀
+
+# === 辅助(不进 embedding)===
+layout_hint: null
+variant: null
+page_number: 1
+template_name: business_geometric

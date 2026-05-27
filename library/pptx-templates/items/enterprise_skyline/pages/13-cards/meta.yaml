@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.72
+needs_manual_review: false
+
+id: enterprise_skyline__13-cards
+name: "卡片 · 左侧 2 大标签 + 右侧 6 子项 (2 行 3 列)"
+layout_type: cards
+content_intent:
+  - 左侧 2 大类(竖排 Text here 标签) + 右侧 6 个特征卡片(2×3 grid)
+  - 双分类下展开 6 项细节
+  - 类似 "两阶段 × 三任务 / 两团队 × 三职责"
+when_to_use:
+  - 2 大分类 + 共 6 个子要点
+  - 详细对比 / 团队职责分组
+  - 不太适合简单对比(更偏 cards 矩阵)
+keywords:
+  - 卡片
+  - cards
+  - 6项
+  - 2行3列
+  - 双分类
+  - 子项
+  - 矩阵
+native_elements:
+  - 左侧浅灰圆角矩形容器 + 2 个 "Text here" 中央下划线标签(垂直分隔条)
+  - 右侧 6 个圆角白底带描边卡片 = 蓝色人物 + 列表图标 + "Supporting text here." 副标
+  - 卡片 2 行 × 3 列
+  - 卡片间细线连接,呈左→右扩展态势
+  - 底部 www.islide.cc + 页码 13
+
+layout_hint: null
+variant: 2-labels-with-6-cards
+page_number: 13
+template_name: enterprise_skyline

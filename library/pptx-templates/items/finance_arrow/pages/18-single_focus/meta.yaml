@@ -1,0 +1,31 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: finance_arrow__18-single_focus
+name: "Single Focus · 收入收益类(火箭 + 主标语 + 2 收益)"
+layout_type: single_focus
+content_intent:
+  - 左侧大号火箭升空插画 + 右侧主标语 + 2 项收益描述
+  - 起飞 / 增长 / 突破语义,适合做章节核心论点页
+  - 1 主标题 + 1 段说明 + 2 子项 icon-bullet
+when_to_use:
+  - 收入收益类核心结论页
+  - 任何 1 个核心论点 + 2 个支撑要点 的 single-focus 页
+  - 需要起飞 / 突破 / 增长 插画隐喻
+keywords:
+  - single focus
+  - 火箭
+  - 起飞
+  - 收入收益
+  - 1+2 结构
+  - 突破增长
+native_elements:
+  - 左上深黑粗体标题 收入收益类
+  - 左侧大号深灰火箭升空 + 流线 插画(主视觉占 1/2 宽)
+  - 右上 Text here 黑色粗体 + 3 行 supporting text
+  - 右上方下灰色横线分割
+  - 右下 2 行 收益 块,橙黄圆 icon(SALE 商店 / 房屋 + $) + 黑色粗 收益 标题 + 2 段 bullets
+layout_hint: null
+page_number: 18
+template_name: finance_arrow

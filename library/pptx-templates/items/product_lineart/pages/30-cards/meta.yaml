@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: product_lineart__30-cards
+name: "Cards · 3 列树形结构 (父分类 + 2 子项)"
+layout_type: cards
+
+content_intent:
+  - 3 类分组,每类 1 父 + 2 子的层级结构
+  - 适合"3 大类各含 2 小项"展示
+  - 强调分类层级关系
+
+when_to_use:
+  - 3 类对比,每类含 2 个子要素
+  - 组织架构 / 团队分组
+  - 功能模块拆解
+
+keywords:
+  - cards
+  - 3 列
+  - 树形结构
+  - 分组
+  - 1 父 2 子
+  - 组织架构
+
+native_elements:
+  - 3 列等宽布局,每列顶部 "0X.Text" 下划线父标题(白圆角矩形)
+  - 父节点下方虚线 T 字分支到 2 个蓝色 icon (单/双人,横纹)
+  - icon 下方 "Copy paste fonts" 简述
+  - 每列独立成块
+
+layout_hint: null
+page_number: 30
+template_name: product_lineart

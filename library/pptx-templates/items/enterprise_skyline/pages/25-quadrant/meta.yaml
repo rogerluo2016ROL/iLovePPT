@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.85
+needs_manual_review: false
+
+id: enterprise_skyline__25-quadrant
+name: "四象限 · 大脑拼图中心 + 4 角 70% KPI 块"
+layout_type: quadrant
+content_intent:
+  - 4 维度 KPI / 能力分布展示
+  - 创新 / 思维 / 智力四象限
+  - 配合大脑图形隐喻"全脑思维 / 综合智力"
+when_to_use:
+  - 4 维度对比 + 每维度需展示百分比 / KPI
+  - 能力评估 / 智力测评 / 创新维度
+  - 适合学术 / 培训 / 团队评估
+keywords:
+  - 四象限
+  - quadrant
+  - 4维度
+  - 70%
+  - KPI
+  - 大脑
+  - 思维
+  - 拼图
+  - puzzle
+native_elements:
+  - 中央 4 块大脑拼图(浅灰拼接 + 4 个人头思维图标)
+  - 左上 + 左下 + 右上 + 右下 4 个圆形 "70%" 进度环(蓝灰 / 蓝色描边)
+  - 4 个 70% 块对应 Text here 标题 + Supporting text 副标
+  - 整体象限对称分布
+
+layout_hint: null
+variant: brain-puzzle-with-4-kpi
+page_number: 25
+template_name: enterprise_skyline

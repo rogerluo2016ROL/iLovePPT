@@ -1,0 +1,41 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.9
+needs_manual_review: false
+
+# === 必填 ===
+id: creative_aurora__02-toc
+name: "TOC · 8 项 grid 目录 + 粉紫极光渐变"
+layout_type: toc
+content_intent:
+  - 长 deck (>= 6 章) 的目录页,展示 4-8 个章节
+  - 创意 / 设计 / 营销项目的章节导航
+  - 适合需要"一屏看完全部章节"的总览页
+when_to_use:
+  - 章节数 4-8 的 deck 第 2 页
+  - 需要编号 + 章节名两层信息呈现
+  - 不适合 < 3 章的短 deck (会显得稀疏)
+keywords:
+  - 目录
+  - agenda
+  - 8项grid
+  - 粉紫极光
+  - aurora gradient
+  - 章节索引
+  - 编号cards
+native_elements:
+  - 纯黑底色
+  - 中下区域大面积粉色 / 紫色 / 红色 blurred 极光渐变
+  - 左上角白色 "目录" 大标题 (~36pt)
+  - 顶部中央 "Agenda" 英文小字 (灰白)
+  - 右上角细线圆环 + 星形装饰
+  - 4×2 grid 布局,8 个章节项
+  - 每项含 2 位数编号 (橙红色 "01"-"08") + 中文章节名 (白色)
+  - 编号下方一条短橙红色分隔线
+
+# === 辅助 ===
+layout_hint: null
+variant: "8-items-grid"
+page_number: 2
+template_name: creative_aurora

@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: enterprise_skyline__28-timeline
+name: "时间轴 · 3 步阶梯式上升 + 20XX 年份节点"
+layout_type: timeline
+content_intent:
+  - 3 阶段递进 / 业绩攀升 / 战略推进
+  - 向上突破 视觉隐喻(阶梯)
+  - 3 个年份的里程碑 + 详情
+when_to_use:
+  - 3 个关键年份递进(年报 / OKR / 增长曲线)
+  - 强调"步步攀升 / 突破"
+  - 跟 24-timeline 区别:28 强调"线性上升"
+keywords:
+  - 时间轴
+  - timeline
+  - 3步
+  - 阶梯
+  - 上升
+  - 突破
+  - 攀升
+  - 20XX
+  - milestone
+native_elements:
+  - 浅灰色阶梯状条带,从左下到右上 3 段台阶 + 末端箭头
+  - 每段台阶上 1 个 "20XX" 深蓝边框圆形节点
+  - 节点旁 Text Here 标题 + 2 行 bullet supporting text
+  - 内容左下 / 中 / 右上 阶梯式排列
+  - 整体强烈方向感
+
+layout_hint: null
+variant: 3-step-staircase
+page_number: 28
+template_name: enterprise_skyline

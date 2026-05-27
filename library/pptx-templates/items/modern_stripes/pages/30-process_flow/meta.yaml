@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: modern_stripes__30-process_flow
+name: "Process Flow · 3 六边形线性步骤"
+layout_type: process_flow
+content_intent:
+  - 3 阶段线性流程展示
+  - 中间阶段为核心 / 高亮
+  - 战略 → 战术 → 结果 / 输入 → 处理 → 输出
+when_to_use:
+  - 3 步骤线性流程(有先后)
+  - 中间步骤是核心 / 重点
+  - 各步骤含简短描述
+keywords:
+  - 流程
+  - 3 步
+  - process flow
+  - hexagon
+  - 六边形
+  - 线性
+  - 阶段
+native_elements:
+  - 背景:浅灰点状世界地图
+  - 3 个六边形节点(左浅灰描边 / 中 navy 加粗描边 / 右浅灰描边)
+  - 每六边形内含"$"商务 icon + "Text here" 标题
+  - 节点之间红色三角箭头(指向右)
+  - 节点下方 supporting text 多行
+layout_hint: null
+variant: 3-hexagon-linear
+page_number: 30
+template_name: modern_stripes

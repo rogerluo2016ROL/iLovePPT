@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.96
+needs_manual_review: false
+
+id: finance_arrow__26-closing
+name: "Closing · Thanks 致谢页(左 megaphone 插画 + 右大号 Thanks 标语)"
+layout_type: closing
+content_intent:
+  - deck 最后致谢页
+  - 跟 01-cover 镜像构图(插画在左,标语在右)
+  - Thanks + slogan + speaker + 公司 URL
+when_to_use:
+  - deck 最后一页 · 致谢 + 联系方式
+  - 财报路演结束页
+  - 跟 cover 形成视觉首尾呼应
+keywords:
+  - closing
+  - thanks
+  - 致谢
+  - 谢谢
+  - 收尾页
+  - 演讲结束
+  - megaphone
+  - 财报结尾
+native_elements:
+  - 左侧大号"上升箭头 + megaphone 人物 + target + 红心"插画(跟 cover 同款,但位置镜像)
+  - 右上深蓝灰超大号粗体 "Thanks" 英文
+  - 标题下深蓝灰中号 "And Your Slogan Here" 副标语
+  - 右下小灰字"Speaker name and title"
+  - 副标语下方"www.islide.cc"小字
+  - 顶部 + 底部细灰横线作框架(跟 cover 一致)
+layout_hint: null
+page_number: 26
+template_name: finance_arrow

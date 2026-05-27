@@ -1,0 +1,43 @@
+template_page_index: 18
+layout_class: bullet_list
+slots:
+  - id: title
+    tree_path: '0'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: null
+  - id: intro_body
+    tree_path: '3.1'
+    capacity_chars: 200
+    text_color_override: null
+    font_size_pt: 14
+  - id: bullet_1_title
+    tree_path: '3.3.1.1'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 18
+  - id: bullet_1_body
+    tree_path: '3.3.1.0'
+    capacity_chars: 100
+    text_color_override: null
+    font_size_pt: 9
+  - id: bullet_2_title
+    tree_path: '3.4.1.1'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 18
+  - id: bullet_2_body
+    tree_path: '3.4.1.0'
+    capacity_chars: 100
+    text_color_override: null
+    font_size_pt: 9
+  - id: bullet_3_title
+    tree_path: '3.5.1.1'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 18
+  - id: bullet_3_body
+    tree_path: '3.5.1.0'
+    capacity_chars: 100
+    text_color_override: null
+    font_size_pt: 9

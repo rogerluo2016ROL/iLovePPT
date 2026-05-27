@@ -1,0 +1,29 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: modern_stripes__14-section_divider
+name: "Section Divider · /03 章节起始页"
+layout_type: section_divider
+content_intent:
+  - 第三章节起始页
+  - 章节切换转场
+  - 节奏停顿
+when_to_use:
+  - 章节 3 起始
+  - 同模板系列(03/09/14/20/26)的章节分隔
+keywords:
+  - 章节起始
+  - section divider
+  - "/03"
+  - 大编号
+  - 转场页
+  - 三章
+native_elements:
+  - 左上 navy /03 编号
+  - Section Header Here 章节标题 + 副描述两行
+  - 右侧蓝 / navy / 浅灰几何拼贴
+layout_hint: null
+variant: null
+page_number: 14
+template_name: modern_stripes

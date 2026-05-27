@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: finance_arrow__23-timeline
+name: "Timeline · 收入增长分析 4 节点水平时间轴(标签上下交替)"
+layout_type: timeline
+content_intent:
+  - 4 节点水平 timeline,标签上下交替排版(2 上 2 下)
+  - 每节点 1-4 编号圆 + "...收入" 标题 + 描述
+  - 中间 2 号节点橙黄高亮作焦点
+when_to_use:
+  - 收入增长 4 阶段时间轴(Q1 / Q2 / Q3 / Q4)
+  - 任何 4-step 水平时间发展
+  - 节点信息上下交替展示(避免拥挤)
+keywords:
+  - timeline
+  - 水平时间轴
+  - 4 节点
+  - 收入增长
+  - 上下交替
+  - 季度节点
+  - 阶段发展
+variant: 4-nodes-horizontal-zigzag-labels
+native_elements:
+  - 左上深黑粗体标题"收入增长分析"
+  - 水平细灰线贯穿,4 个圆形节点等距分布
+  - 节点配色:深灰 / 橙黄 / 深灰 / 深灰(2 号高亮)
+  - 中心圆内白色 1-4 数字编号
+  - 2、4 号节点标签在上方("...收入" 黑色粗标题 + 居中描述)
+  - 1、3 号节点标签在下方("...收入" 黑色粗标题 + 居中描述)
+  - 每标签下方"to retain text. ......"灰色小字省略
+layout_hint: null
+page_number: 23
+template_name: finance_arrow

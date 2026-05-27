@@ -1,0 +1,151 @@
+status: approved
+provenance:
+  schema_version: v1
+  embedding_model: tongyi-embedding-vision-plus
+  embedding_dim: 1152
+  ingested_at: 2026-05-27 02:53:24+00:00
+  source_pptx_sha256: 65946e6e0b071bb9f560952f46c8790390979ef2b1179b8bead03be1d96de5e9
+  source_pptx_size_bytes: 1439875
+extraction:
+  declared_pages: 33
+  rendered_pages: 33
+  discrepancy: 0
+  discrepancy_resolution: confirmed_hidden_tool_pages_rerendered
+  low_confidence_pages:
+  - 17
+  failed_pages: []
+  note: 'slide33 在原 .pptx 里是 <p:sld show="0">(作者隐藏),LibreOffice 默认跳过,首轮 ingest 渲了 32 页。
+
+    主线程已临时改 show="0" → 删除属性 重渲 page 33,内容 = iSlide 工具说明(主题色彩/字体/参考线)。
+
+    与 enterprise_skyline / training_team 的可见 iSlide 工具页处理一致。
+
+    '
+id: modern_stripes
+name: Modern Stripes · 深蓝斜切条纹工业几何模板
+category: enterprise-modern
+content_intent:
+- 现代工业 / 制造 / 科技类企业汇报
+- 产品发布 / 战略发布 / 路线图 deck
+- 强几何视觉 + 硬朗工业风的项目复盘 / 季度汇报
+- 5 章结构(对应 5 个 section_divider)的中长篇 deck
+- 面向高管 / 客户 / 投资人的正式商务汇报
+when_to_use:
+- 主题为科技 / 制造 / 工业 / 物联网 / 工程领域
+- 演讲需要"现代 / 锋利 / 几何"的视觉印象
+- deck 长度 25-35 页且分 5 大章节
+- 需要稳重 navy 主色 + 锐利红色作 accent 强调关键点
+- 内容含大量并列卡片 + 流程 + 金字塔 + 时间线类结构
+keywords:
+- 深蓝
+- navy
+- 工业
+- 现代
+- 几何
+- 斜切
+- 条纹
+- diagonal stripes
+- geometric blocks
+- industrial blue
+- modern minimal
+- 红蓝双色
+- 5 章节
+- 企业汇报
+- 商务正式
+- tech-startup
+- 硬朗风格
+- 极简主义
+- 工程感
+- engineering style
+- minimalist
+- structured
+- 斜切几何
+- block style
+- 线性风格
+- 工业风
+- modernist
+- 现代汇报
+- 硬几何
+- 科技路演
+- 深蓝几何
+recommended_for:
+- executive
+- sales
+- product_launch
+- strategy_review
+- quarterly_business_review
+visual_signature:
+- 深 navy (#0b2a4a 系) 主色 + 亮蓝 (#1ab2e6 系) + 红色 (#d62828 系) accent + 浅灰 (#e6e6e6 系)
+- 斜切条纹几何块(diagonal stripes geometric blocks)作为封面 / 章节页 / 结尾页的统一装饰
+- 工业 / 极简风(industrial blue · modern minimal)
+- 章节页统一大号 navy "/0X" 编号字
+- 内容页大量留白 + 细灰色分隔线 + 圆形 / 六边形 icon 标记
+- 红色作 accent 强调单一关键节点(中间步骤 / 高亮卡片)
+- 字体粗壮无衬线 sans-serif
+visual_tokens:
+  primary: '#0b2a4a'
+  accent: '#1ab2e6'
+  accent_alt: '#d62828'
+  neutral: '#e6e6e6'
+  font_ea: Microsoft YaHei
+  title_size_pt: 32
+  body_size_pt: 16
+assets:
+  source_pptx: ../../_source/modern_stripes.pptx
+  total_pages: 33
+  cover_thumbnail: pages/01-cover/preview.png
+pages_count: 33
+pages:
+- 01-cover
+- 02-toc
+- 03-section_divider
+- 04-cards
+- 05-radial
+- 06-cards
+- 07-cards
+- 08-bullet_list
+- 09-section_divider
+- 10-cards
+- 11-timeline
+- 12-pyramid
+- 13-radial
+- 14-section_divider
+- 15-pyramid
+- 16-timeline
+- 17-other
+- 18-quadrant
+- 19-process_flow
+- 20-section_divider
+- 21-process_flow
+- 22-pyramid
+- 23-cards
+- 24-cards
+- 25-timeline
+- 26-section_divider
+- 27-pyramid
+- 28-venn
+- 29-cards
+- 30-process_flow
+- 31-cards
+- 32-closing
+- 33-other
+implementation:
+  tier1_template_slide_reuse:
+    ready: true
+    coverage:
+    - cover
+    - toc
+    - section_divider
+    - cards
+    - radial
+    - bullet_list
+    - timeline
+    - pyramid
+    - quadrant
+    - process_flow
+    - venn
+    - closing
+    - other
+    gaps: []
+  tier2_python_theme: null
+  iLovePPT_can_replicate_pct: 70

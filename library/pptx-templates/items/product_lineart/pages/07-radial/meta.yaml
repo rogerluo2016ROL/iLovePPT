@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: product_lineart__07-radial
+name: "Radial · 中央 6 段环 + 周围 6 个连线卡片"
+layout_type: radial
+
+content_intent:
+  - 1 个核心 + 6 个支柱因素的辐射展示
+  - 每因素带 icon + 标题 + 说明
+  - 适合"X 由 6 部分组成 / 6 维评价"
+
+when_to_use:
+  - 围绕 1 个中心展开 6 个维度
+  - 各维度独立、对核心同等贡献
+  - 团队职能分工、产品功能模块、能力维度
+
+keywords:
+  - radial
+  - 中心辐射
+  - 6 维度
+  - 环形
+  - 支柱
+  - hub and spoke
+
+native_elements:
+  - 中央六等分环 (蓝/灰/灰/灰/黄/蓝交替),环中心留白圆
+  - 周围 6 个白色卡片 (左 3 / 右 3),由细灰线连接到环段
+  - 每卡片左侧蓝/黄/灰色圆形 icon + 右侧 "Text here" 标题 + 3 行说明
+  - 顶部细线分隔 header
+
+layout_hint: null
+page_number: 7
+template_name: product_lineart

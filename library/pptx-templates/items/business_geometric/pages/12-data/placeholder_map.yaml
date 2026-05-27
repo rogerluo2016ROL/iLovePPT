@@ -1,0 +1,78 @@
+template_page_index: 11
+layout_class: data
+slots:
+  - id: title
+    tree_path: '0'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: null
+  - id: year_left
+    tree_path: '3.0'
+    capacity_chars: 6
+    text_color_override: null
+    font_size_pt: 14
+  - id: year_right
+    tree_path: '3.1'
+    capacity_chars: 6
+    text_color_override: null
+    font_size_pt: 14
+  - id: row_1_label
+    tree_path: '3.3'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 14
+  - id: row_1_year_left
+    tree_path: '3.4'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 11
+  - id: row_1_year_right
+    tree_path: '3.5'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 11
+  - id: row_2_label
+    tree_path: '3.7'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 14
+  - id: row_2_year_left
+    tree_path: '3.8'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 11
+  - id: row_2_year_right
+    tree_path: '3.9'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 11
+  - id: row_3_label
+    tree_path: '3.11'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 14
+  - id: row_3_year_left
+    tree_path: '3.12'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 11
+  - id: row_3_year_right
+    tree_path: '3.13'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 11
+  - id: row_4_label
+    tree_path: '3.15'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: 14
+  - id: row_4_year_left
+    tree_path: '3.16'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 11
+  - id: row_4_year_right
+    tree_path: '3.17'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: 11

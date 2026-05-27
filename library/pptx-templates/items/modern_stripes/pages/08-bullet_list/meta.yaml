@@ -1,0 +1,30 @@
+status: approved
+confidence: 0.85
+needs_manual_review: false
+
+id: modern_stripes__08-bullet_list
+name: "Bullet List · 左视觉 + 右 6 项交替列表"
+layout_type: bullet_list
+content_intent:
+  - 1 个核心议题 + 6 条要点 / 子项展开
+  - 左侧概述题 / 视觉锚点,右侧详细列表
+  - 创意 / 想法 / brainstorm 类内容(配灯泡视觉)
+when_to_use:
+  - 6 项左右列表需要细化的场景
+  - 各项可二分类(交替的红圆 / navy 勾)
+  - 左侧需放视觉锚点提升可读
+keywords:
+  - 6 项列表
+  - 双色 bullet
+  - 灯泡
+  - idea
+  - 创意要点
+  - 左视觉右列表
+native_elements:
+  - 左 1/3:"Text here" 标题 + 灰色 supporting text
+  - 中间:手机 icon 圆盘 + 箭头指向灰色灯泡轮廓 + 底部铅笔涂鸦线条
+  - 右 2/3:6 行平行列表(交替 navy 圆 / 红色勾)+ 每行 supporting text + 灰色分隔线
+layout_hint: null
+variant: 6-rows-alternating-icons
+page_number: 8
+template_name: modern_stripes

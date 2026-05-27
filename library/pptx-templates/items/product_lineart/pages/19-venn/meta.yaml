@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: product_lineart__19-venn
+name: "Venn · 3 圆相交三角排列 + 左右描述"
+layout_type: venn
+
+content_intent:
+  - 3 个维度的交集 / 共性展示
+  - 经典 3 圆 venn 图(铁三角)
+  - 适合"X 由 3 维度共同决定"
+
+when_to_use:
+  - 3 个相互关联的维度 / 角色 / 能力
+  - 强调三方协作 / 三角支撑
+  - 经典商业模型(比如 PEOPLE / PROCESS / TECH)
+
+keywords:
+  - venn
+  - 3 圆相交
+  - 三角
+  - 铁三角
+  - 三维
+  - 协作
+  - 交集
+
+native_elements:
+  - 中央 3 圆相交 (黄 / 蓝深 / 蓝浅) 形成三角布局 (黄上,深蓝左下,浅蓝右下)
+  - 每圆中央有白色 user/$ icon
+  - 中央有浅灰色 venn 区域填充
+  - 左上 / 左下 / 右下 3 个 "Text here" 标题 + 描述
+
+layout_hint: null
+page_number: 19
+template_name: product_lineart

@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.9
+needs_manual_review: false
+
+id: product_lineart__02-toc
+name: "TOC · 左侧目录 + 右侧 5 条蓝黄交替章节块"
+layout_type: toc
+
+content_intent:
+  - 整 deck 的章节目录页
+  - 5-6 个章节标题 + 简述
+  - 蓝黄交替强调节奏
+
+when_to_use:
+  - deck 第 2 页
+  - 章节数 5-6 个
+  - 需要"目录 + 内容"双栏视觉
+
+keywords:
+  - 目录
+  - toc
+  - content
+  - 章节
+  - 大纲
+  - 蓝黄交替
+
+native_elements:
+  - 左侧蓝色大字 "目录 CONTENT" + 灰色简述
+  - 右侧 5 个交替蓝/黄色块 ("Text here") 各带一行说明
+  - 蓝色块和黄色块由细灰线连接形成纵向时间轴感
+  - 顶部细线分隔 header
+
+layout_hint: null
+page_number: 2
+template_name: product_lineart

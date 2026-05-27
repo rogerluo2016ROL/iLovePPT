@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.83
+needs_manual_review: false
+
+id: training_team__30-data
+name: "Data · 齿轮 cluster 协作 + 2 KPI(1559K/1176K)"
+layout_type: data
+content_intent:
+  - 协作系统业绩 2 个核心 metric
+  - 团队规模 / 用户量对比展示
+  - 培训覆盖人数 2 区域 KPI
+when_to_use:
+  - 2 个 KPI 对比(主辅)
+  - 想用齿轮隐喻"机制 / 协作 / 运转"
+keywords:
+  - 数据
+  - 齿轮
+  - KPI
+  - 协作
+  - 机制
+  - 2 metrics
+  - data
+  - cogwheel
+native_elements:
+  - 右上 4 个 cogwheel cluster(2 灰 + 2 橙红),含 team / pin / home icon
+  - 左上 Unified fonts 大标 + supporting + 橙红下划线
+  - 下方 2 列 KPI:1559K 橙红 + 文 / 1176K 灰 + 文
+  - 灰色竖线分两 KPI
+
+layout_hint: null
+variant: 2-kpi-with-cogwheel-cluster
+page_number: 30
+template_name: training_team

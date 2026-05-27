@@ -1,0 +1,38 @@
+status: approved
+confidence: 0.9
+needs_manual_review: false
+
+id: product_lineart__24-data
+name: "Data · 仪表盘指针图 + 左标题 + 右 3 KPI 卡"
+layout_type: data
+
+content_intent:
+  - 1 个核心指标(仪表盘) + 3 个支柱指标
+  - 适合性能 / 效率 / 进度 类指标展示
+  - 强调"达成度"可视化
+
+when_to_use:
+  - 单指标 + 3 个子指标的 dashboard
+  - 季度 OKR 进度 / 项目完成度
+  - 需要"主指标 + 拆解项"的层次
+
+keywords:
+  - data
+  - 仪表盘
+  - dashboard
+  - gauge
+  - KPI
+  - 进度
+  - 性能
+  - 指针图
+
+native_elements:
+  - 中央 270° 弧形仪表盘 (黄/灰/蓝 三段),中心蓝色指针指向右上
+  - 仪表盘下方 "Text" 标签
+  - 左侧黑色加粗双行主标题 + 灰色 3 行说明文字
+  - 右侧 3 段 KPI 卡片,每卡含灰/黄/蓝 ☑gear icon + "Text here" + 描述
+  - 卡片间细灰横线分隔
+
+layout_hint: null
+page_number: 24
+template_name: product_lineart

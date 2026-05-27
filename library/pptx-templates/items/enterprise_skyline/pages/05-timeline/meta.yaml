@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: enterprise_skyline__05-timeline
+name: "时间轴 · 7 节点水平轴 + 上下交替气泡"
+layout_type: timeline
+content_intent:
+  - 7 个阶段 / 步骤 / 里程碑展开
+  - 项目周期 / 公司发展史 / 产品路线图
+  - 上下交替显示节省纵向空间,信息密度高
+when_to_use:
+  - 7 步骤的演进展示
+  - 团队发展史 / 项目阶段
+  - 多里程碑路线图
+keywords:
+  - 时间轴
+  - timeline
+  - 7步
+  - 7节点
+  - 上下交替
+  - zigzag
+  - 阶段
+  - 路线图
+  - milestone
+native_elements:
+  - 水平浅灰轴线贯穿,7 个深蓝圆形编号节点 1-7
+  - 节点 6 用浅灰区分(可能表示当前阶段 / 未来)
+  - 上下交替 4+3 个气泡(2/4/6 在上,1/3/5/7 在下)
+  - 每个气泡 = 蓝色圆形人物图标 + Text Here 标题 + Supporting text 副标
+  - 底部 www.islide.cc + 页码 5
+
+layout_hint: null
+variant: 7-zigzag
+page_number: 5
+template_name: enterprise_skyline

@@ -1,0 +1,37 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: product_lineart__01-cover
+name: "Cover · 蓝色线稿产品图标 + 大标题"
+layout_type: cover
+
+content_intent:
+  - 产品/科技汇报开场 KV 页
+  - 展示产品名 + 副标题 + 讲者信息
+  - 设置整 deck 的"科技感线稿"基调
+
+when_to_use:
+  - deck 第 1 页
+  - 需要产品/工具/平台/SaaS 类视觉氛围
+  - 不希望太严肃,有线稿插画的科技感
+
+keywords:
+  - 封面
+  - cover
+  - 产品发布
+  - 蓝色线稿
+  - 大标题
+  - kv
+  - lineart icons
+
+native_elements:
+  - 左侧大号黑色加粗标题 "iSlide® PowerPoint standard template"
+  - 标题下方灰色副标题 "Subtitle here"
+  - 左下黄色描边胶囊框内的 speaker name and title
+  - 右侧大型蓝色线稿插画群(电脑/钻石/齿轮/秒表/放大镜/视频窗口等产品 icon)
+  - 黄色 www.islide.cc 网址 footer
+
+layout_hint: null
+page_number: 1
+template_name: product_lineart

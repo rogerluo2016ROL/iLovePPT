@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: modern_stripes__01-cover
+name: "Cover · 深蓝几何条纹工业风封面"
+layout_type: cover
+content_intent:
+  - 科技 / 制造 / 工业类汇报开场,展示主标题 + 子标题 + 演讲人信息
+  - 强视觉 KV 风格的产品发布或战略发布会封面
+  - 需要突出"现代 / 工业 / 几何"印象的硬朗主题
+when_to_use:
+  - deck 第 1 页 · 主标题视觉冲击 KV
+  - 主标题英文 / 简短中文 + 副标题双行结构
+  - 演讲人 / 站点信息以小字呈现在标题上方
+keywords:
+  - 封面
+  - 深蓝
+  - 几何条纹
+  - 工业
+  - 现代
+  - KV
+  - 大标题
+native_elements:
+  - 左侧装饰:小型蓝白条纹斜切方块组
+  - 右侧装饰:大尺寸 navy / 亮蓝 / 浅灰 几何拼贴块,带横向条纹纹理
+  - 中央左对齐的多行大标题(白底黑字 + 蓝色副标题)
+  - 标题上方小字"Speaker name and title" + 站点
+  - 标题下方分割线 + spaced caps 副标题
+layout_hint: null
+variant: null
+page_number: 1
+template_name: modern_stripes

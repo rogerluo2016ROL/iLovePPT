@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.55
+needs_manual_review: true
+
+id: training_team__33-other
+name: "Design Criteria · 主题色板 / 字体 / 参考线说明页"
+layout_type: other
+content_intent:
+  - 模板自带说明页 · 列主题色 / 主题字 / 参考线
+  - 模板使用者参考,不作为正式内容页
+when_to_use:
+  - 不直接用于 deck 输出(应在使用时删除)
+  - 可作为模板色板 reference for designers
+keywords:
+  - 模板说明
+  - design criteria
+  - 主题色
+  - theme colors
+  - 主题字体
+  - 参考线
+  - reference
+  - 说明页
+native_elements:
+  - 顶部 "设计标准 / Design Criteria" 大标
+  - 主题色彩 4 + 4 圆点色板(白/黑/浅灰/灰蓝 文字色 + 橙红/深蓝/暗绿/青/棕/翠绿 填充色)
+  - 主题字体 Microsoft YaHei / Arial 标注
+  - 右侧 GUIDES 灰色方块示意 + Alt+F9 快捷键说明
+  - 右上红色 Note 警示
+
+layout_hint: design-criteria-reference-page (模板自带说明,非内容页 enum 兜底)
+variant: instruction-color-palette
+page_number: 33
+template_name: training_team

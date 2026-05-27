@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: enterprise_skyline__21-section_divider
+name: "章节分隔 · 大编号 04 + Section Header + 金色 skyline"
+layout_type: section_divider
+content_intent:
+  - 第 4 章节起始分隔页
+  - 系列章节分隔
+  - 重置节奏
+when_to_use:
+  - 第 4 章节开始
+  - 跟 03 / 09 / 15 / 27 节奏一致
+keywords:
+  - 章节
+  - 分隔页
+  - section
+  - divider
+  - "04"
+  - 大编号
+  - 城市天际线
+  - skyline
+native_elements:
+  - 左侧巨大金色编号 "04"
+  - 横线分隔
+  - Section Header Here 大标题 + 2 行 Supporting text
+  - 右上金色城市天际线剪影
+  - 大留白干净
+
+layout_hint: null
+variant: null
+page_number: 21
+template_name: enterprise_skyline

@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.97
+needs_manual_review: false
+
+id: enterprise_skyline__32-closing
+name: "结束页 · Thanks + 城市天际线 KV(深蓝底)"
+layout_type: closing
+content_intent:
+  - deck 结束 / Thank you 页
+  - 提问环节 / 联系信息展示
+  - 跟封面(01)呼应 KV
+when_to_use:
+  - deck 最后 1 页
+  - Thank you + slogan + 演讲人联系方式
+  - 需要 KV 视觉收尾呼应封面
+keywords:
+  - 结束
+  - closing
+  - Thanks
+  - 谢谢
+  - 谢辞
+  - 收尾
+  - thank you
+  - 联系
+  - 城市天际线
+native_elements:
+  - 深蓝 (#1c2c44) 满铺背景
+  - 大字 "Thanks" + 副标 "And Your Slogan Here"
+  - Speaker name and title + www.islide.cc 信息块
+  - 底部金色城市天际线剪影
+  - 跟 01-cover 呼应
+
+layout_hint: null
+variant: null
+page_number: 32
+template_name: enterprise_skyline

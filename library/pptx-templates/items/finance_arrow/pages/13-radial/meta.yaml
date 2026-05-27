@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: finance_arrow__13-radial
+name: "Radial · 资产构成 6 卡片围绕中心 chart(左 3 + 右 3 镜像布局)"
+layout_type: radial
+content_intent:
+  - 6 个资产构成项围绕中心 chart icon 分布
+  - 左 3 项(01-03)+ 右 3 项(04-06)镜像并列
+  - 中心 "Text here" 文本 + chart 柱状图 icon 隐喻"数据分析"
+when_to_use:
+  - 资产构成按 6 类拆分(流动 / 非流动 / 货币 / 应收 / 存货 / 固定 等)
+  - 任何 6-item 围绕中心主题的 radial 信息架构
+  - 需要左右对称视觉(适合"6 部分组合成整体"叙述)
+keywords:
+  - 6 项 radial
+  - 资产构成
+  - 中心 chart
+  - 左右镜像
+  - 6 部分
+  - 柱状图 icon
+variant: 6-cards-around-chart
+native_elements:
+  - 左上深黑粗体标题"资产构成"
+  - 中部圆形虚线大圆 + 中央"放大镜 + 柱状图"橙黄 icon + 旁边小圆 $ icon
+  - 中心"Text here"黑色粗体
+  - 左侧 3 卡片:01-03 黑色粗标题"第 X 部分资产构成" + 2 行 supporting bullets
+  - 右侧 3 卡片:04-06 黑色粗标题"第 X 部分资产构成" + 2 行 supporting bullets
+  - 整体橙黄 + 灰色为主,蓝色已淡化
+layout_hint: null
+page_number: 13
+template_name: finance_arrow

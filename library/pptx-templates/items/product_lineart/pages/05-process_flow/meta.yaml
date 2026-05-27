@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.9
+needs_manual_review: false
+
+id: product_lineart__05-process_flow
+name: "Process Flow · 3 个错落箭头流程 + icon + 编号"
+layout_type: process_flow
+
+content_intent:
+  - 3 步流程展示(交错布局)
+  - 每步带 icon + 编号 + 标签 + 说明
+  - 强调步骤间的顺序流转
+
+when_to_use:
+  - 3 步骤的方法论 / 实施流程
+  - 蓝/黄/蓝色彩交替强调节奏的过程
+  - 不需要严格线性,只需有"先后"概念
+
+keywords:
+  - 三步流程
+  - process flow
+  - 箭头
+  - 错落
+  - 3 step
+  - icon
+
+native_elements:
+  - 3 个浅灰色长方向箭头,水平错落排列(左右左)
+  - 每个箭头中央大号编号 01 (黄) / 02 (蓝) / 03 (黄)
+  - 箭头内 supporting text 描述
+  - 每个箭头左侧/右侧外有黄色 user/balance icon
+  - 箭头外端右/左 "Text here" 步骤标签
+
+layout_hint: null
+page_number: 5
+template_name: product_lineart

@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.9
+needs_manual_review: false
+
+id: modern_stripes__28-venn
+name: "Venn · 双圆交叉 + 4 节点标签"
+layout_type: venn
+content_intent:
+  - 2 组概念的交集关系
+  - 战略 × 执行 / 用户 × 产品 / 技术 × 市场
+  - 强调"两者共性 + 各自独立"
+when_to_use:
+  - 2 个主题的交叉关系 · 加上 4 个细分点
+  - 各圆上有编号节点(01-04 分布)
+  - 左右两侧需补充描述文字
+keywords:
+  - venn
+  - 韦恩图
+  - 双圆交叉
+  - 交集
+  - 重叠
+  - 2 组
+  - 4 节点
+native_elements:
+  - 左 / 右两个浅灰大圆相切叠合
+  - 左圆 icon:navy bullseye 靶心 + 编号 01 / 04
+  - 右圆 icon:red 美元符 + 编号 02 / 03
+  - 4 角"Text here"标题 + supporting text(左上 / 左下 / 右上 / 右下)
+  - 横向细灰线穿过两圆中心
+layout_hint: null
+variant: 2-circles-overlap-4-labels
+page_number: 28
+template_name: modern_stripes

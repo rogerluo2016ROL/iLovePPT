@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.78
+needs_manual_review: true
+
+id: training_team__16-single_focus
+name: "Single focus · 演讲台 speaker + 多色对话框 + 左右文段"
+layout_type: single_focus
+content_intent:
+  - 培训师演讲核心观点(围绕 1 个人物)
+  - 多 stakeholder 对一个核心人物的反馈
+  - 1 个 KOL 输出 3-5 个 quote / view
+when_to_use:
+  - 想凸显演讲 / 培训互动场景
+  - 多个 quote 围绕 1 个核心人
+keywords:
+  - 演讲
+  - speaker
+  - 对话框
+  - 多 quote
+  - 培训互动
+  - quote burst
+  - speech bubble
+native_elements:
+  - 中央灰色 speaker silhouette + podium
+  - 上方 4 个不同色对话框(灰 / 暗绿 / 橙红 / 深蓝),内含 "Text"
+  - 左侧 2 段 Text here + 描述 + 编号
+  - 右侧 2 段对称
+  - 下半浅灰 band 含底部标语 "Unified fonts make reading more fluent."
+
+layout_hint: speaker-with-quote-bursts (single_focus 兜底)
+variant: speaker-podium-bubbles
+page_number: 16
+template_name: training_team

@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: training_team__12-quadrant
+name: "Quadrant · 4 扇形(1橙 2蓝 3橙 4蓝)+ 中心 leader icon"
+layout_type: quadrant
+content_intent:
+  - 1 个中心角色辐射 4 维度
+  - 团队 leader 4 项核心能力
+  - 培训 4 模块对称展开
+when_to_use:
+  - 4 维度对称且围绕一个核心
+  - 编号 1-4 顺时针展开
+keywords:
+  - 4 象限
+  - quadrant
+  - 4 维度
+  - 中心 leader
+  - 团队领袖
+  - 4 能力
+  - 橙蓝交替
+native_elements:
+  - 中心灰圆 + leader icon
+  - 4 个扇形扣在中心(1 左上橙红 / 2 右上深蓝 / 3 右下橙红 / 4 左下深蓝)
+  - 灰色辅助 4 块象限
+  - 每扇形外 Text here + bullets
+
+layout_hint: null
+variant: 4-fan-blades-leader-center
+page_number: 12
+template_name: training_team

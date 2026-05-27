@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: product_lineart__16-radial
+name: "Radial · 中央大蓝圆 4 节点四叶花瓣 + 四角描述"
+layout_type: radial
+
+content_intent:
+  - 1 个核心 + 4 个支柱因素的对称布局
+  - 4 个支柱(花瓣)代表平等子项
+  - 配 4 角描述
+
+when_to_use:
+  - 1 个核心议题向 4 个相等维度展开
+  - 4 个 KPI 围绕中心目标
+  - 强调对称感、平衡感
+
+keywords:
+  - radial
+  - 4 节点
+  - 中心辐射
+  - 四瓣
+  - 对称
+  - 平衡
+
+native_elements:
+  - 中央蓝色大圆 "…text" 作为核心
+  - 周围 4 个圆 (浅灰背景)四个方向 (左上/右上/左下/右下) 形成花瓣布局
+  - 4 个黄色圆形 (折线图 icon) 紧贴中央大圆
+  - 四角各 "Text here" 标题 + 描述
+  - 顶部细线分隔 header
+
+layout_hint: null
+page_number: 16
+template_name: product_lineart

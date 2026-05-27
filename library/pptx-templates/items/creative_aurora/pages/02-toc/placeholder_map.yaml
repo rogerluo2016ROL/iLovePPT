@@ -1,0 +1,93 @@
+template_page_index: 1
+layout_class: toc
+slots:
+  - id: title
+    tree_path: '2'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: agenda_label
+    tree_path: '1.0'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: item_1_text
+    tree_path: '1.1.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: item_1_number
+    tree_path: '1.1.1'
+    capacity_chars: 4
+    text_color_override: null
+    font_size_pt: null
+  - id: item_2_text
+    tree_path: '1.2.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: item_2_number
+    tree_path: '1.2.1'
+    capacity_chars: 4
+    text_color_override: null
+    font_size_pt: null
+  - id: item_3_text
+    tree_path: '1.3.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: item_3_number
+    tree_path: '1.3.1'
+    capacity_chars: 4
+    text_color_override: null
+    font_size_pt: null
+  - id: item_4_text
+    tree_path: '1.4.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: item_4_number
+    tree_path: '1.4.1'
+    capacity_chars: 4
+    text_color_override: null
+    font_size_pt: null
+  - id: item_5_text
+    tree_path: '1.5.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: item_5_number
+    tree_path: '1.5.1'
+    capacity_chars: 4
+    text_color_override: null
+    font_size_pt: null
+  - id: item_6_text
+    tree_path: '1.6.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: item_6_number
+    tree_path: '1.6.1'
+    capacity_chars: 4
+    text_color_override: null
+    font_size_pt: null
+  - id: item_7_text
+    tree_path: '1.7.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: item_7_number
+    tree_path: '1.7.1'
+    capacity_chars: 4
+    text_color_override: null
+    font_size_pt: null
+  - id: item_8_text
+    tree_path: '1.8.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: item_8_number
+    tree_path: '1.8.1'
+    capacity_chars: 4
+    text_color_override: null
+    font_size_pt: null

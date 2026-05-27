@@ -1,0 +1,37 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.7
+needs_manual_review: false
+
+# === 必填 ===
+id: creative_aurora__05-single_focus
+name: "Single Focus · 左侧大图人物肖像 + 右侧双段文字"
+layout_type: single_focus
+content_intent:
+  - 单一主题深度展开 · 左大图作视觉支撑 + 右侧两段叙述
+  - 适合 "人物 / 作品 / 案例 specimen" 的深入介绍
+  - 创意类项目的 hero 内容页
+when_to_use:
+  - 需要一张关键图像 + 两段文字描述的内容页
+  - 人物 portrait / case study / hero shot 的展开页
+  - 不适合多并列要点 / 数据可视化
+keywords:
+  - 左图右文
+  - hero image
+  - 人物肖像
+  - 赛博朋克
+  - single focus
+  - portrait
+native_elements:
+  - 顶部 "市场分析" 章节标识 + 副标题 "详细列出完成的项目及成果"
+  - 左侧大幅人物肖像 (赛博朋克风格人物头戴墨镜,带橙红光晕)
+  - 右侧上下两段文字块,每段 "文学编辑岗位" 小标题 + 段落描述
+  - 顶部橙红色 hue 与图像呼应
+  - 右下角小蓝色实心方块
+
+# === 辅助 ===
+layout_hint: null
+variant: "left-image-right-text"
+page_number: 5
+template_name: creative_aurora

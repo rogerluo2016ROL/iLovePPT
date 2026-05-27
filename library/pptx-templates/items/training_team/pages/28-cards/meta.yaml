@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.85
+needs_manual_review: false
+
+id: training_team__28-cards
+name: "Cards · 6 cards 围绕中心 heart-cutout 圆(团队价值观 6 维度)"
+layout_type: cards
+content_intent:
+  - 团队 / 公司 6 项核心价值观
+  - 培训 6 项 deliverable
+  - 服务承诺 6 项 KPI
+when_to_use:
+  - 内容是 6 个并列项,围绕一个 emotional core
+  - 想突出 "团队精神 / 心" 的隐喻
+keywords:
+  - 6 cards
+  - 价值观
+  - 团队精神
+  - heart
+  - 心
+  - 6 维度
+  - 围绕中心
+  - 核心价值
+native_elements:
+  - 中央橙红大圆 + 白色心形 cutout
+  - 3 个 icon 左 (calendar / home / headphone) + 3 个 icon 右 (rocket / car / megaphone)
+  - 每 icon 旁 Text here + 描述
+  - 6 项左右各 3 排成 grid
+
+layout_hint: null
+variant: 6-cards-heart-center
+page_number: 28
+template_name: training_team

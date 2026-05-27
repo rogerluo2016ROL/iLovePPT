@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: enterprise_skyline__11-cards
+name: "卡片 · 3 列竖向树状 + 每列 4 子项"
+layout_type: cards
+content_intent:
+  - 3 大类别 × 4 子项 矩阵展示
+  - 分组对比(如 3 类产品 × 4 维度 / 3 阶段 × 4 任务)
+  - 信息密度高,适合详细对比
+when_to_use:
+  - 3 分类 + 每类 4 项
+  - 部门职责矩阵 / 产品功能对比 / 阶段任务分解
+  - 需要工整 grid 视觉
+keywords:
+  - 卡片
+  - cards
+  - 3列
+  - 矩阵
+  - tree
+  - 树状
+  - 分组
+  - 12项
+native_elements:
+  - 3 列深蓝色标题条 (1 / 2 / 3 编号) + Text Here 白字标题
+  - 每列下方 4 个浅边框白底卡片 (Supporting text here)
+  - 标题与第一个子项用细线连接
+  - 卡片间留白均匀
+  - 底部 www.islide.cc + 页码 11
+
+layout_hint: null
+variant: 3-cols-x-4-rows
+page_number: 11
+template_name: enterprise_skyline

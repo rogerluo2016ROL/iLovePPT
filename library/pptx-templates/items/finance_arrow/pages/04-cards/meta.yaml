@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: finance_arrow__04-cards
+name: "Cards · 主营业务收入 4 业务横向卡片(icon + 标题徽章 + bullets)"
+layout_type: cards
+content_intent:
+  - 4 个业务条线 / 4 个产品线 / 4 个收入来源横向并列
+  - 每个业务带专属 icon(钱包 / 工资 / wallet / 商务人士)+ 业务名徽章 + 3 条 bullet
+  - 适合"主营业务收入按业务分解" / "4 个收入板块对比"
+when_to_use:
+  - 收入 / 利润按 4 个业务板块拆解
+  - 4 个产品线 / 4 个客户类型横向对比
+  - 不超过 4 个 item 的并列卡片场景
+keywords:
+  - 4 卡片
+  - 横向卡片
+  - 主营业务
+  - 业务条线
+  - 收入分解
+  - icon 卡片
+  - timeline 卡片
+variant: 4-cols
+native_elements:
+  - 左上深黑粗体小标题"主营业务收入"
+  - 中部大号黑色标题"Unified fonts make reading more fluent."(英文 placeholder)
+  - 副标题 2 行小灰字
+  - 4 个业务卡片横向并列,带橙黄/深蓝灰交替徽章(... 业务)
+  - 每个徽章上方 icon(钱包 / hand-money / wallet / 商务人物 + 钱)
+  - 卡片间灰色细横线连接(timeline 感)
+  - 每卡下 3 条 bullet(• Copy paste fonts • ...... • ...)
+  - 卡片间细灰垂直分割线
+layout_hint: null
+page_number: 4
+template_name: finance_arrow

@@ -1,0 +1,39 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.94
+needs_manual_review: false
+
+# === 必填 ===
+id: creative_aurora__11-closing
+name: "Closing · 感谢观看 + 人物 VR 肖像"
+layout_type: closing
+content_intent:
+  - 演讲结尾致谢页 · 大字 "感谢观看 / Thank you" + 人物 hero image
+  - 创意 / 科技类项目的结束页,留下品牌印象
+  - 强化"未来感 / 科技 / 创意"的最终视觉记忆
+when_to_use:
+  - deck 最后一页 · 致谢 / Q&A 引导
+  - 需要传达"科技 / 未来 / 创意" 收尾氛围
+  - 不适合严肃 / 商务 / 法务类 deck
+keywords:
+  - 结束页
+  - closing
+  - thank you
+  - 感谢观看
+  - 人物肖像
+  - VR头戴
+  - aurora gradient
+native_elements:
+  - 黑底
+  - 左半蓝绿橙极光渐变光团
+  - 左上小钻石装饰 + 蓝色短条
+  - 中央偏左大字 "感谢观看" + 英文 "Thank you" (白色, ~44pt)
+  - 右半侧大幅人物图 (戴 VR 头显的女性,赛博朋克氛围)
+  - 底部左下日期占位 "20XX.XX.XX",右下 "Presenter name"
+
+# === 辅助 ===
+layout_hint: null
+variant: null
+page_number: 11
+template_name: creative_aurora

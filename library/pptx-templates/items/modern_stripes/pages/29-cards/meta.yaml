@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.83
+needs_manual_review: false
+
+id: modern_stripes__29-cards
+name: "Cards · 4 列团队 / 多人卡片"
+layout_type: cards
+content_intent:
+  - 4 个团队 / 部门 / 群体并列展示
+  - 每卡含团队 icon + 2-3 段 supporting text
+  - 团队介绍 / 角色对比
+when_to_use:
+  - 4 项并列 · 内容稍多(每项 2-3 段)
+  - 主题为团队 / 群组 / 多人协作
+  - 第 2 项需要 accent 突出(red)
+keywords:
+  - 4 卡
+  - 团队卡片
+  - 群组
+  - 多人 icon
+  - 部门
+  - 协作
+  - team icon
+native_elements:
+  - 4 列垂直布局,每列大圆 team icon(3 个 navy / 1 个 red 为第 2 列)
+  - 横向浅灰背景条贯穿 icon 行
+  - 每列"Text here"标题 + 3 行平行 supporting text + 省略号(行间留白)
+  - 灰色细线分隔列(部分)
+layout_hint: null
+variant: 4-cols-team-icon-stacked-text
+page_number: 29
+template_name: modern_stripes

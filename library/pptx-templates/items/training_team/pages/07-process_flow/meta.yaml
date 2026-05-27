@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: training_team__07-process_flow
+name: "Process flow · 横向箭头 + 3 step icons + 中心握手插画"
+layout_type: process_flow
+content_intent:
+  - 培训合作 3 步骤流程
+  - 团队协作流程图(双方握手为核心)
+  - 增长 / 协同 3 阶段表达
+when_to_use:
+  - 3 个 sequential step 且中间步骤是 "合作 / 握手 / 协同"
+  - 想突出"双方达成"的视觉
+keywords:
+  - 流程
+  - process flow
+  - 3 步
+  - 握手
+  - 协作
+  - 合作
+  - 团队增长
+native_elements:
+  - 横向大灰色箭头横贯
+  - 左 1 蓝 icon (chart up) + 右 1 蓝 icon (chart up)
+  - 中间橙红 icon + 上方圆形商务握手插画
+  - 各节点下 Text here + 描述
+
+layout_hint: null
+variant: 3-step-with-handshake-center
+page_number: 7
+template_name: training_team

@@ -1,0 +1,34 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.95
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__09-section_divider
+name: "Section divider · /02 大数字 + 笔记本插画"
+layout_type: section_divider
+content_intent:
+  - 第 2 章节起始页,显示 "/02" + 章节标题 + 引导句
+  - 大型 deck 第二章节切分
+when_to_use:
+  - 大型 deck(>15 页)需要章节切分
+  - 跟 03 / 15 / 21 / 27 是同一 pattern 不同编号
+  - 演讲中"换章节"的视觉过渡
+keywords:
+  - 章节
+  - 过渡页
+  - section divider
+  - 大数字
+  - "/02"
+  - 笔记本插画
+native_elements:
+  - 左侧巨大深蓝 "/02" 字样
+  - 左下 "Section Header Here" 大字标题 + 2 行说明
+  - 右侧笔记本电脑插画(同 03 一致)
+
+# === 辅助(不进 embedding)===
+layout_hint: null
+variant: chapter-02
+page_number: 9
+template_name: business_geometric

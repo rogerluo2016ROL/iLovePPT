@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.78
+needs_manual_review: false
+
+id: enterprise_skyline__04-pyramid
+name: "金字塔 · 3-tier + 圆形编号 + 左侧引言"
+layout_type: pyramid
+content_intent:
+  - 3 层金字塔层级关系展示(战略 / 战术 / 执行 或 Maslow 类需求层级)
+  - 左侧大引言 + 右侧 3-tier 编号 1/2/3
+  - 战略框架 / 优先级分层 / 价值主张层级
+when_to_use:
+  - 需要展示 3 层级 hierarchy 的内容
+  - 配合左侧引语 / 章节摘要使用
+  - 战略层级 / 客户分层 / 目标分级
+keywords:
+  - 金字塔
+  - pyramid
+  - 3层
+  - 三层
+  - 层级
+  - hierarchy
+  - 1-2-3
+  - 引言
+  - quote
+native_elements:
+  - 中央大型 3-tier 浅灰金字塔(从顶到底:1 / 2 / 3 编号圆圈位于右侧)
+  - 顶部 1 圆圈 + 右侧 Text Here + 3 条 Supporting text bullets
+  - 底部 2 / 3 圆圈 + 各自 Text Here + bullets
+  - 左侧大引号 " + Supporting text here 标题 + 2 行 bullets
+  - 右下角页码 4
+
+layout_hint: null
+variant: 3-tier
+page_number: 4
+template_name: enterprise_skyline

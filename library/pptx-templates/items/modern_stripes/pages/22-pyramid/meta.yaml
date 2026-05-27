@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: modern_stripes__22-pyramid
+name: "Pyramid · 3D 三面金字塔 + 编号节点"
+layout_type: pyramid
+content_intent:
+  - 3 阶段递进 / 3 维度战略
+  - 强调"层次结构"+ 引用 / 名言开篇
+  - 战略层级 / 能力分级 / 重要性优先级
+when_to_use:
+  - 3 阶段 / 3 层级 · 左侧需放引用 / 阐述句
+  - 各阶段单独编号 + 简短 bullets
+  - 突出层级感(立体金字塔)
+keywords:
+  - 金字塔
+  - 3D pyramid
+  - 引用
+  - 名言
+  - 3 阶段
+  - 编号节点
+  - 立体
+native_elements:
+  - 左侧黑色大引号 + "Supporting text here" 主语 + 2 行小字
+  - 中间 3D 立体浅灰金字塔(显式三面投影)
+  - 3 个编号圆环节点 1 / 2 / 3 卡在金字塔三面位置(顶 red / 左底 navy / 右底 navy)
+  - 右侧顶层:"Text Here" + bullets · 下方 2 列底层文字(底部含"Supporting text here" × 2 列)
+layout_hint: null
+variant: 3d-pyramid-with-numbered-nodes
+page_number: 22
+template_name: modern_stripes

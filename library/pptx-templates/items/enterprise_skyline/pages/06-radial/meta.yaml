@@ -1,0 +1,37 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: enterprise_skyline__06-radial
+name: "辐射循环 · 中央三角箭头 + 3 顶点编号要点"
+layout_type: radial
+content_intent:
+  - 3 个步骤循环 / 协同关系展示
+  - 闭环流程(如 PDCA 简化版 / 持续改进循环)
+  - 三方协同 / 三要素互相促进
+when_to_use:
+  - 3 元素相互依赖 / 循环关系
+  - 营销 / 产品 / 服务三方协同
+  - PDCA / 螺旋上升 / 闭环模型
+keywords:
+  - 辐射
+  - radial
+  - 循环
+  - 3要素
+  - 三角
+  - cycle
+  - 闭环
+  - 协同
+  - 三方
+native_elements:
+  - 中央 3 个深蓝圆形图标 + 灰色循环箭头三角组合
+  - 顶点 01 圆形(蓝灰) + 用户图标
+  - 右下 02 圆形(深蓝) + 卡片图标
+  - 左下 03 圆形(深蓝) + 标签图标
+  - 每个顶点对应一个 "0X.Text here" 下划线编号标题 + 多行 supporting text
+  - 整体居中对称构图
+
+layout_hint: null
+variant: 3-radial
+page_number: 6
+template_name: enterprise_skyline

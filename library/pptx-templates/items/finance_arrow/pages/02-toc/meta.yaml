@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: finance_arrow__02-toc
+name: "TOC · 4 章节双栏目录(橙黄编号 + 中文标题 + 英文描述)"
+layout_type: toc
+content_intent:
+  - 4 章节标准财报目录
+  - 左侧"目录 CONTENTS"标志,右侧 4 行章节列表
+  - 适合主营业务摘要 → 财务分析 → 预算分析 → 问题建议这种 4-step 财报结构
+when_to_use:
+  - deck 第 2 页 · TOC
+  - 章节数恰好 4 项时(章节多 / 少需另选 TOC 模板)
+  - 财报 / 数据分析 / 评审类内容
+keywords:
+  - 目录
+  - TOC
+  - CONTENTS
+  - 4 章节
+  - 财报骨架
+  - 章节列表
+  - 双栏 TOC
+native_elements:
+  - 左侧 "目录 CONTENTS" 深蓝灰大号中英组合,旁边小方块装饰 + 横线
+  - 右侧 4 行章节列表,每行橙黄大号 01-04 编号 + 中文章节标题
+  - 每行下方灰色小字"Copy paste fonts. Choose the only option to retain text."(英文 placeholder)
+  - 各行之间细灰水平分割线
+  - 整页大量白色留白,左 1/3 装饰 + 右 2/3 列表
+layout_hint: null
+variant: null
+page_number: 2
+template_name: finance_arrow

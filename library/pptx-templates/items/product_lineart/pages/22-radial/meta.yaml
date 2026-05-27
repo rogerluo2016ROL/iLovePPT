@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: product_lineart__22-radial
+name: "Radial · 中央 6 段环 + 左右 6 个卡片(无 icon 极简版)"
+layout_type: radial
+
+content_intent:
+  - 跟 07-radial 类似,但卡片无 icon 更简洁
+  - 6 个对等元素围绕 1 个核心
+  - 强调结构而不强调装饰
+
+when_to_use:
+  - 6 维度对称展开,内容偏文字描述
+  - 不需要 icon 强调每维度
+  - 标题已经能说明清楚的场景
+
+keywords:
+  - radial
+  - 6 节点
+  - 中心辐射
+  - 极简
+  - 无 icon
+  - 环形
+
+native_elements:
+  - 中央六等分环 (蓝/黄/灰/深灰/灰/灰),中心留白圆 "Text"
+  - 左右各 3 个白色卡片,细灰线连接到环段
+  - 卡片只含 "Copy paste fonts" 简述,无 icon
+  - 顶部细线分隔 header
+
+layout_hint: null
+page_number: 22
+template_name: product_lineart

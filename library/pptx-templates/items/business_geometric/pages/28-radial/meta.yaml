@@ -1,0 +1,38 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.78
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__28-radial
+name: "Radial · 中国地图 + 6 城市站点分布"
+layout_type: radial
+content_intent:
+  - 6 城市/网点分布(全国布局)
+  - 业务覆盖范围 / 分公司地图 / 区域 hub 展示
+  - 中心 + 环绕节点的地理分布
+when_to_use:
+  - 全国布局 / 多城市展示
+  - 6 个站点围绕中心圆分布
+  - 地理 / 服务覆盖类汇报
+keywords:
+  - 地图
+  - 中国
+  - 6 城市
+  - 站点
+  - 网点
+  - radial
+  - 分布
+native_elements:
+  - 中央灰色中国地图轮廓
+  - 6 个城市节点圆形 icon(古建筑/银行 icon · 深蓝/天蓝交替)
+  - 节点环绕中心灰色圆环排布(radial 布局)
+  - 左右两侧各 3 行 "Text here" 标题 + 描述(共 6 项)
+  - 每节点旁标 "Keyword" 城市名
+
+# === 辅助(不进 embedding)===
+layout_hint: china-map-with-pins
+variant: 6-cities-china-map
+page_number: 28
+template_name: business_geometric

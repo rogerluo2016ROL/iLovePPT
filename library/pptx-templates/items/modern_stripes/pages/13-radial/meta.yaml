@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.85
+needs_manual_review: false
+
+id: modern_stripes__13-radial
+name: "Radial · 中心环 + 4 季度标签"
+layout_type: radial
+content_intent:
+  - 全年 4 季度计划 / 数据展示
+  - 中心:整体战略 / 业务全景
+  - 4 季度作为外层环节点
+when_to_use:
+  - 4 季度(Q1/Q2/Q3/Q4)的并列展示
+  - 中心是统一主题 · 4 角是季度细分
+  - 强调"全年统筹"+ "分季度执行"的关系
+keywords:
+  - 季度
+  - Q1 Q2 Q3 Q4
+  - 中心辐射
+  - radial
+  - 全年规划
+  - 1+4
+  - 业务全景
+native_elements:
+  - 背景:浅灰世界地图
+  - 中心 navy / red 交替的圆环 4 段(顶部 navy / 右 red / 底 navy / 左 red)
+  - 4 个白色小圆标签 Q1 / Q2 / Q3 / Q4 位于圆环节点
+  - 中心 icon:商务人 + 美元符号 + "...text" 字
+  - 4 角文字:左上 / 右上 / 左下 / 右下 各"Text here"标题 + supporting text + 省略号
+layout_hint: null
+variant: 4-quarter-ring
+page_number: 13
+template_name: modern_stripes

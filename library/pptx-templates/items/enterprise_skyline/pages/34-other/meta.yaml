@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.55
+needs_manual_review: true
+
+id: enterprise_skyline__34-other
+name: "iSlide 工具广告 · '为您节省 90% 的 PPT 设计时间'"
+layout_type: other
+layout_hint: "islide_tool_ad · 模板自带工具广告页(非演讲页),建议演讲时删除"
+content_intent:
+  - iSlide 工具广告(非演讲页)
+  - 介绍 iSlide 插件价值主张:节省 90% PPT 设计时间
+  - 引导用户下载 iSlide.cc
+when_to_use:
+  - 仅作工具宣传,演讲时应删除
+  - 不应被 RAG 推荐给 author 拓写
+keywords:
+  - iSlide
+  - 广告
+  - 工具
+  - 90%
+  - 节省时间
+  - islide.cc
+  - 插件
+  - 下载
+native_elements:
+  - 大标题 "使用 iSlide PPT 插件" + "为您节省 90% 的 PPT 设计时间"
+  - 副标 "iSlide add-in saves you 90% of the time in making presentation"
+  - 底部 "免费下载 / Download for FREE" + 橙色链接 "www.islide.cc"
+  - 右侧浅灰胶囊装饰
+
+variant: null
+page_number: 34
+template_name: enterprise_skyline

@@ -1,0 +1,93 @@
+template_page_index: 9
+layout_class: data
+slots:
+  - id: kpi_l1_title
+    tree_path: '3.2'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_l1_body
+    tree_path: '3.3'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_l1_value
+    tree_path: '3.4'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_l2_title
+    tree_path: '3.5'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_l2_body
+    tree_path: '3.6'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_l2_value
+    tree_path: '3.7'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_l3_title
+    tree_path: '3.8'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_l3_body
+    tree_path: '3.9'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_l3_value
+    tree_path: '3.10'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_r1_value
+    tree_path: '3.11'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_r2_value
+    tree_path: '3.12'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_r3_value
+    tree_path: '3.13'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_r1_title
+    tree_path: '3.14'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_r1_body
+    tree_path: '3.15'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_r2_title
+    tree_path: '3.16'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_r2_body
+    tree_path: '3.17'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_r3_title
+    tree_path: '3.18'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: kpi_r3_body
+    tree_path: '3.19'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null

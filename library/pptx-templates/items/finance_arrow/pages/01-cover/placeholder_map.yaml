@@ -1,0 +1,23 @@
+template_page_index: 0
+layout_class: cover
+slots:
+  - id: year
+    tree_path: '0'
+    capacity_chars: 6
+    text_color_override: null
+    font_size_pt: null
+  - id: title
+    tree_path: '1'
+    capacity_chars: 20
+    text_color_override: null
+    font_size_pt: null
+  - id: reporter
+    tree_path: '2'
+    capacity_chars: 18
+    text_color_override: null
+    font_size_pt: null
+  - id: speaker_subtitle
+    tree_path: '3'
+    capacity_chars: 32
+    text_color_override: null
+    font_size_pt: null

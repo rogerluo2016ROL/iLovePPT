@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: modern_stripes__05-radial
+name: "Radial · 中心圆 + 4 角卫星布局"
+layout_type: radial
+content_intent:
+  - 1 个中心主题 + 4 个相关维度展开
+  - 中心定义/概念,四角各列展开点(2 左 2 右)
+  - 4 维度环绕单一中心议题的关系图
+when_to_use:
+  - 单中心 + 4 维度的关系展开
+  - 各维度无先后顺序(径向关系而非线性)
+  - 需要强调"中心是核心,周围是细分维度"
+keywords:
+  - 中心辐射
+  - radial
+  - 4 维度
+  - 中心 + 卫星
+  - 1+4
+  - 花瓣布局
+native_elements:
+  - 中心 navy 大圆 "...text" 主题词
+  - 4 个红色小圆 icon(线性折线图标)环绕中心 4 角(11/1/5/7 点)
+  - 背景:中心被 4 个浅灰大花瓣形圆环绕(花朵图形)
+  - 4 角文字标签:左上 / 左下 / 右上 / 右下 各 1 段(标题 + 2 行 + 省略号)
+  - 中心点跟 4 卫星无显式连接线
+layout_hint: null
+variant: 1-center-4-corners
+page_number: 5
+template_name: modern_stripes

@@ -1,0 +1,38 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.85
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__24-process_flow
+name: "Process flow · 6 叶形节点上下交错"
+layout_type: process_flow
+content_intent:
+  - 6 步骤水平流程展示(叶形/水滴形节点)
+  - 工作流 / 服务步骤 / 6 阶段方法论
+  - 文案上下交替分布的横向 process
+when_to_use:
+  - 6 步骤水平流程
+  - 需要"轻盈 / 自然"气质(叶形 vs 方形)
+  - 步骤数较多但需要单页容纳
+keywords:
+  - 6 步骤
+  - 流程
+  - process
+  - 叶形
+  - 水滴
+  - 横向
+  - 工作流
+native_elements:
+  - 6 个水滴/叶形节点水平排列(深蓝/浅灰交替)
+  - 每节点内含 icon(显示器/折线图/时钟/柱状图/人物/电话)
+  - 上下交替分布 "Text here" 标题 + 描述(共 6 个)
+  - 细线连接节点与对应文案
+  - 起点左侧 "Text here" 总标题 + 描述
+
+# === 辅助(不进 embedding)===
+layout_hint: leaf-zigzag-flow
+variant: 6-steps-horizontal-zigzag
+page_number: 24
+template_name: business_geometric

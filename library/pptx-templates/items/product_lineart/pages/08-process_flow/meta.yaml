@@ -1,0 +1,38 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: product_lineart__08-process_flow
+name: "Process Flow · 5 阶上升梯子 + 顶端大箭头(完成态)"
+layout_type: process_flow
+
+content_intent:
+  - 5 阶递进上升流程展示
+  - 每阶有 icon + 说明 + 标签
+  - 最终阶段大箭头表示"达成"
+
+when_to_use:
+  - 5 步骤目标导向流程
+  - 强调"逐级攀升 → 终点达成"的递进感
+  - 成长 / 升级 / 目标达成路径
+
+keywords:
+  - 5 阶上升
+  - 阶梯
+  - 递进
+  - 上升箭头
+  - process flow
+  - stair
+  - 达成
+  - milestone
+
+native_elements:
+  - 5 阶斜向上升的灰色梯形阶梯,左下到右上递增
+  - 最顶端右侧大灰色右向箭头(代表完成 / 突破)
+  - 每阶旁各 1 个黄色/蓝色 user/laptop icon
+  - 每阶上方 supporting text 描述
+  - 最顶部双人庆祝 icon
+
+layout_hint: null
+page_number: 8
+template_name: product_lineart

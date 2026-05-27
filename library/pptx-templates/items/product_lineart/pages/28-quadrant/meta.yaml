@@ -1,0 +1,38 @@
+status: approved
+confidence: 0.85
+needs_manual_review: false
+
+id: product_lineart__28-quadrant
+name: "Quadrant · 2x2 网格 4 卡片 + 右侧大铅笔装饰"
+layout_type: quadrant
+
+content_intent:
+  - 2 维度划分 4 象限的展示
+  - 每象限有 icon + 标题 + 说明
+  - 强调"分类对比 / 四宫格分析"
+
+when_to_use:
+  - SWOT / BCG 矩阵 / 2 维分类
+  - 4 个并列但互斥的方向
+  - 商业分析 / 决策模型
+
+keywords:
+  - quadrant
+  - 2x2
+  - 四宫格
+  - 矩阵
+  - SWOT
+  - BCG
+  - 4 象限
+  - 二维分类
+
+native_elements:
+  - 左半屏 2x2 网格(细灰线分隔)
+  - 每格中央灰/黄 laptop+cursor icon
+  - icon 下方 "Text here" 标题(黑色加粗)+ supporting text
+  - 右侧大灰色 3D 铅笔装饰(笔尖朝左下)
+  - 铅笔下方有灰色波浪 "书写痕迹"装饰
+
+layout_hint: null
+page_number: 28
+template_name: product_lineart

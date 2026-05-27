@@ -1,0 +1,37 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.85
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__26-single_focus
+name: "Single focus · 开书插画 + 59% 单一指标"
+layout_type: single_focus
+content_intent:
+  - 1 个核心 percentage(59%)主导整页
+  - 知识 / 阅读 / 学习类指标展示(开书隐喻)
+  - 极简单数据强调(无次要内容)
+when_to_use:
+  - 1 个核心数字独占整页
+  - 教育 / 知识 / 阅读类主题
+  - 需要极简单 KPI 强调(无其他干扰)
+keywords:
+  - 59%
+  - 单一指标
+  - single focus
+  - 开书
+  - 知识
+  - 阅读
+  - 极简
+native_elements:
+  - 中央大幅开书插画(深蓝 + 浅灰对比 · 50/50 已读/未读)
+  - 底部 "59%" 巨大深蓝数字
+  - 数字右侧 "TEXT HERE" 标题 + "Supporting text here" 说明
+  - 整体留白多,极简风
+
+# === 辅助(不进 embedding)===
+layout_hint: null
+variant: single-percentage-with-illustration
+page_number: 26
+template_name: business_geometric

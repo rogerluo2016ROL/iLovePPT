@@ -5,23 +5,47 @@
 ## 已入库模板
 
 ```
-template_golden:
-  - desc:      iSlide · Enterprise Golden Theme — 深蓝 + 金色城市天际线
+business_geometric:
+  - desc:      Business Geometric · 几何蓝白商务模板(SWOT / 流程 / KPI · iSlide 来源)
   - category:  enterprise-modern
-  - pages:     32        (已删 6 个 iSlide 工具页,原 38)
+  - pages:     33        (含 1 张 iSlide 工具说明页 33-other,force-rendered from hidden slide)
   - replicate: ~70%
 
-template_high-end-vibe:
-  - desc:      High-End Vibe · 高端科技渐变模板(深蓝 + 橙色 + VR 元素)
-  - category:  enterprise-modern
+creative_aurora:
+  - desc:      Creative Aurora · 五彩斑斓的黑高级感模板(极光渐变 + 黑底 · 创意 / 营销)
+  - category:  creative-modern
   - pages:     11
-  - replicate: ~65%
+  - replicate: ~70%
 
-template_training:
-  - desc:      iSlide Team Training · 团队协作训练模板(橙 + 蓝 + 卡通团队插画)
+enterprise_skyline:
+  - desc:      Enterprise Skyline · 深蓝 + 金色城市天际线企业模板(年报 / 路演 · iSlide 来源)
+  - category:  enterprise-modern
+  - pages:     38        (含 6 张 iSlide 工具说明页 33-38)
+  - replicate: ~80%
+
+finance_arrow:
+  - desc:      Finance Arrow · 财务数据分析报告专用模板(橙黄上升箭头 + 财报骨架)
+  - category:  finance
+  - pages:     26
+  - replicate: ~80%
+
+modern_stripes:
+  - desc:      Modern Stripes · 深蓝斜切条纹工业几何模板(硬几何 · iSlide 来源)
+  - category:  enterprise-modern
+  - pages:     33        (含 1 张 iSlide 工具说明页 33-other,force-rendered from hidden slide)
+  - replicate: ~70%
+
+product_lineart:
+  - desc:      Product Lineart · 蓝色线稿产品/科技通用模板(钻石/放大镜/齿轮 icon · iSlide 来源)
+  - category:  enterprise-modern
+  - pages:     33        (含 1 张 iSlide 工具说明页 33-other,force-rendered from hidden slide)
+  - replicate: ~80%
+
+training_team:
+  - desc:      Training Team · 橙红 + 蓝卡通团队培训模板(OKR kickoff / 入职 / 团建 · iSlide 来源)
   - category:  training
-  - pages:     32        (已删 6 个 iSlide 工具页,原 38)
-  - replicate: ~65%
+  - pages:     38        (含 6 张 iSlide 工具说明页 33-38)
+  - replicate: ~75%
 ```
 
 ## 模板格式

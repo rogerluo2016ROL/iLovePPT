@@ -1,0 +1,18 @@
+template_page_index: 20
+layout_class: section_divider
+slots:
+  - id: section_number
+    tree_path: '2'
+    capacity_chars: 4
+    text_color_override: null
+    font_size_pt: null
+  - id: section_title
+    tree_path: '0'
+    capacity_chars: 24
+    text_color_override: null
+    font_size_pt: null
+  - id: section_subtitle
+    tree_path: '1'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null

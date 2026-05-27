@@ -1,0 +1,37 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: training_team__01-cover
+name: "Cover · 橙红主色 + 卡通团队 + TEAM 大字"
+layout_type: cover
+content_intent:
+  - 团建 / 培训 deck 开场,亮主题 + slogan
+  - 新员工入职培训封面页
+  - 团队建设主题演讲开场
+when_to_use:
+  - deck 第 1 页 KV 视觉
+  - 需要"活泼 / 协作 / 阳光"基调,而非严肃企业蓝
+keywords:
+  - 封面
+  - 团队
+  - 卡通
+  - 橙红
+  - team-building
+  - 培训开场
+  - 迎刃而上
+  - TEAM
+native_elements:
+  - 橙红渐变底色块占据下半部分
+  - 4 个卡通团队成员插画(男女混合,持设备 / 比划手势)
+  - TEAM 白色大字横贯下半 band
+  - 红色靶心 + 思想气泡装饰
+  - 中文主标题 "[迎刃而上,共创辉煌] PPT原创主题商务模板"
+  - 右上 "Subtitle here" 描边方框副标题
+  - 左上 LOGO HERE 占位
+  - 右下 Speaker name and title / Designed by iSlide
+
+layout_hint: null
+variant: cover-illustration
+page_number: 1
+template_name: training_team

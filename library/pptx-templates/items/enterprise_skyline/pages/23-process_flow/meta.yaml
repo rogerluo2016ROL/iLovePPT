@@ -1,0 +1,37 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: enterprise_skyline__23-process_flow
+name: "流程 · 6 步骤垂直闭环 + 左右两侧角色注释"
+layout_type: process_flow
+content_intent:
+  - 6 步骤闭环流程(末尾回到起点)
+  - 业务流程 / 审批流 / 服务循环
+  - 强调多步骤 + 闭环 + 双角色协同
+when_to_use:
+  - 6 步骤垂直闭环流程
+  - 业务流 / 客户服务流程 / 审批 / 制造流程
+  - 需要左右角色注释(两个 stakeholder)
+keywords:
+  - 流程
+  - process
+  - flow
+  - 6步
+  - 闭环
+  - 垂直
+  - cycle
+  - 角色
+  - 协同
+native_elements:
+  - 中央 6 个圆角矩形垂直堆叠(深蓝起 + 4 个白底深蓝边 + 深蓝末)
+  - 步骤间深蓝向下箭头连接
+  - 末尾箭头从底部反向回到顶部形成闭环
+  - 左侧 1 个深蓝圆 + 人物图标 + Text here + 2 段 Supporting text
+  - 右侧对称 1 个深蓝圆 + 人物图标 + Text here + 2 段 Supporting text
+  - 整体闭环 + 左右双角色注释
+
+layout_hint: null
+variant: 6-step-vertical-closed
+page_number: 23
+template_name: enterprise_skyline

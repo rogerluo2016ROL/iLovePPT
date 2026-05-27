@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.82
+needs_manual_review: false
+
+id: enterprise_skyline__19-cards
+name: "卡片 · 3 列波浪布局 + 下方 3 圆形人物图标"
+layout_type: cards
+content_intent:
+  - 3 项并列卡片展示 + 视觉律动感
+  - 团队 3 角色 / 服务 3 类别 / 产品 3 系列
+  - 下方人物图标增加亲和力
+when_to_use:
+  - 3 项并列内容,需要轻快视觉
+  - 团队介绍 / 产品 3 系列 / 客户 3 类型
+  - 不需要复杂细节,只需 3 个标题+短描述
+keywords:
+  - 卡片
+  - cards
+  - 3项
+  - 波浪
+  - 人物图标
+  - 平行
+  - wave
+  - 3-col
+native_elements:
+  - 上方 3 列 "Text here 标题 + 2 行 Supporting text + 省略号" 居中对齐文本
+  - 下方 3 个圆形人物图标(深蓝 / 深蓝 / 蓝灰)位于波浪曲线节点上
+  - 浅灰波浪曲线贯穿底部,形成视觉律动
+  - 标题与图标之间细虚线连接
+  - 底部 www.islide.cc + 页码 19
+
+layout_hint: null
+variant: 3-cols-wave
+page_number: 19
+template_name: enterprise_skyline

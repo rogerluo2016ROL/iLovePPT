@@ -1,0 +1,38 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.88
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__16-process_flow
+name: "Process flow · 6 圆形 + 弧线箭头(W 型循环)"
+layout_type: process_flow
+content_intent:
+  - 6 步骤循环流程展示(波浪状路径 · 头尾呼应)
+  - 工作循环 / PDCA 迭代 / 6 阶段方法论
+  - 上下交替的 6 节点 process
+when_to_use:
+  - 6 步骤流程描述
+  - 强调"循环 / 迭代"特性
+  - 步骤数 = 6 且需要视觉节奏感
+keywords:
+  - 6 步骤
+  - 流程
+  - process
+  - 循环
+  - 迭代
+  - 圆形
+  - 弧线
+native_elements:
+  - 6 个圆形节点上下交替排列(W 型布局)
+  - 节点间弧线连接(深蓝细弧 + 浅灰大弧)
+  - 节点内 icon(灯泡/演示板/地球/邮件/对话/勾)+ "Text" 标签
+  - 起点 + 终点两侧 "Text here" 标题 + 描述
+  - 节点深蓝/浅灰交替增强节奏
+
+# === 辅助(不进 embedding)===
+layout_hint: w-shape-flow
+variant: 6-steps-wave
+page_number: 16
+template_name: business_geometric

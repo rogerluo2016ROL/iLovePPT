@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.90
+needs_manual_review: false
+
+id: finance_arrow__25-quadrant
+name: "Quadrant · 期间影响 4 维度(building icon + 中心 01-04 数字编号)"
+layout_type: quadrant
+content_intent:
+  - 4 个期间影响维度 2x2 围绕中心 4 数字编号
+  - 中心 01-04 编号 + "Text here" 副标题
+  - 周边 building icon 圆形 + "...影响" 标题 + bullets
+when_to_use:
+  - 管理 / 财务费用 4 类期间影响对比
+  - 任何 4-quadrant 分析(SWOT 类 / 4 类期间)
+  - 需要 building / 政府机构 icon 隐喻"管理"语义
+keywords:
+  - quadrant
+  - 4 影响
+  - 期间影响
+  - 管理费用
+  - building icon
+  - 4 编号 + 4 描述
+  - 2x2 quadrant
+variant: 2x2-with-center-numbers
+native_elements:
+  - 左上深黑粗体标题"管理费用和财务费用的期间影响"
+  - 中心 4 数字编号(01-04)+ 每数字下"Text here"灰色小字
+  - 中心 4 区域有花瓣形浅灰底色块 + 4 个 building icon(2 灰 + 2 橙黄)
+  - 左上 / 右上 / 左下 / 右下 4 卡片:"...影响"黑色粗标题 + 2 行 supporting bullets
+  - 卡片间留白居中,中心装饰是主视觉焦点
+layout_hint: null
+page_number: 25
+template_name: finance_arrow

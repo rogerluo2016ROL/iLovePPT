@@ -1,0 +1,38 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.7
+needs_manual_review: false
+
+# === 必填 ===
+id: creative_aurora__10-cards
+name: "Cards · 右大图 + 左三段文字描述"
+layout_type: cards
+content_intent:
+  - 一张主图 + 三段并列文字描述的混合布局
+  - 适合 "一个核心视觉 + 三个不同角度的解读" 的内容编排
+  - 创意 / 数字艺术作品的多角度阐述
+when_to_use:
+  - 有 1 张视觉主图 + 3 段不同角度的文字时
+  - 需要图 + 文比例约 4:6 的内容页
+  - 不适合无图 / 单段长文字
+keywords:
+  - 1图3文
+  - hero with side notes
+  - cards
+  - 数字艺术
+  - VR/AR
+  - 五彩波浪
+  - aurora art
+native_elements:
+  - 顶部 "市场分析" + 副标题
+  - 右上区域大幅彩色波浪 / 数字艺术图 (含 VR 头戴人物)
+  - 左侧上下三段文字块,每段含小标题 + 段落
+  - 左下角橙红色 hue 与画面呼应
+  - 整体黑底 + 多彩高饱和色调
+
+# === 辅助 ===
+layout_hint: null
+variant: "right-image-left-3-texts"
+page_number: 10
+template_name: creative_aurora

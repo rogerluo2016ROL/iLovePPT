@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: modern_stripes__31-cards
+name: "Cards · 4 列产品卡 + 底部 callout"
+layout_type: cards
+content_intent:
+  - 4 个产品 / 功能 / 模块并列展示
+  - 底部用大号 callout 总结统一价值主张
+  - 产品矩阵 + 总结 slogan
+when_to_use:
+  - 4 项并列 + 1 句总结
+  - 顶部并列分维度 · 底部统一收口
+  - 产品矩阵 / 功能罗列 / 方案概览
+keywords:
+  - 4 卡
+  - 产品矩阵
+  - 桌面 icon
+  - 计算机
+  - callout
+  - 总结
+  - slogan
+native_elements:
+  - 顶部 4 列产品卡:每列 desktop 计算机 icon(navy / red / navy / red 交替)
+  - 每列"Text here"标题 + 2 段 supporting text
+  - 灰色细线分隔列
+  - 底部大型浅灰 callout 气泡(右下三角尾)+ 内含大字 "Unified fonts make reading more fluent." 总结
+layout_hint: null
+variant: 4-products-bottom-callout
+page_number: 31
+template_name: modern_stripes

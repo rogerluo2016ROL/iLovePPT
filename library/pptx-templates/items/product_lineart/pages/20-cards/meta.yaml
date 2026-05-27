@@ -1,0 +1,37 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: product_lineart__20-cards
+name: "Cards · 4 列卡片 (icon + 下划线标题 + 说明)"
+layout_type: cards
+
+content_intent:
+  - 4 个并列项的展示
+  - 每项有 icon + 标题 + 说明
+  - 适合特性 / 优势 / 团队 / 产品 4 类对比
+
+when_to_use:
+  - 4 个独立元素并列展示
+  - 强调对称、对等
+  - 通用产品/服务 4 大特性
+
+keywords:
+  - cards
+  - 4 列
+  - 并列
+  - 特性
+  - features
+  - icon card
+  - 4 元素
+
+native_elements:
+  - 4 列等宽布局,中间细灰竖线分隔
+  - 每列顶部 "Text here" 下划线标题(黑色加粗)
+  - 标题下方白色卡片含蓝/黄/灰色 user icon
+  - 卡片下方居中 2 行 supporting text
+  - 底部浅灰色透视梯形装饰
+
+layout_hint: null
+page_number: 20
+template_name: product_lineart

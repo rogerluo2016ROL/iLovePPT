@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: training_team__24-process_flow
+name: "Process flow · S 形曲线 + 4 步 person+compass icon(成长旅程)"
+layout_type: process_flow
+content_intent:
+  - 4 步学习 / 成长旅程
+  - 培训路径 4 milestone
+  - 团队职业生涯 4 阶段
+when_to_use:
+  - 内容是 4 个 sequential 阶段
+  - 想用"路径 / S 形曲线"隐喻旅程
+keywords:
+  - 4 步流程
+  - 旅程
+  - S 形曲线
+  - 路径
+  - 培训路径
+  - process flow
+  - journey
+  - compass
+native_elements:
+  - 浅灰 S 形曲线轨迹横贯
+  - 4 个圆形 person + compass icon(全橙红描边)
+  - 4 个橙红三角箭头指向各 Text here 标题
+  - 01-04 编号前缀
+  - 文字交替左右
+
+layout_hint: null
+variant: 4-step-s-curve-journey
+page_number: 24
+template_name: training_team

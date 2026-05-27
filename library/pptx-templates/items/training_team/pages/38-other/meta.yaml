@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.5
+needs_manual_review: true
+
+id: training_team__38-other
+name: "iSlide instruction · 更改图示中的插图 Replace Vectors in Diagram"
+layout_type: other
+content_intent:
+  - 模板自带 iSlide Vector Library 使用教程
+  - 工具说明页,非 deck 内容
+when_to_use:
+  - 不在 deck 输出中使用
+  - 提示用户如何替换矢量插图
+keywords:
+  - iSlide
+  - Vector Library
+  - 插图库
+  - 替换插图
+  - 说明页
+  - 教程
+  - instruction
+native_elements:
+  - 顶部 "更改图示中的插图 Replace Vectors in Diagram" 大标
+  - 3 步 wireframe(解组 → Vector Library → 完成)
+  - 中间含红框 vector 高亮(person illustration)
+  - 1/2/3 步骤编号
+  - 右上红色 Note 警示
+
+layout_hint: islide-tool-instruction (模板自带工具说明,enum 兜底)
+variant: islide-instruction-vector-library
+page_number: 38
+template_name: training_team

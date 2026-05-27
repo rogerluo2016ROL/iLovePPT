@@ -1,0 +1,36 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.82
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__12-data
+name: "Data · 甘特图 2018/2019 项目时间线"
+layout_type: data
+content_intent:
+  - 项目时间表 / 甘特图(任务跨度可视化)
+  - 跨年项目计划展示(2018 → 2019)
+  - 4 任务行 + 多阶段时间块
+when_to_use:
+  - 项目计划展示
+  - 跨周期任务排期
+  - 需要"时间跨度"维度而不仅是单点 milestone
+keywords:
+  - 甘特图
+  - 项目计划
+  - 时间表
+  - 排期
+  - data
+  - 进度
+native_elements:
+  - 顶部 2 个深蓝列头 "2018" / "2019"
+  - 左侧 4 个 "Text Here" 任务行
+  - 中间多个浅灰水平箭头条带表示任务时间段
+  - 网格分隔行,无具体数据数字(模板预留)
+
+# === 辅助(不进 embedding)===
+layout_hint: gantt-chart
+variant: 2-column-4-tasks
+page_number: 12
+template_name: business_geometric

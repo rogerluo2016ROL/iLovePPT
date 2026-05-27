@@ -1,0 +1,30 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: finance_arrow__16-section_divider
+name: "Section Divider · /03 预算完成情况及分析(章节扉页 + 子项列表)"
+layout_type: section_divider
+content_intent:
+  - 章节 03 扉页:预算完成情况及分析
+  - 大号橙黄 "/03" 数字 + 章节标题
+  - 子项含:预算完成情况 / 收入收益类 / 成本费用类 / 预算分析
+when_to_use:
+  - 第三章扉页(预算分析)
+  - 财报 4 章节结构的第 3 节进入页
+  - 跟 03/10/21 共用相同章节扉页布局
+keywords:
+  - 章节扉页
+  - section divider
+  - 第三章
+  - 预算分析
+  - 预算完成
+  - "/03"
+native_elements:
+  - 左中橙黄超大号 "/03" 数字编号
+  - 编号下方深蓝灰粗体"预算完成情况及分析"
+  - 子项小灰字列表(预算完成情况 / 收入收益类 / 成本费用类 / 预算分析)
+  - 右侧 1/2 模板招牌"上升箭头 + megaphone 人物"插画
+layout_hint: null
+page_number: 16
+template_name: finance_arrow

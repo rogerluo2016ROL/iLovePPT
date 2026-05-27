@@ -1,0 +1,31 @@
+status: approved
+confidence: 0.5
+needs_manual_review: true
+
+id: training_team__34-other
+name: "iSlide promo · 使用 iSlide 插件 为您节省 90% 的设计时间"
+layout_type: other
+content_intent:
+  - 模板自带 iSlide 推广页
+  - 不作为 deck 内容,使用时应删除
+when_to_use:
+  - 不在 deck 输出中使用
+  - 仅作为模板源里的 promo placeholder
+keywords:
+  - iSlide
+  - 插件推广
+  - promo
+  - 模板自带
+  - 说明页
+  - download
+  - 节省时间
+native_elements:
+  - 左侧大字 "使用 iSlide PPT 插件 / 为您节省 90% 的 PPT 设计时间"
+  - "iSlide add-in saves you 90% of the time in making presentation"
+  - 左下 "免费下载 / Download for FREE / www.islide.cc"
+  - 右侧浅灰渐变弧形装饰
+
+layout_hint: islide-promo-page (模板自带推广,非内容页 enum 兜底)
+variant: islide-promo
+page_number: 34
+template_name: training_team

@@ -1,0 +1,31 @@
+status: approved
+confidence: 0.9
+needs_manual_review: false
+
+id: training_team__04-radial
+name: "Radial · 中心 presenter 圆环 + 6 节点环绕(3 橙 + 3 蓝)"
+layout_type: radial
+content_intent:
+  - 1 个核心角色辐射 6 项职责 / 能力
+  - 培训师 / 主管 6 项工作维度展开
+  - 团队 leader 360 度评估
+when_to_use:
+  - 想 emphasize 中心人物的多面职责
+  - 6 个子项 (3+3 对称) 适合一一对照
+keywords:
+  - 辐射
+  - radial
+  - 6 节点
+  - 中心人物
+  - 圆环箭头
+  - 职责展开
+native_elements:
+  - 中心 presenter / podium icon + 双向环形箭头(上半红下半蓝)
+  - 左侧 3 个橙红实心圆 + Text here + 段落
+  - 右侧 3 个深蓝实心圆 + Text here + 段落
+  - 灰线在 row 之间分隔
+
+layout_hint: null
+variant: 6-spokes-3plus3
+page_number: 4
+template_name: training_team

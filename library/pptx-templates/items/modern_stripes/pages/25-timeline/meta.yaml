@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.87
+needs_manual_review: false
+
+id: modern_stripes__25-timeline
+name: "Timeline · 5 节点横向 + 中心焦点"
+layout_type: timeline
+content_intent:
+  - 5 步 / 5 阶段水平时间线
+  - 中心阶段为关键焦点(红色突出)
+  - 强调路线 / 步骤 / 阶段进展
+when_to_use:
+  - 5 步骤或 5 阶段顺序展示
+  - 中间步骤是关键里程碑
+  - 各步骤短描述 + 文字标题
+keywords:
+  - timeline
+  - 5 步骤
+  - 横向时间线
+  - 关键节点
+  - 5 阶段
+  - 中心强调
+native_elements:
+  - 水平贯穿浅灰背景条
+  - 5 个圆形 icon 节点(4 个 navy 描边白底 + 中心 1 个 red 实心放大)
+  - 每节点内白色人形 icon
+  - 节点上方"Text here"标题(中心节点尤为突出,上方还有 supporting + 省略号)
+  - 节点下方"Supporting text here" + 省略号
+  - 节点之间灰色虚线连接
+layout_hint: null
+variant: 5-step-horizontal-focus-center
+page_number: 25
+template_name: modern_stripes

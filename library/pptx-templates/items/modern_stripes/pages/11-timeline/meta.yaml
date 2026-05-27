@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: modern_stripes__11-timeline
+name: "Timeline · 甘特图式 3 年 4 泳道"
+layout_type: timeline
+content_intent:
+  - 多年度多项目并行计划展示(甘特图)
+  - 4 个工作流跨 3 个年度的时间分布
+  - 项目排期 / 路线图 / OKR 时间线
+when_to_use:
+  - 3 个时间区段 × 4 个项目 / 工作流
+  - 需要按"项目 + 时间段"二维展示
+  - 战略路线图 / 实施计划 / 阶段排期
+keywords:
+  - 甘特图
+  - timeline
+  - 路线图
+  - 项目排期
+  - swim lane
+  - 多年度
+  - 4 swim lanes
+native_elements:
+  - 顶部 3 个色块标题:navy "20XX" / red "20XX" / navy "20XX" 作为年度列头
+  - 左侧 4 行 "Text Here" 项目标题
+  - 4 行泳道,每行含 2 个错位的浅灰带箭头甘特条
+  - 水平细灰线分隔 4 行
+layout_hint: null
+variant: gantt-3yr-4lane
+page_number: 11
+template_name: modern_stripes

@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.85
+needs_manual_review: false
+
+id: training_team__31-comparison
+name: "Comparison · 中央橙红大脑插画 + 左右 2 列(双脑思考对比)"
+layout_type: comparison
+content_intent:
+  - 左脑 vs 右脑 / 逻辑 vs 创意 对比
+  - 理性 vs 感性 双 mindset
+  - 培训 2 种思维方式对比
+when_to_use:
+  - 内容是 2 种思维 / 风格 对比
+  - 想用大脑插画做主视觉
+keywords:
+  - 大脑
+  - brain
+  - 双思维
+  - 逻辑 vs 创意
+  - 理性感性
+  - 左脑右脑
+  - mindset
+  - 2 vs 2
+native_elements:
+  - 中央大橙红 brain 插画(线稿)
+  - 左侧 person icon (橙红) + Text here + 段落 + 2 个橙红圆形 sub-icon
+  - 右侧 person icon (灰) + Text here + 段落 + 2 个灰色 sub-icon
+  - 灰色横线分隔上下
+
+layout_hint: null
+variant: dual-mindset-brain
+page_number: 31
+template_name: training_team

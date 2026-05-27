@@ -1,0 +1,73 @@
+template_page_index: 4
+layout_class: quadrant
+slots:
+  - id: title
+    tree_path: '0'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: null
+  - id: tl_label
+    tree_path: '3.2'
+    capacity_chars: 2
+    text_color_override: null
+    font_size_pt: 16
+  - id: tr_label
+    tree_path: '3.6'
+    capacity_chars: 2
+    text_color_override: null
+    font_size_pt: 16
+  - id: bl_label
+    tree_path: '3.7'
+    capacity_chars: 2
+    text_color_override: null
+    font_size_pt: 16
+  - id: br_label
+    tree_path: '3.3'
+    capacity_chars: 2
+    text_color_override: null
+    font_size_pt: 16
+  - id: center_label
+    tree_path: '3.8'
+    capacity_chars: 6
+    text_color_override: null
+    font_size_pt: 20
+  - id: tl_title
+    tree_path: '3.9.0.1'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: tl_body
+    tree_path: '3.9.0.0'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: 11
+  - id: tr_title
+    tree_path: '3.10.0.1'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: tr_body
+    tree_path: '3.10.0.0'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: 11
+  - id: bl_title
+    tree_path: '3.9.1.1'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: bl_body
+    tree_path: '3.9.1.0'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: 11
+  - id: br_title
+    tree_path: '3.10.1.1'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: br_body
+    tree_path: '3.10.1.0'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: 11

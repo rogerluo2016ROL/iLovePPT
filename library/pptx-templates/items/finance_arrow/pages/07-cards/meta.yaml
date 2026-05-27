@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: finance_arrow__07-cards
+name: "Cards · 财务费用 3 卡片横向(圆形 icon + 标题 + 2 段 bullets)"
+layout_type: cards
+content_intent:
+  - 3 个费用分类 / 3 个会计科目并列(每卡 icon + 标题 + 2 段描述)
+  - 卡片间用细灰横线连接(timeline 感)
+  - 每卡 icon 用圆形底色(2 个橙黄 + 1 个蓝色作焦点)
+when_to_use:
+  - 财务费用 3 类(利息支出 / 汇兑损益 / 手续费)分项展示
+  - 3 个会计科目 / 3 个分析维度
+  - 任何 3-item 并列对比 + 多段描述
+keywords:
+  - 3 卡片
+  - 横向 3 列
+  - 财务费用
+  - 利息汇兑
+  - icon 卡片
+  - timeline
+variant: 3-cols
+native_elements:
+  - 左上深黑粗体标题"财务费用"
+  - 中部副标题"Unified fonts make reading more fluent." 1 行 + "Theme color..." 加粗 1 行 + 灰色描述 1 行
+  - 右上角深灰色三角形装饰(右上角斜切色块)
+  - 3 个卡片横向:每卡圆形 icon(2 橙黄 + 1 蓝色)/ "... 费用" 黑色粗标题 / 2 段 supporting bullet
+  - 卡片间细灰横线连接 + 细灰垂直分割线
+layout_hint: null
+page_number: 7
+template_name: finance_arrow

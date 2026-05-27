@@ -1,0 +1,53 @@
+template_page_index: 29
+layout_class: data
+slots:
+  - id: title
+    tree_path: '0'
+    capacity_chars: 32
+    text_color_override: null
+    font_size_pt: null
+  - id: lead_caption
+    tree_path: '3.1.2'
+    capacity_chars: 24
+    text_color_override: null
+    font_size_pt: null
+  - id: lead_heading
+    tree_path: '3.1.0'
+    capacity_chars: 30
+    text_color_override: null
+    font_size_pt: null
+  - id: lead_body
+    tree_path: '3.1.1'
+    capacity_chars: 120
+    text_color_override: null
+    font_size_pt: null
+  - id: metric_1_value
+    tree_path: '3.2.2'
+    capacity_chars: 10
+    text_color_override: null
+    font_size_pt: null
+  - id: metric_1_title
+    tree_path: '3.2.0.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: metric_1_desc
+    tree_path: '3.2.0.1'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null
+  - id: metric_2_value
+    tree_path: '3.3.2'
+    capacity_chars: 10
+    text_color_override: null
+    font_size_pt: null
+  - id: metric_2_title
+    tree_path: '3.3.0.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: metric_2_desc
+    tree_path: '3.3.0.1'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null

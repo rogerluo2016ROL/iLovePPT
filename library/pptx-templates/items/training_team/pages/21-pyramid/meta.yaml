@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.78
+needs_manual_review: true
+
+id: training_team__21-pyramid
+name: "Pyramid · 5 个 3D 柱状 + 中心橙红高亮(5 维度 with focal)"
+layout_type: pyramid
+content_intent:
+  - 5 维度横向并列,中心维度突出
+  - 培训能力 5 项里 1 项核心 + 4 项辅助
+  - 团队结构 5 级,中层是关键
+when_to_use:
+  - 5 维度且想 emphasize 中间(第 3)项
+  - 想用 3D 视觉感凸显"重点"
+keywords:
+  - 5 维度
+  - pyramid
+  - 5 柱
+  - 3D 柱
+  - 中心高亮
+  - focal
+  - 重点突出
+native_elements:
+  - 5 个 3D 立方体柱状,从左到右递减再递增
+  - 中间柱橙红高亮 (含上半亮橙 + 下半暗红)
+  - 4 个灰白柱在两侧
+  - 周围 5 个 Text here 文字描述
+
+layout_hint: 5-vertical-bars-with-focal-center (pyramid 兜底)
+variant: 5-bars-focal-center
+page_number: 21
+template_name: training_team

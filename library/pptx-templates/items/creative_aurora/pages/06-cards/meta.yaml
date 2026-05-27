@@ -1,0 +1,38 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.72
+needs_manual_review: false
+
+# === 必填 ===
+id: creative_aurora__06-cards
+name: "Cards · 左三段文字 + 右双图视觉块"
+layout_type: cards
+content_intent:
+  - 内容页 · 多段文字要点 + 多图视觉支撑混排
+  - 创意 / 科技产品多角度 展示
+  - 适合 "三个要点 + 两个视觉案例" 的内容编排
+when_to_use:
+  - 需要 3 段文字 + 2 张图配对的内容页
+  - 概念多但每点不长 + 视觉案例丰富时
+  - 不适合单一主题 / 纯文字
+keywords:
+  - 左文右图
+  - 多图混排
+  - cards
+  - 创意
+  - 霓虹键盘
+  - tech product
+  - 多要点
+native_elements:
+  - 顶部 "市场分析" + 副标题 "详细列出完成的项目及成果"
+  - 左侧三段文字块 (上中下),每段 "文学编辑岗位" 红色顶条 + 段落
+  - 右侧两张霓虹色调图 (键盘 + 霓虹场景) 上下排列
+  - 顶部细线圆环装饰
+  - 整体黑底 + 蓝紫红霓虹色调
+
+# === 辅助 ===
+layout_hint: null
+variant: "3-text-blocks-with-2-images"
+page_number: 6
+template_name: creative_aurora

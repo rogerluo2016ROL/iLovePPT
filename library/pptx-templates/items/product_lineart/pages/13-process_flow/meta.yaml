@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.9
+needs_manual_review: false
+
+id: product_lineart__13-process_flow
+name: "Process Flow · 起点箭头 → 4 节点蜿蜒路径 → 终点靶心"
+layout_type: process_flow
+
+content_intent:
+  - 4 步骤目标导向流程
+  - 从起点(箭头)沿曲折路径到终点(靶心)
+  - 强调"达成最终目标"的方向感
+
+when_to_use:
+  - 4 步路径,有明确终点目标
+  - 比如战略规划、产品路线图、执行步骤到 KPI
+  - 视觉上想体现"过程曲折但目标清晰"
+
+keywords:
+  - process flow
+  - 4 步路径
+  - 蜿蜒路径
+  - 目标导向
+  - 靶心
+  - 路线图
+
+native_elements:
+  - 左下蓝色加深箭头(起点)
+  - 4 个蓝/黄圆形 icon 沿一条 S 形蜿蜒灰色路径排列(01-04 编号)
+  - 右上灰色靶心图(终点目标)
+  - 每节点旁有 "0X.Text here" + 2 行 supporting text 描述
+  - 节点交替位于路径上下两侧
+
+layout_hint: null
+page_number: 13
+template_name: product_lineart

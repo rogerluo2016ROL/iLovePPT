@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.91
+needs_manual_review: false
+
+id: enterprise_skyline__30-cards
+name: "卡片 · 3 列正方块 + 中央城市建筑大照片"
+layout_type: cards
+content_intent:
+  - 3 大主题展示 + 视觉冲击照片
+  - 企业核心价值 / 业务三大块 / 服务三类
+  - 强调 "城市 / 商务 / 仰望" 视觉震撼
+when_to_use:
+  - 3 项并列内容 + 需要插入大图照片
+  - 企业宣传 / 服务介绍 / 业务三大块
+  - 高视觉性陈述(适合开场或章节首页)
+keywords:
+  - 卡片
+  - cards
+  - 3项
+  - 照片
+  - 城市
+  - 商务
+  - hero image
+  - 高楼
+  - 仰望
+native_elements:
+  - 3 张浅灰底卡片并列(各有 Text here 标题 + Supporting text 副标)
+  - 每张卡片底部右下角带 1 个深蓝 / 蓝灰菱形图标(火焰 / 准星 / 团队)
+  - 中央卡片下方有真实城市高楼仰望黑白照片(crop 进卡片底部)
+  - 整体水平 3-cards 但中间一张更高(有照片)
+  - 底部 www.islide.cc + 页码 30
+
+layout_hint: null
+variant: 3-cards-with-photo
+page_number: 30
+template_name: enterprise_skyline

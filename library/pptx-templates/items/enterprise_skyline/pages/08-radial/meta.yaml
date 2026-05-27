@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.82
+needs_manual_review: false
+
+id: enterprise_skyline__08-radial
+name: "辐射 · 左侧大标题段落 + 右侧三角箭头 3 节点"
+layout_type: radial
+content_intent:
+  - 左侧大标题 + 右侧 3 个相关节点 radial 展示
+  - 总分结构:中心论点 + 3 个支撑要素
+  - 主张陈述 + 三大支柱
+when_to_use:
+  - 左侧引出主题段落,右侧 3 节点支撑
+  - 战略主张 + 3 支柱
+  - 价值观 + 3 实践
+keywords:
+  - 辐射
+  - radial
+  - 3节点
+  - 三角
+  - 主张
+  - 总分
+  - left-right-split
+native_elements:
+  - 左侧大标题 "Unified fonts make reading more fluent." + 3 行段落
+  - 右侧浅灰色三角箭头循环图形(背景装饰)
+  - 顶部 1 个深蓝色 / 圆形人物图标 + Text here + Supporting text 段落
+  - 左下 1 个深蓝 / 圆形人物图标 + Text here + Supporting text
+  - 右下 1 个蓝灰 / 圆形人物图标 + Text here + Supporting text
+  - 整体三角分布
+
+layout_hint: null
+variant: 3-with-left-statement
+page_number: 8
+template_name: enterprise_skyline

@@ -1,0 +1,37 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.85
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__07-radial
+name: "Radial · 同心圆雷达 + 4 站点环绕"
+layout_type: radial
+content_intent:
+  - 中心信号源 + 4 个站点(基础设施 / 网络覆盖)
+  - 4 个分支围绕核心扩散(技术栈 / 业务覆盖范围)
+  - 中央枢纽 + 4 触角节点关系
+when_to_use:
+  - 4 项内容围绕中心核心展开
+  - 信号塔 / 辐射 / 雷达式覆盖叙事
+  - 平台型业务的"中心 + 周边"展示
+keywords:
+  - 4 项
+  - 雷达
+  - 同心圆
+  - 信号塔
+  - radial
+  - 辐射
+  - 站点
+native_elements:
+  - 中央灰色信号塔 + 同心圆雷达波环
+  - 4 个气泡状定位标 pin(含 icon · 团队/全球/工具/齿轮)
+  - 左右两侧各 2 行 "Text here" 标题 + 描述(共 4 项)
+  - 整体浅灰 + 深蓝点缀的工业风
+
+# === 辅助(不进 embedding)===
+layout_hint: signal-tower-radar
+variant: 4-stations
+page_number: 7
+template_name: business_geometric

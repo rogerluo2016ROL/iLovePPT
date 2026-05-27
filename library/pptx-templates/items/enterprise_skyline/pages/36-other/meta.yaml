@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.55
+needs_manual_review: true
+
+id: enterprise_skyline__36-other
+name: "iSlide 工具说明 · Replace Icons 替换图标教程"
+layout_type: other
+layout_hint: "islide_tool_instruction_replace_icons · 模板说明页,教 iSlide Icon Library 替换流程"
+content_intent:
+  - iSlide 工具操作说明(非演讲页)
+  - 教用户 3 步替换 PPT 中的图标
+  - 顶部 Note 提示"使用时请删除本页"
+when_to_use:
+  - 仅作 iSlide 插件操作教程
+  - 演讲时应删除
+keywords:
+  - iSlide
+  - 工具说明
+  - Replace Icons
+  - 替换图标
+  - Icon Library
+  - 删除
+native_elements:
+  - 大标题 "更改页面中的图标 Replace Icons"
+  - 3 个浏览器截图依次展示流程
+  - 步骤 1 选中图标 → 步骤 2 在 Icon Library 选新图标 → 步骤 3 替换成功
+  - 中间深灰箭头连接 3 步
+  - 右上红色 Note 警告框
+
+variant: null
+page_number: 36
+template_name: enterprise_skyline

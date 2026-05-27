@@ -1,0 +1,148 @@
+status: approved
+provenance:
+  schema_version: v1
+  embedding_model: tongyi-embedding-vision-plus
+  embedding_dim: 1152
+  ingested_at: 2026-05-27 00:00:00+00:00
+  source_pptx_sha256: d4c64282d7a3fe91a9f2914ae90a3e80d47a3c72c1dec840f0ca8e025633a29c
+  source_pptx_size_bytes: 1810473
+extraction:
+  declared_pages: 38
+  rendered_pages: 38
+  discrepancy: 0
+  discrepancy_resolution: pending
+  low_confidence_pages: []
+  failed_pages: []
+id: enterprise_skyline
+name: Enterprise Skyline · 深蓝 + 金色城市天际线企业模板
+category: enterprise-modern
+content_intent:
+- 企业年度报告 / 商业演示 / 战略发布的开场到收尾完整 deck
+- 投资人路演 / 高管汇报 / 季度回顾 · 需要权威感和稳重调性
+- 都市 / 金融 / 咨询行业的对外提案
+- 5 大章节框架(03/09/15/21/27 分隔)适合长篇结构化报告
+- 含 7 种 layout 类型(cover/toc/section_divider/pyramid/timeline/radial/cards/venn/quadrant/process_flow/bullet_list/closing)适合多元化内容
+when_to_use:
+- 企业级演讲(navy + gold 传递专业稳重)
+- 需要"城市 / 都市 / 金融"调性的项目展示
+- 长 deck(20-32 页 + 多章节分隔)的结构化报告
+- 面向高管 / 投资人 / 商业伙伴
+- 中英双语场景(目录 CONTENT / Section Header Here)
+keywords:
+- 深蓝
+- 金色
+- navy
+- gold
+- 城市
+- 天际线
+- skyline
+- 企业
+- corporate
+- enterprise
+- 商务
+- business
+- 年报
+- annual report
+- 投资人
+- 高管
+- 中英双语
+- 年度报告
+- 投资人路演
+- IPO
+- 上市路演
+- 招股说明
+- 战略发布
+- executive briefing
+- 高管汇报
+- 金融
+- Lujiazui
+- 陆家嘴
+- 城市天际线
+- 深蓝金
+- 企业品牌
+- board meeting
+recommended_for:
+- executive
+- investor pitch
+- annual report
+- corporate communications
+- strategy presentation
+visual_signature:
+- 深蓝主背景 (#1c2c44 接近 navy) + 金色装饰 (#b8a062 接近 dark gold/khaki)
+- 金色城市天际线剪影(浦东 / 上海地标:东方明珠 + 环球金融中心 + 上海中心)反复出现于封面 / 章节分隔 / 结束页
+- 中英双语字号对比(中文大字 + 英文小字 / 反之亦然)
+- 圆形 / 圆环图标(人物 / 钱币 / 工具)蓝色 vs 蓝灰交替
+- 大字编号 01-05(章节分隔)金色 / 灰色
+- 浅灰背景元素(箭头 / 圆环 / 线条)弱化干扰
+- 留白多 + Aspect 16:9
+visual_tokens:
+  primary: '#1c2c44'
+  primary_dark: '#0f1b2e'
+  accent: '#b8a062'
+  accent_alt: '#7a8aa0'
+  font_ea: Microsoft YaHei
+  font_latin: Arial
+  title_size_pt: 36
+  body_size_pt: 16
+assets:
+  source_pptx: ../../_source/enterprise_skyline.pptx
+  total_pages: 38
+  cover_thumbnail: pages/01-cover/preview.png
+pages:
+- 01-cover
+- 02-toc
+- 03-section_divider
+- 04-pyramid
+- 05-timeline
+- 06-radial
+- 07-cards
+- 08-radial
+- 09-section_divider
+- 10-venn
+- 11-cards
+- 12-radial
+- 13-cards
+- 14-radial
+- 15-section_divider
+- 16-timeline
+- 17-pyramid
+- 18-pyramid
+- 19-cards
+- 20-bullet_list
+- 21-section_divider
+- 22-cards
+- 23-process_flow
+- 24-timeline
+- 25-quadrant
+- 26-cards
+- 27-section_divider
+- 28-timeline
+- 29-process_flow
+- 30-cards
+- 31-radial
+- 32-closing
+- 33-other
+- 34-other
+- 35-other
+- 36-other
+- 37-other
+- 38-other
+implementation:
+  tier1_template_slide_reuse:
+    ready: false
+    coverage: []
+    gaps:
+    - cover
+    - toc
+    - section_divider
+    - pyramid
+    - timeline
+    - radial
+    - cards
+    - venn
+    - quadrant
+    - process_flow
+    - bullet_list
+    - closing
+  tier2_python_theme: null
+  iLovePPT_can_replicate_pct: 80

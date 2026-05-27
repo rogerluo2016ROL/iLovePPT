@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.82
+needs_manual_review: false
+
+id: training_team__23-cards
+name: "Cards · 3 cards 列表 + 左侧大箭头穿砖墙(突破隐喻)"
+layout_type: cards
+content_intent:
+  - 团队面临的 3 大挑战 / 障碍
+  - 突破口分析 3 维度
+  - 培训要解决的 3 个 pain point
+when_to_use:
+  - 内容是 "突破障碍" / "破局" 主题
+  - 3 个 sub-item 平行展开
+keywords:
+  - 突破
+  - breakthrough
+  - 3 cards
+  - 障碍
+  - 破局
+  - 挑战
+  - 砖墙
+  - 箭头
+native_elements:
+  - 左侧大橙红箭头穿砖墙图(突破墙的视觉)
+  - Text 在箭头上
+  - 右侧 3 个橙红车 icon (EV car charging)
+  - 每条 Copy paste fonts 描述行
+  - 灰色横线分隔
+
+layout_hint: null
+variant: 3-cards-with-breakthrough-arrow
+page_number: 23
+template_name: training_team

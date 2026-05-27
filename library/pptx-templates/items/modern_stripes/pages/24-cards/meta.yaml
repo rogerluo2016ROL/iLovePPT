@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.87
+needs_manual_review: false
+
+id: modern_stripes__24-cards
+name: "Cards · 4 列温度计形角色卡"
+layout_type: cards
+content_intent:
+  - 4 个角色 / 维度 / 类别并列展示
+  - 顶部标签 + 中间圆盘 + 底部描述
+  - 团队成员介绍 / 4 维度评估
+when_to_use:
+  - 4 项并列 · 各自独立等价
+  - 每项有标题 + 短描述
+  - 需要简洁视觉(无大量 bullets)
+keywords:
+  - 4 卡
+  - persona
+  - 角色
+  - 温度计
+  - 排位标签
+  - 简洁卡片
+native_elements:
+  - 4 列垂直布局
+  - 每列顶部"Text here"加粗标题
+  - 中间灰色温度计形长条(标题到圆盘的视觉连接)
+  - 底部大圆盘:第 2 列 red,其余 navy
+  - 圆盘内白色人物 icon
+  - 圆盘下方:2 行 supporting text + 省略号
+layout_hint: null
+variant: 4-cols-thermometer-icons
+page_number: 24
+template_name: modern_stripes

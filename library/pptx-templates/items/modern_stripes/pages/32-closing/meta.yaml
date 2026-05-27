@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: modern_stripes__32-closing
+name: "Closing · Thanks + 副 slogan 收尾页"
+layout_type: closing
+content_intent:
+  - deck 结尾的"Thanks"页 + 副标题 / slogan
+  - 演讲人 / 站点信息呈现
+  - 跟封面对称的收尾视觉
+when_to_use:
+  - deck 最后一页
+  - 致谢 + 简短引用 / 行动号召
+  - 演讲人结束身份重申
+keywords:
+  - 结尾
+  - closing
+  - Thanks
+  - 致谢
+  - 收尾
+  - slogan
+native_elements:
+  - 左侧"Thanks"大号黑字标题
+  - 标题下"And Your Slogan Here"副标题
+  - 副标题下"Speaker name and title" + 站点小字
+  - 左上 / 中部左侧小型蓝白条纹斜切方块组
+  - 右侧大尺寸 navy / 亮蓝 / 浅灰几何拼贴块(跟封面共用)
+layout_hint: null
+variant: null
+page_number: 32
+template_name: modern_stripes

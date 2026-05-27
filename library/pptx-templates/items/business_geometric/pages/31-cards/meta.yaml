@@ -1,0 +1,38 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.82
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__31-cards
+name: "Cards · 3 hexagon 错落卡片(蜂巢式)"
+layout_type: cards
+content_intent:
+  - 3 项业务/服务模块展示(蜂巢错落 z 字布局)
+  - 3 大主题 / 3 大产品线
+  - 需要"工业 / 工程"气质的 3 cards(六边形 = 模块化)
+when_to_use:
+  - 3 项内容并列
+  - 需要"模块 / 蜂巢 / 工业"视觉气质
+  - 跟 14 (3 菱形) 形成区别 — 这里更工业化
+keywords:
+  - 3 项
+  - cards
+  - 蜂巢
+  - 六边形
+  - 模块化
+  - 工业
+  - 错落
+native_elements:
+  - 3 行 banner(深蓝/浅灰/深蓝交替)
+  - 每 banner 接一个白色边框六边形 + icon(火焰/汽车/手持币)
+  - 六边形上叠浅灰六边形 + icon(人物组/插头)
+  - 每 banner 含 "Text here" 标题 + "Copy paste fonts..." 描述
+  - 整体 z 字错落呼应
+
+# === 辅助(不进 embedding)===
+layout_hint: hexagon-zigzag
+variant: 3-cards-hex-zigzag
+page_number: 31
+template_name: business_geometric

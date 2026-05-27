@@ -1,0 +1,38 @@
+status: approved
+confidence: 0.86
+needs_manual_review: false
+
+id: product_lineart__14-timeline
+name: "Timeline · 横向 6 节点 + 顶部主题 + 底部双梯延伸"
+layout_type: timeline
+
+content_intent:
+  - 6 个并列节点的横向时间轴
+  - 蓝/黄交替 icon 强调节奏
+  - 底部加 "To B / To C" 双向延伸,可表示后续路径分流
+
+when_to_use:
+  - 6 个均等步骤(无优先级排序)
+  - 强调"统一并列推进"的横向展开
+  - 需要顶部加主题 + 底部加双线对比展示
+
+keywords:
+  - timeline
+  - 横向 6 节点
+  - 时间轴
+  - 蓝黄交替
+  - 双向延伸
+  - to B
+  - to C
+  - 并列推进
+
+native_elements:
+  - 顶部黑色加粗主题 "Unified fonts make reading more fluent."
+  - 中央 6 个圆形蓝/黄交替的卡车 icon (圆边框)
+  - 节点间细灰线连接,首尾箭头延伸
+  - 每节点下方 "Text here" + supporting text
+  - '底部两条灰色长梯子 "To B: ... ..." / "To C: ... ..." (后续分流)'
+
+layout_hint: null
+page_number: 14
+template_name: product_lineart

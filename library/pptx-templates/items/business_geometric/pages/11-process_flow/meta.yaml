@@ -1,0 +1,36 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.70
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__11-process_flow
+name: "Process flow · 4 箭头叠层(垂直堆叠)"
+layout_type: process_flow
+content_intent:
+  - 4 步骤垂直流程展示(每步 1 个箭头 banner)
+  - 工作流 / 服务步骤 / 流程阶段
+  - 按重要性或时序排列的 4 项
+when_to_use:
+  - 4 步骤流程描述
+  - 服务流程 / 实施阶段说明
+  - 内容偏列表化但需要"前后顺序"
+keywords:
+  - 4 步骤
+  - 流程
+  - 箭头
+  - process
+  - 工作流
+  - banner
+native_elements:
+  - 左侧 "Text here" 标题 + 3 行说明文字
+  - 右侧 4 个水平箭头 banner(深蓝/亮蓝交替)垂直堆叠
+  - 每箭头内含 "Text here" 标题 + 描述
+  - 右端 4 个圆形 icon(扳手/靶心/齿轮/勋章)
+
+# === 辅助(不进 embedding)===
+layout_hint: stacked-arrow-banners
+variant: 4-steps-vertical
+page_number: 11
+template_name: business_geometric

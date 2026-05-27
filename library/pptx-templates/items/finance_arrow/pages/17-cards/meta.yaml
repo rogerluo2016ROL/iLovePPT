@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.90
+needs_manual_review: false
+
+id: finance_arrow__17-cards
+name: "Cards · 预算完成 3 大圆百分比 + 右侧汇总(30/60/20 + 总结块)"
+layout_type: cards
+content_intent:
+  - 3 个百分比并列(30% 橙 + 60% 灰 + 20% 橙)+ 右侧汇总块
+  - 适合 "预算完成 3 项占比 + 总体评价" 双栏结构
+  - 左侧数据 + 右侧文字解读的混合表达
+when_to_use:
+  - 预算完成 3 类指标占比 + 总结
+  - 任何"3 个数据 + 1 个汇总文本"的混合 layout
+  - 需要 1 项总结 / 评价 / 行动建议放右侧
+keywords:
+  - 3 圆占比
+  - 30/60/20
+  - 预算完成
+  - 数据 + 汇总
+  - 占比 + 评语
+variant: 3-circles-plus-summary
+native_elements:
+  - 左上深黑粗体标题"预算完成情况"
+  - 左侧 3 大圆百分比横向并列(30% 橙黄 / 60% 浅灰 / 20% 橙黄)
+  - 中间灰色圆数字白色字,两边橙黄圆白色字
+  - 圆下"Supporting text here. ......" 灰色小字
+  - 右侧橙黄横条 + 白色"...预算"标题
+  - 右下 3 行 supporting bullets
+layout_hint: null
+page_number: 17
+template_name: finance_arrow

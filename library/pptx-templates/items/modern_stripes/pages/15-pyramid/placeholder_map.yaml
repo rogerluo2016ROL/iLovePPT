@@ -1,0 +1,48 @@
+template_page_index: 14
+layout_class: pyramid
+slots:
+  - id: tier_1_label
+    tree_path: '3.5'
+    capacity_chars: 6
+    text_color_override: null
+    font_size_pt: null
+  - id: tier_2_label
+    tree_path: '3.4'
+    capacity_chars: 6
+    text_color_override: null
+    font_size_pt: null
+  - id: tier_3_label
+    tree_path: '3.3'
+    capacity_chars: 6
+    text_color_override: null
+    font_size_pt: null
+  - id: tier_1_body_a
+    tree_path: '3.16'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: tier_1_body_b
+    tree_path: '3.19'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: tier_2_body_a
+    tree_path: '3.17'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: tier_2_body_b
+    tree_path: '3.20'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: tier_3_body_a
+    tree_path: '3.18'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: tier_3_body_b
+    tree_path: '3.21'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null

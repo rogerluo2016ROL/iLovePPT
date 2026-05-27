@@ -1,0 +1,33 @@
+template_page_index: 18
+layout_class: venn
+slots:
+  - id: circle_1_body
+    tree_path: '3.1'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: circle_1_title
+    tree_path: '3.2'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: circle_2_body
+    tree_path: '3.3'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: circle_2_title
+    tree_path: '3.4'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: circle_3_body
+    tree_path: '3.5'
+    capacity_chars: 50
+    text_color_override: null
+    font_size_pt: null
+  - id: circle_3_title
+    tree_path: '3.6'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null

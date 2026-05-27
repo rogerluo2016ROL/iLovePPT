@@ -1,0 +1,39 @@
+status: approved
+confidence: 0.85
+needs_manual_review: false
+
+id: product_lineart__04-process_flow
+name: "Process Flow · 4 阶倒漏斗筛选 + 左右 6 个 icon 说明"
+layout_type: process_flow
+
+content_intent:
+  - 漏斗式筛选过程展示(从大到小逐级收窄)
+  - 招聘漏斗 / 销售漏斗 / 用户转化漏斗
+  - 4 个阶段的筛选,每阶左右各加 1 个 icon 说明
+
+when_to_use:
+  - 流程逐级收窄、最终输出 1 个结论
+  - 转化率 / 漏斗指标场景
+  - 6 个支持因素(左右 icon)解释每阶筛选标准
+
+keywords:
+  - 漏斗
+  - funnel
+  - 流程
+  - 转化
+  - 筛选
+  - 4 阶
+  - 销售漏斗
+  - 招聘漏斗
+
+native_elements:
+  - 中央 4 层倒漏斗(灰色梯形从大到小,顶宽底窄)
+  - 漏斗内每层 "…text" 标签 + 左右各 1 句 supporting text
+  - 漏斗底部蓝色倒三角(收窄到结论)
+  - 左侧 3 个蓝色圆形 user/balance icon + Text here 标签
+  - 右侧 3 个黄色圆形 user/balance icon + Text here 标签
+  - 顶部细线分隔 header
+
+layout_hint: null
+page_number: 4
+template_name: product_lineart

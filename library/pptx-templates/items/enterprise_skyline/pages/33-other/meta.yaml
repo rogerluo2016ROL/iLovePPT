@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.55
+needs_manual_review: true
+
+id: enterprise_skyline__33-other
+name: "iSlide 工具说明 · 设计标准 (Design Criteria) 色彩 + 字体 + 参考线"
+layout_type: other
+layout_hint: "islide_tool_instruction_design_criteria · 模板自带说明页,顶部红色 Note 标注 'Please delete this slide before using it for presentation'"
+content_intent:
+  - iSlide 模板内置的设计标准说明页(非演讲页)
+  - 列出主题色彩(navy/gold/grey 色板) + 中英文字体(Microsoft YaHei / Arial) + 参考线截图
+  - 提示用户使用 iSlide 插件功能
+when_to_use:
+  - 仅作模板设计标准参考(用户演讲时应删除)
+  - 非常规演讲页 · 不应被 RAG 推荐给 author
+  - 工具说明页(用户审 gate 决定是否保留)
+keywords:
+  - iSlide
+  - 工具说明
+  - 设计标准
+  - design criteria
+  - 色彩
+  - 字体
+  - 参考线
+  - 删除
+  - 说明页
+native_elements:
+  - 大标题 "设计标准 Design Criteria"
+  - 主题色彩展示:文字/背景(白/黑/浅灰/蓝灰) + 填充色(navy/dark navy/gold/blue-grey/grey/light grey)
+  - 字体说明:中文 Microsoft YaHei / 英文 Arial
+  - 右侧 GUIDES (Office 2016 and later) 参考线截图
+  - 右上红色 Note 警告框 "本页为说明页,使用时请删除本页内容"
+
+variant: null
+page_number: 33
+template_name: enterprise_skyline

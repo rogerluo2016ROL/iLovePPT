@@ -1,0 +1,38 @@
+status: approved
+confidence: 0.82
+needs_manual_review: false
+
+id: product_lineart__26-radial
+name: "Radial · 中央母节点 + 4 子节点向下树状分支"
+layout_type: radial
+
+content_intent:
+  - 1 个父节点 → 4 个子节点的层级分解
+  - 每子节点带 icon + 标题 + 2 段说明
+  - 适合"X 分解为 4 大子模块"
+
+when_to_use:
+  - 1 个核心议题分解出 4 个子议题
+  - 强调"从总到分"的层级关系
+  - 树状结构展示(母 → 子)
+
+keywords:
+  - radial
+  - 树状图
+  - 4 子节点
+  - 母子结构
+  - 1-to-4
+  - 分解
+  - decomposition
+  - hierarchy
+
+native_elements:
+  - 顶部蓝色圆角矩形 "…Text" 父节点
+  - 父节点下方曲线连接到 4 个黄色圆 icon (上升箭头图表) 子节点
+  - 每子节点下灰色 "Text here" 标题栏
+  - 标题下方 2 行 "Supporting text here" 说明
+  - 整体形成"1 父 4 子"树状结构
+
+layout_hint: null
+page_number: 26
+template_name: product_lineart

@@ -1,0 +1,37 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.80
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__29-cards
+name: "Cards · 4 连环菱形 + 4 双侧 icon cards"
+layout_type: cards
+content_intent:
+  - 4 项内容并列(连环图作中心点睛)
+  - 4 价值主张 / 4 大方向 / 4 协同模块
+  - 中心连环图象征"协同 / 一体化"
+when_to_use:
+  - 4 项同质内容并列展示
+  - 需要"协同 / 联动"视觉气质(连环锁)
+  - 含彩色 4 色点缀(深蓝/亮蓝/橙红/天蓝)
+keywords:
+  - 4 项
+  - cards
+  - 连环
+  - 菱形
+  - 协同
+  - icon
+  - 价值主张
+native_elements:
+  - 中央 4 个菱形互锁连环图(深蓝 / 亮蓝 / 橙红 / 天蓝)
+  - 左右各 2 组 cards(icon + 标题 + 描述),icon 颜色对应连环
+  - icon 含日历 / 笔 / 扳手 / 房子
+  - 每 card 含 "Text here" 标题 + 2 行描述
+
+# === 辅助(不进 embedding)===
+layout_hint: interlocking-diamonds
+variant: 4-cards-with-interlocking-center
+page_number: 29
+template_name: business_geometric

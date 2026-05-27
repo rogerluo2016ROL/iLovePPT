@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: enterprise_skyline__24-timeline
+name: "时间轴 · 6 节点折线趋势 + 编号 01-06"
+layout_type: timeline
+content_intent:
+  - 6 个阶段升降趋势展示(像数据折线)
+  - 项目进度起伏 / 业务波动节点
+  - 适合"非线性、有起伏的演进"
+when_to_use:
+  - 6 步骤带升降的时间轴
+  - 项目进度回顾 / 业绩波动 / KPI 趋势点
+  - 跟 16-timeline(纯向前)区别:24 强调起伏
+keywords:
+  - 时间轴
+  - timeline
+  - 6节点
+  - 折线
+  - 趋势
+  - 升降
+  - zigzag
+  - 阶段
+  - line chart
+native_elements:
+  - 浅灰折线贯穿 6 个齿轮代码图标(< / >)节点
+  - 节点位置高低不一形成趋势线(看似先降后升)
+  - 每个节点上方或下方有 "01-06" 大灰编号 + Text here 标题 + 2 行 Supporting text
+  - 文字与节点交替分布(避免拥挤)
+  - 右上方延伸出折线尾部(暗示继续)
+
+layout_hint: null
+variant: 6-zigzag-line-chart
+page_number: 24
+template_name: enterprise_skyline

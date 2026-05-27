@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: modern_stripes__12-pyramid
+name: "Pyramid · 3 层金字塔 + 左标签右描述"
+layout_type: pyramid
+content_intent:
+  - 3 层递进结构 · 上层基于下层
+  - Maslow / 战略 / 能力金字塔
+  - 强调"下层是基础,上层是核心"的层级关系
+when_to_use:
+  - 3 层级关系(基础 / 中间 / 顶层)
+  - 各层需配独立标题 + 详细 bullets
+  - 突出层级递进而非时间顺序
+keywords:
+  - 金字塔
+  - pyramid
+  - 3 层
+  - 递进
+  - 层级关系
+  - 战略层级
+  - Maslow
+native_elements:
+  - 中央 3 层金字塔(navy 顶 / red 中 / 浅灰底)
+  - 每层中央"1 / 2 / 3"白色编号
+  - 金字塔基座下方有人像剪影组(浅灰)做支撑视觉
+  - 左侧 3 行:地球 icon + "...text" 小标题 + navy 竖线分隔
+  - 右侧 3 行:每行 2 条 bullet 描述对应金字塔层
+layout_hint: null
+variant: 3-tier-with-people
+page_number: 12
+template_name: modern_stripes

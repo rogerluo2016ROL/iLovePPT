@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: training_team__22-quadrant
+name: "Quadrant · 4 扇形拼圆 + 4 百分比 + 中心 wifi(数据 4 象限)"
+layout_type: quadrant
+content_intent:
+  - 4 个维度调研结果(各 % 比例)
+  - 团队技能调研 4 项 score
+  - 培训反馈 4 个 dimension 满意度
+when_to_use:
+  - 4 维度且每维度有百分比 / 数字
+  - 想 emphasize 一个核心主题(中心 icon)
+keywords:
+  - 4 象限
+  - quadrant
+  - 4 percentage
+  - 团队调研
+  - 满意度
+  - 4 维度数据
+  - donut
+native_elements:
+  - 中央拼接成圆的 4 个扇形(橙红 / 深蓝 / 暗绿 / 青绿)
+  - 中心圆形 wifi icon
+  - 每扇形含 1 个 icon (手机 / 相机 / 显示器 / 游戏手柄)
+  - 每扇形外侧引出 Text here + 百分比 (93% / 56% / 76% / 30%)
+
+layout_hint: null
+variant: 4-fan-with-percentages
+page_number: 22
+template_name: training_team

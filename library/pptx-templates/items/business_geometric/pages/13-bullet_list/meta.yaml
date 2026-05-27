@@ -1,0 +1,37 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.85
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__13-bullet_list
+name: "Bullet list · 灯泡 + 6 项 mixed checklist"
+layout_type: bullet_list
+content_intent:
+  - 6 项 checklist(完成/未完成 mixed · 实施情况展示)
+  - 创意/想法清单(灯泡 emoji 代表 idea)
+  - 完成进度 review 类列表
+when_to_use:
+  - 6 项混合状态(已完成 ✓ vs 未完成 ○)
+  - 待办清单 / 完成度回顾
+  - 配合"创意/灵感"主题(灯泡装饰)
+keywords:
+  - 6 项
+  - checklist
+  - 灯泡
+  - 创意
+  - 待办
+  - 完成进度
+  - bullet
+native_elements:
+  - 左侧灰色灯泡剪影插画 + 小手机 icon 箭头指出
+  - 左上 "Text here" 标题 + 2 行描述
+  - 右侧 6 行 "Copy paste fonts..." 列表
+  - 行首交替 ✓(深蓝圆 + 白勾)和 ○(浅灰圆)状态符号
+
+# === 辅助(不进 embedding)===
+layout_hint: null
+variant: 6-checklist-mixed
+page_number: 13
+template_name: business_geometric

@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: modern_stripes__02-toc
+name: "TOC · 垂直 5 项水滴编号目录"
+layout_type: toc
+content_intent:
+  - 全 deck 章节目录(5 章)
+  - 每章一句一行的目录页
+  - 演讲开场后第二页:概览全文
+when_to_use:
+  - 章节数 = 5 时优先
+  - 章节标题较短(< 20 字)
+  - 需要章节编号视觉强调的目录
+keywords:
+  - 目录
+  - TOC
+  - 5 项
+  - 水滴编号
+  - 垂直时间轴
+  - 章节预告
+native_elements:
+  - 左上 list 图标 + "CONTENTS" 标题
+  - 右侧垂直时间轴(navy 细线 + 圆环节点)
+  - 5 个 navy / 红色相间的水滴形编号块(01-05)
+  - 编号块右侧灰色细线分隔的章节描述行
+  - 红色作为偶数项 accent(02 / 04 红色,01 / 03 / 05 navy)
+layout_hint: null
+variant: vertical-5-teardrop
+page_number: 2
+template_name: modern_stripes

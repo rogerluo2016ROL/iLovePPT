@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+id: enterprise_skyline__03-section_divider
+name: 章节分隔 · 大编号 01 + Section Header + 金色 skyline
+layout_type: section_divider
+content_intent:
+- 第 1 章节开始的分隔页
+- 给观众明确告知"进入新章节"
+- 视觉 reset · 大字数字 + 标题强化记忆
+when_to_use:
+- 每个章节起始 · 跟 04-pyramid / 05-timeline 等内容页配对
+- 长 deck 切分逻辑段落
+- 培训课程 / 商业报告章节切换
+keywords:
+- 章节
+- 分隔页
+- section
+- divider
+- '1'
+- 大编号
+- 城市天际线
+- skyline
+- navy
+- gold
+native_elements:
+- 左侧巨大金色编号 "01"
+- 横线分隔
+- Section Header Here 大标题 + Supporting text 两行说明
+- 右上金色城市天际线剪影
+- 整体留白干净
+layout_hint: null
+variant: null
+page_number: 3
+template_name: enterprise_skyline

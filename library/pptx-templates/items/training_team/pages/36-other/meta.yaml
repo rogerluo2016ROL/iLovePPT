@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.5
+needs_manual_review: true
+
+id: training_team__36-other
+name: "iSlide instruction · 更改页面中的图标 Replace Icons"
+layout_type: other
+content_intent:
+  - 模板自带 iSlide Icon Library 使用教程
+  - 工具说明页,非 deck 内容
+when_to_use:
+  - 不在 deck 输出中使用
+  - 提示用户如何替换 icons
+keywords:
+  - iSlide
+  - Icon Library
+  - 图标库
+  - 替换图标
+  - 说明页
+  - 教程
+  - instruction
+native_elements:
+  - 顶部 "更改页面中的图标 Replace Icons" 大标
+  - 3 个步骤 wireframe(选 icon → 替换 → 完成),箭头连接
+  - 中间 wireframe 含红框 Icon Library 高亮
+  - 下方 1/2/3 步骤说明
+  - 右上红色 Note 警示
+
+layout_hint: islide-tool-instruction (模板自带工具说明,enum 兜底)
+variant: islide-instruction-icon-library
+page_number: 36
+template_name: training_team

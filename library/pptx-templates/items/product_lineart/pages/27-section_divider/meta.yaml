@@ -1,0 +1,28 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+id: product_lineart__27-section_divider
+name: Section Divider 05 · 蓝色线稿产品图标 + 大数字 05
+layout_type: section_divider
+content_intent:
+- 第 5 章开始的过渡页
+- 给章节起名 + 一句辅助说明
+- 跟 03/09/15/21 同型号,编号 05
+when_to_use:
+- 章节转场(整 deck 第 5 个章节,通常为最后一章)
+- 跟 03/09/15/21 配套
+- 需要明显的"开新篇"视觉信号
+keywords:
+- section divider
+- 章节封面
+- 过渡页
+- '5'
+- 蓝色线稿
+native_elements:
+- 左侧蓝色线稿产品图标 group
+- 中间黑色加粗 "Section Header Here" + 两行 supporting text
+- 右侧巨大黄色加粗数字 "05"
+- 底部浅蓝色色块
+layout_hint: null
+page_number: 27
+template_name: product_lineart

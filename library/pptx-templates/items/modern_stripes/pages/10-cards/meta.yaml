@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.82
+needs_manual_review: false
+
+id: modern_stripes__10-cards
+name: "Cards · 3×3 网格 + 左侧圆形图片"
+layout_type: cards
+content_intent:
+  - 9 项并列要点(3 行 × 3 列)
+  - 高密度信息陈列
+  - 配建筑/产品/场景照片作主视觉锚点
+when_to_use:
+  - 内容点 8-9 项,密度较高
+  - 各项独立,可分 3 行类别
+  - 需要照片营造场景感(适合工业 / 建筑 / 城市议题)
+keywords:
+  - 9 项
+  - 3x3 网格
+  - 网格卡片
+  - 大密度
+  - 配图
+  - 圆形剪裁照片
+native_elements:
+  - 左侧:圆形剪裁的黑白城市建筑照片
+  - 3 个红色小圆点作为图片到内容的连接锚
+  - 右侧 3×3 网格:每格 "Text here" 标题 + supporting text 一行
+  - 水平细灰线分隔 3 行
+  - 整体留白宽松
+layout_hint: null
+variant: 3x3-with-photo-anchor
+page_number: 10
+template_name: modern_stripes

@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.94
+needs_manual_review: false
+
+id: training_team__32-closing
+name: "Closing · Thanks + Your Slogan Here + 橙红 band + 团队插画"
+layout_type: closing
+content_intent:
+  - 末页致谢 + slogan 落款
+  - 培训结束页 + 演讲者署名
+  - 团建结束 + 鼓励 slogan
+when_to_use:
+  - deck 最末页
+  - 想 mirror 封面的视觉(同样 TEAM 插画 + 橙红 band)
+keywords:
+  - 致谢
+  - closing
+  - Thanks
+  - slogan
+  - 末页
+  - 结束
+  - 演讲落款
+native_elements:
+  - 左侧大字 "Thanks / And Your Slogan Here"
+  - 左下 Speaker name and title / Designed by iSlide
+  - 右下橙红色 band 横贯
+  - 右侧白色大字 TEAM + 卡通团队插画(同封面)
+  - 右上 LOGO 占位
+
+layout_hint: null
+variant: closing-thanks-illustration
+page_number: 32
+template_name: training_team

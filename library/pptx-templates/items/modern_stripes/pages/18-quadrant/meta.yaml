@@ -1,0 +1,32 @@
+status: approved
+confidence: 0.78
+needs_manual_review: false
+
+id: modern_stripes__18-quadrant
+name: "Quadrant · 4 角分组 + 中央 3D 球"
+layout_type: quadrant
+content_intent:
+  - 4 维度 / 4 角色围绕中心议题
+  - 中心 3D 视觉锚点(地球 / 系统 / 平台)
+  - 强调"中心议题 + 4 个分支 / 边界"
+when_to_use:
+  - 4 维度并列(角度可分 TL/TR/BL/BR 四象限)
+  - 中心需要强视觉锚点
+  - 各角节有 1 段标题 + 2-3 条 bullets
+keywords:
+  - 4 角
+  - quadrant
+  - 4 维度
+  - 中心 + 四角
+  - 3D 球
+  - 地球
+  - 全球
+native_elements:
+  - 中心 3D 浅灰球(纬度环纹理)
+  - 4 个圆形人物 icon 围绕球(左上 navy / 右上 red / 左下 navy / 右下 navy)
+  - 4 角文字 block:左上 / 右上 / 左下 / 右下 各"Text here"标题 + 2 行 bullets
+  - 横向细灰线分隔上下两组
+layout_hint: null
+variant: 4-corners-3d-globe
+page_number: 18
+template_name: modern_stripes

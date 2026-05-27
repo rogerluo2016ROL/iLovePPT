@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.90
+needs_manual_review: false
+
+id: finance_arrow__24-data
+name: "Data · 国债跌价 3 占比 + 右侧头像 donut(14/76/10)"
+layout_type: data
+content_intent:
+  - 左侧 3 项占比卡片(14% / 76% / 10%)+ 右侧头像 donut 图
+  - 适合"3 项数据 + 1 个整体图示"的混合 layout
+  - 76% 主体橙黄填充作焦点(总数据点)
+when_to_use:
+  - 国债 / 资产 / 风险 3 类占比 + 头像图
+  - 任何"3 数据 + 1 个 image-based donut"组合
+  - 需要"全局图 + 局部 3 项"双视角
+keywords:
+  - 3 数据 + donut
+  - 国债跌价
+  - 76 主体
+  - 头像 donut
+  - 局部占比
+  - 多片饼图
+variant: 3-pct-cards-plus-head-donut
+native_elements:
+  - 左上深黑粗体标题"国债跌价幅度大"
+  - 左侧 3 行卡片:每行左为大号占比数字圆(灰 14% / 橙 76% / 灰 10%)
+  - 数字圆内白色粗体百分比
+  - 每行右为"...国债"黑色粗标题 + 2 段 supporting bullets
+  - 右侧 1/3 区域:头像剪影内嵌 donut(多色橙黄 + 蓝 + 灰 + 米色切片)+ 中心 chip icon
+  - 头像剪影朝左,donut 在大脑位置(隐喻"思考分析")
+layout_hint: null
+page_number: 24
+template_name: finance_arrow

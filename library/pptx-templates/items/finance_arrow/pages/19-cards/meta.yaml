@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.55
+needs_manual_review: true
+
+id: finance_arrow__19-cards
+name: "Cards · 成本费用类 4 卡片围绕中心 city image(2x2 + 椭圆遮罩)"
+layout_type: cards
+content_intent:
+  - 4 个成本费用类别 2x2 网格围绕中心 city 图(深色椭圆遮罩)
+  - 每卡 "...成本费用" 黑色粗标题 + 2 行 supporting bullets
+  - 适合 "城市/商业地产 / 4 类成本费用 + 中心视觉"
+when_to_use:
+  - 成本费用 4 类别 2x2 展示(管理 / 财务 / 销售 / 研发)
+  - 需要中心商业/城市图作语义锚点的页
+  - 注意:右下角 page 19 截图清晰度低,以下细节可能需要主线程审查原 .pptx
+keywords:
+  - 4 卡片
+  - 2x2 网格
+  - 城市图
+  - 成本费用
+  - 中心 image
+  - 椭圆遮罩
+variant: 2x2-grid-with-center-image
+native_elements:
+  - 左上深黑粗体标题"成本费用类"
+  - 中心椭圆形遮罩 + 商业大厦 city image(深色调)
+  - image 上叠加 "Keyw ord" 椭圆 4 个(2 行 x 2 列)
+  - 围绕中心 4 个文字卡片(左上 / 右上 / 左下 / 右下):"...成本费用" 黑色粗体 + 2 段 supporting bullets
+  - 整体偏暗 / 装饰性强,跟其他页风格略差异
+  - 注:此页低分辨率 review,建议用户审查 .pptx 原图后增补细节
+layout_hint: null
+page_number: 19
+template_name: finance_arrow

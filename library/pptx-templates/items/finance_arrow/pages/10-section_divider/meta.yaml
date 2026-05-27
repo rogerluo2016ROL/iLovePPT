@@ -1,0 +1,30 @@
+status: approved
+confidence: 0.95
+needs_manual_review: false
+
+id: finance_arrow__10-section_divider
+name: "Section Divider · /02 基本财务情况分析(章节扉页 + 子项列表)"
+layout_type: section_divider
+content_intent:
+  - 章节 02 扉页:基本财务情况分析 / 资产分析
+  - 大号橙黄 "/02" 数字 + 章节标题"基本财务情况分析"
+  - 子项含:资产情况分析 / 资产状况分类 / 资产构成 / 资产质量 / 资产经营状况
+when_to_use:
+  - 第二章扉页(资产 / 财务情况分析)
+  - 财报 4 章节结构的第 2 节进入页
+  - 跟 03-section_divider 共用同款"右侧插画"布局
+keywords:
+  - 章节扉页
+  - section divider
+  - 第二章
+  - 基本财务情况
+  - 资产分析
+  - "/02"
+native_elements:
+  - 左中橙黄超大号 "/02" 数字编号
+  - 编号下方深蓝灰粗体"基本财务情况分析"
+  - 子项小灰字列表(基本财务情况分析 / 资产情况分析 / 资产状况分类 / 资产构成 / 资产质量 / 资产经营状况及变动原因)
+  - 右侧 1/2 模板招牌"上升箭头 + megaphone 人物"插画
+layout_hint: null
+page_number: 10
+template_name: finance_arrow

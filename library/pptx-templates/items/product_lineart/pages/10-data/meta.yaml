@@ -1,0 +1,37 @@
+status: approved
+confidence: 0.88
+needs_manual_review: false
+
+id: product_lineart__10-data
+name: "Data · 左右各 3 个 KPI 圆 (15K/30K/15K) + 描述"
+layout_type: data
+
+content_intent:
+  - 6 个 KPI 数据展示 (左 3 + 右 3)
+  - 大数字 + 短标题 + 简述
+  - 蓝/黄交替强调
+
+when_to_use:
+  - 季度/年度数据汇报
+  - 多 KPI 并列展示
+  - 强调数字大小对比
+
+keywords:
+  - data
+  - KPI
+  - 数据
+  - 数字
+  - 15K
+  - 30K
+  - 指标
+  - dashboard
+
+native_elements:
+  - 中央垂直虚线轴 + 钻石形蓝/黄菱形作为锚点
+  - 左侧 3 个 KPI 圆 (黄/蓝/黄,大数字 15K / 30K / 15K) + 右侧 3 个相同
+  - 每 KPI 旁有 "Text here" 短标题 + 2 行 supporting text
+  - 顶部细线分隔 header
+
+layout_hint: null
+page_number: 10
+template_name: product_lineart

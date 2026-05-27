@@ -1,0 +1,43 @@
+template_page_index: 5
+layout_class: cards
+slots:
+  - id: section_label
+    tree_path: '5'
+    capacity_chars: 12
+    text_color_override: null
+    font_size_pt: null
+  - id: title
+    tree_path: '6'
+    capacity_chars: 24
+    text_color_override: null
+    font_size_pt: null
+  - id: card_1_label
+    tree_path: '7.0'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: card_1_body
+    tree_path: '7.1'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null
+  - id: card_2_label
+    tree_path: '8.0'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: card_2_body
+    tree_path: '8.1'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null
+  - id: card_3_label
+    tree_path: '9.0'
+    capacity_chars: 14
+    text_color_override: null
+    font_size_pt: null
+  - id: card_3_body
+    tree_path: '9.1'
+    capacity_chars: 70
+    text_color_override: null
+    font_size_pt: null

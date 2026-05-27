@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.78
+needs_manual_review: false
+
+id: product_lineart__12-cards
+name: "Cards · 4 个气泡有机相连(80% / 20% 分组)"
+layout_type: cards
+
+content_intent:
+  - 4 个要素以有机互联的方式展示
+  - 80%/20% 强调主次比例(帕累托式)
+  - 蓝/黄交替对应 2 类分组
+
+when_to_use:
+  - 4 个要素分 2 类 (主流 vs 补充)
+  - 80/20 法则可视化
+  - 强调元素间存在关联但分组
+
+keywords:
+  - cards
+  - 80 20
+  - 帕累托
+  - 气泡
+  - 有机相连
+  - 4 元素
+  - bubble
+
+native_elements:
+  - 4 个浅灰大圆有机相连(类似气泡集群)
+  - 左下/右上 2 个蓝色聊天气泡 icon + 80% 标签
+  - 右下/左上 2 个黄色聊天气泡 icon + 20% 标签
+  - 4 角各 "Text here" + supporting text 描述
+
+layout_hint: null
+page_number: 12
+template_name: product_lineart

@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: finance_arrow__12-venn
+name: "Venn · 资产情况 3 圆相交(中心 icon + 左右 + 下方描述)"
+layout_type: venn
+content_intent:
+  - 3 项资产情况相交分析(每项部分独立 + 共有交集)
+  - 中心 3 个 icon(钱币 / 对话 / 标签)隐喻"分析"
+  - 左 01 / 右 02 / 下方 03 标题 + 2 段 bullets 描述
+when_to_use:
+  - 资产 3 个维度交叉分析
+  - 任何"3 元相交分析"(如 客户/产品/渠道 / 现金流/利润/资产 / 短/中/长期)
+  - 需要表达"共性 + 独立"两层关系
+keywords:
+  - venn
+  - 韦恩图
+  - 3 圆相交
+  - 资产分析
+  - 交叉分析
+  - 3 维度
+variant: 3-circle
+native_elements:
+  - 左上深黑粗体标题"资产情况分析"
+  - 中部 3 个浅灰半透明圆相交(上左 + 上右 + 下方)
+  - 上左圆中"钱币 + $" 橙黄 icon
+  - 上右圆中"对话气泡" 橙黄 icon
+  - 下方圆中"标签 + $" 橙黄 icon
+  - 左侧 "01. 分析" 黑色粗体 + bullets,下灰色横线
+  - 右侧 "02. 分析" 黑色粗体 + bullets,下灰色横线
+  - 下方居中 "分析" 标题 + 1 行描述
+layout_hint: null
+page_number: 12
+template_name: finance_arrow

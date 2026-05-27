@@ -1,0 +1,18 @@
+template_page_index: 33
+layout_class: other
+slots:
+  - id: tagline_cn
+    tree_path: '1.1'
+    capacity_chars: 40
+    text_color_override: null
+    font_size_pt: null
+  - id: tagline_en
+    tree_path: '1.0'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null
+  - id: footer_link
+    tree_path: '0'
+    capacity_chars: 60
+    text_color_override: null
+    font_size_pt: null

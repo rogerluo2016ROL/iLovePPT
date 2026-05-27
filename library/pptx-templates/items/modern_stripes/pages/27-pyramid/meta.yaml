@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.72
+needs_manual_review: false
+
+id: modern_stripes__27-pyramid
+name: "Pyramid · 倒置漏斗 + 左 3 列 bullets"
+layout_type: pyramid
+content_intent:
+  - 3 阶段漏斗式收敛(从大到小)
+  - 销售漏斗 / 决策漏斗 / 筛选过程
+  - 强调"从广到精 / 不断收敛"
+when_to_use:
+  - 3 阶段收敛(转化漏斗、决策漏斗)
+  - 每阶段有 2 列 bullets
+  - 终点是关键目标(打靶视觉)
+keywords:
+  - 漏斗
+  - funnel
+  - 倒金字塔
+  - 收敛
+  - 销售漏斗
+  - 转化
+  - 3 阶段
+native_elements:
+  - 右侧 3 层倒立 3D 金字塔(漏斗形,白底浅灰描边)
+  - 每层"Text"白字标签
+  - 漏斗底部尖端指向浅灰同心圆"靶心"
+  - 左侧 3 行 bullets(每行 2 列):分别对应漏斗 3 层
+  - 漏斗每层左缘有圆形 icon:红 / navy / navy 描边
+  - icon 内白色商务人 + 美元符
+layout_hint: "inverted_funnel_pyramid"
+variant: inverted-funnel-3-tier
+page_number: 27
+template_name: modern_stripes

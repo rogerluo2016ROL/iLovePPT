@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.89
+needs_manual_review: false
+
+id: enterprise_skyline__14-radial
+name: "辐射 · 中心枢纽 + 4 节点 T 形布局"
+layout_type: radial
+content_intent:
+  - 4 节点环绕中心枢纽
+  - 中心论点 + 4 个方向阐述
+  - 战略 hub-spoke 模型
+when_to_use:
+  - 4 元素 + 1 中心
+  - 战略 / 价值观 / 4P / 4 维度框架
+  - 强调中心放射性关系
+keywords:
+  - 辐射
+  - radial
+  - 4节点
+  - hub
+  - 中心
+  - 4要素
+  - 4方向
+  - 战略
+native_elements:
+  - 中心深蓝边框圆 + 人物图标 + "Text" 标签
+  - 4 条灰色箭头从中心向四角发散
+  - 4 个深蓝圆形图标(美元 / 地球 / 网络 / 团队)位于左上 / 右上 / 左下 / 右下
+  - 每个图标外侧 = Text here 标题 + 多行 supporting text 副标
+  - 整体上下左右对称构图
+
+layout_hint: null
+variant: 4-corners-with-center
+page_number: 14
+template_name: enterprise_skyline

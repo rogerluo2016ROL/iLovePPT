@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.82
+needs_manual_review: false
+
+id: training_team__10-process_flow
+name: "Process flow · 三角形循环 · 3 节点 + 顺时针箭头"
+layout_type: process_flow
+content_intent:
+  - 3 步循环流程(plan→do→check)
+  - PDCA / OODA 简化版三角形
+  - 培训循环 (Learn → Practice → Reflect)
+when_to_use:
+  - 流程是循环且只有 3 节点
+  - 强调"闭环 / 持续"的概念
+keywords:
+  - 循环
+  - 三角形
+  - 3 步循环
+  - PDCA
+  - 闭环
+  - 持续改进
+  - cycle
+native_elements:
+  - 中央大三角形 + 3 个橙红顺时针箭头
+  - 3 个 person icon(灰圆,$ 符号)在三角形 3 顶点
+  - 中心 "Text" 占位文
+  - 左侧 Unified fonts 段落引述
+  - 每节点旁 Text here + 描述
+
+layout_hint: null
+variant: 3-node-triangular-loop
+page_number: 10
+template_name: training_team

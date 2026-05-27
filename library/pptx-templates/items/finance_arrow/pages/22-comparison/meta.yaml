@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.92
+needs_manual_review: false
+
+id: finance_arrow__22-comparison
+name: "Comparison · 重要问题双 arrow 对比(黄向下 vs 蓝向上)"
+layout_type: comparison
+content_intent:
+  - 双 arrow 视觉对比:左下黄色向下 arrow vs 右上蓝色向上 arrow
+  - 适合 "问题 vs 改进" / "下行 vs 上行" / "现状 vs 目标" 二元对比
+  - 每侧 "...问题" 标题 + 2 行 bullets
+when_to_use:
+  - 财务问题暴露(下行)vs 改进措施(上行)对比
+  - 任何"双方向 / 此消彼长"视觉
+  - 强表意场景(arrow 方向语义鲜明)
+keywords:
+  - 对比
+  - 双 arrow
+  - 上 vs 下
+  - 重要问题
+  - 改进建议
+  - 现状 vs 目标
+  - 此消彼长
+variant: dual-arrow-vertical
+native_elements:
+  - 左上深黑粗体标题"重要问题"
+  - 左下大号黄色向下 arrow(警示 / 下行隐喻)
+  - 右上大号蓝色向上 arrow(改进 / 上行隐喻)
+  - arrow 之间灰色细线连接(跷跷板感)
+  - 左下角"...问题"黑色粗标题 + 2 段 supporting bullets
+  - 右上角"...问题"黑色粗标题 + 2 段 supporting bullets
+layout_hint: null
+page_number: 22
+template_name: finance_arrow

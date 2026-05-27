@@ -1,0 +1,36 @@
+# === Gate ===
+status: approved
+# === LLM 自评 ===
+confidence: 0.95
+needs_manual_review: false
+
+# === 必填(进 embedding)===
+id: business_geometric__32-closing
+name: "Closing · Thanks + Slogan + 笔记本插画(对称 cover)"
+layout_type: closing
+content_intent:
+  - 致谢页(Thanks + Slogan + 演讲人信息)
+  - deck 末页视觉收尾(与 cover 呼应)
+  - 留下 Q&A 议席的过渡页
+when_to_use:
+  - deck 最后 1 页 · 致谢
+  - 视觉风格需与 cover 呼应(同样几何 + 笔记本)
+  - 含演讲人 / 联系方式 / slogan
+keywords:
+  - 致谢
+  - closing
+  - Thanks
+  - slogan
+  - 收尾页
+  - 笔记本插画
+native_elements:
+  - 左半笔记本电脑大幅插画(同 cover 风格,蓝色色块衬底)
+  - 右侧大字 "Thanks. And Your Slogan Here."
+  - 右下 "Speaker name and title" + "www.islide.cc"
+  - 浅蓝几何三角装饰呼应 cover
+
+# === 辅助(不进 embedding)===
+layout_hint: null
+variant: thanks-with-laptop
+page_number: 32
+template_name: business_geometric

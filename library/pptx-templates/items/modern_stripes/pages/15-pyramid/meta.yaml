@@ -1,0 +1,33 @@
+status: approved
+confidence: 0.9
+needs_manual_review: false
+
+id: modern_stripes__15-pyramid
+name: "Pyramid · 3 层浅金字塔 + 右双列 bullets"
+layout_type: pyramid
+content_intent:
+  - 3 层递进关系展示 · 每层多 bullets 描述
+  - 战略 / 能力 / 价值链层级
+  - 强调层级 + 每层多维度描述
+when_to_use:
+  - 3 层级关系 · 每层需要 2 列要点
+  - 信息密度高于 page-12(更多 bullets)
+  - 突出"层级 + 每层多个并列要点"
+keywords:
+  - 金字塔
+  - pyramid
+  - 3 层
+  - 双列 bullets
+  - 浅色金字塔
+  - 大密度
+native_elements:
+  - 中央浅灰 3 层金字塔(纯色边描边)
+  - 每层右边缘有圆形 icon 标记(red 圆 / navy 圆 / navy 圆)
+  - icon 内白色商务人 + 美元符
+  - 左侧每层标"Text"标签
+  - 右侧每层 2 列 bullets(各 2-3 行 "Supporting text here")
+  - 水平细灰线分隔层与层
+layout_hint: null
+variant: 3-tier-2col-bullets
+page_number: 15
+template_name: modern_stripes

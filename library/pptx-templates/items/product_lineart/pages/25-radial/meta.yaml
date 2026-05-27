@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.84
+needs_manual_review: false
+
+id: product_lineart__25-radial
+name: "Radial · 中央 user icon 大圆 + 4 卫星圆点 + 四角描述"
+layout_type: radial
+
+content_intent:
+  - 1 个核心(user)+ 4 个支撑要素
+  - 强调"以用户为中心"或"X 是核心"
+  - 配 4 角描述各支撑
+
+when_to_use:
+  - 用户视角 / 客户中心化的架构
+  - 1 个主体 + 4 个支柱关系
+  - 强调中心位置的重要性
+
+keywords:
+  - radial
+  - 4 节点
+  - 中心辐射
+  - user-centric
+  - 客户中心
+  - 4 维度
+
+native_elements:
+  - 中央大蓝色圆带白色 user (headphone) icon
+  - 四角 4 个圆点 (左上灰 / 右上灰 / 左下深黄 / 右下黄) 各标 "Text"
+  - 4 个外圈细虚线圆轨道
+  - 四角 (左上/右上/左下/右下) 各 1 段 "Copy paste fonts" + 项目符号
+
+layout_hint: null
+page_number: 25
+template_name: product_lineart

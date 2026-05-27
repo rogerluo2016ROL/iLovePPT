@@ -1,0 +1,36 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: enterprise_skyline__18-pyramid
+name: "金字塔 · 4-tier 渐变 + 循环箭头 + 左右段落"
+layout_type: pyramid
+content_intent:
+  - 4 层级金字塔展示
+  - Maslow 需求 / 战略层级 / 价值链分层
+  - 配合循环箭头暗示"层层推进 + 循环回顾"
+when_to_use:
+  - 4 层级 hierarchy
+  - 需要 Maslow / 战略层级模型
+  - 配合左右两段说明文字
+keywords:
+  - 金字塔
+  - pyramid
+  - 4层
+  - hierarchy
+  - 4-tier
+  - Maslow
+  - 渐变
+  - 循环
+native_elements:
+  - 中央 4-tier 三角金字塔(顶最浅灰、中灰、深灰、底深蓝渐变)
+  - 每层中央 "…text" 白字标签
+  - 浅灰循环箭头环绕金字塔(顺时针)
+  - 左侧 2 段 "Text here + 段落" 说明
+  - 右侧 2 段 "Text here + 段落" 说明
+  - 整体左右对称构图
+
+layout_hint: null
+variant: 4-tier-with-cycle
+page_number: 18
+template_name: enterprise_skyline

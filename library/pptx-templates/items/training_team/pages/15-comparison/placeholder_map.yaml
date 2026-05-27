@@ -1,0 +1,68 @@
+template_page_index: 14
+layout_class: comparison
+slots:
+  - id: title
+    tree_path: '0'
+    capacity_chars: 32
+    text_color_override: null
+    font_size_pt: null
+  - id: left_1_title
+    tree_path: '3.2.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: left_1_desc
+    tree_path: '3.2.1'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null
+  - id: left_2_title
+    tree_path: '3.5.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: left_2_desc
+    tree_path: '3.5.1'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null
+  - id: left_3_title
+    tree_path: '3.8.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: left_3_desc
+    tree_path: '3.8.1'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null
+  - id: right_1_title
+    tree_path: '3.13.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: right_1_desc
+    tree_path: '3.13.1'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null
+  - id: right_2_title
+    tree_path: '3.16.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: right_2_desc
+    tree_path: '3.16.1'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null
+  - id: right_3_title
+    tree_path: '3.19.0'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: right_3_desc
+    tree_path: '3.19.1'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null

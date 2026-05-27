@@ -1,0 +1,35 @@
+status: approved
+confidence: 0.85
+needs_manual_review: false
+
+id: enterprise_skyline__07-cards
+name: "卡片 · 6 项 2 列 3 行 + 圆形人物图标"
+layout_type: cards
+content_intent:
+  - 6 个要点 / 特征 / 团队成员并列展示
+  - 团队介绍 / 产品功能 / 服务特性列表
+  - 信息密度中等,每项有图标 + 标题 + 副标
+when_to_use:
+  - 6 项并列内容,无优先级
+  - 团队成员 / 产品功能 / 服务卖点
+  - 中等密度信息页
+keywords:
+  - 卡片
+  - cards
+  - 6项
+  - 2列3行
+  - grid
+  - 团队
+  - 人物图标
+  - 双栏
+native_elements:
+  - 左侧弧形装饰浅灰路径连接 3 个圆形人物图标(底色蓝色 / 灰色 / 蓝色)
+  - 6 张卡片 2 列 3 行排列,每张 = Text here 标题 + 1 行 supporting text + 省略号
+  - 行间横线分隔
+  - 整体清晰留白
+  - 底部 www.islide.cc + 页码 7
+
+layout_hint: null
+variant: 2-cols-3-rows
+page_number: 7
+template_name: enterprise_skyline

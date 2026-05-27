@@ -1,0 +1,37 @@
+status: approved
+confidence: 0.78
+needs_manual_review: false
+
+id: enterprise_skyline__20-bullet_list
+name: "项目符号 · 3 编号项 + 右侧山峰飞旗插图"
+layout_type: bullet_list
+content_intent:
+  - 3 个核心要点 / 行动 / 阶段递进
+  - 目标登顶 / 团队冲刺 / 战略制高点
+  - 适合"目标 - 路径 - 里程碑"主题
+when_to_use:
+  - 3 项核心要点 + 需要"达成感"视觉
+  - 战略目标 / 团队冲刺 / OKR 关键路径
+  - 配合山峰飞旗插画 = 攀登 / 突破隐喻
+keywords:
+  - bullet
+  - 列表
+  - 3项
+  - 编号
+  - 山峰
+  - 飞旗
+  - 目标
+  - 攀登
+  - 登顶
+  - 突破
+native_elements:
+  - 左侧 3 个浅蓝色 / 深蓝胶囊 + 人物图标(走 / 跑 / 医生) + "01.Text here / 02.Text here / 03.Text here" 标题
+  - 每项下方 2 行 Supporting text 段落
+  - 右侧山峰插画:大山峰 + 深蓝飞旗 (1) + 旁边 (2) 深蓝圆 + (3) 蓝灰圆
+  - 山峰背景 2 座小山作衬
+  - 整体左右分屏:左文字右插画
+
+layout_hint: null
+variant: 3-items-with-illustration
+page_number: 20
+template_name: enterprise_skyline

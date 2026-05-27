@@ -1,0 +1,34 @@
+status: approved
+confidence: 0.93
+needs_manual_review: false
+
+id: finance_arrow__15-process_flow
+name: "Process Flow · 资产经营状况 4 节点 zigzag 上行流程(building→laptop→chart→branch)"
+layout_type: process_flow
+content_intent:
+  - 4 步骤经营变动流程,逐级上升趋势(zigzag 路径)
+  - 每节点 1-4 编号 + icon + 标题 + bullets
+  - 适合 "资产从入账 → 经营 → 增值 → 变动" 流程叙事
+when_to_use:
+  - 资产经营 4 步骤变动分析
+  - 任何 4-step 渐进流程(项目阶段 / 业务发展 / 投资循环)
+  - 需要"上升"隐喻(从低到高的折线路径)
+keywords:
+  - process flow
+  - 4 步骤
+  - zigzag
+  - 上升流程
+  - 资产经营
+  - 渐进流程
+  - 折线路径
+variant: 4-node-zigzag
+native_elements:
+  - 左上深黑粗体标题"资产经营状况及变动原因"
+  - 4 节点 1-4 zigzag 折线路径(左下 → 右上,逐级上升)
+  - 每节点圆形 icon + 编号小圆 + 标题 "... 分析" + bullets
+  - 4 节点 icon 配色:橙黄 - 深蓝灰 - 蓝 - 橙黄外蓝内(交替)
+  - 节点 icon 类型:building(建筑)/ laptop chart / line chart / branch tree
+  - 1-4 编号小圆配色:橙黄 / 深蓝灰 / 蓝 / 橙黄(跟 icon 圆配色一致)
+layout_hint: null
+page_number: 15
+template_name: finance_arrow

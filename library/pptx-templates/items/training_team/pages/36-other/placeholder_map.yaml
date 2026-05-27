@@ -1,0 +1,28 @@
+template_page_index: 35
+layout_class: other
+slots:
+  - id: title
+    tree_path: '7'
+    capacity_chars: 32
+    text_color_override: null
+    font_size_pt: null
+  - id: step_1_text
+    tree_path: '1.0'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null
+  - id: step_2_text
+    tree_path: '3'
+    capacity_chars: 80
+    text_color_override: null
+    font_size_pt: null
+  - id: step_3_text
+    tree_path: '6.0'
+    capacity_chars: 40
+    text_color_override: null
+    font_size_pt: null
+  - id: note
+    tree_path: '11'
+    capacity_chars: 120
+    text_color_override: null
+    font_size_pt: null

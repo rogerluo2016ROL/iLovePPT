@@ -1,0 +1,211 @@
+template_page_index: 15
+layout_class: '?'
+slots:
+- id: '?'
+  tree_path: '3.0'
+  raw_text_sample: 20XX
+  bbox:
+    left: 0.73
+    top: 2.25
+    width: 2.38
+    height: 0.43
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: '3.1'
+  raw_text_sample: 20XX
+  bbox:
+    left: 3.11
+    top: 2.25
+    width: 2.38
+    height: 0.43
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: '3.2'
+  raw_text_sample: 20XX
+  bbox:
+    left: 5.47
+    top: 2.25
+    width: 2.38
+    height: 0.43
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: '3.3'
+  raw_text_sample: 20XX
+  bbox:
+    left: 7.85
+    top: 2.25
+    width: 2.38
+    height: 0.43
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: '3.4'
+  raw_text_sample: 20XX
+  bbox:
+    left: 10.22
+    top: 2.25
+    width: 2.38
+    height: 0.43
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.10.0
+  raw_text_sample: Text here
+  bbox:
+    left: 0.73
+    top: 3.23
+    width: 2.38
+    height: 0.52
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.11.0
+  raw_text_sample: Text here
+  bbox:
+    left: 0.73
+    top: 3.23
+    width: 2.38
+    height: 0.52
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.12.0
+  raw_text_sample: Text here
+  bbox:
+    left: 0.73
+    top: 3.23
+    width: 2.38
+    height: 0.52
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.13.0
+  raw_text_sample: Text here
+  bbox:
+    left: 0.73
+    top: 3.23
+    width: 2.38
+    height: 0.52
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.14.0
+  raw_text_sample: Text here
+  bbox:
+    left: 0.73
+    top: 3.23
+    width: 2.38
+    height: 0.52
+  font_size_pt: 16.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.10.1
+  raw_text_sample: 'Supporting text here
+
+    Supporting text here
+
+    ……'
+  bbox:
+    left: 0.73
+    top: 3.75
+    width: 2.38
+    height: 0.92
+  font_size_pt: 9.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.11.1
+  raw_text_sample: 'Supporting text here
+
+    Supporting text here
+
+    ……'
+  bbox:
+    left: 0.73
+    top: 3.75
+    width: 2.38
+    height: 0.92
+  font_size_pt: 9.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.12.1
+  raw_text_sample: 'Supporting text here
+
+    Supporting text here
+
+    ……'
+  bbox:
+    left: 0.73
+    top: 3.75
+    width: 2.38
+    height: 0.92
+  font_size_pt: 9.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.13.1
+  raw_text_sample: 'Supporting text here
+
+    Supporting text here
+
+    ……'
+  bbox:
+    left: 0.73
+    top: 3.75
+    width: 2.38
+    height: 0.92
+  font_size_pt: 9.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: 3.14.1
+  raw_text_sample: 'Supporting text here
+
+    Supporting text here
+
+    ……'
+  bbox:
+    left: 0.73
+    top: 3.75
+    width: 2.38
+    height: 0.92
+  font_size_pt: 9.0
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: '1'
+  raw_text_sample: www.islide.cc
+  bbox:
+    left: 0.73
+    top: 6.82
+    width: 4.53
+    height: 0.23
+  font_size_pt: null
+  capacity_chars: '?'
+  text_color_override: null
+- id: '?'
+  tree_path: '2'
+  raw_text_sample: '16'
+  bbox:
+    left: 9.42
+    top: 6.82
+    width: 3.18
+    height: 0.23
+  font_size_pt: null
+  capacity_chars: '?'
+  text_color_override: null
+

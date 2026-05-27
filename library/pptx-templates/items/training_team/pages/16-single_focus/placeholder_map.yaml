@@ -1,0 +1,58 @@
+template_page_index: 15
+layout_class: single_focus
+slots:
+  - id: title
+    tree_path: '0'
+    capacity_chars: 32
+    text_color_override: null
+    font_size_pt: null
+  - id: bubble_1
+    tree_path: '3.4'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: bubble_2
+    tree_path: '3.5'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: bubble_3
+    tree_path: '3.6'
+    capacity_chars: 8
+    text_color_override: null
+    font_size_pt: null
+  - id: left_top_title
+    tree_path: '3.10'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: left_top_desc
+    tree_path: '3.11'
+    capacity_chars: 90
+    text_color_override: null
+    font_size_pt: null
+  - id: left_bottom_desc
+    tree_path: '3.12'
+    capacity_chars: 90
+    text_color_override: null
+    font_size_pt: null
+  - id: right_top_title
+    tree_path: '3.13'
+    capacity_chars: 16
+    text_color_override: null
+    font_size_pt: null
+  - id: right_top_desc
+    tree_path: '3.14'
+    capacity_chars: 90
+    text_color_override: null
+    font_size_pt: null
+  - id: right_bottom_desc
+    tree_path: '3.15'
+    capacity_chars: 90
+    text_color_override: null
+    font_size_pt: null
+  - id: footer_caption
+    tree_path: '3.7'
+    capacity_chars: 60
+    text_color_override: null
+    font_size_pt: null
