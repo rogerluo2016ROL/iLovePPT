@@ -87,11 +87,31 @@ overwrite: false                           # 可选 · items/<name>/meta.yaml �
    - `items/<name>/meta.yaml`(无 .draft 后缀)已存在 + mode=full + overwrite=false → return `code: ALREADY_INGESTED`,提示用户加 `overwrite: true` 或换 name
    - `items/<name>/meta.yaml` 不存在 + mode=placeholder_map_only → return `code: META_NOT_FOUND`(回填工程需要已 ingest 的模板)
 
-### Step 1 · 复制 .pptx 到 _source/
+### Step 1 · 复制 .pptx 到 _source/(idempotent · sha256 守门)
+
+**mode=placeholder_map_only 跳过此 step**。
 
 ```bash
-cp <template_path> library/pptx-templates/_source/<name>.pptx
+SRC_SHA=$(shasum -a 256 <template_path> | awk '{print $1}')
+DEST=library/pptx-templates/_source/<name>.pptx
+
+if [ -f "$DEST" ]; then
+  DEST_SHA=$(shasum -a 256 $DEST | awk '{print $1}')
+  if [ "$SRC_SHA" = "$DEST_SHA" ]; then
+    echo "[step1] _source/<name>.pptx 已存在且 sha256 一致 · skip cp"
+  elif [ "<overwrite>" = "true" ]; then
+    echo "[step1] _source/<name>.pptx sha256 mismatch + overwrite=true · 覆盖"
+    cp <template_path> $DEST
+  else
+    # return error · 不静默覆盖
+    return code: SOURCE_SHA_MISMATCH · message: "_source/<name>.pptx 已存在但 sha256 不同 · 用 overwrite=true 或换 name"
+  fi
+else
+  cp <template_path> $DEST
+fi
 ```
+
+`source_pptx_sha256` 字段(Step 3.2 写)取 cp 后的 sha,确保 provenance 跟实际 .pptx 一致。
 
 ### Step 2 · 渲染每页 PNG
 
@@ -457,6 +477,8 @@ errors:
     message: "library/pptx-templates/items 可用空间不足 500MB (df -k 拿到 <value>KB)"
   - code: ALREADY_INGESTED                # 主线程应让用户加 overwrite:true 或换 name
     message: "items/<name>/meta.yaml 已存在 (mode=full + overwrite=false)"
+  - code: SOURCE_SHA_MISMATCH               # 主线程应让用户决定 rename 或 overwrite
+    message: "_source/<name>.pptx 已存在但 sha256 不同,内容已变更"
   - code: META_NOT_FOUND                  # 主线程应让用户先跑 mode=full 完整 ingest
     message: "mode=placeholder_map_only 但 items/<name>/meta.yaml 不存在 (回填需已 ingest 的模板)"
   - code: PPTX_CORRUPTED                  # 主线程应让用户重新提供文件
