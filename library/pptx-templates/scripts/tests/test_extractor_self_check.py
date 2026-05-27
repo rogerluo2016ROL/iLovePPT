@@ -119,6 +119,89 @@ def test_provenance_as_list_does_not_crash(tmp_path):
     assert "EMBEDDING_DIM_WRONG" in out
 
 
+def test_pmap_tree_path_unresolvable_returns_2(tmp_path):
+    """Construct a placeholder_map.draft with bad tree_path, verify exit code 2."""
+    import shutil
+    # Set up items/ root structure
+    items_root = tmp_path / "items"
+    items_root.mkdir()
+    src = FIXTURES / "minimal_template_ok"
+    dst = items_root / "minimal_template_ok"
+    shutil.copytree(src, dst)
+    # Place sample.pptx as _source/
+    source_dir = tmp_path / "_source"
+    source_dir.mkdir()
+    shutil.copy(
+        FIXTURES / "sample.pptx",
+        source_dir / "minimal_template_ok.pptx",
+    )
+    # Write bad placeholder_map.draft (tree_path 99 doesn't exist)
+    pmap_path = dst / "pages" / "01-cover" / "placeholder_map.yaml.draft"
+    pmap_path.write_text(
+        "template_page_index: 0\n"
+        "layout_class: cover\n"
+        "slots:\n"
+        "  - id: title\n"
+        "    tree_path: '99'\n"
+        "    capacity_chars: 24\n"
+    )
+    code, out = run("minimal_template_ok", items_root)
+    assert code == 2, f"{code}\n{out}"
+    assert "PMAP_TREE_PATH_UNRESOLVABLE" in out
+
+
+def test_pmap_valid_tree_path_passes(tmp_path):
+    """A valid tree_path should not trigger PMAP error."""
+    import shutil
+    items_root = tmp_path / "items"
+    items_root.mkdir()
+    src = FIXTURES / "minimal_template_ok"
+    dst = items_root / "minimal_template_ok"
+    shutil.copytree(src, dst)
+    source_dir = tmp_path / "_source"
+    source_dir.mkdir()
+    shutil.copy(
+        FIXTURES / "sample.pptx",
+        source_dir / "minimal_template_ok.pptx",
+    )
+    # tree_path '0' is the first shape on page 0 of sample.pptx (the title textbox)
+    pmap_path = dst / "pages" / "01-cover" / "placeholder_map.yaml.draft"
+    pmap_path.write_text(
+        "template_page_index: 0\n"
+        "layout_class: cover\n"
+        "slots:\n"
+        "  - id: title\n"
+        "    tree_path: '0'\n"
+        "    capacity_chars: 24\n"
+    )
+    code, out = run("minimal_template_ok", items_root)
+    assert code == 0, f"{code}\n{out}"
+
+
+def test_pmap_check_skipped_when_no_source(tmp_path):
+    """If _source/<name>.pptx doesn't exist, PMAP check is skipped (no false positive)."""
+    import shutil
+    items_root = tmp_path / "items"
+    items_root.mkdir()
+    src = FIXTURES / "minimal_template_ok"
+    dst = items_root / "minimal_template_ok"
+    shutil.copytree(src, dst)
+    # No _source/ dir created
+    # Write a placeholder_map.draft with bad tree_path
+    pmap_path = dst / "pages" / "01-cover" / "placeholder_map.yaml.draft"
+    pmap_path.write_text(
+        "template_page_index: 0\n"
+        "layout_class: cover\n"
+        "slots:\n"
+        "  - id: title\n"
+        "    tree_path: '99'\n"
+        "    capacity_chars: 24\n"
+    )
+    code, out = run("minimal_template_ok", items_root)
+    # Should pass (no source = check skipped)
+    assert code == 0, f"{code}\n{out}"
+
+
 def test_extraction_bool_rejected_as_non_int(tmp_path):
     """declared_pages: true / rendered_pages: false → EXTRACTION_TYPE_INVALID, not silent pass."""
     import shutil

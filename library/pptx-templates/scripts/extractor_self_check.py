@@ -37,6 +37,29 @@ REQUIRED_PAGE_FIELDS = [
 ID_RE = re.compile(r"^[a-z0-9_-]+__\d{2}-[a-z_]+$")
 
 
+def _resolve_tree_path(shapes, tree_path: str) -> bool:
+    """tree_path like '3' / '3.16' / '3.16.0' · walks shape tree · True if resolvable."""
+    if not tree_path:
+        return False
+    parts = tree_path.split(".")
+    current = list(shapes)
+    for i, part in enumerate(parts):
+        try:
+            idx = int(part)
+        except ValueError:
+            return False
+        if idx >= len(current):
+            return False
+        node = current[idx]
+        if i == len(parts) - 1:
+            return True
+        try:
+            current = list(node.shapes)
+        except AttributeError:
+            return False
+    return True
+
+
 def load_yaml(path: Path) -> tuple[dict | None, str | None]:
     """返回 (data, error_msg). data is None 时 error_msg 非空."""
     try:
@@ -151,6 +174,37 @@ def check(name: str, items_root: Path) -> int:
         tn = data.get("template_name")
         if tn and tn != name:
             errors.append(f"TEMPLATE_NAME_MISMATCH: {p}: template_name={tn} != {name}")
+
+    # 9. placeholder_map tree_path resolves (if pmap.draft exists AND source .pptx exists)
+    pmap_errors: list[str] = []
+    source_pptx = items_root.parent / "_source" / f"{name}.pptx"
+    if source_pptx.exists():
+        try:
+            from pptx import Presentation as _Pres
+            pres = _Pres(str(source_pptx))
+            for p in tpl_dir.glob("pages/*/placeholder_map.yaml.draft"):
+                pmap, err = load_yaml(p)
+                if err or not pmap:
+                    continue
+                idx = pmap.get("template_page_index")
+                if idx is None or not isinstance(idx, int) or idx < 0 or idx >= len(pres.slides):
+                    pmap_errors.append(f"PMAP_PAGE_INDEX_INVALID: {p}: template_page_index={idx}")
+                    continue
+                slide = pres.slides[idx]
+                for slot in pmap.get("slots", []):
+                    tp = slot.get("tree_path", "")
+                    if not _resolve_tree_path(slide.shapes, tp):
+                        pmap_errors.append(f"PMAP_TREE_PATH_UNRESOLVABLE: {p}: tree_path={tp!r}")
+        except Exception as e:
+            pmap_errors.append(f"PMAP_CHECK_FAILED: {e}")
+
+    # If ONLY pmap errors (no other errors), exit 2; otherwise normal exit-1 path
+    if pmap_errors and not errors:
+        for e in pmap_errors:
+            print(e)
+        return 2
+    # If both pmap and other errors, merge into general errors → exit 1
+    errors.extend(pmap_errors)
 
     if errors:
         for e in errors:
