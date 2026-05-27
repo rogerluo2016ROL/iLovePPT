@@ -294,11 +294,28 @@ slots:
 - `capacity_chars` 估每 slot 的 hint(超过 author 会撑爆 textbox 换行,见本次 deck 经验)
 - `text_color_override` 浅底色 tier 必填 dark hex(防白字在浅底看不清)
 
-**实操**:
-1. inspect 该页 source .pptx slide(用 python-pptx + lxml 递归 walk shapes)
-2. 找所有含 text 的 shape(`shape.has_text_frame` + 非空 / 含 placeholder pattern 如 `…text` / `Text here` / `Copy paste fonts`)
-3. 按几何位置(top-to-bottom, left-to-right)给语义 id
-4. 写 placeholder_map.yaml.draft
+**实操(脚本产骨架,LLM 填语义)**:
+
+1. 调脚本拿骨架:
+   ```bash
+   library/_rag/.venv/bin/python \
+     library/pptx-templates/scripts/inspect_placeholders.py \
+     library/pptx-templates/_source/<name>.pptx \
+     <NN_minus_1>   # 0-indexed page idx
+   ```
+   产物:含 `template_page_index` / `layout_class: "?"` / `slots[].tree_path` / `slots[].raw_text_sample` / `slots[].bbox` / `slots[].font_size_pt` 的骨架 YAML
+
+2. LLM **只**做这 3 件事(不再算 tree_path):
+   - 把每个 `slot.id` 从 `"?"` 改为语义命名(`title` / `tier_1` / `card_1_body` / `step_2_callout`)
+   - 把 `slot.capacity_chars` 从 `"?"` 改为字数估算(参考 bbox 几何 + font_size)
+   - 浅底色 tier 加 `text_color_override: '#0B2A4A'`
+   - 顶层 `layout_class` 跟 meta.yaml.draft.layout_type 同步
+
+3. 写到 `pages/<NN-layout>/placeholder_map.yaml.draft`
+
+**严禁**:LLM 自己写 tree_path / 自己 walk shapes / 不调脚本就编 YAML。
+
+**Idempotency**:`placeholder_map.yaml.draft` 已存在 + `status: draft` → skip(不重生成);`placeholder_map.yaml`(用户审过的)→ 任何 mode 都不动。
 
 **Self-check**:`yq '.layout_class' pages/*/placeholder_map.yaml.draft | sort -u` 应该跟 `yq '.layout_type' pages/*/meta.yaml.draft | sort -u` 一致(layout 命名同源)。
 
