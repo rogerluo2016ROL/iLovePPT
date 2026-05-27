@@ -24,5 +24,5 @@ pythonpath = [
     ".claude/skills/pptx",
     ".claude/skills/pptx-deck",
 ]
-testpaths = ["tests"]
+testpaths = ["tests", "library/pptx-templates/scripts/tests"]
 asyncio_default_fixture_loop_scope = "function"

@@ -58,10 +58,10 @@ def walk_shapes(shapes, prefix: str = "") -> list[dict]:
                 "tree_path": path,
                 "raw_text_sample": text[:60],
                 "bbox": {
-                    "left": round(Emu(shape.left).inches, 2) if shape.left else 0.0,
-                    "top": round(Emu(shape.top).inches, 2) if shape.top else 0.0,
-                    "width": round(Emu(shape.width).inches, 2) if shape.width else 0.0,
-                    "height": round(Emu(shape.height).inches, 2) if shape.height else 0.0,
+                    "left": round(Emu(shape.left).inches, 2) if shape.left is not None else 0.0,
+                    "top": round(Emu(shape.top).inches, 2) if shape.top is not None else 0.0,
+                    "width": round(Emu(shape.width).inches, 2) if shape.width is not None else 0.0,
+                    "height": round(Emu(shape.height).inches, 2) if shape.height is not None else 0.0,
                 },
                 "font_size_pt": font_size,
             })

@@ -3,7 +3,7 @@
 Exit codes:
   0 = 全过
   1 = 字段缺失 / enum / 格式问题
-  2 = placeholder_map tree_path 不能 resolve(此 task 暂不实现,Task 2 补)
+  2 = placeholder_map tree_path 不能 resolve(check #9)
   3 = YAML 语法错
   4 = 模板目录不存在
 """
@@ -48,7 +48,7 @@ def _resolve_tree_path(shapes, tree_path: str) -> bool:
             idx = int(part)
         except ValueError:
             return False
-        if idx >= len(current):
+        if idx < 0 or idx >= len(current):
             return False
         node = current[idx]
         if i == len(parts) - 1:
@@ -187,7 +187,7 @@ def check(name: str, items_root: Path) -> int:
                 if err or not pmap:
                     continue
                 idx = pmap.get("template_page_index")
-                if idx is None or not isinstance(idx, int) or idx < 0 or idx >= len(pres.slides):
+                if idx is None or not isinstance(idx, int) or isinstance(idx, bool) or idx < 0 or idx >= len(pres.slides):
                     pmap_errors.append(f"PMAP_PAGE_INDEX_INVALID: {p}: template_page_index={idx}")
                     continue
                 slide = pres.slides[idx]
