@@ -1,30 +1,31 @@
 status: approved
-confidence: 0.95
+confidence: 0.96
 needs_manual_review: false
 
 id: finance_arrow__10-section_divider
-name: "Section Divider · /02 基本财务情况分析(章节扉页 + 子项列表)"
+name: "Section divider /02 · 基本财务情况分析(左侧大号 /02 + 右侧主视觉 mascot)"
 layout_type: section_divider
 content_intent:
-  - 章节 02 扉页:基本财务情况分析 / 资产分析
-  - 大号橙黄 "/02" 数字 + 章节标题"基本财务情况分析"
-  - 子项含:资产情况分析 / 资产状况分类 / 资产构成 / 资产质量 / 资产经营状况
+  - 第 2 章节起始页 · 醒目分隔
+  - 标注章节编号(/02)+ 章节标题 + 该章节子标题列表(基本财务情况分析 / 资产情况分析 / 资产状况分类 / 资产构成 / 资产质量 / 资产经营状况及变动原因)
+  - 给观众视觉信号"我们进入了一个新章节"
 when_to_use:
-  - 第二章扉页(资产 / 财务情况分析)
-  - 财报 4 章节结构的第 2 节进入页
-  - 跟 03-section_divider 共用同款"右侧插画"布局
+  - 章节起始页(配合 toc 04 项中的第 2 项)
+  - 同 03 / 16 / 21 是同款不同编号
+  - 替换大号 /02 + 中文章节标题 + 子标题列表即可复用
 keywords:
-  - 章节扉页
+  - 章节分隔
   - section divider
-  - 第二章
-  - 基本财务情况
-  - 资产分析
-  - "/02"
+  - /02
+  - 章节起始
+  - 基本财务情况分析
 native_elements:
-  - 左中橙黄超大号 "/02" 数字编号
-  - 编号下方深蓝灰粗体"基本财务情况分析"
-  - 子项小灰字列表(基本财务情况分析 / 资产情况分析 / 资产状况分类 / 资产构成 / 资产质量 / 资产经营状况及变动原因)
-  - 右侧 1/2 模板招牌"上升箭头 + megaphone 人物"插画
+  - 左半页大号橙黄斜杠数字 "/02"
+  - 左半页中部深蓝灰中文章节大标题 "基本财务情况分析"
+  - 左半页下方灰色小字列出本章子主题
+  - 右半页橙黄上升箭头 + megaphone 人物 + target 主视觉(cover 同款 mascot)
+  - 整页白底 · 仅靠数字 + 插画分割左右
+
 layout_hint: null
 variant: section-divider-illustration
 page_number: 10

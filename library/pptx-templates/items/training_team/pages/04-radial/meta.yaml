@@ -1,30 +1,32 @@
 status: approved
-confidence: 0.9
+confidence: 0.88
 needs_manual_review: false
-
 id: training_team__04-radial
-name: "Radial · 中心 presenter 圆环 + 6 节点环绕(3 橙 + 3 蓝)"
+name: "Radial · 中央人物 + 双色圆环 + 6 周边文本"
 layout_type: radial
 content_intent:
-  - 1 个核心角色辐射 6 项职责 / 能力
-  - 培训师 / 主管 6 项工作维度展开
-  - 团队 leader 360 度评估
+  - 围绕一个核心(讲师/角色)展示 6 个支撑要素
+  - 团队成员角色描述 (1 中心 + 6 周边职责)
+  - 6 项能力 / 关注点的辐射展示
 when_to_use:
-  - 想 emphasize 中心人物的多面职责
-  - 6 个子项 (3+3 对称) 适合一一对照
+  - 中心有强角色,4-6 个均权重子项围绕
+  - 适合介绍"领导者 + 团队职责"或"人物 + 任务"
+  - 比简单 cards 更强调中心权威感
 keywords:
-  - 辐射
   - radial
-  - 6 节点
-  - 中心人物
-  - 圆环箭头
-  - 职责展开
+  - 辐射
+  - 中心 + 周边
+  - 圆环
+  - 6 项
+  - 6-spoke
+  - hub-spoke
+  - 双色环
 native_elements:
-  - 中心 presenter / podium icon + 双向环形箭头(上半红下半蓝)
-  - 左侧 3 个橙红实心圆 + Text here + 段落
-  - 右侧 3 个深蓝实心圆 + Text here + 段落
-  - 灰线在 row 之间分隔
-
+  - 中央灰色 podium 人物 icon + 橙红/深蓝双色圆环 (上半橙红 + 下半深蓝)
+  - 左侧 3 个橙红圆点 + 文本 (Text here + Copy paste 副本)
+  - 右侧 3 个深蓝圆点 + 文本
+  - 文本间灰色细分隔线
+  - 底部 www.islide.cc 角注 (iSlide 模板标记 · 用户改时可删)
 layout_hint: null
 variant: radial-6-spoke
 page_number: 4

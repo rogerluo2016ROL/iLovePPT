@@ -1,37 +1,32 @@
-# === Gate ===
 status: approved
-# === LLM 自评 ===
-confidence: 0.68
-needs_manual_review: false
-
-# === 必填 ===
+confidence: 0.62
+needs_manual_review: true
 id: creative_aurora__07-quadrant
-name: "Quadrant · 2×2 双图双文字象限"
-layout_type: quadrant
+name: "Quadrant-like · 左 2 大图 + 右 2x2 文字网格(候选: cards 4-units)"
+layout_type: cards
 content_intent:
-  - 四象限对比 · 两张图 + 两段文字交替排列
-  - 适合 "案例 + 解读" 配对成 2 组的内容编排
-  - 创意 / 设计案例 dual 对比
+  - 4 个并列要点 + 视觉氛围铺垫
+  - 左侧图像作为主视觉,右侧 4 单元文字陈述
+  - 概念多角度解析(若需要象限维度可用作 quadrant)
 when_to_use:
-  - 4 块内容需要 2×2 网格呈现
-  - 图文配对 (案例 + 解读) 双对比
-  - 不适合纯文字四象限 (该用 cards 4-cols)
+  - 4 个等权重的概念要点
+  - 需要"图像 + 多文字"混合的页面
+  - 不强调 2x2 维度对比时优先此 layout
+  - 真需要 SWOT / 维度象限请改用其他模板的 quadrant 页
 keywords:
-  - 四象限
-  - 2x2 grid
-  - 双图双文字
-  - quadrant
-  - 案例对比
-  - dual case
+  - 四单元卡
+  - 4-cell cards
+  - 左图右文网格
+  - 2x2 文字网格
+  - 多要点
+  - mixed image grid
 native_elements:
-  - 顶部 "市场分析" + 副标题 "详细列出完成的项目及成果"
-  - 左上 · 左下两张霓虹科技图 (键盘 + 城市场景)
-  - 右上 · 右下两段文字块,每段 "文学编辑岗位" 标题 + 简短描述
-  - 整体黑底 + 蓝紫红霓虹色调
-  - 顶部细线圆环装饰
-
-# === 辅助 ===
-layout_hint: null
-variant: quadrant-2x2-generic
+  - 左侧 2 张大图垂直堆叠(键盘特写 + 城市夜景)
+  - 右侧 2x2 文字单元网格(4 个标题 + 短描述)
+  - 顶部"市场分析"标题 + 蓝色装饰条
+  - 背景:右下紫色 blob 渐变
+  - 装饰小钻石 / 短线
+layout_hint: "本页几何上有 quadrant(2x2)与 cards(4-units)双重读法 · LLM 倾向 cards · 主线程审时若用作维度对比可改 quadrant"
+variant: cards-grid-2x2
 page_number: 7
 template_name: creative_aurora

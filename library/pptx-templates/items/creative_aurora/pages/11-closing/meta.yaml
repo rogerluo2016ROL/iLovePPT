@@ -1,38 +1,32 @@
-# === Gate ===
 status: approved
-# === LLM 自评 ===
-confidence: 0.94
+confidence: 0.96
 needs_manual_review: false
-
-# === 必填 ===
 id: creative_aurora__11-closing
-name: "Closing · 感谢观看 + 人物 VR 肖像"
+name: "Closing · 感谢观看双语 + 右侧 VR 人物 + 极光渐变背景"
 layout_type: closing
 content_intent:
-  - 演讲结尾致谢页 · 大字 "感谢观看 / Thank you" + 人物 hero image
-  - 创意 / 科技类项目的结束页,留下品牌印象
-  - 强化"未来感 / 科技 / 创意"的最终视觉记忆
+  - 完整 deck 的结束页
+  - 感谢观看 / Thank you 双语结尾
+  - 留下视觉记忆(VR / 未来感图像 + 极光渐变)
 when_to_use:
-  - deck 最后一页 · 致谢 / Q&A 引导
-  - 需要传达"科技 / 未来 / 创意" 收尾氛围
-  - 不适合严肃 / 商务 / 法务类 deck
+  - 整个 deck 最后一页 · 收尾
+  - 跟 01-cover 形成视觉对称(同样极光 + 人像)
+  - 需要 presenter / date 信息再次出现的场景
+  - 不适合需要 next-action / CTA 的页面(请加补充页)
 keywords:
-  - 结束页
-  - closing
-  - thank you
   - 感谢观看
-  - 人物肖像
-  - VR头戴
-  - aurora gradient
+  - thank you
+  - 收尾页
+  - closing
+  - 双语结尾
+  - VR 人像
+  - 极光渐变收尾
 native_elements:
-  - 黑底
-  - 左半蓝绿橙极光渐变光团
-  - 左上小钻石装饰 + 蓝色短条
-  - 中央偏左大字 "感谢观看" + 英文 "Thank you" (白色, ~44pt)
-  - 右半侧大幅人物图 (戴 VR 头显的女性,赛博朋克氛围)
-  - 底部左下日期占位 "20XX.XX.XX",右下 "Presenter name"
-
-# === 辅助 ===
+  - 左侧大字 感谢观看(中文) + Thank you(英文)
+  - 右侧 VR 人物特写大图
+  - 背景:左侧蓝色 + 右侧橙色 blurred 极光渐变
+  - 左上小钻石装饰
+  - 底部左右 footer:日期 + 演讲者
 layout_hint: null
 variant: closing-photo
 page_number: 11

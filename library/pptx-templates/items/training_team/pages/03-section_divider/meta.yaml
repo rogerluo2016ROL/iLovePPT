@@ -1,32 +1,32 @@
 status: approved
-confidence: 0.95
+confidence: 0.97
 needs_manual_review: false
-
 id: training_team__03-section_divider
-name: "Section divider /01 · 橙红 chip + 蓝 band + 团队插画"
+name: "Section Divider · 橙红 /01 大字 + 团队卡通插画"
 layout_type: section_divider
 content_intent:
-  - 章节起首过场,标 /01
-  - 培训模块 1 引入页
-  - 议程过渡到第一部分
+  - 章节切换页,标记进入第 1 章节 (/01)
+  - 培训 deck 模块开始页
+  - 章节间过场强分隔
 when_to_use:
-  - deck 内容首章前
-  - 想统一 5 章节 deck 的视觉节奏(03/08/14/20/26 复用)
+  - 每章节开始放一页,提示讲者切节奏
+  - 跟 02-toc 的 5 章节序号呼应
+  - 同模板 08/14/20/26 是同模式不同序号 (/02 /03 /04 /05),换序号即可复用
 keywords:
-  - 章节分隔
-  - section
-  - 过场
-  - "/01"
-  - 团队
-  - 卡通
+  - section divider
+  - 章节页
+  - 过场页
+  - 章节标题
+  - /01
+  - chapter break
+  - module divider
 native_elements:
-  - 左上橙红渐变方块 + 白色 "/01" 大字
-  - 中部 "Section Header Here" 黑色大标题
-  - 副标题 supporting text
-  - 下半浅蓝 band 横贯
-  - 右侧卡通团队 + TEAM 大字插画(同封面)
-
+  - 左侧橙红渐变长方形 chip + 巨大白色 /01 数字
+  - 右侧 4 卡通人物 + 大字 TEAM 插画 (跟 cover 一致)
+  - 底部浅蓝 band 横向铺
+  - Section Header Here 加粗黑色标题 + Supporting text 副本
+  - When you copy & paste 提示文字 (设计稿留白)
 layout_hint: null
-variant: section-divider-illustration
+variant: section-divider-numbered
 page_number: 3
 template_name: training_team

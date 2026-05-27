@@ -1,38 +1,38 @@
 # === Gate ===
 status: approved
 # === LLM 自评 ===
-confidence: 0.78
+confidence: 0.85
 needs_manual_review: false
 
 # === 必填(进 embedding)===
 id: business_geometric__28-radial
-name: "Radial · 中国地图 + 6 城市站点分布"
+name: "Radial · 中国地图 + 6 大城市发散 banking icon"
 layout_type: radial
 content_intent:
-  - 6 城市/网点分布(全国布局)
-  - 业务覆盖范围 / 分公司地图 / 区域 hub 展示
-  - 中心 + 环绕节点的地理分布
+  - "6 大城市 / 区域 + 中国地图为底"
+  - "网络节点 / 分支布局 / 区域分布"
+  - "强调区域分布 + 中心枢纽"
 when_to_use:
-  - 全国布局 / 多城市展示
-  - 6 个站点围绕中心圆分布
-  - 地理 / 服务覆盖类汇报
+  - "需要展示在中国地图上的 6 个节点(地理分布)"
+  - "希望左右各 3 个 callout 平衡布局"
+  - "金融 / 网点 / 分公司分布主题"
 keywords:
-  - 地图
-  - 中国
-  - 6 城市
-  - 站点
-  - 网点
-  - radial
-  - 分布
+  - "地图"
+  - "中国"
+  - "6 城市"
+  - "网点"
+  - "区域"
+  - "分布"
+  - "radial"
+  - "map"
 native_elements:
-  - 中央灰色中国地图轮廓
-  - 6 个城市节点圆形 icon(古建筑/银行 icon · 深蓝/天蓝交替)
-  - 节点环绕中心灰色圆环排布(radial 布局)
-  - 左右两侧各 3 行 "Text here" 标题 + 描述(共 6 项)
-  - 每节点旁标 "Keyword" 城市名
+  - "中央灰色中国地图轮廓 + 中心圆连接圈"
+  - "6 个圆形 building icon(深蓝/浅蓝交替)+ Keyword 标签"
+  - "左右各 3 个 Text here 标题 + 描述"
+  - "icon 用希腊神庙建筑(代指金融机构)"
 
 # === 辅助(不进 embedding)===
-layout_hint: china-map-with-pins
+layout_hint: "china-map-with-6-city-anchors"
 variant: radial-map-anchor
 page_number: 28
 template_name: business_geometric

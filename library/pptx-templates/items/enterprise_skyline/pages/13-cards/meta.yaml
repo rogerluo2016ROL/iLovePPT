@@ -1,32 +1,35 @@
 status: approved
-confidence: 0.72
+confidence: 0.85
 needs_manual_review: false
 
 id: enterprise_skyline__13-cards
-name: "卡片 · 左侧 2 大标签 + 右侧 6 子项 (2 行 3 列)"
+name: "左侧大方块标题 + 右侧 2×3 = 6 卡片"
 layout_type: cards
 content_intent:
-  - 左侧 2 大类(竖排 Text here 标签) + 右侧 6 个特征卡片(2×3 grid)
-  - 双分类下展开 6 项细节
-  - 类似 "两阶段 × 三任务 / 两团队 × 三职责"
+  - 左侧总述 / 主题 + 右侧 6 项细分要点
+  - 强调"1 个核心主题 + 6 项支撑"结构
+  - 团队 / 服务 / 产品矩阵的紧凑展示
 when_to_use:
-  - 2 大分类 + 共 6 个子要点
-  - 详细对比 / 团队职责分组
-  - 不太适合简单对比(更偏 cards 矩阵)
+  - 左侧 1 大块主标题 + 右侧 6 项 (2 行 × 3 列) 细化
+  - 信息量较大,要求横向并列对比
+  - 各 subitem 配 icon + 1 句话
 keywords:
   - 卡片
   - cards
-  - 6项
-  - 2行3列
-  - 双分类
-  - 子项
-  - 矩阵
+  - 2 行
+  - 3 列
+  - 6 项
+  - 左侧主题
+  - 大方块
+  - sidebar
 native_elements:
-  - 左侧浅灰圆角矩形容器 + 2 个 "Text here" 中央下划线标签(垂直分隔条)
-  - 右侧 6 个圆角白底带描边卡片 = 蓝色人物 + 列表图标 + "Supporting text here." 副标
-  - 卡片 2 行 × 3 列
-  - 卡片间细线连接,呈左→右扩展态势
-  - 底部模板水印 + 页码 13
+  - 浅白底
+  - 左侧浅灰色大圆角方块 + 两栏 "Text here" 加粗下划线小标题(总述区)
+  - 左侧顶 / 底各一个 0.5 圆形装饰(灰色)增强连接感
+  - 右侧 2 行 × 3 列 = 6 浅灰色边框圆角矩形卡片
+  - 每卡:左侧人形 + 项目符号 icon + 右侧 "Supporting text here." 一句话
+  - 左侧主题与右侧 6 卡之间细灰连接线
+  - 顶部水平细分隔线 + 底部 "www.islide.cc" + 页码 13
 
 layout_hint: null
 variant: cards-6-icon

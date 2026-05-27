@@ -1,32 +1,34 @@
 status: approved
-confidence: 0.82
+confidence: 0.72
 needs_manual_review: false
-
 id: training_team__10-process_flow
-name: "Process flow · 三角形循环 · 3 节点 + 顺时针箭头"
+name: "Process Flow · 三角形 3 节点循环 (3 人物 icon + 中心 Text + 4 箭头循环)"
 layout_type: process_flow
 content_intent:
-  - 3 步循环流程(plan→do→check)
-  - PDCA / OODA 简化版三角形
-  - 培训循环 (Learn → Practice → Reflect)
+  - 3 节点循环流程 (PDCA / Plan-Do-Check 三段)
+  - 团队 3 角色协作循环
+  - 闭环工作流 (顺时针/逆时针循环)
 when_to_use:
-  - 流程是循环且只有 3 节点
-  - 强调"闭环 / 持续"的概念
+  - 流程节点形成闭环而非线性 → 3 节点循环
+  - 也可读作 radial (中心 Text + 3 周边),但箭头闭环更强调流程
+  - '候选 layout: process_flow (闭环) vs radial (中心辐射) · 因有方向箭头选 process_flow'
 keywords:
-  - 循环
+  - process flow
+  - 3 节点循环
   - 三角形
-  - 3 步循环
-  - PDCA
+  - triangular flow
   - 闭环
-  - 持续改进
-  - cycle
+  - cyclic
+  - PDCA
+  - 循环
+  - 3-step
 native_elements:
-  - 中央大三角形 + 3 个橙红顺时针箭头
-  - 3 个 person icon(灰圆,$ 符号)在三角形 3 顶点
-  - 中心 "Text" 占位文
-  - 左侧 Unified fonts 段落引述
-  - 每节点旁 Text here + 描述
-
+  - 中央等边三角形浅色 (灰底 + 橙红交叉影线填充)
+  - 三角形 3 顶点各一个浅灰圆 + 人物 icon (与 $ 符号)
+  - 三角形中心 Text 占位 (italic)
+  - 三角形 3 条边各有橙红小箭头 (顺时针方向流转)
+  - 3 顶点旁 Text here + Copy paste 副本说明
+  - 左上区独立 Unified fonts 大标 + Theme color 副本 (设计提示)
 layout_hint: null
 variant: process-cycle-3
 page_number: 10

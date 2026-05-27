@@ -1,39 +1,41 @@
 status: approved
-confidence: 0.82
-needs_manual_review: false
+confidence: 0.62
+needs_manual_review: true
 
 id: product_lineart__26-radial
-name: "Radial · 中央母节点 + 4 子节点向下树状分支"
+name: "Tree Hierarchy · 顶部 1 parent + 4 子节点 (icon + cards) · 上→下分发"
 layout_type: radial
 
 content_intent:
-  - 1 个父节点 → 4 个子节点的层级分解
-  - 每子节点带 icon + 标题 + 2 段说明
-  - 适合"X 分解为 4 大子模块"
+  - 1 父节点向 4 子节点分发的层级结构
+  - 父节点蓝色椭圆 "...Text" · 4 子各带"上升趋势"icon
+  - 4 子节点下方各有 "Text here" + 2 行描述
 
 when_to_use:
-  - 1 个核心议题分解出 4 个子议题
-  - 强调"从总到分"的层级关系
-  - 树状结构展示(母 → 子)
+  - 1 战略 → 4 子策略分发
+  - 1 组织/团队 → 4 子部门
+  - '"1 to N broadcast" 结构(4 路分发)'
 
 keywords:
   - radial
-  - 树状图
-  - 4 子节点
-  - 母子结构
+  - tree
   - 1-to-4
-  - 分解
-  - decomposition
-  - hierarchy
+  - 分发
+  - parent-children
+  - org chart
+  - broadcast
 
 native_elements:
-  - 顶部蓝色圆角矩形 "…Text" 父节点
-  - 父节点下方曲线连接到 4 个黄色圆 icon (上升箭头图表) 子节点
-  - 每子节点下灰色 "Text here" 标题栏
-  - 标题下方 2 行 "Supporting text here" 说明
-  - 整体形成"1 父 4 子"树状结构
+  - 顶部深蓝胶囊框 "...Text" 白色斜体
+  - 4 条灰色曲线从胶囊框 fanout 到 4 个黄色 icon 圆 (含 "trending up" line-art)
+  - 4 个 icon 下方有灰色 "Text here" 加粗 (作为 cards 标题)
+  - 每 card 下方 2 行 "Supporting text" 灰色描述
+  - 通体白底无装饰
 
-layout_hint: null
+layout_hint: |
+  视觉是 broadcast tree (1 parent → 4 children),几何上不是中心放射 radial 也不是 venn。
+  原 placeholder_map.layout_class=radial,保持一致。最接近变体: radial-tree 或 other-tree-hierarchy。
+  分歧:也可解为 process-branching(1 source → N branches)。建议人工审。
 variant: radial-tree
 page_number: 26
 template_name: product_lineart

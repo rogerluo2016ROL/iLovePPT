@@ -1,32 +1,34 @@
 status: approved
-confidence: 0.85
+confidence: 0.89
 needs_manual_review: false
-
 id: training_team__25-cards
-name: "Cards · 3-col + 顶部大标 + 左侧 leader silhouette + 3 location pin"
+name: "Cards · 3 列 (location-pin icon + Text) + 左侧橙红人物剪影"
 layout_type: cards
 content_intent:
-  - 团队 3 个 location / region 计划
-  - 3 个目标 / 3 个 milestone
-  - 培训师对 3 个团队 / 区域的安排
+  - 3 个地点 / 团队 / 模块的并列展示
+  - 围绕"人物 + 3 区域"的布局
+  - 3 项关键定位 / 3 个用户群体
 when_to_use:
-  - 内容是 3 项规划 + 有"主导人物"叙事
-  - 想用 location pin 隐喻"地点 / 目标点"
+  - 3 等权重项 + 左侧需要"人物 / 主角"视觉锚
+  - 想要"location pin"隐喻 (地点 / 定位)
+  - 跟 11-cards 不同 (11 是 4 列,25 是 3 列 + 左人物)
 keywords:
-  - 3 cards
-  - 3 维度
-  - 3 location
-  - 团队规划
-  - leader silhouette
-  - 地图标记
-  - pin
+  - cards
+  - 3 列
+  - 3-col
+  - location pin
+  - 地点
+  - 3 项
+  - 人物剪影
+  - person silhouette
+  - 区域展示
 native_elements:
-  - 顶部大标题 "Unified fonts make reading more fluent" + 橙红下划线
-  - 左侧大橙红 leader silhouette
-  - 右侧 3 个 location pin icon(灰 / 橙红 / 灰),中间高亮
-  - 每 icon 下 Text here 标题 + 描述
-  - 灰底色块分上下
-
+  - 左侧橙红色人物半身剪影 (思考姿态)
+  - 顶部 Unified fonts 大标 + 橙红下划线
+  - 副本 Theme color makes PPT more convenient
+  - 浅灰底色横向 band (人物剪影下半在 band 内)
+  - 右侧 3 列 (location-pin icon 圆形,中央橙红描边,两侧灰色) + Text here + Copy paste 副本
+  - 3 列间细灰垂直分隔
 layout_hint: null
 variant: cards-3-icon
 page_number: 25

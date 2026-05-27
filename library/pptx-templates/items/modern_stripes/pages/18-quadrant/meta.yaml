@@ -1,31 +1,39 @@
+# === Gate ===
 status: approved
-confidence: 0.78
+
+# === LLM 自评 ===
+confidence: 0.85
 needs_manual_review: false
 
+# === 必填 ===
 id: modern_stripes__18-quadrant
-name: "Quadrant · 4 角分组 + 中央 3D 球"
+name: "Quadrant · 2x2 四象限 + 中心球体装饰"
 layout_type: quadrant
 content_intent:
-  - 4 维度 / 4 角色围绕中心议题
-  - 中心 3D 视觉锚点(地球 / 系统 / 平台)
-  - 强调"中心议题 + 4 个分支 / 边界"
+  - 2x2 矩阵分析(SWOT / Eisenhower / 价值象限等)
+  - 4 个维度的均衡展示
+  - 4 个领域 / category 的并列说明
 when_to_use:
-  - 4 维度并列(角度可分 TL/TR/BL/BR 四象限)
-  - 中心需要强视觉锚点
-  - 各角节有 1 段标题 + 2-3 条 bullets
+  - 内容是 4 个等权象限(无明显优先级)
+  - 想用 2x2 + 中心 anchor 视觉强调"4 维平衡"
+  - 适合 SWOT / BCG / 优先级矩阵等
 keywords:
-  - 4 角
   - quadrant
-  - 4 维度
-  - 中心 + 四角
-  - 3D 球
-  - 地球
-  - 全球
+  - 2x2
+  - 四象限
+  - SWOT
+  - 矩阵
+  - 4维分析
+  - 平衡
 native_elements:
-  - 中心 3D 浅灰球(纬度环纹理)
-  - 4 个圆形人物 icon 围绕球(左上 navy / 右上 red / 左下 navy / 右下 navy)
-  - 4 角文字 block:左上 / 右上 / 左下 / 右下 各"Text here"标题 + 2 行 bullets
-  - 横向细灰线分隔上下两组
+  - 顶部水平细线
+  - 中央大型球体装饰(灰白渐变,3 段水平分隔)
+  - 球体 4 个圆形 satellite 点(蓝/红/蓝/蓝),位于球体四角
+  - 4 角(左上 / 右上 / 左下 / 右下)4 段 Text here + 2 行 Supporting
+  - 中央水平细线分隔上下 2 组
+  - 底部 URL + 页码
+
+# === 辅助 ===
 layout_hint: null
 variant: quadrant-with-center
 page_number: 18

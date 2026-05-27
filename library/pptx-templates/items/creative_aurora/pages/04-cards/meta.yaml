@@ -1,38 +1,31 @@
-# === Gate ===
 status: approved
-# === LLM 自评 ===
-confidence: 0.78
+confidence: 0.72
 needs_manual_review: false
-
-# === 必填 ===
 id: creative_aurora__04-cards
-name: "Cards · 双栏文字 + 右侧霓虹竖条 KV 图"
+name: "Cards · 2-col 文字卡 + 右侧霓虹色装饰图"
 layout_type: cards
 content_intent:
-  - 内容页 · 左两段并列文字 + 右侧大图作视觉支撑
-  - 适合概念阐释 + 视觉举例的内容编排
-  - 创意类项目的现象 / 案例展示
+  - 2 个并列要点 / 概念对照
+  - 文字主导的双卡展示
+  - 用霓虹色装饰图烘托创意 / 科技氛围
 when_to_use:
-  - 需要两段并列要点 + 一张主图说明的内容页
-  - 概念 + 视觉案例配对呈现
-  - 不适合纯数据 / 纯文字密集页
+  - 内容是 2 个并列但不需 4 角象限对比的点
+  - 需要在"信息 + 氛围图"之间做平衡
+  - 创意 / 设计类 deck 的概念解析页
 keywords:
-  - 双栏
-  - 2-cols
-  - 图文混排
-  - 霓虹竖条
-  - cards
-  - 案例展示
+  - 双卡
+  - 2-col cards
+  - 文字卡片
+  - 霓虹装饰
+  - 双要点对照
+  - neon decoration
 native_elements:
-  - 左上角章节标识 (白色, 蓝色短条引导)
-  - 标题下方一行说明文字 "详细列出完成的项目及成果"
-  - 左下方两段并列文字块 (上下排列),每段含 "文学编辑岗位" 标题 + 一段描述
-  - 右侧大幅紫色 / 蓝色霓虹光条竖向 KV 图
-  - 图右上角小型星形装饰
-  - 右下角小蓝色实心方块
-
-# === 辅助 ===
+  - 左侧 2 列文字单元(标题 + 正文)
+  - 右侧霓虹光柱 / 紫红色长方形装饰图
+  - 顶部章节小标识(深蓝小条)+ 标题"市场分析"
+  - 副标题(浅灰中字)
+  - 背景:左下蓝色 blob 渐变
 layout_hint: null
-variant: cards-2-photo
+variant: cards-2-mixed
 page_number: 4
 template_name: creative_aurora

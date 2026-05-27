@@ -1,37 +1,42 @@
 status: approved
-confidence: 0.88
+confidence: 0.74
 needs_manual_review: false
 
 id: product_lineart__16-radial
-name: "Radial · 中央大蓝圆 4 节点四叶花瓣 + 四角描述"
+name: "Radial 4-spoke quatrefoil · 中心蓝圆 + 4 黄色卫星圆 + 灰色四瓣花背景"
 layout_type: radial
 
 content_intent:
-  - 1 个核心 + 4 个支柱因素的对称布局
-  - 4 个支柱(花瓣)代表平等子项
-  - 配 4 角描述
+  - 4 维度围绕单一中心 (强调"四象限平衡")
+  - 中心 "...text" 主题
+  - 4 卫星圆各带 line-art icon
 
 when_to_use:
-  - 1 个核心议题向 4 个相等维度展开
-  - 4 个 KPI 围绕中心目标
-  - 强调对称感、平衡感
+  - 4 个并列维度的中心化展示
+  - 跟 venn-4 类似但强调"中心 + 4 卫星"非"4 圆相交"
+  - 例:4 战略支柱 + 中心愿景
 
 keywords:
   - radial
-  - 4 节点
-  - 中心辐射
+  - 4 辐射
+  - quatrefoil
+  - 中心
   - 四瓣
-  - 对称
+  - hub
   - 平衡
 
 native_elements:
-  - 中央蓝色大圆 "…text" 作为核心
-  - 周围 4 个圆 (浅灰背景)四个方向 (左上/右上/左下/右下) 形成花瓣布局
-  - 4 个黄色圆形 (折线图 icon) 紧贴中央大圆
-  - 四角各 "Text here" 标题 + 描述
-  - 顶部细线分隔 header
+  - 巨大浅灰色四瓣花瓣背景 (4 个等大圆相切)
+  - 中心深蓝色圆 "...text" 白字
+  - 4 个黄色小圆 (各带 line-art "趋势图" icon) 放在 4 瓣花上
+  - 4 角 "Text here" 黑色标题 + 灰色描述 (左右对称双列)
+  - 顶部细灰线分隔
 
-layout_hint: null
+layout_hint: |
+  几何上半像 venn(4 圆背景)+ 半像 radial(中心 + 4 卫星)。
+  原 placeholder_map.layout_class=radial,保持一致。
+  分歧:背景的 4 大灰圆相切其实更像 venn-4 的几何;但前景中心圆 + 4 小卫星圆是 radial。
+  4-petal 视觉同 page 6 venn 接近,建议人工审。
 variant: radial-4-spoke
 page_number: 16
 template_name: product_lineart

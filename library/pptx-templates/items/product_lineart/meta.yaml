@@ -3,26 +3,26 @@ provenance:
   schema_version: v1
   embedding_model: tongyi-embedding-vision-plus
   embedding_dim: 1152
-  ingested_at: 2026-05-27 00:00:00+00:00
+  ingested_at: '2026-05-27T20:12:00Z'
   source_pptx_sha256: af14d5a3e010f497f702d601dfad34b210fa57389f0bcbaa345b735023351b8d
   source_pptx_size_bytes: 544899
   source_pptx_version: v1
 extraction:
   declared_pages: 33
-  rendered_pages: 33
-  discrepancy: 0
-  discrepancy_resolution: confirmed_hidden_tool_pages_rerendered
-  low_confidence_pages: []
+  rendered_pages: 32
+  discrepancy: 1
+  discrepancy_resolution: confirmed_hidden_tool_page
+  low_confidence_pages: [4, 10, 12, 14, 17, 23, 26, 28, 30, 31]
   failed_pages: []
-  note: 'slide33 在原 .pptx 里是 <p:sld show="0">(作者隐藏),LibreOffice 默认跳过,首轮 ingest 渲了 32 页。
-
-    主线程已临时改 show="0" → 删除属性 重渲 page 33,内容 = 模板工具说明(主题色彩/字体/参考线)。
-
-    与 enterprise_skyline / training_team 的可见工具说明页处理一致。
-
-    '
+  note: |
+    本次 refresh re-render 32 页(soffice 默认跳过 .pptx 里 <p:sld show="0"> 的 slide33)。
+    declared=33 vs rendered=32 的 discrepancy(1 页)如实记录,等用户审核决定:
+      - 若 slide33 是模板 inactive 工具说明页 → discrepancy_resolution: confirmed_tool_page
+      - 若期望 slide33 也渲染 → 需要主线程改 show 属性后重渲(参考首轮 ingest 处理)
+    low_confidence_pages 是 LLM 重新视觉评估中跟原 final layout_type 判断有歧义或几何
+    边界模糊的页(见 per-page meta.yaml.draft.confidence + needs_manual_review)。
 id: product_lineart
-name: Product Lineart · 蓝色线稿产品/科技通用模板
+name: 'Product Lineart · 蓝色线稿产品/科技通用模板'
 category: enterprise-product
 content_intent:
 - 产品/科技类汇报、方案介绍、功能/服务说明
@@ -92,7 +92,7 @@ visual_tokens:
   body_size_pt: 16
 assets:
   source_pptx: ../../_source/product_lineart.pptx
-  total_pages: 33
+  total_pages: 32
   cover_thumbnail: pages/01-cover/preview.png
 pages:
 - 01-cover

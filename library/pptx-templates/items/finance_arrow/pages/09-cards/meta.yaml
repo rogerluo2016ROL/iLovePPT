@@ -1,33 +1,35 @@
 status: approved
-confidence: 0.88
+confidence: 0.74
 needs_manual_review: false
 
 id: finance_arrow__09-cards
-name: "Cards · 净利润 3 卡片纵向(左 megaphone 人物 + 右 3 段对话气泡)"
+name: "Cards · 3-bullet 利润(左侧大号 megaphone 人物插画 + 右侧 3 个 利润 bullet items)"
 layout_type: cards
 content_intent:
-  - 3 项利润来源 / 3 个净利润贡献维度纵向列出
-  - 左侧大号"橙黄衣 megaphone 人物"插画作语义锚点(宣讲 / 报告 / 强调)
-  - 右侧 3 个 icon + "利润" 标题 + 1 行说明 + 分割线
+  - 单一议题"净利润"按 3 维度拆解
+  - '每 bullet: 灰色圆形对话气泡 icon + 利润 小标题 + 1 句 supporting text'
+  - 左侧大号黄衣 megaphone 人物作主视觉
 when_to_use:
-  - 净利润 3 个贡献维度阐述
-  - 任何"演讲者宣告 3 个关键点"的场景
-  - 3-item 纵向叙述,需要人物图作引导
+  - 3 个并列子点(模板 hard 限定 3)
+  - 适合"净利润 / 净收益 / 净增长 = 三段拆解"叙事
+  - 需要插画主视觉但内容偏 bullet 而非 cards 网格
+  - 不适合数据量大 / 需要表格的场景
 keywords:
-  - 3 卡片
-  - 纵向卡片
+  - 3 bullets
+  - 利润
   - 净利润
-  - 演讲者
-  - megaphone 宣讲
-  - 利润分解
-  - 对话气泡
+  - megaphone 人物
+  - 半屏插画 + 半屏 bullets
+  - 对话气泡 icon
 variant: cards-3-icon
 native_elements:
-  - 左上深黑粗体标题"净利润"
-  - 左侧 1/3 区域大号"橙黄衣 megaphone 人物"灰阶插画(主角宣讲姿态)
-  - 右侧纵向 3 卡片,每卡左侧灰色对话气泡 + icon(齿轮 / 全球 / 灯泡)
-  - 每卡右侧黑色粗体 "利润" 标题 + 1 行 supporting text
-  - 卡片间细灰横线分割
+  - 左上中文标题"净利润" + 灰分割线
+  - 左下大号黄衣 megaphone 人物插画(站立/握喇叭/正面)
+  - 右侧 3 行 bullet items 纵向排列
+  - '每 item: 圆形对话气泡灰 icon (齿轮/地球+箭头/灯泡) + 黑色加粗 "利润" 小标题 + 灰色 1 句 supporting text'
+  - 每 item 间细灰水平分割线
+  - 底部小字 "www.islide.cc" + 页码
+
 layout_hint: null
 page_number: 9
 template_name: finance_arrow

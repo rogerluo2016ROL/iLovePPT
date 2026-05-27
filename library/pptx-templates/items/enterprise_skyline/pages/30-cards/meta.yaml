@@ -1,36 +1,37 @@
 status: approved
-confidence: 0.91
+confidence: 0.88
 needs_manual_review: false
 
 id: enterprise_skyline__30-cards
-name: "卡片 · 3 列正方块 + 中央城市建筑大照片"
+name: "3 列 cards + 中央仰望建筑照片 + 菱形 icon"
 layout_type: cards
 content_intent:
-  - 3 大主题展示 + 视觉冲击照片
-  - 企业核心价值 / 业务三大块 / 服务三类
-  - 强调 "城市 / 商务 / 仰望" 视觉震撼
+  - 3 项要点(企业实力 / 团队 / 业务 3 维度)
+  - 中央配 KV 摄影(企业建筑仰拍)增强专业感
+  - 强调"企业 / 都市 / 商务"主题
 when_to_use:
-  - 3 项并列内容 + 需要插入大图照片
-  - 企业宣传 / 服务介绍 / 业务三大块
-  - 高视觉性陈述(适合开场或章节首页)
+  - 3 项并列 cards + 需要 KV 摄影衬托
+  - 企业宣传 / 招商 / 投资人路演场景
+  - 配菱形 icon + 仰望建筑大图
 keywords:
   - 卡片
   - cards
-  - 3项
-  - 照片
-  - 城市
-  - 商务
-  - hero image
-  - 高楼
+  - 3 项
+  - KV 摄影
+  - 企业建筑
+  - 菱形
   - 仰望
+  - skyline
+  - 商务
 native_elements:
-  - 3 张浅灰底卡片并列(各有 Text here 标题 + Supporting text 副标)
-  - 每张卡片底部右下角带 1 个深蓝 / 蓝灰菱形图标(火焰 / 准星 / 团队)
-  - 中央卡片下方有真实城市高楼仰望黑白照片(crop 进卡片底部)
-  - 整体水平 3-cards 但中间一张更高(有照片)
-  - 底部模板水印 + 页码 30
+  - 浅白底
+  - 3 列卡片均匀分布,顶部 "Text here" 加粗标题 + 灰色 2 行 supporting
+  - 每卡下方一个灰色菱形(45° 方块)+ 内白色 icon(火焰 / 标签 / 人形)
+  - 中央那张卡的菱形下方是一张仰望摩天大楼黑白摄影图片(填满卡底)
+  - 卡片背景浅灰色填充(柔色背景)
+  - 顶部水平细分隔线 + 底部 "www.islide.cc" + 页码 30
 
 layout_hint: null
-variant: cards-3-mixed
+variant: cards-3-photo
 page_number: 30
 template_name: enterprise_skyline

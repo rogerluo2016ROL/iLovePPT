@@ -1,32 +1,41 @@
+# === Gate ===
 status: approved
-confidence: 0.9
+
+# === LLM 自评 ===
+confidence: 0.93
 needs_manual_review: false
 
+# === 必填 ===
 id: modern_stripes__15-pyramid
-name: "Pyramid · 3 层浅金字塔 + 右双列 bullets"
+name: "Pyramid · 3 层金字塔 + 双列详细 bullet 注释"
 layout_type: pyramid
 content_intent:
-  - 3 层递进关系展示 · 每层多 bullets 描述
-  - 战略 / 能力 / 价值链层级
-  - 强调层级 + 每层多维度描述
+  - 3 层结构,每层 2x2 详细论据
+  - 战略层级 + 各层 4 项支撑点
+  - 价值层 / 优先层 / 影响层的详细拆解
 when_to_use:
-  - 3 层级关系 · 每层需要 2 列要点
-  - 信息密度高于 page-12(更多 bullets)
-  - 突出"层级 + 每层多个并列要点"
+  - 3 层金字塔 + 需要每层 4 个详细 bullet
+  - 强调"每层都有充分论据"的深度展开
+  - 比 page 12 信息密度更高的版本
 keywords:
-  - 金字塔
   - pyramid
-  - 3 层
-  - 双列 bullets
-  - 浅色金字塔
-  - 大密度
+  - 金字塔
+  - 3层
+  - bullet
+  - 详细
+  - 战略
+  - 4-pillars
 native_elements:
-  - 中央浅灰 3 层金字塔(纯色边描边)
-  - 每层右边缘有圆形 icon 标记(red 圆 / navy 圆 / navy 圆)
-  - icon 内白色商务人 + 美元符
-  - 左侧每层标"Text"标签
-  - 右侧每层 2 列 bullets(各 2-3 行 "Supporting text here")
-  - 水平细灰线分隔层与层
+  - 顶部水平细线
+  - 左侧 3 层金字塔(顶=蓝/中=红/底=灰)
+  - 各层中央 Text 标签
+  - 各层右侧 person+$ icon
+  - 顶层 icon 红色,中底层 icon 深蓝
+  - 右侧 3 行 x 2 列 = 6 个 Supporting text 块(每行 2 项)
+  - 行间灰色细分隔
+  - 底部 URL + 页码
+
+# === 辅助 ===
 layout_hint: null
 variant: pyramid-3
 page_number: 15

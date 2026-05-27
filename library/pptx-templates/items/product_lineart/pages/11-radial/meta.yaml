@@ -3,35 +3,37 @@ confidence: 0.88
 needs_manual_review: false
 
 id: product_lineart__11-radial
-name: "Radial · 中心圆 + 8 节点环绕 + 左侧补充说明"
+name: "Radial 8-spoke · 中心蓝圆 + 8 周围圆 (含 icon 与序号)"
 layout_type: radial
 
 content_intent:
-  - 1 个核心 + 8 个相关节点的环绕展示
-  - 节点交替蓝/黄/灰高亮重要程度
-  - 左侧大段文字+右侧详细描述
+  - 8 维度围绕单一中心展开
+  - 中心蓝色实心圆为核心
+  - 8 周围圆(交替蓝色 icon 圆 与 黄色编号圆)环绕
 
 when_to_use:
-  - 1 个核心议题向 8 个方向展开
-  - 业务部门 / 产品功能 / 影响因素的"广覆盖"展示
-  - 强调全面性而不是逻辑深度
+  - 8 个维度的中心化展示
+  - 强调"中心 + 8 卫星"结构
+  - 例:8 个市场, 8 个能力维度, 8 个 stakeholder
 
 keywords:
   - radial
-  - 中心辐射
-  - 8 节点
-  - 环绕
+  - 8 辐射
   - hub
-  - 多方向
+  - 中心
+  - 八维
+  - 卫星
+  - 围绕
 
 native_elements:
-  - 中央大蓝色圆 "Text" 作为核心
-  - 周围 8 个白色圆形节点 (蓝边或黄边/灰边交替) 通过虚线连到中心
-  - 4 个节点带蓝色地球+飞机 icon
-  - 左侧大块描述文字 (Text here + Copy paste)
-  - 右侧 2 段 "Text here" + 描述详细说明
+  - 中心一个深蓝实心圆 (label "Text") · 直径占图约 1/4
+  - "周围 8 个圆等距分布: 4 个白底 + 蓝色 globe-plane icon, 4 个黄色环 + \"Text\""
+  - 全部用灰色虚连线放射到中心
+  - 左右两侧黑色 "Text here" 标题 + 灰色 2 段描述
+  - 浅灰色环形细线作为外圈装饰
+  - 顶部细线 header
 
 layout_hint: null
-variant: radial-6-spoke
+variant: radial-hub-spoke
 page_number: 11
 template_name: product_lineart

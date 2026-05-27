@@ -1,37 +1,42 @@
 status: approved
-confidence: 0.78
-needs_manual_review: false
+confidence: 0.62
+needs_manual_review: true
 
 id: product_lineart__12-cards
-name: "Cards · 4 个气泡有机相连(80% / 20% 分组)"
+name: "Cards 80/20 · 2 组数字圆簇 (80% 主 + 20% 副) + 4 个文字 cards"
 layout_type: cards
 
 content_intent:
-  - 4 个要素以有机互联的方式展示
-  - 80%/20% 强调主次比例(帕累托式)
-  - 蓝/黄交替对应 2 类分组
+  - 2 大占比展示 (80% vs 20%) · 类 Pareto / 二八法则
+  - 每组主圆 + 1 卫星圆 + 1 文字 card
+  - 蓝色 = 80% (主), 黄色 = 20% (次)
 
 when_to_use:
-  - 4 个要素分 2 类 (主流 vs 补充)
-  - 80/20 法则可视化
-  - 强调元素间存在关联但分组
+  - 二八法则 / Pareto 占比展示
+  - 双数据集对比 + 简要描述
+  - 不是严格的 4 cards 而是 2 + 2 嵌套关系
 
 keywords:
   - cards
-  - 80 20
-  - 帕累托
-  - 气泡
-  - 有机相连
-  - 4 元素
-  - bubble
+  - 80/20
+  - Pareto
+  - 占比
+  - 二八
+  - 数据 cards
+  - 双组
 
 native_elements:
-  - 4 个浅灰大圆有机相连(类似气泡集群)
-  - 左下/右上 2 个蓝色聊天气泡 icon + 80% 标签
-  - 右下/左上 2 个黄色聊天气泡 icon + 20% 标签
-  - 4 角各 "Text here" + supporting text 描述
+  - 左侧大灰圆 "80%" 黑字 + 小灰圆 "20%" 上方
+  - 左侧大圆下方有蓝色"对话泡"icon 小圆
+  - 左侧大圆上方黑色 "Text here" + 灰色 "Supporting text" 描述
+  - "右侧镜像对称: 大圆 80% + 小圆 20% + 黄色\"对话泡\"icon 小圆"
+  - 圆之间细颈连接(metaball 结构)
 
-layout_hint: null
-variant: cards-4-icon
+layout_hint: |
+  视觉是 2 组 metaball 圆簇(大圆 + 小圆)+ 4 文字注释,几何上不是标准 cards 网格也不是
+  data chart。candidate 候选:cards(选用, 4 cards 视角)/ data(若关注 80/20 数据)。
+  选 cards 因为现有 placeholder_map.layout_class 假设是 cards-2-text 衍生;若用户更偏向
+  data → 改为 data-other 也合理。低置信度建议人工审。
+variant: cards-4-mixed
 page_number: 12
 template_name: product_lineart

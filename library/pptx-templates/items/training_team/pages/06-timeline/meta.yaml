@@ -1,33 +1,33 @@
 status: approved
-confidence: 0.9
+confidence: 0.93
 needs_manual_review: false
-
 id: training_team__06-timeline
-name: "Timeline · 4 跑步姿态从起跑→冲线(成长隐喻)"
+name: "Timeline · 4 阶段奔跑者灰阶 + 终点橙红冲线"
 layout_type: timeline
 content_intent:
-  - 培训成长 4 阶段(从新手到达成)
-  - 项目里程碑 4 节点叙事
-  - 个人 / 团队进步轨迹的视觉化
+  - 4 阶段成长 / 进度展示 (从蹲伏 → 起跑 → 冲刺 → 冲线)
+  - 团队发展里程碑 4 节点
+  - 培训项目 4 阶段路径图
 when_to_use:
-  - 强调"过程逐步加速"的递进感
-  - 4 阶段成长叙事 + 终点高光
-  - 团队培训成长曲线展示
+  - 有清晰的"由弱到强 / 由起到终"递进关系
+  - 4 阶段刚好 (节点 5+ 用 19-timeline 横向时间线)
+  - 想要"奔跑者剪影"的成长隐喻
 keywords:
-  - 时间轴
   - timeline
-  - 跑步
-  - 成长
+  - 时间轴
   - 4 阶段
-  - 进步轨迹
-  - 冲线
+  - 4-step
+  - 成长路径
+  - 进度
   - milestone
+  - 奔跑者
+  - 由起到终
 native_elements:
-  - 横向时间轴 + 4 个节点 marker
-  - 4 个跑步姿态 silhouette(起跑姿势→冲线姿态)从浅灰渐变到橙红
-  - 终点跑者橙红冲线,前 3 为不同灰阶
-  - 每节点下方 01-04 Text here 编号 + 描述
-
+  - 4 个奔跑者剪影 (左到右递增姿态:蹲伏 → 起跑 → 冲刺 → 冲线)
+  - 颜色从浅灰 → 深灰 → 橙红渐变
+  - 终点冲线者举手 + 橙红绸带
+  - 底部灰色水平时间线 + 4 圆点节点
+  - 节点下方 01-04 Text here 下划线斜体标题 + Copy paste 副本
 layout_hint: null
 variant: timeline-h-4
 page_number: 6

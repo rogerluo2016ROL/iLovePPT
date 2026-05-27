@@ -1,31 +1,31 @@
 status: approved
-confidence: 0.88
+confidence: 0.90
 needs_manual_review: false
-
 id: training_team__05-radial
-name: "Radial · 中心 Text 节点 + 5 分支 fan-out(01-05)"
+name: "Radial · 中央 Text 节点 + 5 编号圆环辐射"
 layout_type: radial
 content_intent:
-  - 1 中心主题展开 5 个 sub-branch
-  - 培训目标拆解 5 个 sub-action
-  - 1 个产品 / 团队 5 项能力分支
+  - 中心要素辐射到 5 个编号子项 (01-05)
+  - 团队核心目标 → 5 个支撑动作
+  - 培训主题 → 5 个学习模块
 when_to_use:
-  - 5 子项呈非线性枝节展开
-  - 中心 KW 需要被多个分支衬托
+  - 1 中心 + 5 子项的辐射关系最佳
+  - 子项有自然顺序 (01-05 编号)
+  - 强调"中心驱动 5 项"而非"5 项独立"
 keywords:
-  - 辐射
   - radial
-  - 5 分支
-  - fan-out
-  - 树状
-  - 中心主题
-  - 01-05
+  - 中心辐射
+  - 5 项
+  - 5-spoke
+  - hub-spoke
+  - 编号圆环
+  - mind-map
 native_elements:
-  - 中心灰圆环含 Text 字
-  - 5 个数字编号圆(01-05),01/03/05 橙红实心,02/04 灰
-  - 每节点 fan 状箭头从中心连出
-  - 每节点旁 Text Here 标题 + 描述
-
+  - 中央灰色描边圆环 + 内 Text 占位
+  - 5 个圆点 (01-05) 散布,橙红 + 灰色交替
+  - 每节点 → 中心连线 (灰色细箭头)
+  - 节点旁 "Text Here" 加粗 + Copy paste 副本说明
+  - 03 编号节点位置最高,其余环绕底部
 layout_hint: null
 variant: radial-5-spoke
 page_number: 5

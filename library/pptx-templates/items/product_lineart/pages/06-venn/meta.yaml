@@ -1,35 +1,36 @@
 status: approved
-confidence: 0.85
+confidence: 0.88
 needs_manual_review: false
 
 id: product_lineart__06-venn
-name: "Venn · 4 圆相交花瓣 + 四角 icon 说明"
+name: "Venn 4-petal · 4 圆相交形成花瓣 + 4 侧 cards"
 layout_type: venn
 
 content_intent:
-  - 4 个维度的交集/共性展示
-  - 各维度独立又有共同核心
-  - 适合"X 因素共同决定 Y"类总结
+  - 4 维度交集/共性展示
+  - 中间花瓣 1/2/3/4 编号代表核心交集
+  - 4 侧 cards 各自描述一个维度
+
+when_to_use:
+  - 4 个互有重叠的概念/维度展示
+  - 强调"四者交汇"的核心点
+  - 例:4 个能力交叉, 4 个市场细分
 
 keywords:
   - venn
-  - 四圆相交
+  - 4 圆
+  - 维恩图
   - 交集
+  - 四瓣花
+  - quatrefoil
   - 4 维度
-  - 共性
-  - flower
-  - 花瓣
-
-when_to_use:
-  - 4 个不同维度需要展示交集
-  - 强调多维度共同作用
-  - 中心是核心,四瓣是支柱
 
 native_elements:
-  - 中央 4 个 (蓝/黄/蓝/黄) 花瓣形相交区域,各标编号 1/2/3/4
-  - 4 个外圈大灰色圆轮廓相交形成花朵
-  - 四角 (左上/右上/左下/右下) 各 1 个 user/tree icon + Text here 标签 + Copy paste 说明
-  - 蓝色/黄色 icon 交错配色
+  - 中间 4 个灰色大圆相交 (上下左右各 1 个),形成中心 4 瓣花叶
+  - 中心 4 瓣分别填蓝/黄/蓝/黄交错,白色数字 1/2/3/4
+  - 4 个角落各 1 个 cards (icon + Text here 标题 + 描述)
+  - icon 为蓝/黄交替的"人物+网络"线稿
+  - 顶部细灰线 header / 底部 footer "www.islide.cc"
 
 layout_hint: null
 variant: venn-4

@@ -1,32 +1,34 @@
 status: approved
-confidence: 0.92
+confidence: 0.78
 needs_manual_review: false
 
 id: finance_arrow__07-cards
-name: "Cards · 财务费用 3 卡片横向(圆形 icon + 标题 + 2 段 bullets)"
+name: "Cards · 3-icon 财务费用(顶部 hook + 3 大圆形 icon 横向 + 各 bullet 段落)"
 layout_type: cards
 content_intent:
-  - 3 个费用分类 / 3 个会计科目并列(每卡 icon + 标题 + 2 段描述)
-  - 卡片间用细灰横线连接(timeline 感)
-  - 每卡 icon 用圆形底色(2 个橙黄 + 1 个蓝色作焦点)
+  - 3 个并列业务 / 维度
+  - '每 card: 大圆形 icon (橙/蓝/橙交替) + 黑色 "... 费用" 小标题 + 2 条 supporting bullet'
+  - 顶部 1-2 句英文 hook + 中文段落
 when_to_use:
-  - 财务费用 3 类(利息支出 / 汇兑损益 / 手续费)分项展示
-  - 3 个会计科目 / 3 个分析维度
-  - 任何 3-item 并列对比 + 多段描述
+  - 恰好 3 项并列(模板 hardcoded 3 · 多/少需调整 layout)
+  - 内容是平行子项(无顺序)且每项可用 1 icon 概括
+  - icon 比例较大(适合"用图标 + 短文字快速看完"的简报场景)
+  - 不要用作 timeline(无方向箭头 / 不暗示顺序)
 keywords:
-  - 3 卡片
+  - 3 cards
+  - 大圆 icon
   - 横向 3 列
   - 财务费用
-  - 利息汇兑
-  - icon 卡片
-  - timeline
+  - icon-led cards
 variant: cards-3-icon
 native_elements:
-  - 左上深黑粗体标题"财务费用"
-  - 中部副标题"Unified fonts make reading more fluent." 1 行 + "Theme color..." 加粗 1 行 + 灰色描述 1 行
-  - 右上角深灰色三角形装饰(右上角斜切色块)
-  - 3 个卡片横向:每卡圆形 icon(2 橙黄 + 1 蓝色)/ "... 费用" 黑色粗标题 / 2 段 supporting bullet
-  - 卡片间细灰横线连接 + 细灰垂直分割线
+  - 左上中文标题"财务费用" + 灰横线分割
+  - 中部大号英文 hook + 2 句 supporting 灰色文本
+  - 右上角深灰大三角装饰(财务/严肃感)
+  - '中下 3 张 card 横向排列: 大橙黄圆 (icon) - 大蓝圆 (icon) - 大橙黄圆 (icon) · 交替色彩'
+  - '每 card 下方: 黑色 "... 费用" 小标题 + 2 条灰色 bullet(段落形式 · 2 行)'
+  - 底部小字 "www.islide.cc" + 页码
+
 layout_hint: null
 page_number: 7
 template_name: finance_arrow

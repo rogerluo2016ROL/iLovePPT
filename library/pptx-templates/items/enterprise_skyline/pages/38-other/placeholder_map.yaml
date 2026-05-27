@@ -1,5 +1,5 @@
 template_page_index: 37
-layout_class: '?'
+layout_class: other
 slots:
 - id: '?'
   shape_id: 4
@@ -10,9 +10,9 @@ slots:
     top: 0.0
     width: 11.88
     height: 1.12
+  font_size_pt: 28.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 28.0
 - id: '?'
   shape_id: 2
   tree_path: '11'
@@ -26,9 +26,9 @@ slots:
     top: 0.14
     width: 2.78
     height: 0.84
+  font_size_pt: 8.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 8.0
 - id: '?'
   shape_id: 332
   tree_path: '7.3'
@@ -38,9 +38,9 @@ slots:
     top: 2.23
     width: 1.69
     height: 0.17
+  font_size_pt: 10.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 10.0
 - id: '?'
   shape_id: 351
   tree_path: '0.0'
@@ -52,23 +52,23 @@ slots:
     top: 5.89
     width: 3.47
     height: 0.61
+  font_size_pt: 10.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 10.0
 - id: '?'
   shape_id: 613
   tree_path: '2'
-  raw_text_sample: '<template_vector_replace_note>
+  raw_text_sample: '点击 iSlide【插图库】中的插图替换
 
-    Click the target vector in <template_vector_library> “Vect'
+    Click the target vector in iSlide “Vect'
   bbox:
     left: 5.38
     top: 5.89
     width: 2.8
     height: 0.61
+  font_size_pt: 10.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 10.0
 - id: '?'
   shape_id: 753
   tree_path: '5'
@@ -80,9 +80,9 @@ slots:
     top: 5.98
     width: 3.47
     height: 0.44
+  font_size_pt: 10.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 10.0
 - id: '?'
   shape_id: 350
   tree_path: '0.1'
@@ -92,9 +92,9 @@ slots:
     top: 6.04
     width: 0.3
     height: 0.3
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 614
   tree_path: '3'
@@ -104,9 +104,9 @@ slots:
     top: 6.04
     width: 0.3
     height: 0.3
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 754
   tree_path: '6'
@@ -116,6 +116,7 @@ slots:
     top: 6.04
     width: 0.3
     height: 0.3
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
+

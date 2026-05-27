@@ -1,29 +1,37 @@
 status: approved
-confidence: 0.95
+confidence: 0.94
 needs_manual_review: false
+
 id: product_lineart__09-section_divider
-name: Section Divider 02 · 蓝色线稿产品图标 + 大数字 02
+name: "Section Divider · 大黄色数字 02 + 蓝色线稿产品插画群"
 layout_type: section_divider
+
 content_intent:
-- 第 2 章开始的过渡页
-- 给章节起名 + 一句辅助说明
-- 跟 03 同型号,编号 02
+  - 第二章节分隔页
+  - 巨大 "02" 黄色数字作为视觉锚
+  - 黑色章节标题 + 灰色补充
+
 when_to_use:
-- 章节转场(整 deck 第 2 个章节)
-- 跟 03/15/21/27 配套作为 5 章节标记
-- 需要明显的"开新篇"视觉信号
+  - 进入第二章节
+  - 需要强烈视觉断点
+  - 跟 03/15/21/27 page 是同一变体序列(01-05)
+
 keywords:
-- section divider
-- 章节封面
-- 过渡页
-- '2'
-- 蓝色线稿
+  - section divider
+  - 章节
+  - "02"
+  - 大数字
+  - 蓝色线稿
+  - 产品插画
+
 native_elements:
-- 左侧蓝色线稿产品图标 group
-- 中间黑色加粗 "Section Header Here" 大标题 + 两行 supporting text
-- 右侧巨大黄色加粗数字 "02"
-- 底部浅蓝色色块
+  - 右侧巨大黄色 "02" 数字
+  - 中部黑色加粗 "Section Header Here" + 灰色 2 行补充
+  - 左下角蓝色线稿产品图标群(同 03/15 系列)
+  - 下半部浅蓝弧形地平线背景
+  - 上部细灰线分隔 header
+
 layout_hint: null
-variant: section-divider-illustration
+variant: section-divider-numbered
 page_number: 9
 template_name: product_lineart

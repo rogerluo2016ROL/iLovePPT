@@ -1,33 +1,35 @@
 status: approved
-confidence: 0.78
+confidence: 0.65
 needs_manual_review: true
-
 id: training_team__16-single_focus
-name: "Single focus · 演讲台 speaker + 多色对话框 + 左右文段"
+name: "Single Focus · 中央演讲者讲台 + 4 个对话气泡 + 左右注释"
 layout_type: single_focus
 content_intent:
-  - 培训师演讲核心观点(围绕 1 个人物)
-  - 多 stakeholder 对一个核心人物的反馈
-  - 1 个 KOL 输出 3-5 个 quote / view
+  - 主讲人 / 演讲者为中心,围绕 4 个观点 / 口号
+  - 关键演讲 / 致辞页 (CEO 致辞 / 培训师开场)
+  - 围绕一个核心人物的"语录"汇总
 when_to_use:
-  - 想凸显演讲 / 培训互动场景
-  - 多个 quote 围绕 1 个核心人
+  - 内容核心是"一个角色 + 多个观点"
+  - 想要"讲台 + 话筒泡"的演讲隐喻
+  - '候选 layout: single_focus (中心人物驱动) vs quote (语录汇总) vs comparison (左右注释)'
+  - 因有中心 podium 强中心感选 single_focus,但 confidence 偏低
 keywords:
-  - 演讲
+  - single focus
+  - 演讲者
+  - 讲台
+  - podium
   - speaker
-  - 对话框
-  - 多 quote
-  - 培训互动
-  - quote burst
-  - speech bubble
+  - 话筒泡
+  - speech bubbles
+  - 致辞
+  - keynote
+  - 中央人物
 native_elements:
-  - 中央灰色 speaker silhouette + podium
-  - 上方 4 个不同色对话框(灰 / 暗绿 / 橙红 / 深蓝),内含 "Text"
-  - 左侧 2 段 Text here + 描述 + 编号
-  - 右侧 2 段对称
-  - 下半浅灰 band 含底部标语 "Unified fonts make reading more fluent."
-
-layout_hint: speaker-with-quote-bursts (single_focus 兜底)
-variant: single-focus-text-image
+  - 中央灰色 podium + 演讲者半身剪影
+  - 4 个不同颜色对话气泡 (浅灰 / 橙红 / 深绿 / 深蓝),内 Text 占位
+  - 左右各 2 个 Text here 注释块 + Copy paste 副本
+  - 底部浅灰带 + 强调副本 "Unified fonts make reading more fluent" (italic)
+layout_hint: null
+variant: single-focus-illustration
 page_number: 16
 template_name: training_team

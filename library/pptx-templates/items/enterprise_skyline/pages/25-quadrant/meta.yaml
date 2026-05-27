@@ -1,33 +1,35 @@
 status: approved
-confidence: 0.85
+confidence: 0.75
 needs_manual_review: false
 
 id: enterprise_skyline__25-quadrant
-name: "四象限 · 大脑拼图中心 + 4 角 70% KPI 块"
+name: "4 项数据 + 中心拼图大脑 · 2×2 quadrant 布局"
 layout_type: quadrant
 content_intent:
-  - 4 维度 KPI / 能力分布展示
-  - 创新 / 思维 / 智力四象限
-  - 配合大脑图形隐喻"全脑思维 / 综合智力"
+  - 4 个数据指标(都是百分比 70%)+ 各自标题
+  - 中心 KV 大脑拼图突出"创新 / 思考 / 智慧"主题
+  - 4 quadrant 围绕一个核心概念
 when_to_use:
-  - 4 维度对比 + 每维度需展示百分比 / KPI
-  - 能力评估 / 智力测评 / 创新维度
-  - 适合学术 / 培训 / 团队评估
+  - 4 项数据指标对比(同类指标 4 个 KPI)
+  - 强调"4 维度环绕 1 核心"
+  - 配 KV 视觉(大脑 / 拼图)烘托主题
 keywords:
-  - 四象限
   - quadrant
-  - 4维度
+  - 4 quadrant
+  - 2x2
   - 70%
+  - 数据
   - KPI
   - 大脑
-  - 思维
   - 拼图
-  - puzzle
+  - 中心 KV
 native_elements:
-  - 中央 4 块大脑拼图(浅灰拼接 + 4 个人头思维图标)
-  - 左上 + 左下 + 右上 + 右下 4 个圆形 "70%" 进度环(蓝灰 / 蓝色描边)
-  - 4 个 70% 块对应 Text here 标题 + Supporting text 副标
-  - 整体象限对称分布
+  - 浅白底
+  - 中心一个浅灰色 4 块拼图大脑(脑形 + 4 块拼图 + 4 个头像 icon 嵌入)
+  - 左侧 2 项(上 / 下)"Text here" 标题 + 灰色 supporting + navy 描边圆形 "70%"
+  - 右侧 2 项 同款 "Text here" + supporting + "70%" 圆
+  - 2×2 排列布局
+  - 顶部水平细分隔线 + 底部 "www.islide.cc" + 页码 25
 
 layout_hint: null
 variant: quadrant-with-center

@@ -6,31 +6,29 @@ needs_manual_review: false
 
 # === 必填(进 embedding)===
 id: business_geometric__01-cover
-name: "Cover · 几何蓝白 + 笔记本插画"
+name: "Cover · 深蓝几何 + 笔记本插画封面"
 layout_type: cover
 content_intent:
-  - 商务报告 / 工作汇报开场,展示主标题 + 副标题 + 演讲人
-  - 产品/方案介绍封面,搭配科技感笔记本插画
-  - 季度/年度总结 deck 第 1 页 KV 视觉
+  - "deck 第 1 页 KV · 展示主题 + 副标题 + speaker 信息"
+  - "通用商务汇报 / 工作总结开场"
+  - "需要科技感几何装饰 + 笔记本数据看板插画的封面"
 when_to_use:
-  - deck 第 1 页 · 封面 KV
-  - 需要"商务 + 几何科技感"基调的开场
-  - 主题色为蓝色系的企业演讲
+  - "deck 第 1 页(KV 封面)"
+  - "汇报对象偏 corporate 高管 / 投资人"
+  - "希望封面带数据看板视觉暗示(笔记本插画)"
 keywords:
-  - 封面
-  - 商务
-  - 几何
-  - 深蓝
-  - 亮蓝
-  - 笔记本插画
-  - KV
+  - "封面"
+  - "深蓝"
+  - "几何"
+  - "笔记本"
+  - "KV"
+  - "商务"
 native_elements:
-  - 左侧主标题(深色大字)+ 副标题(中灰)+ Subtitle here
-  - 右侧亮蓝色三角形大色块 + 深蓝/亮蓝几何装饰
-  - 笔记本电脑插画(含 PowerPoint 仪表板 mock)
-  - 左下深蓝胶囊按钮 "Speaker name and title"
-  - 左下亮蓝胶囊按钮 (模板水印,使用时可删除)
-  - 浅蓝半透明三角形点缀
+  - "左上 + 右上 + 左下 三块蓝色三角几何装饰"
+  - "中央深蓝主标题(36pt) + 灰色副标题"
+  - "左下两个深蓝圆角胶囊 Speaker name / Designed by"
+  - "右侧笔记本插画(屏幕含柱状图 + 饼图 + emoji 装饰)"
+  - "整体大留白白底"
 
 # === 辅助(不进 embedding)===
 layout_hint: null

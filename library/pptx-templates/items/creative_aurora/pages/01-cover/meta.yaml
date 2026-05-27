@@ -1,40 +1,35 @@
-# === Gate ===
 status: approved
-# === LLM 自评 ===
-confidence: 0.92
+confidence: 0.97
 needs_manual_review: false
-
-# === 必填 ===
 id: creative_aurora__01-cover
-name: "Cover · 多彩极光渐变黑底大标题"
+name: "Cover · 极光渐变封面 · 大标题 + 副标题 + 演讲者 / 日期"
 layout_type: cover
 content_intent:
-  - 创意类产品 / 设计作品集发布会的开场封面
-  - 适合需要表达"高级感 + 视觉冲击"的演讲开场
-  - 强调艺术 / 创意 / 时尚 / 设计行业的 KV 视觉
+  - 创意 / 设计 / 营销项目对外汇报 deck 的开场封面
+  - 品牌发布 / 新品发布的视觉化开篇
+  - 作品集 portfolio / 创意提案的第一印象页
+  - 时尚 / 数字艺术 / VR/AR 演讲的氛围铺垫
 when_to_use:
-  - deck 第 1 页 · 创意 / 设计 / 营销 / 时尚类项目开场
-  - 需要传递"艺术感 / 高级感 / 当代潮流"的演讲首页
+  - deck 第 1 页 · 极光渐变 KV 视觉
+  - 需要瞬间确立"高级感 / 当代 / 创意"调性
+  - 面向设计师 / marketing / 品牌方等审美敏感受众
   - 不适合金融 / 法务 / 学术等严肃场景
 keywords:
-  - 封面
-  - 极光渐变
-  - 黑底高级感
-  - 创意
-  - aurora gradient
-  - 多彩渐变
-  - 五彩斑斓
-  - 黑色
+  - 极光渐变封面
+  - aurora cover
+  - 黑底封面
+  - 大标题封面
+  - 创意 KV
+  - 品牌发布封面
+  - 多彩渐变背景
+  - presenter date footer
 native_elements:
-  - 纯黑底色铺满全屏
-  - 中央位置橙红 / 紫 / 蓝 / 绿多彩极光渐变光团(blurred radial gradient)
-  - 左上角小型菱形 / 钻石装饰图形(白色描边)
-  - 右上角小蓝色实心方块装饰
-  - 大字主标题 (白色, ~44pt) 居中偏左
-  - 副标题灰白小字位于主标题下方
-  - 底部左下角日期占位 "20XX.XX.XX",右下角 "Presenter name"
-
-# === 辅助 ===
+  - 纯黑底色
+  - 中心区大尺寸多彩 blurred 极光渐变(橙红 / 紫 / 蓝)
+  - 左上 4 角钻石装饰
+  - 右上小蓝色方块装饰
+  - 大标题白色(~44pt) · 副标题灰白小字
+  - 底部左右两端 footer:日期 + 演讲者
 layout_hint: null
 variant: cover-geometric
 page_number: 1

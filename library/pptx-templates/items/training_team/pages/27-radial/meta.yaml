@@ -1,31 +1,33 @@
 status: approved
-confidence: 0.88
+confidence: 0.78
 needs_manual_review: false
-
 id: training_team__27-radial
-name: "Radial · 大橙圆主题 + 3 satellite icons + 网格连线背景"
+name: "Radial · 中央橙红主圆 (人物 icon) + 3 周边深蓝圆 (3 icon) + 网络连接"
 layout_type: radial
 content_intent:
-  - 1 个 main 主题 + 3 个 satellite sub-theme
-  - 培训核心 + 3 个 supporting topic
-  - 团队主能力 + 3 个 sub-skill
+  - 中央 1 主圆 (主要角色 / 概念) 辐射 3 子圆
+  - 团队架构:1 leader + 3 子团队
+  - 1 主题 + 3 支撑模块
 when_to_use:
-  - 1 主 + 3 辅的非对称扩展
-  - 想 emphasize 主体的重量(大圆 vs 小圆)
+  - 1 中心 + 3 周边的辐射 (子节点偏少)
+  - 中央节点显著大于周边 (中心驱动感强)
+  - 比简单 3 列 cards 更强调"中心 + 辐射"
 keywords:
-  - 1 主 3 辅
   - radial
-  - 中心主题
-  - 3 satellites
-  - 大圆带小圆
-  - 网络连线
+  - 1 中心 + 3 周边
+  - 1-hub-3-spoke
+  - hub-spoke
+  - 中央驱动
+  - 网络
+  - mind-map
+  - 3 子团队
 native_elements:
-  - 中央大橙红圆含 person + 数据图 icon
-  - 3 个深蓝小圆 satellite(cloud / layer / antenna)
-  - 灰色细线网络背景(节点连线感)
-  - 左侧 Unified fonts 引述段落
-  - 每 satellite 旁 Text here + 描述
-
+  - 中央巨型橙红描边圆 + 人物 icon (Manager/Leader 形象)
+  - 周边 3 个橙红描边圆 (大小渐减:大-中-小) + icon (cloud/globe/podium-with-globe)
+  - 节点间橙红双虚线连接
+  - 浅灰底色辅助小圆 (装饰节点)
+  - 左侧 Text here 加粗 + 2 段 Copy paste 副本
+  - 右下 Text here 加粗 + 2 段 Copy paste 副本
 layout_hint: null
 variant: radial-3-spoke
 page_number: 27

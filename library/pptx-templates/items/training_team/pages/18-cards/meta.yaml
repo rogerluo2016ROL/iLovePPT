@@ -1,33 +1,33 @@
 status: approved
-confidence: 0.82
+confidence: 0.84
 needs_manual_review: false
-
 id: training_team__18-cards
-name: "Cards · 中央西装领带插画 + 4 cards(职业素养 4 维度)"
+name: "Cards · 4 项围绕中央橙红衣领 + 2x2 网格 (上下各 2)"
 layout_type: cards
 content_intent:
-  - 4 项职业素养 / 商务能力维度
-  - 团队成员 4 项核心 attribute
-  - 培训目标 4 个 quality
+  - 4 个角色 / 部门 / 职责并列
+  - 围绕中央"衣领 / 专业形象"主题的 4 角色展示
+  - 4 项关键能力的对称布局
 when_to_use:
-  - 围绕"职业 / 商务 / 礼仪 / 着装"主题
-  - 4 个 quality 平行展开
+  - 4 等权重项,2 上 2 下对称
+  - 中央有强视觉锚 (衣领代表"专业身份")
+  - 跟 11-cards 不同 (11 是 4 列水平,18 是 2x2 围绕中央)
 keywords:
-  - 4 卡片
   - cards
-  - 职业素养
-  - 商务礼仪
-  - 西装
-  - 4 维度
-  - profession
-  - 员工形象
+  - 4 项
+  - 4-card
+  - 2x2 网格
+  - 中央 + 周边
+  - 西装衣领
+  - 专业形象
+  - 角色展示
 native_elements:
-  - 中央橙红西装领带大插画
-  - 4 个灰色 person icon 在角落
-  - 4 段 Text here + 描述,左 2 右 2
-  - 灰色横线分上下两 row
-
+  - 中央橙红衣领图形 (西装领 + 领带 + 红色描边轮廓)
+  - 4 个浅灰圆 icon (含 person + bullet-list icon)
+  - 4 段 Text here 加粗 + Copy paste 副本 (上左/上右/下左/下右)
+  - 4 项间用浅灰水平细线分上下两组
+  - 4 项垂直/水平居中对齐于中央衣领
 layout_hint: null
-variant: cards-4-icon
+variant: cards-grid-2x2
 page_number: 18
 template_name: training_team

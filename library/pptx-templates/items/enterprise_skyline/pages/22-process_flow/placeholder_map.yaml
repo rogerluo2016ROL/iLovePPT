@@ -1,5 +1,5 @@
 template_page_index: 21
-layout_class: '?'
+layout_class: process_flow
 slots:
 - id: '?'
   shape_id: 6
@@ -10,9 +10,9 @@ slots:
     top: 1.61
     width: 2.9
     height: 0.55
+  font_size_pt: 16.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 16.0
 - id: '?'
   shape_id: 12
   tree_path: '3.6'
@@ -22,9 +22,9 @@ slots:
     top: 3.8
     width: 2.26
     height: 0.43
+  font_size_pt: 16.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 16.0
 - id: '?'
   shape_id: 10
   tree_path: '3.4'
@@ -34,9 +34,9 @@ slots:
     top: 3.8
     width: 2.26
     height: 0.43
+  font_size_pt: 16.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 16.0
 - id: '?'
   shape_id: 14
   tree_path: '3.8'
@@ -46,9 +46,9 @@ slots:
     top: 3.8
     width: 2.26
     height: 0.43
+  font_size_pt: 16.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 16.0
 - id: '?'
   shape_id: 15
   tree_path: '3.9'
@@ -58,9 +58,9 @@ slots:
     top: 5.77
     width: 1.72
     height: 0.43
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 19
   tree_path: '3.13'
@@ -70,9 +70,9 @@ slots:
     top: 5.78
     width: 1.78
     height: 0.43
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 18
   tree_path: '3.12'
@@ -82,9 +82,9 @@ slots:
     top: 5.78
     width: 1.72
     height: 0.43
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 17
   tree_path: '3.11'
@@ -94,9 +94,9 @@ slots:
     top: 5.78
     width: 1.72
     height: 0.43
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 16
   tree_path: '3.10'
@@ -106,9 +106,9 @@ slots:
     top: 5.78
     width: 1.72
     height: 0.43
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 20
   tree_path: '3.14'
@@ -118,21 +118,21 @@ slots:
     top: 5.79
     width: 1.78
     height: 0.43
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 3
   tree_path: '1'
-  raw_text_sample: <template_watermark>
+  raw_text_sample: www.islide.cc
   bbox:
     left: 0.73
     top: 6.82
     width: 4.53
     height: 0.23
+  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: null
 - id: '?'
   shape_id: 4
   tree_path: '2'
@@ -142,6 +142,7 @@ slots:
     top: 6.82
     width: 3.18
     height: 0.23
+  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: null
+

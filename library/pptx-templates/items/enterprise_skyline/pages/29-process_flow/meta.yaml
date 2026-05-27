@@ -1,36 +1,37 @@
 status: approved
-confidence: 0.88
+confidence: 0.82
 needs_manual_review: false
 
 id: enterprise_skyline__29-process_flow
-name: "流程 · 6 步对角阶梯 + 左右对称文字注释"
+name: "对角线 6 步 process_flow · 阶梯方块 + 两侧文字"
 layout_type: process_flow
 content_intent:
-  - 6 步骤对角线递进流程
-  - 长流程展开(从左下到右上)
-  - 每步左右各一段注释(类似时间轴拆解)
+  - 6 步线性流程(对角线分布)
+  - 强调"持续上升 / 持续推进"叙事(类似 28 但更细致)
+  - 6 个步骤交替方块 + 旁注文字
 when_to_use:
-  - 6 步骤需要详细注释(每步 1 段说明)
-  - 长流程演进(产品发布 / 项目阶段)
-  - 比 23-process_flow(垂直闭环)更"线性"
+  - 6 步流程(对角线推进式)
+  - 强调"线性步骤 + 持续向上"动感
+  - 每步配一行简短说明
 keywords:
+  - process_flow
   - 流程
-  - process
-  - flow
-  - 6步
-  - 对角
+  - 6 步
+  - 对角线
   - 阶梯
-  - 递进
-  - linear
-  - diagonal
+  - 阶段
+  - 持续推进
+  - 方块
 native_elements:
-  - 6 个正方形小图标块(深蓝 + 蓝灰交替)从左下到右上对角排列
-  - 末尾浅灰箭头向右上(暗示继续)
-  - 每个方块旁有竖线连接 "Copy paste fonts. Choose the only option to retain text." 段落
-  - 段落左右交错(1/3/5 左,2/4/6 右)
-  - 整体对角斜向流动
+  - 浅白底
+  - 6 个 "Text" 方块沿左下到右上对角线分布(navy 实心 / 灰浅 交替)
+  - 方块之间淡灰色线连接
+  - 左下端有一小段尾巴箭头(起点) + 右上端大箭头(终点)
+  - 每方块旁配 "Copy paste fonts..." 灰色 2-3 行 supporting
+  - 左侧奇数方块用 navy 实心 / 右侧偶数 灰色实心交替
+  - 顶部水平细分隔线 + 底部 "www.islide.cc" + 页码 29
 
 layout_hint: null
-variant: process-cycle-6
+variant: process-zigzag
 page_number: 29
 template_name: enterprise_skyline

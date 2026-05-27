@@ -1,34 +1,34 @@
 # === Gate ===
 status: approved
 # === LLM 自评 ===
-confidence: 0.85
+confidence: 0.91
 needs_manual_review: false
 
 # === 必填(进 embedding)===
 id: business_geometric__20-quadrant
-name: "Quadrant · SWOT 4 圆形照片 + 4 维度文案"
+name: "Quadrant · SWOT 2x2 城市照片"
 layout_type: quadrant
 content_intent:
-  - SWOT 战略分析(更视觉化:含真实照片镶嵌)
-  - 4 维度并列分析(城市 / 建筑 / 都市夜景照片营造商业气质)
-  - 高视觉冲击的 4 象限报告
+  - "SWOT 4 象限 + 城市夜景照片做底"
+  - "战略分析(强调氛围)"
+  - "需要 SWOT 但希望视觉更高级"
 when_to_use:
-  - SWOT 分析需要更"商业大片"的视觉
-  - 4 维度同等权重的并列展示
-  - 偏 marketing 类商业 report 用 quadrant
+  - "SWOT 分析需要照片烘托(不要纯几何)"
+  - "对象偏 corporate / 战略汇报"
+  - "希望视觉显得更重量级"
 keywords:
-  - SWOT
-  - 4 象限
-  - quadrant
-  - 城市
-  - 摄影
-  - 商业
-  - 战略
+  - "SWOT"
+  - "象限"
+  - "quadrant"
+  - "战略分析"
+  - "城市"
+  - "夜景"
+  - "照片"
 native_elements:
-  - 中央 2x2 网格 4 个圆形照片(城市夜景 / 大厦 / 都市远景 / 建筑细节)
-  - 每个圆中心标 S/W/O/T 白字深蓝小圆
-  - 左右两侧各 2 行 "Text here" 标题 + 描述
-  - 整体灰阶照片 + 深蓝点缀
+  - "2x2 圆形 4 象限 · 每个内嵌城市夜景照片"
+  - "每个圆心 S/W/O/T 编号白底"
+  - "左右两侧各 2 个 Text here + 描述"
+  - "整体灰底 + 深蓝点缀"
 
 # === 辅助(不进 embedding)===
 layout_hint: null

@@ -1,34 +1,33 @@
 # === Gate ===
 status: approved
 # === LLM 自评 ===
-confidence: 0.78
+confidence: 0.74
 needs_manual_review: false
 
 # === 必填(进 embedding)===
 id: business_geometric__17-bullet_list
-name: "Bullet list · 3 numbered 菱形(对角排列)"
+name: "Bullet list · 3 项 zigzag 菱形编号 + bullet"
 layout_type: bullet_list
 content_intent:
-  - 3 项 numbered 要点(对角线 zigzag 排版)
-  - 3 大优先级 / 3 大举措列表
-  - 不强 flow 但有编号顺序的列表
+  - "3 个有序条目(01/02/01 编号 · 上下错位)"
+  - "想要 zigzag 视觉感的 3 项编号 list"
+  - "左右交替强调节奏 + 阅读引导"
 when_to_use:
-  - 3 项 numbered 内容(编号 01/02/03 是装饰非流程)
-  - 需要"几何错落"的视觉气质
-  - 短句要点摘要
+  - "3 项内容 + 想 zigzag 节奏感(不要纯左对齐)"
+  - "数字编号风(菱形 + 大号数字)"
+  - "每项有 1-2 个 bullet 子要点"
 keywords:
-  - 3 项
-  - 编号
-  - 菱形
-  - bullet
-  - 对角排列
-  - 要点
+  - "3 项"
+  - "编号"
+  - "菱形"
+  - "zigzag"
+  - "bullet"
+  - "节奏"
 native_elements:
-  - 左上 1 号深蓝菱形 + "Text here" 标题 + 2 行描述
-  - 右中 2 号深蓝菱形 + "Text here" 标题 + 2 行描述
-  - 左下 1 号(标号视觉同 1 号)深蓝菱形 + "Text here" + 描述
-  - 菱形下浅灰阴影椭圆增强层次
-  - 整体 zigzag 对角排列
+  - "3 个大菱形编号(左/右/左交错)"
+  - "菱形深蓝填充 + 白字 01/02/01"
+  - "每个菱形旁 Text here 标题 + 2 个 bullet"
+  - "菱形下方浅灰椭圆阴影锚点"
 
 # === 辅助(不进 embedding)===
 layout_hint: null

@@ -1,32 +1,32 @@
 status: approved
-confidence: 0.95
+confidence: 0.96
 needs_manual_review: false
 
 id: finance_arrow__02-toc
-name: "TOC · 4 章节双栏目录(橙黄编号 + 中文标题 + 英文描述)"
+name: TOC · 目录 4 章节(左侧大号「目录 / CONTENTS」+ 右侧 4 编号条目)
 layout_type: toc
 content_intent:
-  - 4 章节标准财报目录
-  - 左侧"目录 CONTENTS"标志,右侧 4 行章节列表
-  - 适合主营业务摘要 → 财务分析 → 预算分析 → 问题建议这种 4-step 财报结构
+  - 财报 / 财务分析 deck 章节目录页
+  - 列出 4 个一级章节(数字编号 + 标题 + 1 句话副标)
+  - 用户用作 deck 第 2 页 navigation overview
 when_to_use:
-  - deck 第 2 页 · TOC
-  - 章节数恰好 4 项时(章节多 / 少需另选 TOC 模板)
-  - 财报 / 数据分析 / 评审类内容
+  - deck 第 2 页(承接 cover)
+  - 章节数 = 4 时最佳(模板 hardcoded 4 项;3/5 项需手工增删 slot)
+  - 财务报告标准结构(摘要 / 财务情况 / 预算 / 问题建议)
+  - 非财务场景也可借用作通用 4 章 TOC
 keywords:
   - 目录
   - TOC
-  - CONTENTS
   - 4 章节
-  - 财报骨架
-  - 章节列表
-  - 双栏 TOC
+  - 编号目录
+  - 财报目录
 native_elements:
-  - 左侧 "目录 CONTENTS" 深蓝灰大号中英组合,旁边小方块装饰 + 横线
-  - 右侧 4 行章节列表,每行橙黄大号 01-04 编号 + 中文章节标题
-  - 每行下方灰色小字"Copy paste fonts. Choose the only option to retain text."(英文 placeholder)
-  - 各行之间细灰水平分割线
-  - 整页大量白色留白,左 1/3 装饰 + 右 2/3 列表
+  - 左侧大号深蓝灰中文"目录" + 下方英文 "CONTENTS" 副标
+  - 左上灰色小方块装饰 + 横向细灰线延伸至左边缘
+  - '右侧 4 个章节条目纵向排列,每项: 大号黄色编号 (01/02/03/04) + 黑色中文标题 + 灰色小字英文/中文副标'
+  - 章节间细灰色横线分隔
+  - 整页大量留白突出黄色编号视觉锚点
+
 layout_hint: null
 variant: toc-4
 page_number: 2

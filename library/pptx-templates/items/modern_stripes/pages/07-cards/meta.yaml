@@ -1,31 +1,40 @@
+# === Gate ===
 status: approved
-confidence: 0.78
-needs_manual_review: false
 
+# === LLM 自评 ===
+confidence: 0.78
+needs_manual_review: true
+
+# === 必填 ===
 id: modern_stripes__07-cards
-name: "Cards · 6 项左右对称卡片 + 中央装饰"
+name: "Cards · 6 卡左右对称 + 中央几何装饰"
 layout_type: cards
 content_intent:
-  - 6 个并列要点 · 3 左 3 右对称分布
-  - 每项含图标 + 标题 + 1-2 行描述
-  - 强对称布局,左右色块区分两组
+  - 6 项 feature / pillar 并列展示
+  - 2 类 x 3 项 的对比展示(左 3 红 vs 右 3 蓝)
+  - 关键特性 / 功能模块的均衡介绍
 when_to_use:
-  - 6 项内容并列 · 3+3 对称分组(如 优势 vs 风险 / 核心 vs 辅助)
-  - 各项简短描述 · 不需强调先后
-  - 中间预留空间放装饰图形提升视觉
+  - 需要展示 6 个对象,中间有视觉重心
+  - 左右对称结构,可承担 vs 对比含义
+  - 标题 + body 各 2 行的细节型 cards
 keywords:
-  - 6 卡
-  - 对称卡片
-  - 3+3
+  - cards
+  - 6项
   - 左右对称
-  - 红 navy 双色
-  - gear 图标
+  - 齿轮
+  - 中央装饰
+  - 6 features
+  - 蓝红对比
 native_elements:
-  - 左侧 3 行卡片:红色圆角方形 gear icon + 黑字 "Text here" + 灰字 2 行 supporting
-  - 右侧 3 行卡片:navy 圆角方形 gear icon + 同样结构(右对齐文字)
-  - 中央装饰:倾斜叠加的红色 / navy / 浅灰矩形块(交错"X"形构图)
-  - 顶部细灰线分隔
-layout_hint: null
+  - 顶部水平细线
+  - 左侧 3 个红色齿轮 icon + 文字组(3 cards)
+  - 右侧 3 个深蓝色齿轮 icon + 文字组(3 cards)
+  - 中间大型几何拼贴装饰(蓝红浅灰圆角方块拼花)
+  - 每张 card 含 "Text here" 标题 + 1 段说明
+  - 底部 URL + 页码
+
+# === 辅助 ===
+layout_hint: "也可视作 comparison 的 6 项展开(左 3 vs 右 3),但中央装饰是重心,优先归 cards"
 variant: cards-6-icon
 page_number: 7
 template_name: modern_stripes

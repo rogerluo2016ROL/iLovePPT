@@ -1,31 +1,35 @@
 status: approved
-confidence: 0.55
-needs_manual_review: true
+confidence: 0.95
+needs_manual_review: false
 
 id: enterprise_skyline__34-other
-name: "模板工具广告页(非演讲页)"
+name: "iSlide 插件推广页 · 模板分发方推广(应删除)"
 layout_type: other
-layout_hint: "模板自带工具广告页(非演讲页),建议演讲时删除"
 content_intent:
-  - 模板原始工具广告页(非演讲页)
-  - 模板原始宣传文案,使用时应删除
-  - 非内容页 · 用户审 gate 决定是否保留
+  - 模板分发方 iSlide 插件推广页
+  - "使用 iSlide PPT 插件 为您节省 90% 的 PPT 设计时间"
+  - 不属于用户内容,应在使用前删除
 when_to_use:
-  - 仅作工具宣传,演讲时应删除
-  - 不应被 RAG 推荐给 author 拓写
+  - 不建议作为内容页使用
+  - 模板使用者删除本页
 keywords:
-  - 广告
-  - 工具
-  - 90%
-  - 节省时间
+  - 推广
+  - promo
+  - iSlide
   - 插件
-  - 下载
-  - 推广页
+  - 免费下载
+  - 90%
+  - 设计时间
+  - 营销页
+  - 删除页
 native_elements:
-  - 大标题 + 副标 模板原始宣传文案(使用前应删除)
-  - 底部 "免费下载 / Download for FREE" + 橙色链接
-  - 右侧浅灰胶囊装饰
+  - 浅白底 + 右侧浅灰大圆 / 小弧形装饰
+  - 左侧 "使用 iSlide PPT 插件" 大字 + "为您节省 90% 的 PPT 设计时间" 加粗
+  - 英文 "iSlide add-in saves you 90% of the time in making presentation"
+  - 左下 "免费下载 / Download for FREE" + 橙色 "www.islide.cc" 超链接
+  - 整体是品牌 / 工具 / 平台推广,不是模板原生内容 layout
 
+layout_hint: "模板分发方推广页,跟 deck 内容无关,应在使用前删除"
 variant: other-promo
 page_number: 34
 template_name: enterprise_skyline

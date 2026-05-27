@@ -1,30 +1,43 @@
+# === Gate ===
 status: approved
-confidence: 0.85
+
+# === LLM 自评 ===
+confidence: 0.86
 needs_manual_review: false
 
+# === 必填 ===
 id: modern_stripes__08-bullet_list
-name: "Bullet List · 左视觉 + 右 6 项交替列表"
+name: "Bullet list · 6 项右侧列表 + 左侧灯泡装饰"
 layout_type: bullet_list
 content_intent:
-  - 1 个核心议题 + 6 条要点 / 子项展开
-  - 左侧概述题 / 视觉锚点,右侧详细列表
-  - 创意 / 想法 / brainstorm 类内容(配灯泡视觉)
+  - 6 个特性 / 优势 / 要点的密集列表
+  - 灵感 / idea 主题(灯泡装饰)的多项展开
+  - 多项要点的均匀展示,蓝红交替强调节奏
 when_to_use:
-  - 6 项左右列表需要细化的场景
-  - 各项可二分类(交替的红圆 / navy 勾)
-  - 左侧需放视觉锚点提升可读
+  - 内容是 5-7 项 bullet 列表,需要均匀展示
+  - 左侧标题/装饰 + 右侧 list 的标准 list 页
+  - 强调要点数量(显示 6 条)的丰富感
 keywords:
-  - 6 项列表
-  - 双色 bullet
+  - bullet
+  - 列表
+  - 6项
   - 灯泡
-  - idea
-  - 创意要点
-  - 左视觉右列表
+  - 要点
+  - list
+  - 创意
+  - inspiration
 native_elements:
-  - 左 1/3:"Text here" 标题 + 灰色 supporting text
-  - 中间:手机 icon 圆盘 + 箭头指向灰色灯泡轮廓 + 底部铅笔涂鸦线条
-  - 右 2/3:6 行平行列表(交替 navy 圆 / 红色勾)+ 每行 supporting text + 灰色分隔线
+  - 顶部水平细线
+  - 左上方 Text here 标题 + 1 段说明
+  - 左中 phone icon 圆形 + 箭头指向右下灯泡
+  - 中部大型灰色灯泡装饰背景
+  - 灯泡下方手绘曲线装饰
+  - 右侧 6 项列表,每项带红色实心圆 / 蓝色 √ 交替前缀
+  - 项之间灰色细分隔线
+  - 底部 URL + 页码
+
+# === 辅助 ===
 layout_hint: null
-variant: bullet-with-icons
+variant: bullet-6
 page_number: 8
 template_name: modern_stripes

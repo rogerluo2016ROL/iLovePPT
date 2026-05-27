@@ -1,39 +1,45 @@
 status: approved
-confidence: 0.78
-needs_manual_review: false
+confidence: 0.58
+needs_manual_review: true
 
 id: product_lineart__31-timeline
-name: "Timeline · 垂直 4 节点 + 中央油井装饰 (喷涌喻意)"
+name: "Single Focus Oil-Derrick · 中心石油钻塔 + 3 蓝色油滴 + 3 旁注 (含黄色 chart icon)"
 layout_type: timeline
 
 content_intent:
-  - 4 步垂直时间轴
-  - 中央油井装饰隐喻"价值喷涌"
-  - 适合产能 / 输出 / 增长类叙事
+  - 主视觉是 industrial 钻塔 (oil rig / petroleum derrick) line-art metaphor
+  - 顶部 3 大蓝色水滴 (油喷出) 强调"产出/突破"
+  - 钻塔旁挂 3 个数据 callout (各带黄色 chart icon)
+  - 适合"采集/挖掘/产出"叙事
 
 when_to_use:
-  - 4 步骤垂直推进
-  - 强调"投入 → 产出"或"挖掘 → 喷涌"喻意
-  - 需要中央有视觉锚点装饰
+  - 工业 / 能源 / 数据挖掘 / 价值开采 metaphor
+  - 需要"中心机器 + 三个产出维度"展示
+  - 例:数据中台产出 3 项业务, 资源挖掘 3 个 KPI
+  - 适合财报 "挖到金矿" 类视觉修辞
 
 keywords:
   - timeline
-  - 4 节点
-  - 垂直
-  - 油井
-  - 喷涌
-  - 价值挖掘
-  - 增长
-  - 产能
+  - single focus
+  - oil derrick
+  - 钻塔
+  - 工业
+  - 能源
+  - data mining
+  - 突破
 
 native_elements:
-  - 中央灰色 3D 油井 (oil rig) 装饰图
-  - 油井顶部 3 颗蓝色水滴 (喷涌效果)
-  - 油井两侧各 2 个交错节点 (左 2 / 右 2),通过黄色小圆 + 折线图 icon 标记
-  - 每节点旁 "Text here" 标题 + supporting text
-  - 节点间细灰横线分隔
+  - 中心灰色 line-art "oil derrick" 钻塔 (三角形塔架结构)
+  - 钻塔顶部 3 大蓝色水滴 (向上喷射状)
+  - 钻塔左/右共 3 个圆形 callout (含黄色 "trending up chart" line-art icon)
+  - 每 callout 右侧 "Text here" 黑色加粗 + 灰色 "Copy paste fonts..." 描述
+  - 通体白底,中心视觉为主
 
-layout_hint: null
-variant: timeline-v-4
+layout_hint: |
+  本页几何完全不是 timeline 也不是 process_flow,是 single-focus-illustration 类型
+  (中心 hero illustration + 3 旁注)。原 placeholder_map.layout_class=timeline,
+  保持一致以避免 self-check VARIANT_LAYOUT_MISMATCH。
+  强烈建议人工审改 layout_class 到 single_focus + variant: single-focus-illustration。
+variant: timeline-other
 page_number: 31
 template_name: product_lineart

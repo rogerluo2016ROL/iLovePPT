@@ -1,32 +1,40 @@
+# === Gate ===
 status: approved
-confidence: 0.93
+
+# === LLM 自评 ===
+confidence: 0.90
 needs_manual_review: false
 
+# === 必填 ===
 id: modern_stripes__16-timeline
-name: "Timeline · 3 级阶梯上升时间线"
+name: "Timeline · 阶梯式 3 阶段 + 20XX 节点"
 layout_type: timeline
 content_intent:
-  - 3 个时间节点的递进展示
-  - 公司里程碑 / 项目阶段 / 增长曲线
-  - 强调"上升 / 持续向上"的视觉隐喻
+  - 3 个里程碑的时间轴(阶梯式上升)
+  - 3 年 / 3 阶段战略 / 3 个 phase 的递进
+  - 表达"持续向上 / 持续突破"的进展感
 when_to_use:
-  - 3 年度 / 3 阶段递进
-  - 需要"成长 / 上升"视觉隐喻
-  - 各阶段有简短 bullets 描述
+  - 内容是 3 个时间节点的关键里程碑
+  - 想用阶梯上升的视觉表达"逐步推进"
+  - 比 page 11 简洁(无 task 条,只 milestone)
 keywords:
   - timeline
+  - 时间轴
   - 阶梯
-  - 3 阶段
-  - 上升
   - 里程碑
-  - 成长曲线
-  - 三步
+  - milestone
+  - 3阶段
+  - 递进
+  - stair
 native_elements:
-  - 灰色阶梯形主路径(左低 → 中 → 右高)
-  - 3 个圆形节点 "20XX" 年份标(navy / red / navy 交替)
-  - 节点右上方 "Text Here" 标题 + 2 行 bullets
-  - 最右侧路径末端带箭头(指向右)
-  - 中间红色节点视觉突出(轮廓 + 红字)
+  - 顶部水平细线
+  - 灰色阶梯状粗线条(左下 → 中 → 右上),箭头收尾
+  - 阶梯转折点 3 个圆圈 + 20XX 标签(蓝/红/蓝)
+  - 每节点对应一组 Text Here 标题 + 2 行 Supporting text
+  - 左下 / 中 / 右上 3 个节点分别位于阶梯下 / 中 / 上方
+  - 底部 URL + 页码
+
+# === 辅助 ===
 layout_hint: null
 variant: timeline-staircase
 page_number: 16

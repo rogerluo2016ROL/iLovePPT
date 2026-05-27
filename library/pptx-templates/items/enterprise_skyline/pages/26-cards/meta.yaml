@@ -3,34 +3,34 @@ confidence: 0.91
 needs_manual_review: false
 
 id: enterprise_skyline__26-cards
-name: "卡片 · 顶部标题 + 4 编号正方形图标卡片 (1-4)"
+name: "4 项编号卡片 · 大标题 + 4 列 + 方块 icon"
 layout_type: cards
 content_intent:
-  - 4 项并列展示(每项有图标 + 编号 + 标题 + 描述)
-  - 服务特性 / 产品功能 / 工作流程 4 模块
-  - 信息密度适中,有明确编号
+  - 4 个并列要点(4 大特性 / 4 大优势 / 4 大模块)
+  - 强调"1 主题 + 4 关键支撑"结构
+  - 每项配编号 + icon + 标题 + 1-2 行 supporting
 when_to_use:
-  - 4 项并列展示
-  - 需要清晰编号 1-2-3-4
-  - 适合"四大特性 / 四大优势 / 四阶段"
+  - 4 项独立并列(4 角色 / 4 维度 / 4 优势)
+  - 各项配 icon + 编号方块
+  - 信息量适中,布局均衡
 keywords:
   - 卡片
   - cards
-  - 4项
+  - 4 项
+  - 4 列
   - 编号
-  - 正方形
-  - 图标
-  - 1-2-3-4
-  - 四大
+  - 方块 icon
+  - 并列
+  - 平等
 native_elements:
-  - 顶部 "Text here" 标题 + 2 行 Supporting text 副标
-  - 4 个深蓝 / 蓝灰正方形大图标(信封 / 组织 / WiFi / 准星)
-  - 每个正方形右上角小编号 1-2-3-4 标签
-  - 每图标下方 Text here 标题 + 多行 Supporting text 段落
-  - 图标错落分布(交替高低)
-  - 底部模板水印 + 页码 26
+  - 浅白底
+  - 顶部斜体 "Text here" 加粗大标题 + 灰色 2 行 supporting
+  - 4 列均匀分布,每列上半部一个灰 / navy 方块 icon + 右上小方块 1/2/3/4 数字角标
+  - 每列下方 "Text here" 加粗标题 + 灰色 supporting + "……"
+  - 各列之间淡灰色细分隔线
+  - 顶部水平细分隔线 + 底部 "www.islide.cc" + 页码 26
 
 layout_hint: null
-variant: cards-4-mixed
+variant: cards-4-icon
 page_number: 26
 template_name: enterprise_skyline

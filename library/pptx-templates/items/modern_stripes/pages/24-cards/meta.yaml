@@ -1,32 +1,40 @@
+# === Gate ===
 status: approved
-confidence: 0.87
+
+# === LLM 自评 ===
+confidence: 0.90
 needs_manual_review: false
 
+# === 必填 ===
 id: modern_stripes__24-cards
-name: "Cards · 4 列温度计形角色卡"
+name: "Cards · 4 列 person 温度计样式卡片"
 layout_type: cards
 content_intent:
-  - 4 个角色 / 维度 / 类别并列展示
-  - 顶部标签 + 中间圆盘 + 底部描述
-  - 团队成员介绍 / 4 维度评估
+  - 4 个 persona / 用户群 / 客户类型并列展示
+  - 4 个 stakeholder 的简介
+  - 4 类用户调研 / 用户画像的对比
 when_to_use:
-  - 4 项并列 · 各自独立等价
-  - 每项有标题 + 短描述
-  - 需要简洁视觉(无大量 bullets)
+  - 内容是 4 个对象,垂直分隔感强
+  - 想用温度计形(长方形 + 底部圆形)视觉
+  - 标准 4 列 persona 风格
 keywords:
-  - 4 卡
+  - cards
+  - 4列
+  - 人物
   - persona
-  - 角色
   - 温度计
-  - 排位标签
-  - 简洁卡片
+  - thermometer
+  - 用户画像
+  - vertical
 native_elements:
-  - 4 列垂直布局
-  - 每列顶部"Text here"加粗标题
-  - 中间灰色温度计形长条(标题到圆盘的视觉连接)
-  - 底部大圆盘:第 2 列 red,其余 navy
-  - 圆盘内白色人物 icon
-  - 圆盘下方:2 行 supporting text + 省略号
+  - 顶部 4 个 Text here 标题(均匀分布)
+  - 4 个垂直浅灰长方形条(温度计身)
+  - 长条底端 4 个圆形(第 1/3/4 深蓝,第 2 红色)
+  - 圆形内含 person icon
+  - 圆形下方 4 段 Supporting text here + ......
+  - 底部 URL + 页码
+
+# === 辅助 ===
 layout_hint: null
 variant: cards-4-icon
 page_number: 24

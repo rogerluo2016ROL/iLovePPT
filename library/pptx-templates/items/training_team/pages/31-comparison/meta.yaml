@@ -1,32 +1,34 @@
 status: approved
-confidence: 0.85
-needs_manual_review: false
-
+confidence: 0.62
+needs_manual_review: true
 id: training_team__31-comparison
-name: "Comparison · 中央橙红大脑插画 + 左右 2 列(双脑思考对比)"
+name: "Comparison · 左 2 段 Text + 中央 6 圆环网络 (橙红/灰) + 右 2 段 Text"
 layout_type: comparison
 content_intent:
-  - 左脑 vs 右脑 / 逻辑 vs 创意 对比
-  - 理性 vs 感性 双 mindset
-  - 培训 2 种思维方式对比
+  - 左右两类对比,中央用网络泡图区分两组节点
+  - 线上 vs 线下 或 主流 vs 替代 的多节点对比
+  - 2 类生态系统的对比展示
 when_to_use:
-  - 内容是 2 种思维 / 风格 对比
-  - 想用大脑插画做主视觉
+  - 内容 2 分,但每类有多个节点 (3+ 节点)
+  - 中央节点用颜色区分两类 (橙红 vs 灰)
+  - '候选 layout: comparison (2 列文本框架) vs radial (网络结构)'
+  - 因有左右 2 段文本框架选 comparison,但 confidence 偏低 (radial 也合理)
 keywords:
-  - 大脑
-  - brain
-  - 双思维
-  - 逻辑 vs 创意
-  - 理性感性
-  - 左脑右脑
-  - mindset
-  - 2 vs 2
+  - comparison
+  - 对比
+  - 2 类对照
+  - 网络泡图
+  - 多节点
+  - bubble network
+  - 生态对比
+  - 线上线下
+  - dual-side-bubbles
 native_elements:
-  - 中央大橙红 brain 插画(线稿)
-  - 左侧 person icon (橙红) + Text here + 段落 + 2 个橙红圆形 sub-icon
-  - 右侧 person icon (灰) + Text here + 段落 + 2 个灰色 sub-icon
-  - 灰色横线分隔上下
-
+  - 中央 6 个圆环节点 (3 橙红 + 3 灰) 错落排列
+  - 节点内 icon (cloud/globe/person/layer/sitemap)
+  - 节点间橙红虚线连接 (橙红节点之间) + 灰色虚线 (灰节点之间)
+  - 左侧 2 段 Text here 加粗 + Copy paste 副本
+  - 右侧 2 段 (右下) Text here 加粗 + Copy paste 副本
 layout_hint: null
 variant: comparison-2col
 page_number: 31

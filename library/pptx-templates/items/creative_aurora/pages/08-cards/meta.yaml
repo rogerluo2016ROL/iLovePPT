@@ -1,36 +1,30 @@
-# === Gate ===
 status: approved
-# === LLM 自评 ===
-confidence: 0.88
+confidence: 0.92
 needs_manual_review: false
-
-# === 必填 ===
 id: creative_aurora__08-cards
-name: "Cards · 三列纯文字 + 蓝绿极光"
+name: "Cards · 3-col 纯文字卡 · 极简文字优先"
 layout_type: cards
 content_intent:
-  - 三列并列纯文字 cards · 平衡式陈述三个并列要点
-  - 适合 "三个特性 / 三个步骤 / 三个原则" 的内容编排
-  - 不含图,纯信息密度展示
+  - 3 个并列要点的纯文字展示
+  - 强调"信息密度 + 极简"的概念陈述
+  - 不需要 visual 辅助的逻辑性 3 段
 when_to_use:
-  - 内容页有 3 个并列概念需要平衡展示
-  - 每个概念有 1 个小标题 + 一段 30-60 字描述
-  - 不适合 < 3 或 > 4 个要点的页
+  - 3 个并列概念,文字表达足够清楚不需图
+  - 整 deck 中追求节奏对比(前后页有图 → 这里纯文字)
+  - 总结性 3 项要点(常作 summary 替代)
 keywords:
-  - 三列
-  - 3-cols
-  - 纯文字cards
-  - 平衡布局
-  - aurora gradient
-  - 蓝绿极光
+  - 三栏文字
+  - 3-col text cards
+  - 极简文字
+  - 纯文字三栏
+  - text-only cards
+  - 三项要点
 native_elements:
-  - 顶部 "市场分析" + 副标题
-  - 三列等宽文字 cards,每列顶部红色短条 + 小标题 + 描述
-  - 右上角蓝绿极光球渐变装饰
-  - 底部一条横向蓝色 footer 装饰带 + 圆点
-  - 顶部细线圆环装饰
-
-# === 辅助 ===
+  - 顶部"市场分析"标题 + 蓝色装饰条
+  - 副标题"详细列出完成的项目及成果"
+  - 下方 3 列等宽文字单元,每列上方标题 + 正文段
+  - 背景:右上绿色 + 蓝色 blob 渐变
+  - 底部全宽蓝色 footer 装饰带
 layout_hint: null
 variant: cards-3-text
 page_number: 8

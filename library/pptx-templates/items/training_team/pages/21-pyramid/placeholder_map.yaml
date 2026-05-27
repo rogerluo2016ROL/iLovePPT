@@ -1,5 +1,5 @@
 template_page_index: 20
-layout_class: pyramid
+layout_class: cards
 slots:
 - id: title
   shape_id: 2

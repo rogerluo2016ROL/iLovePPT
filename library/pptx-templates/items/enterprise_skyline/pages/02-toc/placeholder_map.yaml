@@ -1,5 +1,5 @@
 template_page_index: 1
-layout_class: '?'
+layout_class: toc
 slots:
 - id: '?'
   shape_id: 453
@@ -10,9 +10,9 @@ slots:
     top: 1.34
     width: 3.02
     height: 0.86
+  font_size_pt: 24.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 24.0
 - id: '?'
   shape_id: 448
   tree_path: '1.2'
@@ -22,9 +22,9 @@ slots:
     top: 1.44
     width: 0.48
     height: 0.4
+  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: null
 - id: '?'
   shape_id: 440
   tree_path: '1.0'
@@ -34,9 +34,9 @@ slots:
     top: 1.44
     width: 3.9
     height: 0.4
+  font_size_pt: 24.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 24.0
 - id: '?'
   shape_id: 441
   tree_path: '1.1'
@@ -46,9 +46,9 @@ slots:
     top: 1.76
     width: 3.9
     height: 0.43
+  font_size_pt: 11.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 11.0
 - id: '?'
   shape_id: 454
   tree_path: '7'
@@ -58,9 +58,9 @@ slots:
     top: 2.2
     width: 2.48
     height: 0.5
+  font_size_pt: 10.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 10.0
 - id: '?'
   shape_id: 449
   tree_path: '2.2'
@@ -70,9 +70,9 @@ slots:
     top: 2.75
     width: 0.48
     height: 0.4
+  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: null
 - id: '?'
   shape_id: 442
   tree_path: '2.0'
@@ -82,9 +82,9 @@ slots:
     top: 2.77
     width: 3.9
     height: 0.4
+  font_size_pt: 24.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 24.0
 - id: '?'
   shape_id: 443
   tree_path: '2.1'
@@ -94,9 +94,9 @@ slots:
     top: 3.09
     width: 3.9
     height: 0.43
+  font_size_pt: 11.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 11.0
 - id: '?'
   shape_id: 450
   tree_path: '3.2'
@@ -106,9 +106,9 @@ slots:
     top: 4.06
     width: 0.48
     height: 0.4
+  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: null
 - id: '?'
   shape_id: 444
   tree_path: '3.0'
@@ -118,9 +118,9 @@ slots:
     top: 4.1
     width: 3.9
     height: 0.4
+  font_size_pt: 24.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 24.0
 - id: '?'
   shape_id: 445
   tree_path: '3.1'
@@ -130,9 +130,9 @@ slots:
     top: 4.42
     width: 3.9
     height: 0.43
+  font_size_pt: 11.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 11.0
 - id: '?'
   shape_id: 451
   tree_path: '4.2'
@@ -142,9 +142,9 @@ slots:
     top: 5.42
     width: 0.48
     height: 0.4
+  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: null
 - id: '?'
   shape_id: 446
   tree_path: '4.0'
@@ -154,9 +154,9 @@ slots:
     top: 5.42
     width: 3.9
     height: 0.4
+  font_size_pt: 24.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 24.0
 - id: '?'
   shape_id: 447
   tree_path: '4.1'
@@ -166,9 +166,9 @@ slots:
     top: 5.74
     width: 3.9
     height: 0.43
+  font_size_pt: 11.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 11.0
 - id: '?'
   shape_id: 458
   tree_path: '9.2'
@@ -178,9 +178,9 @@ slots:
     top: 6.51
     width: 0.48
     height: 0.4
+  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: null
 - id: '?'
   shape_id: 456
   tree_path: '9.0'
@@ -190,9 +190,9 @@ slots:
     top: 6.52
     width: 3.9
     height: 0.4
+  font_size_pt: 24.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 24.0
 - id: '?'
   shape_id: 457
   tree_path: '9.1'
@@ -202,6 +202,7 @@ slots:
     top: 6.83
     width: 3.9
     height: 0.43
+  font_size_pt: 11.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 11.0
+

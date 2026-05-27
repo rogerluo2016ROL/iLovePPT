@@ -2,21 +2,15 @@ template_page_index: 25
 layout_class: closing
 slots:
 - id: thanks_word
-  shape_id: 3
-  tree_path: '0'
-  capacity_chars: 10
-  text_color_override: null
-  font_size_pt: null
-- id: slogan
-  shape_id: 2
-  tree_path: '1'
-  capacity_chars: 28
-  text_color_override: null
-  font_size_pt: null
-- id: speaker
   shape_id: 5
   tree_path: '2'
-  capacity_chars: 30
+  capacity_chars: 40
+  text_color_override: null
+  font_size_pt: 66.0
+- id: speaker_subtitle
+  shape_id: 6
+  tree_path: '4'
+  capacity_chars: 32
   text_color_override: null
   font_size_pt: null
 - id: footer_url

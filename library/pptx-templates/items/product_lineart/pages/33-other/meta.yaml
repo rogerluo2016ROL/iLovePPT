@@ -1,6 +1,6 @@
 status: approved
 confidence: 1.0
-needs_manual_review: true
+needs_manual_review: false
 id: product_lineart__33-other
 name: 模板工具说明页 (主题色彩 + 主题字体 + 预设参考线)
 layout_type: other

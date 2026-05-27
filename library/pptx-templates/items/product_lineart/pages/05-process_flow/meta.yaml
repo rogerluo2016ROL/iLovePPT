@@ -1,37 +1,38 @@
 status: approved
-confidence: 0.9
+confidence: 0.86
 needs_manual_review: false
 
 id: product_lineart__05-process_flow
-name: "Process Flow · 3 个错落箭头流程 + icon + 编号"
+name: "Process Flow · 3 个交错箭头 + 编号 01/02/03 + 蓝黄交替"
 layout_type: process_flow
 
 content_intent:
-  - 3 步流程展示(交错布局)
-  - 每步带 icon + 编号 + 标签 + 说明
-  - 强调步骤间的顺序流转
+  - 3 步流程展示(横向交错排列形成视觉节奏)
+  - 每步编号 + 标题 + 描述
+  - 蓝黄交替强调中间步(02 蓝色高亮)
 
 when_to_use:
-  - 3 步骤的方法论 / 实施流程
-  - 蓝/黄/蓝色彩交替强调节奏的过程
-  - 不需要严格线性,只需有"先后"概念
+  - 3 阶段标准流程
+  - 需要"折返/交错"避免单调横排
+  - 不需要严格时间顺序,只要明确步序
 
 keywords:
-  - 三步流程
   - process flow
+  - 3 步
+  - 流程
   - 箭头
-  - 错落
-  - 3 step
-  - icon
+  - 蓝黄
+  - 交错
+  - zigzag
 
 native_elements:
-  - 3 个浅灰色长方向箭头,水平错落排列(左右左)
-  - 每个箭头中央大号编号 01 (黄) / 02 (蓝) / 03 (黄)
-  - 箭头内 supporting text 描述
-  - 每个箭头左侧/右侧外有黄色 user/balance icon
-  - 箭头外端右/左 "Text here" 步骤标签
+  - 3 个大箭头方块横向排列,1/3 上下 + 2 居中(zigzag 错位)
+  - 每箭头黄色 "01" "03" / 蓝色 "02" 编号
+  - 箭头内含黑色 "Text here" 标签(左右两端)
+  - 黄色"人物天平"线稿 icon (步 1/3) + 蓝色同款 icon (步 2)
+  - 灰色块面装饰 + 黑色文字描述
 
 layout_hint: null
-variant: process-arrow-3
+variant: process-zigzag
 page_number: 5
 template_name: product_lineart

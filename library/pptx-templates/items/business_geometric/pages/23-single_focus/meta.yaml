@@ -1,34 +1,34 @@
 # === Gate ===
 status: approved
 # === LLM 自评 ===
-confidence: 0.75
+confidence: 0.78
 needs_manual_review: false
 
 # === 必填(进 embedding)===
 id: business_geometric__23-single_focus
-name: "Single focus · 95% 主指标 + 火箭/平板插画 + 3 辅助"
+name: "Single focus · 95% 单数据强调 + 火箭插画 + 3 项 icon"
 layout_type: single_focus
 content_intent:
-  - 1 个核心 percentage(95%)+ 3 个辅助 icon 支撑
-  - 单一核心指标驱动 + 多角度解释
-  - 增长 / 起飞 / 跃迁式叙事(火箭隐喻)
+  - "1 个主数据(95%)+ 火箭启航插画 + lead text"
+  - "下方 3 个 icon callout 作辅助支撑"
+  - "强调突破 / 起飞 / 单一关键 metric"
 when_to_use:
-  - 1 个核心数字主导,3 项辅助细分
-  - 增长汇报 / 突破性成绩展示
-  - 需要"起飞 / 跃迁"激励气质
+  - "需要强调 1 个数字 + 视觉感(火箭起飞)"
+  - "希望既有大 number 又有 3 项 icon 支撑"
+  - "产品发布 / 增长突破场景"
 keywords:
-  - 95%
-  - 单一核心
-  - single focus
-  - 火箭
-  - 增长
-  - 跃迁
-  - KPI
+  - "95%"
+  - "火箭"
+  - "数据"
+  - "突破"
+  - "增长"
+  - "single focus"
+  - "percentage"
 native_elements:
-  - 左侧火箭 + 平板 + 烟雾插画(起飞瞬间)+ 95% 深蓝大圆气泡
-  - 右上 "Text here" 标题 + 3 行说明
-  - 右下 3 个圆形 icon(灯泡 / 增长图 / 奖杯)+ "Text here" 标题 + 描述
-  - 三色 icon(亮蓝 / 浅蓝 / 橙红)增加节奏
+  - "左侧深蓝圆 95% + 火箭从平板起飞插画"
+  - "右侧 Text here lead text + 3 行支撑描述"
+  - "下方 3 个圆形 icon(灯泡/曲线/奖杯) + 蓝色 / 浅蓝 / 红 chip 标题"
+  - "整体偏轻盈 · 突出 95% 视觉锚点"
 
 # === 辅助(不进 embedding)===
 layout_hint: null

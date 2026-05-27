@@ -1,32 +1,40 @@
+# === Gate ===
 status: approved
+
+# === LLM 自评 ===
 confidence: 0.95
 needs_manual_review: false
 
+# === 必填 ===
 id: modern_stripes__01-cover
-name: "Cover · 深蓝几何条纹工业风封面"
+name: "Cover · 现代条纹深蓝封面"
 layout_type: cover
 content_intent:
-  - 科技 / 制造 / 工业类汇报开场,展示主标题 + 子标题 + 演讲人信息
-  - 强视觉 KV 风格的产品发布或战略发布会封面
-  - 需要突出"现代 / 工业 / 几何"印象的硬朗主题
+  - 产品发布会 / 公司介绍 / 培训开场,展示主标题 + 副标题
+  - 季度汇报 / 项目启动开场页,左文字 + 右几何装饰
+  - 标准企业 KV 封面,适合主题 deck 的首页
 when_to_use:
-  - deck 第 1 页 · 主标题视觉冲击 KV
-  - 主标题英文 / 简短中文 + 副标题双行结构
-  - 演讲人 / 站点信息以小字呈现在标题上方
+  - deck 第 1 页 · 标准 KV 视觉
+  - 需要现代感 + 几何图形装饰的开场
+  - 主题色蓝色(深蓝 + 亮蓝)企业形象
 keywords:
   - 封面
-  - 深蓝
-  - 几何条纹
-  - 工业
   - 现代
+  - 几何条纹
+  - 深蓝
   - KV
-  - 大标题
+  - cover
+  - modern
+  - stripes
 native_elements:
-  - 左侧装饰:小型蓝白条纹斜切方块组
-  - 右侧装饰:大尺寸 navy / 亮蓝 / 浅灰 几何拼贴块,带横向条纹纹理
-  - 中央左对齐的多行大标题(白底黑字 + 蓝色副标题)
-  - 标题上方小字"Speaker name and title" + 站点
-  - 标题下方分割线 + spaced caps 副标题
+  - 左侧上方小型条纹几何装饰
+  - 左中部多行大标题(ISLIDE / POWERPOINT / STANDARD / TEMPLATE)
+  - 标题下方水平细线分隔符
+  - 左下方 SUBTITLE HERE 副标题
+  - 左上方 Speaker name and title + URL 行
+  - 右侧大面积几何条纹拼贴装饰(深蓝 + 亮蓝 + 浅灰)
+
+# === 辅助 ===
 layout_hint: null
 variant: cover-geometric
 page_number: 1

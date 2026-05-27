@@ -1,37 +1,29 @@
-# === Gate ===
 status: approved
-# === LLM 自评 ===
-confidence: 0.82
+confidence: 0.85
 needs_manual_review: false
-
-# === 必填 ===
 id: creative_aurora__09-cards
-name: "Cards · 三图横排 + 下方说明文字"
+name: "Cards · 3-col 图(上)+ 文(下) · 标题左上"
 layout_type: cards
 content_intent:
-  - 三个视觉案例并列展示 · 每个案例 1 图 + 一行说明
-  - 适合 "三个作品 / 三个产品截图 / 三个 case 一字排开" 的内容编排
-  - 创意 / 设计 case study 展示
+  - 3 个并列要点 · 每点上图下文
+  - 概念 / 案例 / 产品的图配文三栏展示
+  - 项目成果 / 案例列举
 when_to_use:
-  - 需要 3 张视觉案例图横排呈现的内容页
-  - 配作品集 portfolio 展示
-  - 不适合纯文字 / 单一案例深度展开
+  - 3 个并列的具体案例 / 概念,每个有图像素材
+  - 跟 06-cards 类似但版式更宽松(标题在左上而非顶部居中)
+  - 需要"画面感"的项目陈列
 keywords:
-  - 三图横排
-  - 3-cols image
-  - 作品集
-  - portfolio
-  - cards
-  - case study
-  - 城市夜景
+  - 三卡
+  - 3-col cards
+  - 上图下文
+  - 案例陈列
+  - project showcase
+  - 图文三栏
 native_elements:
-  - 顶部 "市场分析" + 副标题
-  - 三张图横向并列 (城市夜景 + 灯光场景 + 球形装置等)
-  - 下方对应三段简短说明文字
-  - 蓝紫色调主导
-  - 顶部细线圆环装饰
-
-# === 辅助 ===
+  - 顶部"市场分析"标题(左上) + 蓝色装饰条
+  - 副标题"详细列出完成的项目及成果"在标题下方
+  - 下方 3 列等宽,每列上方横幅图 + 下方标题 + 短文
+  - 背景:左下蓝色 blob + 右侧紫色渐变
 layout_hint: null
 variant: cards-3-photo
 page_number: 9

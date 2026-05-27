@@ -1,37 +1,39 @@
 status: approved
-confidence: 0.9
+confidence: 0.84
 needs_manual_review: false
 
 id: product_lineart__13-process_flow
-name: "Process Flow · 起点箭头 → 4 节点蜿蜒路径 → 终点靶心"
+name: "Process Flow Wavy Path · 4 步弯路 + 箭→靶 (实现目标)"
 layout_type: process_flow
 
 content_intent:
-  - 4 步骤目标导向流程
-  - 从起点(箭头)沿曲折路径到终点(靶心)
-  - 强调"达成最终目标"的方向感
+  - 4 步骤朝向最终目标的过程
+  - 弯路视觉强调过程曲折
+  - 箭头 (起点) + 靶 (终点) 构成完整 narrative
 
 when_to_use:
-  - 4 步路径,有明确终点目标
-  - 比如战略规划、产品路线图、执行步骤到 KPI
-  - 视觉上想体现"过程曲折但目标清晰"
+  - 朝向单一目标的多步过程
+  - 强调"曲折但朝目标推进"
+  - 例:OKR 实现路径, 项目 phase 推进, 客户旅程
 
 keywords:
   - process flow
-  - 4 步路径
-  - 蜿蜒路径
-  - 目标导向
-  - 靶心
-  - 路线图
+  - 4 步
+  - 弯路
+  - 目标
+  - 箭靶
+  - bullseye
+  - 曲折
+  - journey
 
 native_elements:
-  - 左下蓝色加深箭头(起点)
-  - 4 个蓝/黄圆形 icon 沿一条 S 形蜿蜒灰色路径排列(01-04 编号)
-  - 右上灰色靶心图(终点目标)
-  - 每节点旁有 "0X.Text here" + 2 行 supporting text 描述
-  - 节点交替位于路径上下两侧
+  - 左下蓝色斜箭头(起点)
+  - 4 个圆形 icon 节点排成 S 形曲线 (蓝/黄交替)
+  - 每节点旁边 "01.Text here" 标题 + 灰色描述,左右交替
+  - 右上灰色靶 (bullseye) 含蓝色小圆心
+  - 灰色虚波浪线连接各节点
 
 layout_hint: null
-variant: process-vertical-4
+variant: process-zigzag
 page_number: 13
 template_name: product_lineart

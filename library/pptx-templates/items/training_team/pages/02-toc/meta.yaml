@@ -1,32 +1,33 @@
 status: approved
-confidence: 0.94
+confidence: 0.95
 needs_manual_review: false
-
 id: training_team__02-toc
-name: "TOC · 左 CONTENTS 框 + 右 5 菱形编号列表"
+name: "TOC · 左标 CONTENTS + 右 5 项菱形章节"
 layout_type: toc
 content_intent:
-  - 5 章节 deck 目录页
-  - 培训课程模块导览
-  - 团建活动议程纲要
+  - deck 第 2 页目录页,展示 5 个章节
+  - 培训课件章节预览(模块 1-5)
+  - 培训师讲 deck 流程章节
 when_to_use:
-  - deck 第 2 页紧跟封面
-  - 章节数恰好是 5(若 4/6 章节,需 build 时增删 row)
-  - 想强调 "CONTENTS" 标语 + 数字感
+  - 5 章节内的中等长度 deck (3-5 章节最佳)
+  - 培训 / workshop 流程预览
+  - 想要左大标 + 右多列章节布局
+  - 第三个菱形高亮当前章节 (03 是橙红,其他灰)
 keywords:
   - 目录
-  - 章节
   - CONTENTS
-  - 菱形编号
-  - 5-step
-  - 议程
+  - TOC
+  - 章节预览
   - agenda
+  - 菱形
+  - 5 项
+  - 5-item
+  - outline
 native_elements:
-  - 左侧 "CONTENTS" 描边方框 + 副标题描述
-  - 右侧垂直排列 5 个灰色菱形编号(01-05),第 3 个橙色高亮表当前
-  - 每条 "Text here" + "Copy paste fonts" 描述行
-  - 分隔灰线在每条之间
-
+  - 左侧描边方框 "CONTENTS" 大标 + 副本说明
+  - 右侧 5 个菱形章节序号 (01-05) + Text here 标题 + 说明
+  - 第 3 个 (03) 菱形橙红高亮,其余灰色
+  - 章节间灰色细分隔线
 layout_hint: null
 variant: toc-5
 page_number: 2

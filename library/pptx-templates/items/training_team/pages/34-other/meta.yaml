@@ -1,30 +1,32 @@
 status: approved
-confidence: 0.5
-needs_manual_review: true
-
+confidence: 0.95
+needs_manual_review: false
 id: training_team__34-other
-name: "模板工具广告页(非演讲页)"
+name: "Other · iSlide 插件 Promo 页 (使用 iSlide 节省 90% 设计时间)"
 layout_type: other
 content_intent:
-  - 模板自带推广页
-  - 不作为 deck 内容,使用时应删除
+  - iSlide 插件营销/宣传页 (非用户内容)
+  - 模板出品方 (iSlide) 自我宣传
+  - 引导用户下载 iSlide 插件
 when_to_use:
-  - 不在 deck 输出中使用
-  - 仅作为模板源里的 promo placeholder
+  - 绝对不该在最终 deck 出现
+  - 是模板出品方插入的广告
+  - 仅作"广告 layout"知识库参考
 keywords:
-  - 插件推广
+  - other
+  - 广告页
   - promo
-  - 模板自带
-  - 说明页
-  - download
-  - 节省时间
+  - iSlide 推广
+  - 插件宣传
+  - ad
+  - tool-promo
+  - not-for-deck
 native_elements:
-  - 左侧大字 模板原始宣传文案 (使用时应删除)
-  - 副标 模板原始英文宣传文案
-  - 左下 "免费下载 / Download for FREE / 模板水印小字"
-  - 右侧浅灰渐变弧形装饰
-
-layout_hint: tool-promo-page (模板自带推广,非内容页 enum 兜底)
+  - 大字加粗中文 "为您节省 90% 的 PPT 设计时间" + 灰色英文译文
+  - 左下 "免费下载 / Download for FREE www.islide.cc" 蓝色超链
+  - 右侧浅灰几何装饰 (圆 + 圆角矩形)
+  - 整页留白多 (典型营销 layout)
+layout_hint: "iSlide 模板广告页 · 必删 · 不该在最终 deck 出现"
 variant: other-promo
 page_number: 34
 template_name: training_team

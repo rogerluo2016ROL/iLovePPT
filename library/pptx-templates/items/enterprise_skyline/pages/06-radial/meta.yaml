@@ -1,35 +1,34 @@
 status: approved
-confidence: 0.88
+confidence: 0.86
 needs_manual_review: false
 
 id: enterprise_skyline__06-radial
-name: "辐射循环 · 中央三角箭头 + 3 顶点编号要点"
+name: "3 节点循环 · 中心箭头环 + 周围 01/02/03 标题"
 layout_type: radial
 content_intent:
-  - 3 个步骤循环 / 协同关系展示
-  - 闭环流程(如 PDCA 简化版 / 持续改进循环)
-  - 三方协同 / 三要素互相促进
+  - 3 阶段循环 / 闭环流程(PDCA 简化 / 三角循环)
+  - 中心节点 + 3 周边节点的轮替关系展示
+  - 持续迭代主题(产生-反馈-改进-再产生)
 when_to_use:
-  - 3 元素相互依赖 / 循环关系
-  - 营销 / 产品 / 服务三方协同
-  - PDCA / 螺旋上升 / 闭环模型
+  - 3 节点循环关系(非线性 timeline)
+  - 强调闭环 / 互相驱动 / 周期反复
+  - 配 navy 蓝色 icon 节点
 keywords:
-  - 辐射
-  - radial
   - 循环
-  - 3要素
-  - 三角
+  - 环形
+  - 3 节点
+  - 中心放射
   - cycle
+  - radial
   - 闭环
-  - 协同
-  - 三方
+  - 循环箭头
 native_elements:
-  - 中央 3 个深蓝圆形图标 + 灰色循环箭头三角组合
-  - 顶点 01 圆形(蓝灰) + 用户图标
-  - 右下 02 圆形(深蓝) + 卡片图标
-  - 左下 03 圆形(深蓝) + 标签图标
-  - 每个顶点对应一个 "0X.Text here" 下划线编号标题 + 多行 supporting text
-  - 整体居中对称构图
+  - 浅白底
+  - 中心三个 navy 圆形 icon(顶 / 左下 / 右下),每个 icon 嵌入小 logo(人 / 标签 / 银行卡)
+  - 三 icon 之间淡灰色圆环箭头(循环示意)
+  - 三 icon 各对应一段标题 "01.Text here" / "02.Text here" / "03.Text here"(顶 / 右 / 左)
+  - 各标题下方两行灰色 supporting text
+  - 顶部一道水平细分隔线 + 底部 "www.islide.cc" + 页码 6
 
 layout_hint: null
 variant: radial-3-spoke

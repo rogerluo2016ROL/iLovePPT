@@ -3,33 +3,34 @@ confidence: 0.88
 needs_manual_review: false
 
 id: product_lineart__29-comparison
-name: "Comparison · 左大圆 → 右大圆 + 中间 Text 转化箭头"
+name: "Comparison Arrow Transition · 左大灰圆 (人物) → 中间 label → 右大蓝圆 (globe+$)"
 layout_type: comparison
 
 content_intent:
-  - A → B 的转化 / 对比展示
-  - 适合"输入 → 输出"、"前 → 后"
-  - 中间标注转化过程的关键词
+  - A → B 转化对比 (左为现状, 右为目标)
+  - 中间 "...Text" label box 解释转化触发条件
+  - 左侧黄色"人群"icon · 右侧蓝色"地球+$"icon
 
 when_to_use:
-  - 2 个状态对比 (before / after, A / B)
-  - 强调中间的"转换 / 影响 / 杠杆"
-  - 双卡片视觉,左右对照
+  - 现状/未来对比 (before/after)
+  - 输入/输出转化 (people → money)
+  - 例:用户 → 收入, 流量 → 转化, 旧方案 → 新方案
 
 keywords:
   - comparison
-  - A vs B
-  - before after
   - 对比
   - 转化
-  - input output
-  - 前后
+  - before/after
+  - arrow
+  - transition
+  - 双圆
 
 native_elements:
-  - 左侧大灰色圆 (含黄色 group icon + "Text here" 标题 + 描述)
-  - 右侧大蓝色圆 (含蓝色 globe-$ icon + "Text here" 标题 + 描述)
-  - 中间细灰横线 + 蓝色加粗"…Text"过渡标签 (右指箭头)
-  - 强调"输入端 → 输出端"的方向
+  - 左侧大灰色实心圆 + 黄色"3 人物"line-art icon + 内部 "Text here" + 描述
+  - 中间细灰箭头从左指右 + 中央细蓝色描边胶囊框 "...Text" 蓝字
+  - 右侧大白色描边圆 + 蓝色"地球+$"line-art icon + 外部 "Text here" + 描述
+  - 通体白底,左右对称布局
+  - 顶部细灰线 header
 
 layout_hint: null
 variant: comparison-arrow-transition

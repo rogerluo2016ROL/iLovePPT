@@ -1,33 +1,34 @@
 status: approved
-confidence: 0.82
+confidence: 0.74
 needs_manual_review: false
-
 id: training_team__23-cards
-name: "Cards · 3 cards 列表 + 左侧大箭头穿砖墙(突破隐喻)"
+name: "Cards · 左大箭头 Text + 砖墙背 + 右 3 项列表 (橙红 car icon)"
 layout_type: cards
 content_intent:
-  - 团队面临的 3 大挑战 / 障碍
-  - 突破口分析 3 维度
-  - 培训要解决的 3 个 pain point
+  - 3 项列表,左侧有"突破 / 障碍"概念隐喻
+  - 克服阻力 → 3 个动作 模型
+  - 3 项行动指南或 3 个特点
 when_to_use:
-  - 内容是 "突破障碍" / "破局" 主题
-  - 3 个 sub-item 平行展开
+  - 3 项内容,且左侧需要"突破障碍 / 转化"的强意象
+  - 砖墙 + 红箭头 → "打破壁垒"暗示
+  - '候选 layout: cards (3 项) vs bullet_list · 因右侧有图标和分隔线选 cards'
 keywords:
+  - cards
+  - 3 项
+  - 3-card
+  - bullet list
   - 突破
-  - breakthrough
-  - 3 cards
-  - 障碍
-  - 破局
-  - 挑战
   - 砖墙
-  - 箭头
+  - car icon
+  - 行动指南
+  - 列表
+  - icon-list
 native_elements:
-  - 左侧大橙红箭头穿砖墙图(突破墙的视觉)
-  - Text 在箭头上
-  - 右侧 3 个橙红车 icon (EV car charging)
-  - 每条 Copy paste fonts 描述行
-  - 灰色横线分隔
-
+  - 左侧浅灰砖墙背景 (装饰)
+  - 大型红色描边右指箭头 (Text 占位 italic)
+  - 右侧 3 行 (橙红 car icon + Copy paste 副本 + ……占位)
+  - 3 行间灰色细水平分隔线
+  - 每行 icon 在左,文本在右
 layout_hint: null
 variant: cards-3-icon
 page_number: 23

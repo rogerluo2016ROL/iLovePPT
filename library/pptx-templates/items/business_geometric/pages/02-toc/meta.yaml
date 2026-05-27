@@ -6,27 +6,28 @@ needs_manual_review: false
 
 # === 必填(进 embedding)===
 id: business_geometric__02-toc
-name: "TOC · 菱形 4 章节目录"
+name: "TOC · 4 项目录 · 菱形编号"
 layout_type: toc
 content_intent:
-  - 4 章节目录展示,每章一个 numbered 菱形 + 标题 + 1 行说明
-  - 演讲结构预告页(适合 4 大模块的 deck)
+  - "4 章节目录页"
+  - "中央大菱形 CONTENTS 标识 + 4 个 01-04 编号菱形条目"
+  - "deck 第 2 页 · 给受众预告章节结构"
 when_to_use:
-  - deck 第 2 页 · 目录
-  - 章节数 = 4 的 deck
-  - 需要几何风视觉强化结构感
+  - "正好 4 个章节的 deck"
+  - "需要几何感强烈的目录(菱形 / 重叠)"
+  - "希望 TOC 视觉本身就有设计感"
 keywords:
-  - 目录
-  - TOC
-  - 菱形
-  - 4 章节
-  - contents
-  - 几何
+  - "目录"
+  - "TOC"
+  - "4 章节"
+  - "菱形"
+  - "contents"
+  - "导航"
 native_elements:
-  - 左侧大深蓝菱形 "CONTENTS" 标识
-  - 右侧 4 个编号菱形 01/02/03/04(深蓝 + 灰色交替)
-  - 每个菱形右侧 "Text here" 标题 + "Copy paste fonts..." 说明
-  - 浅灰大菱形作为背景层叠装饰
+  - "中央大菱形 CONTENTS 深蓝填充"
+  - "4 个编号小菱形 01-04(01/03 深蓝 · 02/04 灰色)"
+  - "每个编号右侧 Text here 标题 + 一行描述"
+  - "背景大浅灰菱形阴影衬托"
 
 # === 辅助(不进 embedding)===
 layout_hint: null

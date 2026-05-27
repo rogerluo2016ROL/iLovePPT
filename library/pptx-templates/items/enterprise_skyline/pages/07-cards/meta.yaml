@@ -1,33 +1,34 @@
 status: approved
-confidence: 0.85
+confidence: 0.93
 needs_manual_review: false
 
 id: enterprise_skyline__07-cards
-name: "卡片 · 6 项 2 列 3 行 + 圆形人物图标"
+name: "6 项卡片 · 2 列 × 3 行 · 左侧弧形装饰"
 layout_type: cards
 content_intent:
-  - 6 个要点 / 特征 / 团队成员并列展示
-  - 团队介绍 / 产品功能 / 服务特性列表
-  - 信息密度中等,每项有图标 + 标题 + 副标
+  - 6 项并列要点(团队成员 / 服务列表 / 产品矩阵 6 项)
+  - 信息密集型展示(2 列 3 行均匀分布)
+  - 每项配 icon + 标题 + 1-2 行描述
 when_to_use:
-  - 6 项并列内容,无优先级
-  - 团队成员 / 产品功能 / 服务卖点
-  - 中等密度信息页
+  - 6 项并列卡片(2 列 × 3 行)
+  - 团队介绍 / 产品矩阵 / 服务列表 / 能力一览
+  - 各项地位平等,无序号关系
 keywords:
   - 卡片
   - cards
-  - 6项
-  - 2列3行
-  - grid
+  - 6 项
+  - 2 列
+  - 3 行
+  - 并列
   - 团队
-  - 人物图标
-  - 双栏
+  - 服务列表
 native_elements:
-  - 左侧弧形装饰浅灰路径连接 3 个圆形人物图标(底色蓝色 / 灰色 / 蓝色)
-  - 6 张卡片 2 列 3 行排列,每张 = Text here 标题 + 1 行 supporting text + 省略号
-  - 行间横线分隔
-  - 整体清晰留白
-  - 底部模板水印 + 页码 7
+  - 浅白底
+  - 2 列 × 3 行布局,共 6 项卡片
+  - 每卡:左侧 navy 圆形 icon(人形)+ 右侧黑色 "Text here" 加粗标题 + 灰色 1-2 行 supporting
+  - 卡片间一道水平淡灰分隔线
+  - 左侧大弧形浅灰装饰(连接首列三 icon)
+  - 顶部一道水平细分隔线 + 底部 "www.islide.cc" + 页码 7
 
 layout_hint: null
 variant: cards-6-icon

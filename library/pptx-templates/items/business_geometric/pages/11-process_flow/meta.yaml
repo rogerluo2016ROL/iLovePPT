@@ -1,36 +1,36 @@
 # === Gate ===
 status: approved
 # === LLM 自评 ===
-confidence: 0.70
+confidence: 0.86
 needs_manual_review: false
 
 # === 必填(进 embedding)===
 id: business_geometric__11-process_flow
-name: "Process flow · 4 箭头叠层(垂直堆叠)"
+name: "Process flow · 4 段竖直箭头流程 + icon"
 layout_type: process_flow
 content_intent:
-  - 4 步骤垂直流程展示(每步 1 个箭头 banner)
-  - 工作流 / 服务步骤 / 流程阶段
-  - 按重要性或时序排列的 4 项
+  - "4 步骤纵向流程(深蓝/亮蓝交替)"
+  - "工作流 / 实施步骤 / 工序展示"
+  - "强调 4 项有先后顺序"
 when_to_use:
-  - 4 步骤流程描述
-  - 服务流程 / 实施阶段说明
-  - 内容偏列表化但需要"前后顺序"
+  - "4 步流程展示"
+  - "右侧需要 4 个 icon 锚点"
+  - "想要箭头形条带视觉"
 keywords:
-  - 4 步骤
-  - 流程
-  - 箭头
-  - process
-  - 工作流
-  - banner
+  - "流程"
+  - "4 步"
+  - "箭头"
+  - "process"
+  - "实施"
+  - "工序"
 native_elements:
-  - 左侧 "Text here" 标题 + 3 行说明文字
-  - 右侧 4 个水平箭头 banner(深蓝/亮蓝交替)垂直堆叠
-  - 每箭头内含 "Text here" 标题 + 描述
-  - 右端 4 个圆形 icon(扳手/靶心/齿轮/勋章)
+  - "4 个朝右的箭头条带(深蓝/亮蓝交替)"
+  - "每个条带 Text here 标题 + 描述"
+  - "右侧 4 个圆形 icon(工具/靶心/统计/认证)"
+  - "左侧总标题 + 简介 text"
 
 # === 辅助(不进 embedding)===
-layout_hint: stacked-arrow-banners
+layout_hint: null
 variant: process-vertical-4
 page_number: 11
 template_name: business_geometric

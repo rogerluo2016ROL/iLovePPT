@@ -1,29 +1,35 @@
 status: approved
-confidence: 0.95
+confidence: 0.94
 needs_manual_review: false
+
 id: product_lineart__21-section_divider
-name: Section Divider 04 · 蓝色线稿产品图标 + 大数字 04
+name: "Section Divider · 大黄色数字 04 + 蓝色线稿产品插画群"
 layout_type: section_divider
+
 content_intent:
-- 第 4 章开始的过渡页
-- 给章节起名 + 一句辅助说明
-- 跟 03/09/15 同型号,编号 04
+  - 第四章节分隔页
+  - 巨大 "04" 黄色数字作为视觉锚
+  - 黑色章节标题 + 灰色补充
+
 when_to_use:
-- 章节转场(整 deck 第 4 个章节)
-- 跟 03/09/15/27 配套
-- 需要明显的"开新篇"视觉信号
+  - 进入第四章节
+  - 跟 03/09/15/27 同变体序列(01-05)
+
 keywords:
-- section divider
-- 章节封面
-- 过渡页
-- '4'
-- 蓝色线稿
+  - section divider
+  - 章节
+  - "04"
+  - 大数字
+  - 蓝色线稿
+
 native_elements:
-- 左侧蓝色线稿产品图标 group
-- 中间黑色加粗 "Section Header Here" + 两行 supporting text
-- 右侧巨大黄色加粗数字 "04"
-- 底部浅蓝色色块
+  - 右侧巨大黄色 "04" 数字
+  - 中部黑色加粗 "Section Header Here" + 灰色 2 行补充
+  - 左下角蓝色线稿产品图标群(电脑/钻石/齿轮/秒表等)
+  - 下半部浅蓝弧形地平线背景
+  - 上部细灰线分隔 header
+
 layout_hint: null
-variant: section-divider-illustration
+variant: section-divider-numbered
 page_number: 21
 template_name: product_lineart

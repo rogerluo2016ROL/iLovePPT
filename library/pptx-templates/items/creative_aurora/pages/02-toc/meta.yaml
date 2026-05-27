@@ -1,40 +1,33 @@
-# === Gate ===
 status: approved
-# === LLM 自评 ===
-confidence: 0.9
+confidence: 0.96
 needs_manual_review: false
-
-# === 必填 ===
 id: creative_aurora__02-toc
-name: "TOC · 8 项 grid 目录 + 粉紫极光渐变"
+name: "TOC · 2x4 编号网格目录 · Agenda 双语"
 layout_type: toc
 content_intent:
-  - 长 deck (>= 6 章) 的目录页,展示 4-8 个章节
-  - 创意 / 设计 / 营销项目的章节导航
-  - 适合需要"一屏看完全部章节"的总览页
+  - 8 章节的内容索引展示
+  - 中长 deck(8+ 页)的目录铺陈
+  - 让观众一眼看到整 deck 节奏
 when_to_use:
-  - 章节数 4-8 的 deck 第 2 页
-  - 需要编号 + 章节名两层信息呈现
-  - 不适合 < 3 章的短 deck (会显得稀疏)
+  - deck 第 2 页 · 章节多于 4 的目录页
+  - 需要双语呈现(中文标题 + Agenda 英文)
+  - 章节数恰好 8 个或 5-8 之间
+  - 不适合 3 章节以内的短 deck(过满)
 keywords:
   - 目录
+  - 八章节目录
   - agenda
-  - 8项grid
-  - 粉紫极光
-  - aurora gradient
-  - 章节索引
-  - 编号cards
+  - 编号目录
+  - 2x4 网格
+  - numbered toc
+  - 多章节索引
 native_elements:
-  - 纯黑底色
-  - 中下区域大面积粉色 / 紫色 / 红色 blurred 极光渐变
-  - 左上角白色 "目录" 大标题 (~36pt)
-  - 顶部中央 "Agenda" 英文小字 (灰白)
-  - 右上角细线圆环 + 星形装饰
-  - 4×2 grid 布局,8 个章节项
-  - 每项含 2 位数编号 (橙红色 "01"-"08") + 中文章节名 (白色)
-  - 编号下方一条短橙红色分隔线
-
-# === 辅助 ===
+  - 左侧大字"目录"
+  - 顶部居中英文 "Agenda" 小字
+  - 8 个编号网格(01-08),2 行 x 4 列
+  - 每个网格:大数字编号(28pt)+ 中文章节名(20pt)
+  - 右上椭圆环 + 星形装饰
+  - 背景偏左侧粉紫色 blurred 渐变
 layout_hint: null
 variant: toc-8
 page_number: 2

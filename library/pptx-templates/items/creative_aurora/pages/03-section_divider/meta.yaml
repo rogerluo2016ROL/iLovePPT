@@ -1,33 +1,32 @@
 status: approved
-confidence: 0.93
+confidence: 0.95
 needs_manual_review: false
 id: creative_aurora__03-section_divider
-name: Section Divider · 蓝绿极光球 + 大标题
+name: "Section Divider · 居中大标题 + 副标题 + 蓝色 footer 装饰带"
 layout_type: section_divider
 content_intent:
-- 章节起始过渡页,引导观众注意力到新章节
-- 提供章节大标题 + 一句副标题描述当前章节主旨
-- 创意 / 设计类长 deck 的章节间过渡
+  - 章节之间的过渡分隔页
+  - 标识进入新章节,重置观众注意力
+  - 给章节标题 + 一句话章节意图
 when_to_use:
-- '每个章节开始处 (例: 第 03 / 07 / 11 页 等)'
-- 需要强视觉过渡的演讲节奏
-- 不适合短 deck (没有章节) 或正文页
+  - 每个新章节开始前(章节切换)
+  - 大型 deck 中 3-5 个 section 切割
+  - 需要"喘息感"的 storyline 转折点
+  - 不适合内容紧凑的短 deck(< 5 页)
 keywords:
-- 章节分隔
-- section divider
-- 过渡页
-- 蓝绿极光
-- aurora gradient
-- 大标题
-- 创意
+  - 章节分隔
+  - section divider
+  - 过渡页
+  - 章节标题页
+  - 大标题居中
+  - 蓝色 footer
 native_elements:
-- 纯黑底色
-- 左侧中部蓝紫 / 绿色 blurred 极光圆球渐变
-- 左上角小蓝色矩形装饰条
-- 右上角细线椭圆环 + 星形装饰
-- 居中大白色章节标题 (~48pt)
-- 标题下方一行灰白小字副标题
-- 底部一条横向蓝色装饰带 + 圆点 / 短线作 footer
+  - 黑色底
+  - 中心居中大标题(白色)+ 下方副标题(灰白小字)
+  - 左侧蓝绿色 blob 渐变装饰
+  - 右上椭圆环 + 星形装饰
+  - 左上小蓝色装饰条
+  - 底部全宽蓝色 footer 装饰带(带白色圆点 / 短线)
 layout_hint: null
 variant: section-divider-text
 page_number: 3

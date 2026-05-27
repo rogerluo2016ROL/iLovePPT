@@ -59,3 +59,6 @@ library/*/_source/*
 **/.env
 **/.env.local
 **/.env.*.local
+
+# extractor 中间产物 · raw shape skeleton(LLM 填语义前)· 不入 git
+library/pptx-templates/items/**/_pmap_skeleton.yaml

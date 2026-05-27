@@ -1,31 +1,32 @@
 status: approved
-confidence: 0.5
-needs_manual_review: true
-
+confidence: 0.95
+needs_manual_review: false
 id: training_team__37-other
-name: "模板工具说明页 · 填充图示中的图片 Fill Pictures in Diagram"
+name: "Other · iSlide 教程页 3/3 - 填充图片 (Fill Pictures in Diagram)"
 layout_type: other
 content_intent:
-  - 模板自带 Picture Library 使用教程
-  - 工具说明页,非 deck 内容
+  - iSlide 插件功能教程 (非用户内容)
+  - 教用户从图片库填充 deck 内占位形状
+  - 模板出品方教学说明
 when_to_use:
-  - 不在 deck 输出中使用
-  - 提示用户如何填充图片
+  - 绝对不该在最终 deck 出现
+  - 是模板出品方的工具教程
 keywords:
-  - Picture Library
-  - 图片库
+  - other
+  - 教程页
+  - tutorial
+  - iSlide 教程
   - 填充图片
-  - 说明页
-  - 教程
-  - instruction
+  - Fill Pictures
+  - picture library
+  - not-for-deck
 native_elements:
-  - 顶部 "填充图示中的图片 Fill Pictures in Diagram" 大标
-  - 3 步 wireframe(选 shape → Picture Library → 自动填充)
-  - 中间含红框 handshake 图示选中
-  - 1/2/3 步骤编号
-  - 右上红色 Note 警示
-
-layout_hint: tool-instruction-page (模板自带工具说明,enum 兜底)
+  - 左侧 大字 "填充图示中的图片 Fill Pictures in Diagram"
+  - 右上 红色 Note 框 "本页为说明页,使用时请删除"
+  - 3 步示意:① 选占位形状 ② 图片库点击 ③ 自动填充保持比例
+  - 浅灰 wireframe 风格 UI 模拟图 (3 张配箭头) + 握手照片示意
+  - 底部 ① ② ③ 步骤标号 + 操作说明
+layout_hint: "iSlide 教程页 · 必删 · 不该在最终 deck 出现"
 variant: other-tool-instruction
 page_number: 37
 template_name: training_team

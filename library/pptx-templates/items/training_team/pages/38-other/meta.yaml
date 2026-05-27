@@ -1,31 +1,32 @@
 status: approved
-confidence: 0.5
-needs_manual_review: true
-
+confidence: 0.95
+needs_manual_review: false
 id: training_team__38-other
-name: "模板工具说明页 · 更改图示中的插图 Replace Vectors in Diagram"
+name: "Other · iSlide 教程页 - 替换插图 (Replace Vectors in Diagram)"
 layout_type: other
 content_intent:
-  - 模板自带 Vector Library 使用教程
-  - 工具说明页,非 deck 内容
+  - iSlide 插件功能教程 (非用户内容)
+  - 教用户从插图库替换 deck 内 vector 插图
+  - 模板出品方教学说明
 when_to_use:
-  - 不在 deck 输出中使用
-  - 提示用户如何替换矢量插图
+  - 绝对不该在最终 deck 出现
+  - 是模板出品方的工具教程
 keywords:
-  - Vector Library
-  - 插图库
+  - other
+  - 教程页
+  - tutorial
+  - iSlide 教程
   - 替换插图
-  - 说明页
-  - 教程
-  - instruction
+  - Replace Vectors
+  - vector library
+  - not-for-deck
 native_elements:
-  - 顶部 "更改图示中的插图 Replace Vectors in Diagram" 大标
-  - 3 步 wireframe(解组 → Vector Library → 完成)
-  - 中间含红框 vector 高亮(person illustration)
-  - 1/2/3 步骤编号
-  - 右上红色 Note 警示
-
-layout_hint: tool-instruction-page (模板自带工具说明,enum 兜底)
+  - 左侧 大字 "更改图示中的插图 Replace Vectors in Diagram"
+  - 右上 红色 Note 框 "本页为说明页,使用时请删除"
+  - 3 步示意:① 解除组合选插图 ② 插图库替换 ③ 替换成功
+  - 浅灰 wireframe 风格 UI 模拟图 (3 张配箭头) + 折线图 / 女子图示意
+  - 底部 ① ② ③ 步骤标号 + 操作说明
+layout_hint: "iSlide 教程页 · 必删 · 不该在最终 deck 出现"
 variant: other-tool-instruction
 page_number: 38
 template_name: training_team

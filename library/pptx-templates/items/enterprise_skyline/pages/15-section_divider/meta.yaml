@@ -1,32 +1,34 @@
 status: approved
-confidence: 0.95
+confidence: 0.96
 needs_manual_review: false
 
 id: enterprise_skyline__15-section_divider
-name: "章节分隔 · 大编号 03 + Section Header + 金色 skyline"
+name: "章节分隔 03 · 大数字 + 标题 + 城市天际线"
 layout_type: section_divider
 content_intent:
-  - 第 3 章节起始分隔页
-  - 系列章节分隔
-  - 重置节奏 + 引入新主题
+  - deck 第三章节切换页
+  - 编号 03 + 章节标题 + 简短引导语
+  - 跟 03 / 09 / 21 / 27 同款分隔节奏
 when_to_use:
-  - 第 3 章节开始
-  - 跟 03 / 09 / 21 / 27 节奏一致
+  - 多章节 deck 第三章节切换(03 编号)
+  - 跟其他 section_divider 配对统一节奏
+  - 章节名 + 一句引导语
 keywords:
   - 章节
-  - 分隔页
   - section
-  - divider
+  - 分隔
+  - 过场
   - "03"
-  - 大编号
-  - 城市天际线
+  - 大数字
   - skyline
+  - 留白
 native_elements:
-  - 左侧巨大金色编号 "03"
-  - 横线分隔
-  - Section Header Here 大标题 + 2 行 Supporting text
+  - 浅白底,大留白
+  - 左侧巨号金色 "03"
+  - 左下黑色 "Section Header Here" + 两行 supporting
+  - 中间水平细分隔线贯穿全宽
   - 右上金色城市天际线剪影
-  - 大留白干净
+  - 整体高留白,跟 03 / 09 同款 layout
 
 layout_hint: null
 variant: section-divider-numbered

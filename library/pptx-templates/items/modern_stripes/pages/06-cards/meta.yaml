@@ -1,31 +1,40 @@
+# === Gate ===
 status: approved
-confidence: 0.88
+
+# === LLM 自评 ===
+confidence: 0.90
 needs_manual_review: false
 
+# === 必填 ===
 id: modern_stripes__06-cards
-name: "Cards · 3 列气泡卡片 + 底部编号圈"
+name: "Cards · 3 列水滴形纸飞机卡片"
 layout_type: cards
 content_intent:
-  - 3 个并列要点 / 步骤 / 产品特性展示
-  - 每卡:icon + 标题 + 描述 + 编号
-  - 三色对比强化视觉区分
+  - 3 个关键 feature / pillar 的并列展示
+  - 3 个 step / 阶段 / phase 的简介
+  - 3 种产品 / 服务 / 维度的对比
 when_to_use:
-  - 3 项内容并列 · 有 1-2 行描述 + 编号
-  - 三色对比可读性高的场合
-  - 强调每项独立性的并列卡片
+  - 需要并列展示 3 个对象,色彩对比强烈
+  - 顶部标题 + 3 列水滴形 cards 的视觉
+  - 强调中间项(蓝色)的 3-cols 结构
 keywords:
-  - 3 卡
-  - 气泡卡片
-  - 编号卡
-  - 三色对比
-  - speech bubble
-  - 红蓝灰
+  - cards
+  - 3列
+  - 水滴
+  - 纸飞机
+  - 编号
+  - 蓝红强调
+  - balloon
 native_elements:
-  - 顶部居中标题 "Unified fonts make reading more fluent."
-  - 标题下两行 supporting text(灰字小号)
-  - 3 个圆角气泡卡片(下方带三角尾巴):红 / navy / 灰
-  - 卡片顶部白色 paper-plane icon · 中间 "Text here" 白字 · 下方白字 supporting
-  - 气泡尾巴下方对应编号圆圈 01 / 02 / 03(描边 + 中心编号)
+  - 顶部标题 "Unified fonts make reading more fluent."
+  - 标题下 2 行 supporting 文字
+  - 3 个水滴形(气球状)cards:左红 / 中深蓝 / 右浅灰
+  - 每张 card 顶部白色纸飞机 icon
+  - 每张 card 含 Text here + Supporting text + ......
+  - 卡片底部尖角下方各一个小圆 + 编号 01/02/03
+  - 底部 URL + 页码
+
+# === 辅助 ===
 layout_hint: null
 variant: cards-3-icon
 page_number: 6

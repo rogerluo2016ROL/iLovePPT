@@ -1,38 +1,36 @@
 # === Gate ===
 status: approved
 # === LLM 自评 ===
-confidence: 0.82
+confidence: 0.78
 needs_manual_review: false
 
 # === 必填(进 embedding)===
 id: business_geometric__31-cards
-name: "Cards · 3 hexagon 错落卡片(蜂巢式)"
+name: "Cards · 4 行 zigzag 六边形 + icon"
 layout_type: cards
 content_intent:
-  - 3 项业务/服务模块展示(蜂巢错落 z 字布局)
-  - 3 大主题 / 3 大产品线
-  - 需要"工业 / 工程"气质的 3 cards(六边形 = 模块化)
+  - "4 项 zigzag 六边形卡片(左右错位)"
+  - "4 个能力 / 4 个服务 / 4 个特性"
+  - "希望工业 / 科技感六边形而非普通卡片"
 when_to_use:
-  - 3 项内容并列
-  - 需要"模块 / 蜂巢 / 工业"视觉气质
-  - 跟 14 (3 菱形) 形成区别 — 这里更工业化
+  - "4 项条目 + 想 hexagon 工业感"
+  - "左右交替 zigzag(深蓝 / 浅灰 / 深蓝 / 浅灰)"
+  - "每项一个白底六边形 icon 标识"
 keywords:
-  - 3 项
-  - cards
-  - 蜂巢
-  - 六边形
-  - 模块化
-  - 工业
-  - 错落
+  - "4 项"
+  - "六边形"
+  - "hexagon"
+  - "cards"
+  - "zigzag"
+  - "工业"
 native_elements:
-  - 3 行 banner(深蓝/浅灰/深蓝交替)
-  - 每 banner 接一个白色边框六边形 + icon(火焰/汽车/手持币)
-  - 六边形上叠浅灰六边形 + icon(人物组/插头)
-  - 每 banner 含 "Text here" 标题 + "Copy paste fonts..." 描述
-  - 整体 z 字错落呼应
+  - "4 个圆角矩形条带(左右交替对齐 · 深蓝/浅灰交替)"
+  - "每条带一侧一个白底六边形 icon(火/人/汽车/手)"
+  - "每条 Text here 标题 + 描述"
+  - "整体 zigzag 节奏"
 
 # === 辅助(不进 embedding)===
-layout_hint: hexagon-zigzag
-variant: cards-3-icon
+layout_hint: null
+variant: cards-4-icon
 page_number: 31
 template_name: business_geometric

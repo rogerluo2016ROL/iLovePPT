@@ -1,34 +1,33 @@
 # === Gate ===
 status: approved
 # === LLM 自评 ===
-confidence: 0.82
+confidence: 0.74
 needs_manual_review: false
 
 # === 必填(进 embedding)===
 id: business_geometric__08-bullet_list
-name: "Bullet list · 5 点 numbered + venn 装饰"
+name: "Bullet list · 5 项编号 + icon · 居中树状导出"
 layout_type: bullet_list
 content_intent:
-  - 5 项 numbered 要点列表 + 行业 icon 装饰
-  - 业务清单 / 团队职能 / 服务项目 5 项
-  - 顺序无强相关但需要编号视觉
+  - "5 项有序条目展示(1-5 编号 + icon)"
+  - "5 大要素 / 5 步骤 / 5 个特性 list"
+  - "类思维导图导出 5 个 branch"
 when_to_use:
-  - 5 项同类条目展示
-  - 每项配独立 icon(职能/品类 icon)
-  - 偏正式商务清单
+  - "5 项内容需要展示顺序"
+  - "希望左侧有视觉锚(maven 形 venn 圆)+ 右侧有 icon 列表"
+  - "需要正式商务感"
 keywords:
-  - 5 项
-  - 列表
-  - 编号
-  - icon
-  - bullet
-  - 团队
-  - 职能
+  - "5 项"
+  - "编号"
+  - "icon"
+  - "列表"
+  - "bullet"
+  - "中心导出"
 native_elements:
-  - 左侧灰色重叠双圆(venn 装饰)+ 中心 "Text"
-  - 中间 5 个灰色 numbered circle(1-5)+ "Text here" 标题 + 描述
-  - 右侧 5 个商务 icon(人物/购物袋/柱状图/天平/手持币)
-  - 浅灰分隔横线分行
+  - "左侧两个浅灰 venn 圆叠 + 中央深蓝 Text"
+  - "中间垂直支线连接到右侧 5 行"
+  - "右侧 5 行(1-5 数字圆 + Text here 标题 + 描述)"
+  - "每行最右一个深灰 icon(人/购物袋/图表/天平/手)"
 
 # === 辅助(不进 embedding)===
 layout_hint: null

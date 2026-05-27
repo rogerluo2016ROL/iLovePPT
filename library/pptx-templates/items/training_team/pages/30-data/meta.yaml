@@ -1,32 +1,35 @@
 status: approved
-confidence: 0.83
+confidence: 0.86
 needs_manual_review: false
-
 id: training_team__30-data
-name: "Data · 齿轮 cluster 协作 + 2 KPI(1559K/1176K)"
+name: "Data · 齿轮组 (4 齿轮 灰/橙红) + 2 大数据 (1559K/1176K) + 2 列文本"
 layout_type: data
 content_intent:
-  - 协作系统业绩 2 个核心 metric
-  - 团队规模 / 用户量对比展示
-  - 培训覆盖人数 2 区域 KPI
+  - 2 个关键数据对比 (1559K vs 1176K) + 文本说明
+  - 围绕"运转 / 协作"主题的 2 指标展示
+  - 团队产能 / 学员数等 2 类指标
 when_to_use:
-  - 2 个 KPI 对比(主辅)
-  - 想用齿轮隐喻"机制 / 协作 / 运转"
+  - 2 个关键大数据为核心 (非 4 数据 — 用 13-data)
+  - 想要"齿轮组"协作/机制隐喻
+  - 数据 + 解释 2 列布局
 keywords:
-  - 数据
-  - 齿轮
-  - KPI
-  - 协作
-  - 机制
-  - 2 metrics
   - data
-  - cogwheel
+  - 数据
+  - 2 数据
+  - 2-data
+  - 齿轮
+  - gears
+  - 协作机制
+  - 1559K
+  - 关键指标
+  - KPI
+  - 大数据
 native_elements:
-  - 右上 4 个 cogwheel cluster(2 灰 + 2 橙红),含 team / pin / home icon
-  - 左上 Unified fonts 大标 + supporting + 橙红下划线
-  - 下方 2 列 KPI:1559K 橙红 + 文 / 1176K 灰 + 文
-  - 灰色竖线分两 KPI
-
+  - 右侧 4 个齿轮咬合 (3 灰 + 1 橙红 + 多色 icon 嵌入:layer/home/location/person)
+  - 左侧 Unified fonts 加粗大标 + 橙红下划线 + 副本
+  - 底部 2 列 (1559K 橙红 大数据 + Text here + bullet 列表)
+  - 第二列 1176K 灰色 + 同结构
+  - 列间灰色细垂直分隔
 layout_hint: null
 variant: data-kpi-grid
 page_number: 30

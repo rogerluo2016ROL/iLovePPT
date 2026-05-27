@@ -1,34 +1,42 @@
+# === Gate ===
 status: approved
-confidence: 0.72
-needs_manual_review: false
 
+# === LLM 自评 ===
+confidence: 0.65
+needs_manual_review: true
+
+# === 必填 ===
 id: modern_stripes__27-pyramid
-name: "Pyramid · 倒置漏斗 + 左 3 列 bullets"
+name: "Pyramid (inverted) · 倒置漏斗 3 层 + 收口"
 layout_type: pyramid
 content_intent:
-  - 3 阶段漏斗式收敛(从大到小)
-  - 销售漏斗 / 决策漏斗 / 筛选过程
-  - 强调"从广到精 / 不断收敛"
+  - 漏斗(funnel)/ 筛选 / 收窄过程
+  - 销售漏斗 / 用户旅程 / 资格筛选
+  - 从大到小、从泛到精的递进
 when_to_use:
-  - 3 阶段收敛(转化漏斗、决策漏斗)
-  - 每阶段有 2 列 bullets
-  - 终点是关键目标(打靶视觉)
+  - 内容是 3 阶段筛选 / 漏斗模型
+  - 想强调"收口 / 最终落地"
+  - enum 无 funnel,用 pyramid + variant 标 inverted
 keywords:
+  - pyramid
+  - 倒置
   - 漏斗
   - funnel
-  - 倒金字塔
-  - 收敛
+  - 3层
+  - 筛选
+  - 收口
   - 销售漏斗
-  - 转化
-  - 3 阶段
 native_elements:
-  - 右侧 3 层倒立 3D 金字塔(漏斗形,白底浅灰描边)
-  - 每层"Text"白字标签
-  - 漏斗底部尖端指向浅灰同心圆"靶心"
-  - 左侧 3 行 bullets(每行 2 列):分别对应漏斗 3 层
-  - 漏斗每层左缘有圆形 icon:红 / navy / navy 描边
-  - icon 内白色商务人 + 美元符
-layout_hint: "inverted_funnel_pyramid"
+  - 顶部水平细线
+  - 右侧 3 层倒置漏斗(从大梯形 → 中 → 小三角)+ 末端 target 同心圆
+  - 各层中央显示 Text 标签(红/蓝/蓝)
+  - 各层左侧 person+$ icon(红 / 蓝 / 蓝)
+  - 漏斗左侧 3 行 x 2 列 = 6 个 Supporting text 注释
+  - 漏斗底部 target 同心圆装饰("命中目标"暗示)
+  - 底部 URL + 页码
+
+# === 辅助 ===
+layout_hint: "倒置 funnel · enum 无 funnel · pyramid 是同 3 层结构最近邻;variant 标记 inverted"
 variant: pyramid-inverted
 page_number: 27
 template_name: modern_stripes

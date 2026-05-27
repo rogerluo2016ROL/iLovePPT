@@ -3,32 +3,34 @@ confidence: 0.93
 needs_manual_review: false
 
 id: product_lineart__32-closing
-name: "Closing · Thanks 大标题 + 产品图标群 + 讲者落款"
+name: "Closing · Thanks + Slogan 大字居中 + 右上蓝色线稿产品插画群"
 layout_type: closing
 
 content_intent:
-  - 整 deck 的收尾感谢页
-  - 展示 Thanks 标语 + 公司/讲者署名
-  - 视觉上对位封面(图标群再次出现)
+  - 致谢页 / 收尾页 (整 deck 最后一页)
+  - 大字 "Thanks" + "And Your Slogan Here"
+  - 讲者信息 + 网址放底部居中
 
 when_to_use:
   - deck 最后一页
-  - 需要明确收尾,留 Q&A / 联系方式
-  - 跟 cover 形成视觉呼应
+  - 需要"产品 illustration + 致谢"的科技感收尾
+  - 跟 cover (page 1) 视觉呼应 (相同 lineart icon 群)
 
 keywords:
   - closing
   - thanks
-  - 结尾
-  - 感谢
+  - 致谢
+  - 收尾
   - slogan
-  - 落款
+  - 产品插画
+  - speaker name
 
 native_elements:
-  - 左上蓝色线稿放大镜图标(标志性单点装饰)
-  - 中间产品图标群(电脑/钻石/齿轮/秒表等,跟 cover 同款 group)
-  - 居中两行黑色大标题 "Thanks" + "And Your Slogan Here"
-  - 下方 "Speaker name and title" + 模板水印小字
+  - "上方大型蓝色 line-art 产品图标群 (跟 cover 同一组: 电脑/钻石/齿轮/秒表/放大镜/钥匙/box/视频窗口)"
+  - '中央黑色加粗 2 行大字 Thanks + And Your Slogan Here'
+  - 下方 "Speaker name and title" 黑色 + "www.islide.cc" 黑色 (各 1 行)
+  - 通体白底, illustration 在上 · 文字在下的对称布局
+  - 没有 header 分隔线 (跟 cover 一致)
 
 layout_hint: null
 variant: closing-illustration

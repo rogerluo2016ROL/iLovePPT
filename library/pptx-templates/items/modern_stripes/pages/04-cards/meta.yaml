@@ -1,31 +1,39 @@
+# === Gate ===
 status: approved
+
+# === LLM 自评 ===
 confidence: 0.88
 needs_manual_review: false
 
+# === 必填 ===
 id: modern_stripes__04-cards
-name: "Cards · 4 列角色 / 受众卡片"
+name: "Cards · 4 列人物角色卡片"
 layout_type: cards
 content_intent:
-  - 4 个团队角色 / 用户画像 / 受众分群并列展示
-  - 每卡含 icon + 编号圆盘 + 1-2 行描述
-  - 跨产品功能介绍 4 维度并列对比
+  - 4 个 persona / role / 团队成员的横向并列展示
+  - 4 类客户群 / 受众群 / 用户画像
+  - 4 个 stakeholder 的简介卡片
 when_to_use:
-  - 4 项内容并列 · 各自有 icon + 简短文字
-  - 角色分群 / 受众分群 / 功能模块清单
-  - 各项无明显顺序关系(并列而非递进)
+  - 需要并列展示 4 个对象(人 / 客户 / 角色)
+  - 标准 4 列 cards 布局,蓝红交替强调对比
+  - 顶部标题 + 4 卡 = persona overview 风格
 keywords:
-  - 4 卡
-  - 角色
+  - 卡片
+  - cards
+  - 4列
+  - 人物
   - persona
-  - 受众
-  - 并列对比
-  - icon 卡片
-  - xxx 标签
+  - 角色
+  - 蓝红交替
 native_elements:
-  - 顶部 "...Text" 矩形标题框 + 上方下划线小字 "Supporting text here"
-  - 4 列垂直布局,每列含:用户群组 icon + 圆形大号"XXX"标签 + 2 行 supporting text + 省略号
-  - 颜色:第 1 / 4 列 navy,第 2 / 3 列 red(中间双红)
-  - 横向浅灰背景条贯穿卡片
+  - 顶部水平细线分隔
+  - 标题区域(中部)有 "…Text" 主标题 + Supporting text here 副标题
+  - 4 列卡片均匀分布,每列含 1 个 person icon + 1 个 XXX 圆形 + 2 行文字
+  - 第 1/4 列深蓝,第 2/3 列红色(蓝红蓝红反转中心强调)
+  - 卡片间淡灰背景条
+  - 底部 URL + 页码
+
+# === 辅助 ===
 layout_hint: null
 variant: cards-4-icon
 page_number: 4

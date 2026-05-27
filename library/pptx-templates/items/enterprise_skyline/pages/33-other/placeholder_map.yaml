@@ -1,5 +1,5 @@
 template_page_index: 32
-layout_class: '?'
+layout_class: other
 slots:
 - id: '?'
   shape_id: 48
@@ -10,9 +10,9 @@ slots:
     top: -0.0
     width: 11.88
     height: 1.12
+  font_size_pt: 28.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 28.0
 - id: '?'
   shape_id: 51
   tree_path: '16'
@@ -26,9 +26,9 @@ slots:
     top: 0.14
     width: 2.78
     height: 0.84
+  font_size_pt: 8.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 8.0
 - id: '?'
   shape_id: 18
   tree_path: '1'
@@ -38,9 +38,9 @@ slots:
     top: 1.65
     width: 6.4
     height: 0.3
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 32
   tree_path: '8'
@@ -50,9 +50,9 @@ slots:
     top: 1.65
     width: 4.99
     height: 0.3
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 21
   tree_path: '3'
@@ -62,9 +62,9 @@ slots:
     top: 2.94
     width: 2.36
     height: 0.24
+  font_size_pt: null
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: null
 - id: '?'
   shape_id: 22
   tree_path: '4'
@@ -74,13 +74,13 @@ slots:
     top: 2.94
     width: 3.15
     height: 0.24
+  font_size_pt: 8.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 8.0
 - id: '?'
   shape_id: 39
   tree_path: '12'
-  raw_text_sample: '<template_tool_color_lib_note>，快速应用更多色彩
+  raw_text_sample: '可以通过iSlide 【色彩库】功能，快速应用更多色彩
 
     More color schemes are optional '
   bbox:
@@ -88,9 +88,9 @@ slots:
     top: 3.4
     width: 6.4
     height: 0.3
+  font_size_pt: 8.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 8.0
 - id: '?'
   shape_id: 25
   tree_path: '5'
@@ -100,9 +100,9 @@ slots:
     top: 4.31
     width: 6.4
     height: 0.3
+  font_size_pt: 12.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 12.0
 - id: '?'
   shape_id: 27
   tree_path: '7'
@@ -115,9 +115,9 @@ slots:
     top: 4.82
     width: 5.52
     height: 0.5
+  font_size_pt: 8.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 8.0
 - id: '?'
   shape_id: 47
   tree_path: '11'
@@ -129,13 +129,13 @@ slots:
     top: 5.27
     width: 4.99
     height: 0.5
+  font_size_pt: 8.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 8.0
 - id: '?'
   shape_id: 44
   tree_path: '13'
-  raw_text_sample: '<template_tool_font_change_note>
+  raw_text_sample: '可以在【设计】菜单【字体】中改变，或应用iSlide【统一字体】功能改变设置
 
     To change theme fonts'
   bbox:
@@ -143,20 +143,21 @@ slots:
     top: 5.8
     width: 6.4
     height: 0.3
+  font_size_pt: 8.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 8.0
 - id: '?'
   shape_id: 6
   tree_path: '14'
-  raw_text_sample: '<template_tool_guides_note>，应用更多预设参考线
+  raw_text_sample: '可以通过iSlide 【一键优化】（智能参考线）功能，应用更多预设参考线
 
-    Use <template_tool> “Uniform Gui'
+    Use iSlide “Uniform Gui'
   bbox:
     left: 7.61
     top: 5.8
     width: 4.99
     height: 0.44
+  font_size_pt: 8.0
   capacity_chars: '?'
   text_color_override: null
-  font_size_pt: 8.0
+

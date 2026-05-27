@@ -1,32 +1,29 @@
 status: approved
-confidence: 0.95
+confidence: 0.97
 needs_manual_review: false
-
 id: training_team__26-section_divider
-name: "Section divider /05 · 橙红 chip + 蓝 band + 团队插画"
+name: "Section Divider · 橙红 /05 大字 + 团队卡通插画"
 layout_type: section_divider
 content_intent:
-  - 章节起首过场,标 /05
-  - 培训模块 5 引入页(末章)
+  - 章节切换页,标记进入第 5 章节 (/05)
+  - 培训 deck 模块开始页
 when_to_use:
-  - deck 中最后一章节前
-  - 跟 03/08/14/20 复用同一视觉系
+  - 每章节开始放一页
+  - 跟 02-toc 的 5 章节序号呼应
+  - 同模板 03/08/14/20 是同模式不同序号
 keywords:
-  - 章节分隔
-  - section
-  - "/05"
-  - 过场
-  - 末章
-  - 团队
-  - 卡通
+  - section divider
+  - 章节页
+  - 过场页
+  - /05
+  - chapter break
+  - module divider
 native_elements:
-  - 左上橙红方块 + 白色 "/05" 大字
-  - 中部 "Section Header Here" 黑色大标题
-  - 副标题 supporting text
-  - 下半浅蓝 band 横贯
-  - 右侧卡通团队 + TEAM 插画
-
+  - 左侧橙红渐变长方形 chip + 巨大白色 /05 数字
+  - 右侧 4 卡通人物 + 大字 TEAM 插画
+  - 底部浅蓝 band 横向铺
+  - Section Header Here 加粗黑色标题 + 副本
 layout_hint: null
-variant: section-divider-illustration
+variant: section-divider-numbered
 page_number: 26
 template_name: training_team

@@ -1,33 +1,41 @@
+# === Gate ===
 status: approved
-confidence: 0.9
+
+# === LLM 自评 ===
+confidence: 0.95
 needs_manual_review: false
 
+# === 必填 ===
 id: modern_stripes__28-venn
-name: "Venn · 双圆交叉 + 4 节点标签"
+name: "Venn · 2-set Venn 图(target + $ icon)+ 4 个 1-4 分区"
 layout_type: venn
 content_intent:
-  - 2 组概念的交集关系
-  - 战略 × 执行 / 用户 × 产品 / 技术 × 市场
-  - 强调"两者共性 + 各自独立"
+  - 2 个领域 / 维度的交叉 / 重叠分析
+  - target + 金钱 / 战略 + 战术 / 用户 + 产品
+  - 2 个 set 的并集 / 交集分类(01-04)
 when_to_use:
-  - 2 个主题的交叉关系 · 加上 4 个细分点
-  - 各圆上有编号节点(01-04 分布)
-  - 左右两侧需补充描述文字
+  - 内容是 2 个对象的 2-set Venn 图
+  - 想强调"交叉 / 重叠 / 共性 vs 差异"
+  - 4 类点分别落在左独 / 右独 / 各自交集
 keywords:
   - venn
-  - 韦恩图
-  - 双圆交叉
   - 交集
+  - 并集
+  - 2集合
+  - 目标
+  - 金钱
   - 重叠
-  - 2 组
-  - 4 节点
+  - 交叉分析
 native_elements:
-  - 左 / 右两个浅灰大圆相切叠合
-  - 左圆 icon:navy bullseye 靶心 + 编号 01 / 04
-  - 右圆 icon:red 美元符 + 编号 02 / 03
-  - 4 角"Text here"标题 + supporting text(左上 / 左下 / 右上 / 右下)
-  - 横向细灰线穿过两圆中心
+  - 顶部水平细线
+  - 中央 2 个相交的大圆(左灰 + 右浅灰)+ 中央 1 块 target icon + 1 块 $ icon
+  - 中央 4 个数字 01 02 03 04 分布在 2 圆的各分区
+  - 左侧 2 段 Text here + Supporting(对应左圆 01/04)
+  - 右侧 2 段 Text here + Supporting(对应右圆 02/03)
+  - 底部 URL + 页码
+
+# === 辅助 ===
 layout_hint: null
-variant: venn-4
+variant: venn-2
 page_number: 28
 template_name: modern_stripes

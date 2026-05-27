@@ -1,31 +1,36 @@
 status: approved
-confidence: 0.55
-needs_manual_review: true
+confidence: 0.95
+needs_manual_review: false
 
 id: enterprise_skyline__35-other
-name: "模板工具说明页 · Quick Slides Design 操作指南"
+name: "iSlide 操作说明页 1 · 快速设计页面 / Quick Slides Design"
 layout_type: other
-layout_hint: "模板说明页,介绍 Diagram Library 用法"
 content_intent:
-  - 模板工具操作说明(非演讲页)
-  - 教用户用 Diagram Library 快速选图
-  - 顶部 Note 提示"使用时请删除本页"
+  - 模板使用说明页(iSlide 图示库筛选)
+  - 标题 "快速设计页面 Quick Slides Design"
+  - 红色"本页为说明页,使用时请删除本页内容"提示
 when_to_use:
-  - 仅作模板工具操作教程
-  - 演讲时应删除
+  - 不建议作为内容页使用
+  - 模板使用者删除本页
 keywords:
-  - 工具说明
-  - Quick Slides Design
+  - 说明页
+  - instruction
+  - iSlide
+  - Quick Slides
+  - 图示库
   - Diagram Library
+  - 删除页
   - 操作指南
-  - 删除
 native_elements:
-  - 大标题 "快速设计页面 Quick Slides Design"
-  - 左侧 "图示库 / Diagram Library" 弹窗截图(含 6 个 diagram thumbnails)
-  - 右侧 "选择图示插入当前 PPT 主题" 流程截图
-  - 步骤 1 / 2 编号说明
-  - 右上红色 Note 警告框
+  - 浅白底
+  - 标题黑色加粗中英 "快速设计页面 Quick Slides Design"
+  - '右上角红色提示框 "Note: 本页为说明页,使用时请删除本页内容"'
+  - 左侧浅灰图示库界面 wireframe(图示库 / Diagram Library)
+  - 右侧浅灰 PPT 编辑器 wireframe + 红框圈出可编辑区
+  - 下方 2 步骤说明 "1 使用 iSlide 图示库筛选图示 / 2 选择图示插入当前 PPT 主题"
+  - 整体是工具操作教学,跟模板内容无关
 
+layout_hint: "模板使用说明页(iSlide 操作教学),应在使用前删除"
 variant: other-tool-instruction
 page_number: 35
 template_name: enterprise_skyline

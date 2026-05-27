@@ -1,33 +1,34 @@
 status: approved
-confidence: 0.88
+confidence: 0.92
 needs_manual_review: false
-
 id: training_team__24-process_flow
-name: "Process flow · S 形曲线 + 4 步 person+compass icon(成长旅程)"
+name: "Process Flow · 4 步骤 S 曲线路径 (01-04 人物 icon + 橙红三角箭头)"
 layout_type: process_flow
 content_intent:
-  - 4 步学习 / 成长旅程
-  - 培训路径 4 milestone
-  - 团队职业生涯 4 阶段
+  - 4 步骤的非线性流程 (S 曲线意味"路径有曲折")
+  - 培训过程 4 阶段 (报名 → 学习 → 测试 → 毕业)
+  - 销售旅程 4 阶段 (识别 → 兴趣 → 评估 → 决策)
 when_to_use:
-  - 内容是 4 个 sequential 阶段
-  - 想用"路径 / S 形曲线"隐喻旅程
+  - 4 步骤需要展示"非直线 / 有曲折"路径
+  - 跟其他 process_flow 不同 (07 单大箭头 / 10 三角循环 / 17 三节点对称)
+  - 想要"探索 / 旅程"的隐喻
 keywords:
-  - 4 步流程
-  - 旅程
-  - S 形曲线
-  - 路径
-  - 培训路径
   - process flow
+  - 4 步骤
+  - 4-step
+  - S 曲线
+  - S-curve
   - journey
-  - compass
+  - 旅程
+  - 路径
+  - 探索
+  - 顺序流程
 native_elements:
-  - 浅灰 S 形曲线轨迹横贯
-  - 4 个圆形 person + compass icon(全橙红描边)
-  - 4 个橙红三角箭头指向各 Text here 标题
-  - 01-04 编号前缀
-  - 文字交替左右
-
+  - 浅灰 S 曲线路径背景 (从左上 → 中 → 右下 → 反弯)
+  - 4 个浅灰圆 + 橙红 stopwatch/timer icon
+  - 每节点序号 (01.Text here / 02 / 03 / 04 italic 加粗)
+  - 每节点旁 Copy paste 副本说明
+  - 4 个橙红三角箭头沿曲线指示流向
 layout_hint: null
 variant: process-arrow-4
 page_number: 24
