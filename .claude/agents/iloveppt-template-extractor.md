@@ -415,58 +415,26 @@ implementation:
 
 #### Step 3.3 · self-check 验收(写完所有 draft 后跑)
 
-进 Step 4 前**必须**跑以下自检,**任一项不通过都 return error 不放行**:
+进 Step 4 前**必须**跑外部 self-check 脚本:
 
 ```bash
-NAME=<name>
-ALLOWED='cover|toc|section_divider|summary|closing|quote|single_focus|cards|bullet_list|data|timeline|pyramid|venn|radial|process_flow|quadrant|comparison|other'
-
-# 0. YAML 语法验证(优先级最高 · 历史翻车 12 次:`- "QUOTED" rest` 模式)
-python3 -c "
-import yaml, glob, sys
-broken=[]
-for f in glob.glob(f'library/pptx-templates/items/$NAME/meta.yaml.draft') + glob.glob(f'library/pptx-templates/items/$NAME/pages/*/meta.yaml.draft'):
-  try: yaml.safe_load(open(f))
-  except Exception as e: broken.append((f, str(e).split(chr(10))[0]))
-if broken:
-  print('YAML_SYNTAX_ERROR:')
-  for f,e in broken: print(f'  {f}: {e}')
-  sys.exit(1)
-"
-# 🚫 list item 不允许以 \"QUOTED\" 开头然后接更多文本
-#   ✗ - \"CONTENTS\" title on left            ← YAML 解析失败
-#   ✓ - '\"CONTENTS\" title on left'           ← 用单引号包整行
-#   ✓ - CONTENTS title on left                 ← 去掉内部双引号
-
-# 1. 模板级必填字段
-for f in id name category content_intent when_to_use keywords recommended_for visual_signature status provenance extraction; do
-  grep -q "^$f:" library/pptx-templates/items/$NAME/meta.yaml.draft || echo "MISSING_TEMPLATE_FIELD: $f"
-done
-
-# 2. 页级必填字段(对每页检查)
-for p in library/pptx-templates/items/$NAME/pages/*/meta.yaml.draft; do
-  for f in id name layout_type content_intent when_to_use keywords native_elements status confidence; do
-    grep -q "^$f:" $p || echo "MISSING_PAGE_FIELD: $p missing $f"
-  done
-done
-
-# 3. layout_type enum 合规
-grep -hE "^layout_type:" library/pptx-templates/items/$NAME/pages/*/meta.yaml.draft \
-  | awk '{print $2}' | tr -d '"' | sort -u \
-  | grep -vE "^($ALLOWED)$" \
-  && echo "ENUM_VIOLATION: 见上方"
-
-# 4. id 格式 + 唯一性
-expected_count=$(ls library/pptx-templates/items/$NAME/pages/*/meta.yaml.draft | wc -l)
-unique_ids=$(grep -h "^id:" library/pptx-templates/items/$NAME/pages/*/meta.yaml.draft | sort -u | wc -l)
-[ "$expected_count" -eq "$unique_ids" ] || echo "ID_DUPLICATE_OR_MISSING: expect $expected_count unique ids, got $unique_ids"
-
-# 5. confidence 必须是数字
-grep -hE "^confidence: (high|medium|low|.+[a-zA-Z])" library/pptx-templates/items/$NAME/pages/*/meta.yaml.draft \
-  && echo "CONFIDENCE_NOT_NUMERIC: 见上方"
+library/_rag/.venv/bin/python \
+  library/pptx-templates/scripts/extractor_self_check.py <name>
+echo "exit_code=$?"
 ```
 
-任何 echo 出错信号 → `status: error` + 把 self-check 输出贴在 errors[].message,等用户决策。**不允许**自己尝试修复后再跑(那会产生混乱的中间产物)。
+Exit code:
+- `0` = 全过 · 继续 Step 4
+- `1` = 字段 / enum / id 格式 / confidence / extraction 算式 / embedding_dim / template_name 错(详见 stdout) → `code: SCHEMA_VALIDATION_FAILED`
+- `2` = placeholder_map.yaml.draft tree_path 不能 resolve(builder tier1 路径会失效)→ `code: PMAP_TREE_PATH_UNRESOLVABLE`
+- `3` = YAML 语法错(常见 `- "QUOTED" rest` 模式)→ `code: YAML_SYNTAX_ERROR`
+- `4` = 模板目录不存在 → `code: TEMPLATE_NOT_FOUND`
+
+Self-check 的具体校验项见 `library/pptx-templates/scripts/extractor_self_check.py` 头部 docstring。
+
+**🚫 严禁**:自行 grep / sed / 内嵌 bash 模拟 self-check · 必须调脚本拿 exit code · 否则 校验缺失。
+
+任一非 0 exit → `status: error` + 把 stdout 贴进 errors[].message · 等用户决策 · **不允许**自动重试修复。
 
 ### Step 4 · 复制 cover 缩略
 
@@ -547,6 +515,12 @@ errors:
       MISSING_PAGE_FIELD: pages/03/meta.yaml.draft missing keywords
       ENUM_VIOLATION: layout_type=comparison_venn (不在 17 enum 内)
       CONFIDENCE_NOT_NUMERIC: confidence=high
+  - code: PMAP_TREE_PATH_UNRESOLVABLE       # 主线程应让用户修 placeholder_map 或重派 extractor
+    message: "placeholder_map.yaml.draft 中至少 1 个 tree_path 不能 resolve 到 .pptx 形状(builder tier1 路径会失效)"
+  - code: YAML_SYNTAX_ERROR                 # 主线程应让用户修 YAML 语法
+    message: "meta.yaml.draft 或 placeholder_map.yaml.draft YAML 语法错(常见 - \"QUOTED\" rest 模式)"
+  - code: TEMPLATE_NOT_FOUND                # 主线程应排查 items/<name>/ 目录消失
+    message: "items/<name>/ 目录不存在,可能被误删"
 ```
 
 summary 用 `[system] template_extractor_failed` 前缀,主线程整段转给 brainstorm team 走兜底分支。
