@@ -317,9 +317,24 @@ iteration: 1                            # 主版本号(大改时 +1,新建 deck_
 approvals:
   outline: true | false                 # outline.md 用户审批状态
   content: true | false                 # content.md 用户审批状态
-critic_c_passed: true | false           # Stage C 是否过 critic
+critic_cd_passed: true | false          # P2-3.2 后:stage=cd 是否过 critic(原 critic_c_passed / critic_d_passed 合并)
 status: dispatched_critic | dispatched_audience | ...
+
+# === P2-4 hot-reload for rework ===
+# 章节级 SHA-256 hash · 用于 critic/builder/audience 跨轮跳过未变章节
+# 由 library/_rag/scripts/compute_chapter_hashes.py 写入
+chapter_hashes:
+  "1": "sha256:abc123..."               # 章节 1 的 content.md 段(`## 1.` 到下一 `## ` 之前)
+  "2": "sha256:def456..."
+  "3": "sha256:..."
+last_hash_update: "2026-05-27T..."      # ISO 时间戳 · 每次跑 compute_chapter_hashes.py 时更新
+prev_critic_cd_report_path: "<abs>"     # 上一轮 critic stage=cd 报告路径(hot-reload 时复用 verdict)
+prev_audience_report_path: "<abs>"      # 上一轮 audience 报告路径(hot-reload 时复用 per_page_scores)
 ```
+
+**chapter_hashes 用途**(P2-4):author rework 单章后,critic / builder / audience 可读 state.json 对比当前 content.md 各章 hash 跟上次:**没变的章节** carry over 上次 verdict / 评分(从 prev report 里读);**hash 变了** 才重做。极大减少 rework 时间(~30min → ~5min)。
+
+**向后兼容**:旧 deck 的 state.json 没 chapter_hashes 字段也 OK(fallback 全重算);新 deck 派发前主线程跑 `compute_chapter_hashes.py` 写字段。
 
 **cost block(P1-8)· 任何 state.json 都可挂)**:
 
@@ -865,7 +880,7 @@ suggested_alternative_patterns:   # advisory(维度 5 输出)
 | **模型** | **opus**(多职责:Step 0 critic gate + Step 1 strict md→JSON + Step 2 build + Step 3 视觉 QA + Step 4 主动加视觉)|
 | **Tools** | Bash / Read / Write / Edit / Glob / Grep / Skill(**无 WebSearch**)|
 | **state file** | **无**(单次派发跑完,状态全在 visual_report_r{N}.md + deck_plan_edits / rolled_back)|
-| **读哪些 markdown** | critic_report_D_r{N}.md(Step 0 必读 gate)/ content.md / content-writing.md / visual-qa.md / `library/pptx-templates/items/<name>/meta.yaml`(若 theme ≠ tech_blue)/ `library/{visual-patterns,pptx-templates}/items/<id>/meta.yaml`(读 `<!-- pattern: vp:/tpl: -->` 注释时按前缀查对应 kb)|
+| **读哪些 markdown** | deck_v{N}_critic_cd.r{R}.md(Step 0 必读 gate · P2-3.2 后)/ content.md / content-writing.md / visual-qa.md / `library/pptx-templates/items/<name>/meta.yaml`(若 theme ≠ tech_blue)/ `library/{visual-patterns,pptx-templates}/items/<id>/meta.yaml`(读 `<!-- pattern: vp:/tpl: -->` 注释时按前缀查对应 kb)|
 | **写哪些 markdown** | `builder/deck_v{N}.pptx`(通过 build.py)/ `builder/deck_plan.json`(Step 3 的字数/视觉修复全落在这里,不写 .postbuild.md 副本)/ `builder/visual_report_r{N}.md` |
 | **调 RAG** | ✓ Step 2 渲染时解析 `<!-- pattern: vp:/tpl: -->` 注释 → 查对应 kb DB;✓ Step 4.2.5 第 4 路 fallback:三路全 disable + 该页 visual_qa 低分时,`library/search.sh` top-3 取 preview.png 作 hero |
 | **调 templates 库** | ✓ Step 2 build.py 解析 theme 字段:tech_blue → 内置;短名 → 两路查 `<plan_dir>/templates/<name>.pptx`(deck 本地)→ `library/pptx-templates/_source/<name>.pptx`(全局)作 base |
@@ -877,7 +892,7 @@ suggested_alternative_patterns:   # advisory(维度 5 输出)
 
 **Stage E:5 步一气呵成**:Step 0 critic gate → Step 1 strict md→JSON(layout 强制 explicit)→ Step 2 build.py 出 .pptx + render PNG → Step 3 17 项机械视觉 QA(≤ 3 轮,改 deck_plan.json 不改 .md)→ Step 4 主动加视觉(4 路降级)。
 
-**Step 0 critic gate**:必须先 Read critic_d_report_path(主线程传 _r{N} 路径)→ verdict ∈ {pass, pass_with_notes} 才进 Step 1;needs_revision 或 missing → `hard_stop`。**iloveppt-builder 不跑 Pyramid 自检**,信任 critic 那道 gate。
+**Step 0 critic gate**:必须先 Read critic_cd_report_path(主线程传 _r{R} 路径)→ verdict ∈ {pass, pass_with_notes} 才进 Step 1;needs_revision 或 missing → `hard_stop`。**iloveppt-builder 不跑 Pyramid 自检**,信任 critic 那道 gate(P2-3.2 后 stage=cd 合审一次)。
 
 **Step 4 视觉资产 4 路降级**:
 
@@ -896,8 +911,8 @@ suggested_alternative_patterns:   # advisory(维度 5 输出)
 
 ```mermaid
 flowchart TB
-    I([Task args:<br/>content_md_path / critic_d_report_path / output_pptx / theme]) --> S0
-    S0["Step 0 · critic gate<br/>Read critic_d_report_path<br/>verdict ∈ {pass, pass_with_notes}?"]
+    I([Task args:<br/>content_md_path / critic_cd_report_path / output_pptx / theme]) --> S0
+    S0["Step 0 · critic gate<br/>Read critic_cd_report_path<br/>verdict ∈ {pass, pass_with_notes}?"]
     S0 -->|否| HS["hard_stop: critic_d_missing / critic_d_not_passed"]
     S0 -->|是| S01["Step 0.1 Read content.md + content-writing.md<br/>(无 Pyramid 自检 · 信任 critic)"]
     S01 --> S1["Step 1 · strict md→JSON<br/>每页强制 `<!-- layout: X -->`<br/>反向 diff 检查"]
@@ -951,7 +966,7 @@ errors: [{code: critic_d_missing | critic_d_not_passed | missing_content_md | mi
 
 #### 反例
 
-- 自跑 Pyramid 7 项重复 critic → 不要;只看 critic_d_report.verdict
+- 自跑 Pyramid 7 项重复 critic → 不要;只看 critic_cd_report.verdict
 - Edit author/content.md 或写 .postbuild 副本 → 都禁;Step 3.4 只改 deck_plan.json
 - Step 4 看到三路 disable 就 0 视觉(没用 RAG 第 4 路)→ 失去 visual-patterns 库的视觉提升机会
 - 反向 diff 7% 还继续(以为"差不多")→ iloveppt-builder 偷偷加了 content.md 没有的论点

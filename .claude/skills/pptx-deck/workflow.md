@@ -145,14 +145,14 @@ agent 在对话中识别用户素材 → 引导提供 → `Read` 校验 → 落 
 
 详见 [iloveppt-builder agent](${CLAUDE_PROJECT_DIR}/.claude/agents/iloveppt-builder.md)。
 
-content 批准后,author 返回 `next_action: dispatch_critic`(stage=D);主线程派 critic Stage D 评全套(14 项 + 5 维度)。**critic D pass / pass_with_notes** 才派 iloveppt-builder:
+content 批准后,author 返回 `next_action: dispatch_critic`(stage=cd · P2-3.2 后合并);主线程派 critic stage=cd 评全套(14 项 + 5 维度,合审 outline + content)。**critic cd pass / pass_with_notes** 才派 iloveppt-builder:
 
 ```
 iloveppt-builder
 content_md_path: <working_dir>/author/deck_v1_content.md
 output_pptx: <working_dir>/builder/deck_v1.pptx
 theme: tech_blue
-critic_d_report_path: <working_dir>/critic/critic_report_D_r{N}.md
+critic_cd_report_path: <working_dir>/critic/deck_v1_critic_cd.r{R}.md
 # footer_meta 不再走入参 —— iloveppt-builder Step 0 Read content.md frontmatter 拿
 ```
 
