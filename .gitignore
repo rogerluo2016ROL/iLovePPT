@@ -32,13 +32,8 @@ evals/plans/*_render/
 # 模板提取 / deck 工作素材(版权 + 体积)
 _assets/
 
-# deck 构建产物(.pptx + 渲染 JPG · 仅源文件 .json / .md 入 git)
-decks/*/deck_v*.pptx
-decks/*/deck_v*_render/
-decks/*/.~*
-
-# eval 跑产生的工作目录(在仓库内但不入 git)
-decks/eval-*/
+# deck 工作目录 — 全交给 decks/.gitignore 管(默认整目录不入 git)
+# 详见 decks/.gitignore
 
 # === library/ · 知识库 ===
 # 共享 RAG 基础设施(venv / 凭据 / DB)

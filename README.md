@@ -13,7 +13,7 @@
 [![Content: Pyramid Principle](https://img.shields.io/badge/content-Pyramid%20Principle-0A52BF)](https://en.wikipedia.org/wiki/Pyramid_principle)
 [![Visual Patterns: Multimodal RAG](https://img.shields.io/badge/RAG-multimodal%20(text%2Fimage)-FBCFE8)](library/visual-patterns/README.md)
 
-让 LLM 一次性出完整 .pptx,通常是"看着像但读起来空、视觉糙、论据弱"。**iLovePPT 把"写 PPT"拆成 5 专业 agent + 1 旁路接力流水线**:brainstorm 收需求 → author 出稿 → critic 评审 → iloveppt-builder 构建 + 加视觉 → audience 评分,四重 markdown 接缝 + 双闸门质量门(critic 14 项 + audience 9 分硬阈值),内容遵循麦肯锡金字塔原理,视觉对标 BCG/McKinsey。
+让 LLM 一次性出完整 .pptx,通常是"看着像但读起来空、视觉糙、论据弱"。**iLovePPT 把"写 PPT"拆成 5 专业 agent(critic 内部 3 stage:B brief audit / C outline / D content)+ 1 旁路接力流水线**:brainstorm 收需求 → **critic B brief audit** → author 出稿 → critic C/D → iloveppt-builder 构建 + 加视觉 → 主线程 spot-check → audience 评分,**6 道质量 gate**(critic B / C / D + spot-check + audience 9 分硬阈值 + 用户 OK),内容遵循麦肯锡金字塔原理,视觉对标 BCG/McKinsey。**Tier1 渲染路径**:模板预置 `placeholder_map.yaml` 时 builder 直接 deep-copy 原 slide 保 100% 视觉签名,fallback 到 tier2 Python theme 重画。
 
 ---
 
@@ -33,7 +33,8 @@ python3 .claude/skills/pptx-deck/build.py .claude/skills/pptx-deck/examples/demo
 
 # 4. 在仓库根目录打开 Claude Code,跟主线程说一句话:
 #    "帮我做个 Claude Code 培训的 PPT,15 分钟,技术受众"
-#    主线程会自动派 5 agent 接力,产出在 decks/<slug>/builder/deck_v1.pptx
+#    主线程会自动派 5 agent 接力(brainstorm → critic B brief audit → author Stage C/D → critic C/D → builder → spot-check → audience),
+#    产出在 decks/<slug>/builder/deck_v1.pptx
 ```
 
 依赖:`python-pptx` / `lxml` / LibreOffice / poppler / Microsoft YaHei(macOS 需手动装,Linux 通常自带)。
