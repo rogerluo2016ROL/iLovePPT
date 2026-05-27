@@ -321,6 +321,39 @@ critic_c_passed: true | false           # Stage C 是否过 critic
 status: dispatched_critic | dispatched_audience | ...
 ```
 
+**cost block(P1-8)· 任何 state.json 都可挂)**:
+
+```json
+{
+  "cost": {
+    "tokens_by_agent": {
+      "brainstorm": {"input": 0, "output": 0},
+      "author":     {"input": 0, "output": 0},
+      "critic":     {"input": 0, "output": 0},
+      "builder":    {"input": 0, "output": 0},
+      "audience":   {"input": 0, "output": 0},
+      "extractor":  {"input": 0, "output": 0}
+    },
+    "totals": {"input": 0, "output": 0},
+    "cost_usd": 0.0,
+    "cost_usd_breakdown_by_agent": {
+      "brainstorm": 0.0, "author": 0.0, "critic": 0.0,
+      "builder": 0.0, "audience": 0.0, "extractor": 0.0
+    },
+    "model": "opus",
+    "last_updated": "2026-05-27T..."
+  }
+}
+```
+
+**字段说明**:
+- `tokens_by_agent[agent].{input, output}` — agent 每次 yaml return 带 `tokens_used: {input, output}`,主线程或 hook 调 `track_cost.py update` 累加
+- `model` — 当前价格档(默认 `opus`,P3-7 Haiku 路由后会按 agent 细分)
+- `cost_usd` — 由 `track_cost.py` 自动算,$/1M-token 用 `PRICES` 常量(Opus 4.7:input $15 / output $75 per 1M)
+- `last_updated` — 每次 `update` / `show` / `reset` 时刷
+
+**维护工具**:`library/_rag/scripts/track_cost.py`(update / show / reset 子命令)。schema 由该脚本自动 ensure_cost_block 兜底,旧 state 自动 upgrade。
+
 **lifecycle 关键节点**:
 
 1. **初始化**:agent 首次派发时,Read state.json(若不存在则 mkdir + init)
