@@ -92,7 +92,7 @@
 | P0-3 | ✓ | RAG 没 regression bench → embed/search 改了不知道分跌没跌 | `library/_rag/bench.py` + 7 golden query SSOT(`bench_queries.yaml`)+ baseline snapshot | 2h |
 | P0-4 | ✓ | "企业年报路演" / "SWOT 工作汇报" 仍 #2(`finance_arrow` 抢)→ v0.8.0 带 bug 发布 | search.py 加 inverse-category soft filter:hit.category 跟 brief.category 不符时 score × 0.85 | 1h |
 | P0-5 | ✓ | 4 个 declared==rendered 模板的 `extraction.discrepancy_resolution` 仍是 `pending` → 入库不完整 | 批量改 4 yaml `confirmed_no_loss`;self_check 加规则 declared==rendered → 自动 confirmed | 15min |
-| P0-6 | ✓ | iSlide 工具页 keywords 含 "template reference" / "design criteria" → RAG 检索"模板说明"会命中工具页污染结果 | `embed_text/image.py` 加 skip:`if needs_manual_review and layout_type=='other': continue` | 1h |
+| P0-6 | ✓ | 模板工具页 keywords 含 "template reference" / "design criteria" → RAG 检索"模板说明"会命中工具页污染结果 | `embed_text/image.py` 加 skip:`if needs_manual_review and layout_type=='other': continue` | 1h |
 | P0-7 | ✓ | `placeholder_map.tree_path` 是字符串 · 模板 update shape order 变就静默失效 → tier1 渲染破 | inspect_placeholders.py 同时输出 `shape_id`;placeholder_map 加 shape_id 字段(主),tree_path fallback;self_check #11 对账 | 4h |
 
 **P0 总工时**:~9h
@@ -172,9 +172,9 @@
 
 | # | 状态 | 任务 | 工时 |
 |---|---|---|---|
-| P3-1 | ☐ | Theme 完全 yaml 化 · `themes/<name>.yaml` · Python 只剩 dispatcher | 1w |
-| P3-2 | ☐ | Layout plugin/hook · `helpers.py/layouts/<name>.py` 自动发现 · `make_*` dynamic register | 3d |
-| P3-3 | ☐ | build.py 拆分 · `builder/{base,tier1,tier2,tier3}.py` | 2d |
+| P3-1 | ✓ | Theme 完全 yaml 化 · `themes/<name>.yaml` · Python 只剩 dispatcher | 1w |
+| P3-2 | ✓ | Layout plugin/hook · `helpers.py/layouts/<name>.py` 自动发现 · `make_*` dynamic register | 3d |
+| P3-3 | ✓ | build.py 拆分 · `builder/{base,tier1,tier2,tier3}.py` | 2d |
 | P3-4 | ☐ | Hosted embedding endpoint mode · `embed_*.py --remote http://...` | 3d |
 | P3-5 | ☐ | RAG quality feedback loop · `feedback.jsonl` · score < 7 pattern 降权 | 2d |
 | P3-6 | ☐ | DB 升级 · SQLite WAL 或 pgvector | 2d |
@@ -185,7 +185,7 @@
 | # | 状态 | 任务 | 工时 |
 |---|---|---|---|
 | P3-8 | ☐ | `library/deck-skeletons/` SSOT · 季度报/postmortem scaffold | 3d |
-| P3-9 | ☐ | 多模板组合 deck · `brief.theme: list` · 跨模板 deep-copy | 1w |
+| P3-9 | ✓ | 多模板组合 deck · `brief.theme: list` · 跨模板 deep-copy | 1w |
 | P3-10 | ☐ | 中英文混排 · `mixed_lang_text(runs)` | 2d |
 | P3-11 | ☐ | 多语言支持 · en-US / ja-JP | 2w |
 | P3-12 | ☐ | a11y · 对比度 WCAG AA / alt-text / 屏幕阅读器 | 1w |
@@ -203,7 +203,7 @@
 | P3-19 | ☐ | pre-commit hook 扫敏感数据 · `_assets/raw` 强警告 | 4h |
 | P3-20 | ☐ | `.gitignore.lint` · 3 份规则一致性自动校 | 4h |
 | P3-21 | ☐ | RAG query log 脱敏 · 邮箱 / 手机号 / 钱数 redact | 2h |
-| P3-22 | ☐ | 模板入库 detect iSlide 水印 + 版权 LOGO · 强警告 | 4h |
+| P3-22 | ☐ | 模板入库 detect 第三方水印 + 版权 LOGO · 强警告 | 4h |
 
 **P3 总工时**:~6-8 周
 
@@ -266,6 +266,7 @@ P2-2 audience 量化 ───────────────→ P2-4 hot-r
 | 2026-05-27 | **P0 done** | ✓ all 7 | 4 agent 并行 · ~45min wall clock · 命中率 5/7→7/7 · gap 0.060→0.116 · 2 个 #2 case 翻 #1 · self_check 9→11 · placeholder_map 212 张全加 shape_id · DB 清 16 张工具页 |
 | 2026-05-27 | **P1 done** | ✓ all 10 | 5 agent 并行 · ~60min wall clock · gap 0.116→0.123 · low_gap 2→1 · 5 个受控词典 SSOT 落盘(layout_variants 139 enum / slot_ids 1115 enum / categories 12 enum / 7 personas / keywords_bank 327 词) · 212 page variant backfill · 7 模板 category retrofit · self_check 11→13 · embed batch(text=8 / image=4 · ingest 时间 -65%) · per-deck cost log · red_line fuzzy+拼音 · EXPANSION_HINTS yaml-ify |
 | 2026-05-27 | **P2 done** | ✓ all 13 | Wave 1(P2-3/4/5 pipeline 重构,1 agent serial)+ Wave 2(P2-1/2/6/7/8/9/10/11/12/13,5 agent 并行)· 总 wall clock ~2h · pipeline 9→7 步 · user checkpoint 5→3 · critic 21 项量化(critic-rubric.yaml SSOT)· audience 每页 12 项量化 · 15 vp pattern ingest(fallback path 验证)· hybrid ablation 改 default 0.6/0.4 → 0.8/0.2 · brief.audience str→list[persona] · image RAG 接 builder Step 4.3.5 + audience Step 3.5.2 · brainstorm inspirations sha256 持久化 · chapter_hashes hot-reload · scripts/derive_plan.py 自动 derive deck_plan · scripts/dashboard.py 跨 deck 聚合 · query_cache.py fuzzy match iconify/Unsplash |
-| TBD | P3 done | ☐ | (待续,见 § 5)|
+| 2026-05-27 | **P3 partial done** | ✓ 4 / 22(P3-1/2/3/9)+ iSlide cleanup | 5 agent 并行 · ~1h wall clock · build.py 980→149 行(拆 builder/{base,tier1,tier2,tier3}.py)· themes/_base.py + tech_blue.yaml + 2 个其他 yaml(P3-1)· helpers/(17 layout plugin auto-discover)+ docs/adding-new-layout.md(P3-2)· brief.theme str/list/dict 4 schema + ThemeSpec.resolve_for_page · cross-pptx tier1(P3-9)· iSlide 引用清 90 文件(meta/placeholder_map/vocab/docs/scripts)· DB re-embed 后 7/7 hit + avg gap 0.128(+0.005 vs P2) |
+| TBD | P3 剩余 18 项 | ☐ | (P3-4/5/6/7/8/10/11/12/13/14/15/16/17/18/19/20/21/22 · 视需求触发)|
 | TBD | P2 done | ☐ | |
 | TBD | P3 done | ☐ | |
