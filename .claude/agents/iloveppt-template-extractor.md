@@ -75,6 +75,18 @@ overwrite: false                           # 可选 · items/<name>/meta.yaml �
 
 ## 流程
 
+**mode 分发图**:
+
+```
+mode=full              → Step 0 · 1 · 2 · 2.5 · 3.0 · 3.1 · 3.1.5 · 3.2 · 3.3 · 4 · 5
+mode=re_render_only    → Step 0 · 1 · 2 · 2.5 · 5           (skip Step 3 - 保留 meta)
+mode=dry_run           → Step 0 · 1 · 2 · 2.5 · 5(dry_run_preview return)
+mode=placeholder_map_only → Step 0 · 3.0(TodoWrite per page) · 3.1.5 · 3.3 · 5
+                              (skip Step 1/2/2.5/3.1/3.2/4 - 假设 meta.yaml 已 final)
+```
+
+每个 Step 头部会说明 「mode=X 跳过此 step」。
+
 ### Step 0 · 校验
 
 1. 入参 mode 校验:`mode in {full, placeholder_map_only, dry_run, re_render_only}` · 否则 return `code: INVALID_MODE`
