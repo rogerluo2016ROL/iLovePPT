@@ -28,7 +28,7 @@ native_elements:
   - 左上蓝色线稿放大镜图标(标志性单点装饰)
   - 中间产品图标群(电脑/钻石/齿轮/秒表等,跟 cover 同款 group)
   - 居中两行黑色大标题 "Thanks" + "And Your Slogan Here"
-  - 下方 "Speaker name and title" + "www.islide.cc"
+  - 下方 "Speaker name and title" + 模板水印小字
 
 layout_hint: null
 variant: closing-illustration

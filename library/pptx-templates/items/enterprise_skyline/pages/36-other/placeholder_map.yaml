@@ -44,9 +44,9 @@ slots:
 - id: '?'
   shape_id: 613
   tree_path: '3'
-  raw_text_sample: '点击 iSlide【图标库】中的图标替换
+  raw_text_sample: '<template_icon_replace_note>
 
-    Click the target icon in iSlide “Icon L'
+    Click the target icon in <template_icon_library> “Icon L'
   bbox:
     left: 5.38
     top: 5.89

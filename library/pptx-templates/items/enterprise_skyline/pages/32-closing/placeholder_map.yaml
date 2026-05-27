@@ -28,7 +28,7 @@ slots:
 - id: '?'
   shape_id: 7
   tree_path: '3'
-  raw_text_sample: www.islide.cc
+  raw_text_sample: <template_watermark>
   bbox:
     left: 1.27
     top: 3.76

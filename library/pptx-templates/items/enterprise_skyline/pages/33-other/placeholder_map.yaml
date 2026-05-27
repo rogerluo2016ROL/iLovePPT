@@ -80,7 +80,7 @@ slots:
 - id: '?'
   shape_id: 39
   tree_path: '12'
-  raw_text_sample: '可以通过iSlide 【色彩库】功能，快速应用更多色彩
+  raw_text_sample: '<template_tool_color_lib_note>，快速应用更多色彩
 
     More color schemes are optional '
   bbox:
@@ -135,7 +135,7 @@ slots:
 - id: '?'
   shape_id: 44
   tree_path: '13'
-  raw_text_sample: '可以在【设计】菜单【字体】中改变，或应用iSlide【统一字体】功能改变设置
+  raw_text_sample: '<template_tool_font_change_note>
 
     To change theme fonts'
   bbox:
@@ -149,9 +149,9 @@ slots:
 - id: '?'
   shape_id: 6
   tree_path: '14'
-  raw_text_sample: '可以通过iSlide 【一键优化】（智能参考线）功能，应用更多预设参考线
+  raw_text_sample: '<template_tool_guides_note>，应用更多预设参考线
 
-    Use iSlide “Uniform Gui'
+    Use <template_tool> “Uniform Gui'
   bbox:
     left: 7.61
     top: 5.8

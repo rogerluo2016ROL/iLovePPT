@@ -29,7 +29,7 @@ native_elements:
   - 中文主标题 "[迎刃而上,共创辉煌] PPT原创主题商务模板"
   - 右上 "Subtitle here" 描边方框副标题
   - 左上 LOGO HERE 占位
-  - 右下 Speaker name and title / Designed by iSlide
+  - 右下 Speaker name and title / 模板水印小字
 
 layout_hint: null
 variant: cover-illustration

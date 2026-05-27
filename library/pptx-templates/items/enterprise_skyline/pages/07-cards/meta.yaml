@@ -27,7 +27,7 @@ native_elements:
   - 6 张卡片 2 列 3 行排列,每张 = Text here 标题 + 1 行 supporting text + 省略号
   - 行间横线分隔
   - 整体清晰留白
-  - 底部 www.islide.cc + 页码 7
+  - 底部模板水印 + 页码 7
 
 layout_hint: null
 variant: cards-6-icon

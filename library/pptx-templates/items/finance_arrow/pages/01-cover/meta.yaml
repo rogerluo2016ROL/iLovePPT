@@ -29,7 +29,7 @@ native_elements:
   - 右上"20XX 财务数据分析报告"深蓝灰粗体中文标题(分 3 行)
   - 右中橙黄圆角矩形 button:"汇报人:XX 部门"
   - 顶部 + 底部细灰水平分割线作框架
-  - 底部小字"Speaker name and title" + "www.islide.cc"
+  - 底部小字"Speaker name and title" + 模板水印小字
 layout_hint: null
 variant: cover-illustration
 page_number: 1

@@ -29,7 +29,7 @@ native_elements:
   - 右侧亮蓝色三角形大色块 + 深蓝/亮蓝几何装饰
   - 笔记本电脑插画(含 PowerPoint 仪表板 mock)
   - 左下深蓝胶囊按钮 "Speaker name and title"
-  - 左下亮蓝胶囊按钮 "Designed by iSlide"(模板水印)
+  - 左下亮蓝胶囊按钮 (模板水印,使用时可删除)
   - 浅蓝半透明三角形点缀
 
 # === 辅助(不进 embedding)===

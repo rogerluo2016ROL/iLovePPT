@@ -28,7 +28,7 @@ native_elements:
   - 节点 6 用浅灰区分(可能表示当前阶段 / 未来)
   - 上下交替 4+3 个气泡(2/4/6 在上,1/3/5/7 在下)
   - 每个气泡 = 蓝色圆形人物图标 + Text Here 标题 + Supporting text 副标
-  - 底部 www.islide.cc + 页码 5
+  - 底部模板水印 + 页码 5
 
 layout_hint: null
 variant: timeline-zigzag

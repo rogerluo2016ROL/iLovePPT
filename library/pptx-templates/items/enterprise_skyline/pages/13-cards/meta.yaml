@@ -26,7 +26,7 @@ native_elements:
   - 右侧 6 个圆角白底带描边卡片 = 蓝色人物 + 列表图标 + "Supporting text here." 副标
   - 卡片 2 行 × 3 列
   - 卡片间细线连接,呈左→右扩展态势
-  - 底部 www.islide.cc + 页码 13
+  - 底部模板水印 + 页码 13
 
 layout_hint: null
 variant: cards-6-icon

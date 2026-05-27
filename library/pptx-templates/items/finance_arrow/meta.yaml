@@ -30,7 +30,7 @@ when_to_use:
 - 需要专属"财务"语义视觉(arrow 上行 + target 命中 + megaphone 宣讲 + heart 关怀)
 - 内容偏数据 + 占比 + 同比环比,卡片 / 表格 / donut / radial 是主力 layout
 - 适合制作 20-30 页中等规模 deck,4 个清晰章节
-- 用户希望保留 iSlide 风格的橙黄 + 深蓝灰对比 + 大留白
+- 用户希望保留橙黄 + 深蓝灰对比 + 大留白的财报风格
 keywords:
 - 财务报告
 - 财报
@@ -46,7 +46,6 @@ keywords:
 - 财报路演
 - 橙黄
 - 上升箭头
-- iSlide
 - 营收
 - 利润率
 - ROI
@@ -79,7 +78,7 @@ visual_signature:
 - 标题用粗黑中文 + 顶部细灰水平分割线(顶部装饰条)
 - 章节扉页用大号橙黄 "/0X" 数字 + 章节中文标题(数字风格突出)
 - 数据可视化偏好:donut / radial / 圆环节点 / 4 数字大圆 / 数据对比表
-- 页底固定水印 "www.islide.cc" + 右下页码(iSlide 出品提示,使用前可隐藏)
+- 页底固定水印 + 右下页码(模板原始水印,使用前可隐藏)
 - 西文用 Helvetica/Arial 风格,中文用粗黑无衬线(Source Han Sans / 微软雅黑系)
 visual_tokens:
   primary: '#F5A623'

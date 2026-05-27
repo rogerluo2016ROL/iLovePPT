@@ -26,11 +26,11 @@ keywords:
   - lineart icons
 
 native_elements:
-  - 左侧大号黑色加粗标题 "iSlide® PowerPoint standard template"
+  - 左侧大号黑色加粗标题占位文字 (PowerPoint standard template)
   - 标题下方灰色副标题 "Subtitle here"
   - 左下黄色描边胶囊框内的 speaker name and title
   - 右侧大型蓝色线稿插画群(电脑/钻石/齿轮/秒表/放大镜/视频窗口等产品 icon)
-  - 黄色 www.islide.cc 网址 footer
+  - 黄色模板水印 footer (使用时可删除)
 
 layout_hint: null
 variant: cover-illustration

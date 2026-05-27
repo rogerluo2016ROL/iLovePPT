@@ -3,16 +3,15 @@ confidence: 0.5
 needs_manual_review: true
 
 id: training_team__35-other
-name: "iSlide instruction · 快速设计页面 Quick Slides Design"
+name: "模板工具说明页 · 快速设计页面 Quick Slides Design"
 layout_type: other
 content_intent:
-  - 模板自带 iSlide Diagram Library 使用教程
+  - 模板自带 Diagram Library 使用教程
   - 工具说明页,非 deck 内容
 when_to_use:
   - 不在 deck 输出中使用
-  - 提示用户如何用 iSlide 图示库
+  - 提示用户如何用图示库
 keywords:
-  - iSlide
   - Diagram Library
   - 图示库
   - 教程
@@ -26,7 +25,7 @@ native_elements:
   - 下方 2 个 step 编号 + 步骤说明
   - 右上红色 Note 警示
 
-layout_hint: islide-tool-instruction (模板自带工具说明,enum 兜底)
-variant: other-islide-library
+layout_hint: tool-instruction-page (模板自带工具说明,enum 兜底)
+variant: other-tool-instruction
 page_number: 35
 template_name: training_team

@@ -4,7 +4,7 @@ slots:
 - id: '?'
   shape_id: 2
   tree_path: '1.1'
-  raw_text_sample: "使用 iSlide PPT 插件\v为您节省 90% 的 PPT 设计时间"
+  raw_text_sample: "<template_tool_promo_zh>\v为您节省 90% 的 PPT 设计时间"
   bbox:
     left: 2.03
     top: 2.76
@@ -16,7 +16,7 @@ slots:
 - id: '?'
   shape_id: 11
   tree_path: '1.0'
-  raw_text_sample: "iSlide add-in saves you 90% of the time \nin making presentat"
+  raw_text_sample: "<template_tool_promo_en> \nin making presentat"
   bbox:
     left: 2.03
     top: 4.11
@@ -30,7 +30,7 @@ slots:
   tree_path: '0'
   raw_text_sample: '免费下载 / Download for FREE
 
-    www.islide.cc'
+    <template_watermark>'
   bbox:
     left: 0.72
     top: 5.55

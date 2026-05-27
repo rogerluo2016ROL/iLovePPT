@@ -44,9 +44,9 @@ slots:
 - id: '?'
   shape_id: 605
   tree_path: '0'
-  raw_text_sample: '使用 iSlide【图示库】筛选图示
+  raw_text_sample: '<template_tool_diagram_note>
 
-    Search diagrams in iSlide Diagram Library'
+    Search diagrams in <template_diagram_library>'
   bbox:
     left: 1.08
     top: 5.98

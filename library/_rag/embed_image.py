@@ -29,7 +29,7 @@ def _blob(v: list[float]) -> bytes:
 
 
 def _should_skip_page(page_data: dict) -> bool:
-    """跳过 iSlide 工具说明页(layout_type == 'other' AND needs_manual_review == true)。"""
+    """跳过模板工具说明页(layout_type == 'other' AND needs_manual_review == true)。"""
     return (
         page_data.get("layout_type") == "other"
         and page_data.get("needs_manual_review") is True

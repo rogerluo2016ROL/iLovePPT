@@ -124,7 +124,7 @@ slots:
 - id: '?'
   shape_id: 3
   tree_path: '1'
-  raw_text_sample: www.islide.cc
+  raw_text_sample: <template_watermark>
   bbox:
     left: 0.73
     top: 6.82

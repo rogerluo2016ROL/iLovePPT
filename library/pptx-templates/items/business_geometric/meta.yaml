@@ -17,13 +17,13 @@ extraction:
   failed_pages: []
   note: 'slide33 在原 .pptx 里是 <p:sld show="0">(作者隐藏),LibreOffice 默认跳过,首轮 ingest 渲了 32 页。
 
-    主线程已临时改 show="0" → 删除属性 重渲 page 33,内容 = iSlide 工具说明(主题色彩/字体/参考线)。
+    主线程已临时改 show="0" → 删除属性 重渲 page 33,内容 = 模板工具说明(主题色彩/字体/参考线)。
 
-    与 enterprise_skyline / training_team 的可见 iSlide 工具页处理一致。
+    与 enterprise_skyline / training_team 的可见工具说明页处理一致。
 
     '
 id: business_geometric
-name: Business Geometric · 几何蓝白商务模板(iSlide 来源)
+name: Business Geometric · 几何蓝白商务模板
 category: enterprise-strategy
 content_intent:
 - 通用商务汇报 / 工作总结 deck(SWOT / 流程 / KPI / 城市分布)
@@ -47,7 +47,6 @@ keywords:
 - KPI
 - 城市
 - 菱形
-- iSlide
 - corporate
 - modern
 - 蓝色系

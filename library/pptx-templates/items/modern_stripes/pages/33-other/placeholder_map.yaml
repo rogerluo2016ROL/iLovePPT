@@ -67,7 +67,7 @@ slots:
   capacity_chars: 160
   text_color_override: null
   font_size_pt: null
-- id: guides_islide_note
+- id: guides_extra_note
   shape_id: 6
   tree_path: '14'
   capacity_chars: 130

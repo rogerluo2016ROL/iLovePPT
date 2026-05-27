@@ -3,18 +3,17 @@ confidence: 0.55
 needs_manual_review: true
 
 id: enterprise_skyline__37-other
-name: "iSlide 工具说明 · Fill Pictures in Diagram 图片填充教程"
+name: "模板工具说明页 · Fill Pictures in Diagram 图片填充教程"
 layout_type: other
-layout_hint: "islide_tool_instruction_fill_pictures · 模板说明页,教 iSlide Picture Library 填充流程"
+layout_hint: "模板说明页,教 Picture Library 填充流程"
 content_intent:
-  - iSlide 工具操作说明(非演讲页)
+  - 模板工具操作说明(非演讲页)
   - 教用户 3 步在 diagram 中填充图片
   - 顶部 Note 提示"使用时请删除本页"
 when_to_use:
-  - 仅作 iSlide 插件操作教程
+  - 仅作模板工具操作教程
   - 演讲时应删除
 keywords:
-  - iSlide
   - 工具说明
   - Fill Pictures
   - 填充图片
@@ -27,6 +26,6 @@ native_elements:
   - 步骤 1-2-3 编号说明
   - 右上红色 Note 警告框
 
-variant: other-islide-library
+variant: other-tool-instruction
 page_number: 37
 template_name: enterprise_skyline

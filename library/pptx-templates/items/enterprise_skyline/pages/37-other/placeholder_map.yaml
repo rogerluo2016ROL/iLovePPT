@@ -44,9 +44,9 @@ slots:
 - id: '?'
   shape_id: 613
   tree_path: '3'
-  raw_text_sample: '点击 iSlide【图片库】中的图片替换
+  raw_text_sample: '<template_picture_replace_note>
 
-    Click the target picture in iSlide “Pic'
+    Click the target picture in <template_picture_library> “Pic'
   bbox:
     left: 5.38
     top: 5.89

@@ -27,7 +27,7 @@ native_elements:
   - 右上深蓝灰超大号粗体 "Thanks" 英文
   - 标题下深蓝灰中号 "And Your Slogan Here" 副标语
   - 右下小灰字"Speaker name and title"
-  - 副标语下方"www.islide.cc"小字
+  - 副标语下方模板水印小字
   - 顶部 + 底部细灰横线作框架(跟 cover 一致)
 layout_hint: null
 variant: closing-illustration

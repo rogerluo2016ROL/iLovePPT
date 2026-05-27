@@ -6,9 +6,9 @@
 
 ```
 business_geometric:
-  - desc:      Business Geometric · 几何蓝白商务模板(SWOT / 流程 / KPI · iSlide 来源)
+  - desc:      Business Geometric · 几何蓝白商务模板(SWOT / 流程 / KPI)
   - category:  enterprise-modern
-  - pages:     33        (含 1 张 iSlide 工具说明页 33-other,force-rendered from hidden slide)
+  - pages:     33        (含 1 张模板工具说明页 33-other,force-rendered from hidden slide)
   - replicate: ~70%
 
 creative_aurora:
@@ -18,9 +18,9 @@ creative_aurora:
   - replicate: ~70%
 
 enterprise_skyline:
-  - desc:      Enterprise Skyline · 深蓝 + 金色城市天际线企业模板(年报 / 路演 · iSlide 来源)
+  - desc:      Enterprise Skyline · 深蓝 + 金色城市天际线企业模板(年报 / 路演)
   - category:  enterprise-modern
-  - pages:     38        (含 6 张 iSlide 工具说明页 33-38)
+  - pages:     38        (含 6 张模板工具说明页 33-38)
   - replicate: ~80%
 
 finance_arrow:
@@ -30,21 +30,21 @@ finance_arrow:
   - replicate: ~80%
 
 modern_stripes:
-  - desc:      Modern Stripes · 深蓝斜切条纹工业几何模板(硬几何 · iSlide 来源)
+  - desc:      Modern Stripes · 深蓝斜切条纹工业几何模板(硬几何)
   - category:  enterprise-modern
-  - pages:     33        (含 1 张 iSlide 工具说明页 33-other,force-rendered from hidden slide)
+  - pages:     33        (含 1 张模板工具说明页 33-other,force-rendered from hidden slide)
   - replicate: ~70%
 
 product_lineart:
-  - desc:      Product Lineart · 蓝色线稿产品/科技通用模板(钻石/放大镜/齿轮 icon · iSlide 来源)
+  - desc:      Product Lineart · 蓝色线稿产品/科技通用模板(钻石/放大镜/齿轮 icon)
   - category:  enterprise-modern
-  - pages:     33        (含 1 张 iSlide 工具说明页 33-other,force-rendered from hidden slide)
+  - pages:     33        (含 1 张模板工具说明页 33-other,force-rendered from hidden slide)
   - replicate: ~80%
 
 training_team:
-  - desc:      Training Team · 橙红 + 蓝卡通团队培训模板(OKR kickoff / 入职 / 团建 · iSlide 来源)
+  - desc:      Training Team · 橙红 + 蓝卡通团队培训模板(OKR kickoff / 入职 / 团建)
   - category:  training
-  - pages:     38        (含 6 张 iSlide 工具说明页 33-38)
+  - pages:     38        (含 6 张模板工具说明页 33-38)
   - replicate: ~75%
 ```
 

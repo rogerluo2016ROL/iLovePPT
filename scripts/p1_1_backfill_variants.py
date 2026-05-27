@@ -8,7 +8,7 @@
   - 看 native_elements + name + 已有 variant 推 N(数字)+ 视觉元素(icon/photo/illustration)
   - 找 vocab 桶里最近 enum
   - 兜底:cards-other / process-other / 等 -other
-  - other 类:islide / tree-hierarchy / misc
+  - other 类:tool-spec / promo / tool-instruction / tree-hierarchy / misc
 """
 from __future__ import annotations
 
@@ -446,14 +446,18 @@ def infer_comparison(meta: dict, blobs: list[str]) -> str:
 
 
 def infer_other(meta: dict, blobs: list[str]) -> str:
-    """layout_type==other category - tools / promo / tree / misc."""
-    if has_keyword(blobs, ["iSlide", "islide"]):
+    """layout_type==other category - tool-spec / promo / tool-instruction / tree / misc."""
+    # 模板工具说明页(color spec / font spec / guides)
+    if has_keyword(blobs, ["design criteria", "设计标准", "theme colors", "theme fonts", "主题色彩", "主题字体", "guides", "参考线", "色板"]):
         if has_keyword(blobs, ["library", "diagram", "icon-library", "vector", "picture", "插图库", "矢量库", "图标库", "图片库"]):
-            return "other-islide-library"
-        if has_keyword(blobs, ["promo", "90%", "广告", "节省 90%", "节省 ppt", "saves you"]):
-            return "other-islide-promo"
-        # design criteria / tool
-        return "other-islide-tool"
+            return "other-tool-instruction"
+        return "other-tool-spec"
+    # 推广 / 广告类
+    if has_keyword(blobs, ["promo", "90%", "广告", "节省 90%", "节省 ppt", "saves you", "推广"]):
+        return "other-promo"
+    # 工具说明(库 / 替换 / 操作)
+    if has_keyword(blobs, ["library", "diagram", "vector", "picture", "插图库", "矢量库", "图标库", "图片库", "instruction", "replace"]):
+        return "other-tool-instruction"
     if has_keyword(blobs, ["tree", "层级", "组织架构", "hierarchy"]):
         return "other-tree-hierarchy"
     return "other-misc"

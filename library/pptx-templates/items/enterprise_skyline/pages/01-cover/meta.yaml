@@ -27,9 +27,9 @@ keywords:
 native_elements:
   - 深蓝 (#1c2c44 接近 navy) 满铺背景
   - 金色 (#b8a062 接近 gold/khaki) 城市建筑剪影(右下方 + 中部线稿叠加)
-  - 大字 "ISLIDE® POWERPOINT" 主标题 + "STANDARD TEMPLATE" 副标
+  - 大字 主标题占位文字 + "STANDARD TEMPLATE" 副标
   - 左上 "SUBTITLE HERE" 浅金小字
-  - 左下 "Speaker name and title" + "www.islide.cc" 信息块
+  - 左下 "Speaker name and title" + 模板水印信息块
   - 右下 LOGO HERE 占位框
 
 layout_hint: null

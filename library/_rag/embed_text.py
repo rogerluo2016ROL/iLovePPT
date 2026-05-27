@@ -45,7 +45,7 @@ def _now() -> str:
 
 
 def _should_skip_page(page_data: dict) -> bool:
-    """跳过 iSlide 工具说明页(layout_type == 'other' AND needs_manual_review == true)。
+    """跳过模板工具说明页(layout_type == 'other' AND needs_manual_review == true)。
 
     这类 page 的 keywords 含通用词(design criteria / template reference 等),
     embed 入库会污染 RAG 检索结果。

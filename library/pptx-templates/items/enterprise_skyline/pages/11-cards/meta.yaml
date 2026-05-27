@@ -27,7 +27,7 @@ native_elements:
   - 每列下方 4 个浅边框白底卡片 (Supporting text here)
   - 标题与第一个子项用细线连接
   - 卡片间留白均匀
-  - 底部 www.islide.cc + 页码 11
+  - 底部模板水印 + 页码 11
 
 layout_hint: null
 variant: cards-3-text

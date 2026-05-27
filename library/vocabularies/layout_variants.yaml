@@ -186,8 +186,8 @@ variants:
   comparison-other:          { layout_type: comparison, description: "对比 · 其他变体" }
 
   # === other (兜底 · 需 needs_manual_review) ===
-  other-islide-tool:         { layout_type: other, description: "iSlide 工具说明页(色板/字体/参考线)" }
-  other-islide-promo:        { layout_type: other, description: "iSlide 工具广告 / promo 页" }
-  other-islide-library:      { layout_type: other, description: "iSlide 库说明(icon / picture / vector / diagram)" }
+  other-tool-spec:           { layout_type: other, description: "模板工具说明页(色板/字体/参考线)" }
+  other-promo:               { layout_type: other, description: "模板原始广告 / promo 页" }
+  other-tool-instruction:    { layout_type: other, description: "模板工具说明(icon / picture / vector / diagram)" }
   other-tree-hierarchy:      { layout_type: other, description: "层级树结构(组织架构图等非纯 radial)" }
   other-misc:                { layout_type: other, description: "其他 · 不归任何已知类(需 needs_manual_review)" }

@@ -3,16 +3,15 @@ confidence: 0.5
 needs_manual_review: true
 
 id: training_team__37-other
-name: "iSlide instruction · 填充图示中的图片 Fill Pictures in Diagram"
+name: "模板工具说明页 · 填充图示中的图片 Fill Pictures in Diagram"
 layout_type: other
 content_intent:
-  - 模板自带 iSlide Picture Library 使用教程
+  - 模板自带 Picture Library 使用教程
   - 工具说明页,非 deck 内容
 when_to_use:
   - 不在 deck 输出中使用
   - 提示用户如何填充图片
 keywords:
-  - iSlide
   - Picture Library
   - 图片库
   - 填充图片
@@ -26,7 +25,7 @@ native_elements:
   - 1/2/3 步骤编号
   - 右上红色 Note 警示
 
-layout_hint: islide-tool-instruction (模板自带工具说明,enum 兜底)
-variant: other-islide-library
+layout_hint: tool-instruction-page (模板自带工具说明,enum 兜底)
+variant: other-tool-instruction
 page_number: 37
 template_name: training_team

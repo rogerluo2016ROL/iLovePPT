@@ -114,7 +114,7 @@ extraction:
   rendered_pages: 32                # ls items/<name>/pages/*/preview.png | wc -l
   discrepancy: 7                    # declared - rendered;非 0 时必须用户决定
   discrepancy_resolution: pending   # pending | confirmed_tool_pages | confirmed_real_loss
-                                    #   confirmed_tool_pages → 漏的是 iSlide / 元素库 / 工具说明页
+                                    #   confirmed_tool_pages → 漏的是模板自带 / 元素库 / 工具说明页
                                     #   confirmed_real_loss  → 真渲染失败,需修字体 / 重跑
   low_confidence_pages: []          # 页号数组,如 [3, 7]
   failed_pages: []                  # Read 失败的页号

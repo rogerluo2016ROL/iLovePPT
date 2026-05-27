@@ -28,7 +28,7 @@ native_elements:
   - 每个正方形右上角小编号 1-2-3-4 标签
   - 每图标下方 Text here 标题 + 多行 Supporting text 段落
   - 图标错落分布(交替高低)
-  - 底部 www.islide.cc + 页码 26
+  - 底部模板水印 + 页码 26
 
 layout_hint: null
 variant: cards-4-mixed

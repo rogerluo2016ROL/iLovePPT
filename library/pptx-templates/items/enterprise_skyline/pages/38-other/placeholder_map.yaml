@@ -58,9 +58,9 @@ slots:
 - id: '?'
   shape_id: 613
   tree_path: '2'
-  raw_text_sample: '点击 iSlide【插图库】中的插图替换
+  raw_text_sample: '<template_vector_replace_note>
 
-    Click the target vector in iSlide “Vect'
+    Click the target vector in <template_vector_library> “Vect'
   bbox:
     left: 5.38
     top: 5.89

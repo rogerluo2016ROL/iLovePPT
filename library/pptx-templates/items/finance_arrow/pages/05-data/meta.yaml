@@ -29,7 +29,7 @@ native_elements:
   - 每列下 7 行 □ ... 占位符(用户填入数据)
   - 报告期列内每行有橙色边框,中部一行实心橙色填充作重点高亮
   - 整体纯文字表格,无背景色,大量留白
-  - 页底 www.islide.cc 水印 + 页码 5
+  - 页底模板水印 + 页码 5
 layout_hint: null
 page_number: 5
 template_name: finance_arrow

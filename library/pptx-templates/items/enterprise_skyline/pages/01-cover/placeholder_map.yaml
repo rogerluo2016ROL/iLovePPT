@@ -4,7 +4,7 @@ slots:
 - id: '?'
   shape_id: 4
   tree_path: '3'
-  raw_text_sample: "ISLIDE® POWERPOINT \vSTANDARD TEMPLATE"
+  raw_text_sample: "<template_cover_main_title> \vSTANDARD TEMPLATE"
   bbox:
     left: 0.74
     top: 1.15
@@ -40,7 +40,7 @@ slots:
 - id: '?'
   shape_id: 7
   tree_path: '5'
-  raw_text_sample: www.islide.cc
+  raw_text_sample: <template_watermark>
   bbox:
     left: 0.74
     top: 5.56

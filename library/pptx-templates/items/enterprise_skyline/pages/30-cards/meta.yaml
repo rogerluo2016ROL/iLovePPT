@@ -28,7 +28,7 @@ native_elements:
   - 每张卡片底部右下角带 1 个深蓝 / 蓝灰菱形图标(火焰 / 准星 / 团队)
   - 中央卡片下方有真实城市高楼仰望黑白照片(crop 进卡片底部)
   - 整体水平 3-cards 但中间一张更高(有照片)
-  - 底部 www.islide.cc + 页码 30
+  - 底部模板水印 + 页码 30
 
 layout_hint: null
 variant: cards-3-mixed
