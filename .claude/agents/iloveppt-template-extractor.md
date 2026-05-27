@@ -190,6 +190,12 @@ artifacts:
 
 #### Step 3.1 · 逐页处理(NN 升序)
 
+**Idempotency check(进每页之前)**:
+- 该页 `meta.yaml.draft` 已存在 + `status: draft` → skip Step 3.1 该页(已写过)
+- 该页 `meta.yaml`(无 .draft)已存在 → skip(用户审过的不再覆盖)
+- 仅 `pages/NN-page/preview.png` 存在(占位名)→ 跑全套
+- mode=re_render_only → skip 所有 Step 3.1(只重渲染,不重写 meta)
+
 对每张 `preview.png`:
 
 1. **`Read` PNG** 多模态分析(不允许跳过 Read,不允许凭文件名猜)
@@ -210,11 +216,14 @@ artifacts:
    - 看起来像中心辐射图就写 `radial`,不要写 `diagram_circular_centered` / `diagram_radial_nodes`
    - 真不在 17 个里 → `layout_type: other` + `needs_manual_review: true` + `layout_hint: "<自创名留痕>"`
 
-3. **confidence 必须是 0.0-1.0 数字**:
-   - ≥ 0.85:high(用户审时多半通过)
-   - 0.6–0.85:medium(用户应该看看)
-   - < 0.6:**必须 `needs_manual_review: true`** + 注释说明拿不准的点
+3. **confidence 必须是 0.0-1.0 数字**(标定锚 · 防过度自信):
+   - 0.92-0.98 — 完美匹配 enum 的标准页(标准 cover · 标准 toc · 3-cols cards)
+   - 0.85-0.92 — 清晰但有小歧义(标准 process_flow 但箭头风格特殊)
+   - 0.7-0.85 — 中等(几何像 timeline 但 label 像 process_flow)
+   - 0.6-0.7 — 弱(2 个 enum 候选都成立 · 必须在 yaml 注释列出候选)
+   - < 0.6 — 拿不准 → **必须 `needs_manual_review: true`** + 注释说明歧义点
    - **🚫 不允许字符串值** `high` / `medium` / `low`(过去翻车 42 次)
+   - **样本要求**:若总页数 ≥ 20,**至少 10% 的页应当 < 0.85**(强制 LLM 不全过)
 
 4. `pages/NN-page/` rename 到 `pages/NN-<layout_type>` (例 `pages/01-cover/`)
 
