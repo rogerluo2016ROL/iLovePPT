@@ -449,8 +449,16 @@ summary: |
 ```yaml
 status: error
 errors:
+  - code: INVALID_MODE                    # 主线程应让用户改 mode 重派
+    message: "mode 必须 ∈ {full, placeholder_map_only, dry_run, re_render_only},实际收到: <value>"
   - code: NAME_INVALID_CHARS              # 主线程应让用户改名重派
     message: "name 含 __,跟 page id 分隔符冲突: company__test"
+  - code: DISK_LOW                        # 主线程应释放磁盘空间或换路径
+    message: "library/pptx-templates/items 可用空间不足 500MB (df -k 拿到 <value>KB)"
+  - code: ALREADY_INGESTED                # 主线程应让用户加 overwrite:true 或换 name
+    message: "items/<name>/meta.yaml 已存在 (mode=full + overwrite=false)"
+  - code: META_NOT_FOUND                  # 主线程应让用户先跑 mode=full 完整 ingest
+    message: "mode=placeholder_map_only 但 items/<name>/meta.yaml 不存在 (回填需已 ingest 的模板)"
   - code: PPTX_CORRUPTED                  # 主线程应让用户重新提供文件
     message: "unzip 失败,文件可能损坏"
   - code: RENDER_CLI_NOT_FOUND            # 主线程应报环境问题
@@ -505,7 +513,7 @@ summary 用 `[system] template_extractor_failed` 前缀,主线程整段转给 br
 ```
 入参: template_path=/Users/x/company_a.pptx, name=company_a, working_dir=/tmp/deck-xxx
 
-Step 0: 校验 path OK · name 无 __ · items/company_a/meta.yaml 不存在 → continue
+Step 0: mode=full OK · template_path 存在 · name 'company_a' 不含危险字符 · disk 充足 · items/company_a/meta.yaml 不存在 → continue
 Step 1: cp .pptx → library/pptx-templates/_source/company_a.pptx
 Step 2: render_pages.py → 8 张 PNG 在 items/company_a/pages/{01,02,...,08}-page/preview.png
 Step 3: 逐页 Read PNG:
