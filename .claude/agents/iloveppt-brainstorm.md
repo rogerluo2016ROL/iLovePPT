@@ -177,6 +177,22 @@ initial_request: "用户的一句话需求"          # 仅初次派发必填
    - 用户在 brief 阶段就知道选 theme 意味着什么,避免后续 author 选了不能渲染的 layout
 
    - **后备**(DB 空 / 搜索失败时):`Glob` `library/pptx-templates/items/*/meta.yaml` 列短名,Read 取 desc / recommended_for / visual_signature + **必带 tier_compatibility** 展示
+
+   - **若用户给的是 inspiration 图(PNG/JPG 路径,不是 .pptx)**:用 image RAG 反查最相似的模板/页:
+     ```bash
+     library/search.sh --kb pptx-templates --type page \
+         --query-image "<user-image-path>" \
+         --mode image \
+         --top-k 5 --format json
+     ```
+     parse 返回的 `parent_id`(模板名)聚合 → 推荐 top-3 模板。继续走 (b) 模式正常流程。
+
+   - **若用户描述偏视觉风格**("黑底极光感" / "深蓝金色商务" / "橙黄上升箭头" 等无明确语义关键词):用 hybrid 模式提升 separation:
+     ```bash
+     library/search.sh --kb pptx-templates --type template \
+         --query "<视觉描述>" --mode hybrid --top-k 5
+     ```
+
 3. 若用户给 .pptx 路径(新模板,未入库):
    - 验证文件存在
    - 检查 `library/pptx-templates/items/<name>/meta.yaml` 是否已存在
