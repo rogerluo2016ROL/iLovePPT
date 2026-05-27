@@ -18,9 +18,17 @@ RAG 基础设施(venv / DB / 凭据)在 `library/_rag/`,跨 kb 共享。
 唯一检索入口是 `library/search.sh`,不要直接调本 kb 私有脚本(已无)。
 
 ```bash
-# 查 PDCA 循环 pattern
+# 语义查 pattern(默认 text)
 library/search.sh --query "PDCA 循环" --kb visual-patterns --top-k 5
+
+# 视觉风格找 pattern(hybrid)
+library/search.sh --query "环形辐射 中心放射" --kb visual-patterns --mode hybrid --top-k 5
+
+# 用图反查相似 pattern(image)
+library/search.sh --query-image inspiration.png --kb visual-patterns --mode image --top-k 5
 ```
+
+模式选择 / 权重调整 / query 扩展详见 [`library/pptx-templates/README.md`](../pptx-templates/README.md#用法--4-个查询场景) 或 `library/search.sh --help`。
 
 ## ingest 流程
 

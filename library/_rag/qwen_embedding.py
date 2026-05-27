@@ -220,42 +220,49 @@ def build_text_doc_vp(p: dict) -> str:
 
 
 def build_text_doc_tpl_template(p: dict) -> str:
-    """pptx-templates 模板级 text_doc 拼接(加 visual_signature)。"""
-    parts: list[str] = []
-    if name := p.get("name"):
-        parts.append(name)
-    if desc := p.get("desc"):
-        parts.append(desc)
-    if category := p.get("category"):
-        parts.append(f"类别 {category}")
-    for intent in p.get("content_intent", []):
-        parts.append(intent)
-    for w in p.get("when_to_use", []):
-        parts.append(f"适用 {w}")
-    for sig in p.get("visual_signature", []):
-        parts.append(f"视觉 {sig}")
-    for r in p.get("recommended_for", []):
-        parts.append(f"推荐 {r}")
-    for kw in p.get("keywords", []):
-        parts.append(kw)
-    return " · ".join(parts)
+    """pptx-templates 模板级 text_doc · 自然语言拼接,提升 embedding 上下文增益。"""
+    name = p.get("name", "")
+    desc = p.get("desc", "")
+    category = p.get("category", "")
+    sentences: list[str] = []
+    if name:
+        head = name + ("。" + desc if desc else "")
+        sentences.append(head)
+    if category:
+        sentences.append(f"这是一套 {category} 类别的 PPT 模板。")
+    if intents := p.get("content_intent", []):
+        sentences.append("适合内容包括:" + "、".join(intents) + "。")
+    if whens := p.get("when_to_use", []):
+        sentences.append("适用场景:" + "、".join(whens) + "。")
+    if sigs := p.get("visual_signature", []):
+        sentences.append("视觉特征:" + "、".join(sigs) + "。")
+    if recs := p.get("recommended_for", []):
+        sentences.append("推荐受众或场景:" + "、".join(recs) + "。")
+    if kws := p.get("keywords", []):
+        sentences.append("关键词:" + "、".join(kws) + "。")
+    return " ".join(sentences)
 
 
 def build_text_doc_tpl_page(p: dict) -> str:
-    """pptx-templates 页级 text_doc 拼接(加 layout_type)。"""
-    parts: list[str] = []
-    if name := p.get("name"):
-        parts.append(name)
-    if lt := p.get("layout_type"):
-        parts.append(f"布局 {lt}")
+    """pptx-templates 页级 text_doc · 自然语言拼接。"""
+    name = p.get("name", "")
+    lt = p.get("layout_type", "")
+    sentences: list[str] = []
+    head_bits = []
+    if name:
+        head_bits.append(name)
+    if lt:
+        head_bits.append(f"layout 类型为 {lt}")
+    if head_bits:
+        sentences.append("。".join(head_bits) + "。")
     if cat := p.get("category"):
-        parts.append(f"类别 {cat}")
-    for intent in p.get("content_intent", []):
-        parts.append(intent)
-    for w in p.get("when_to_use", []):
-        parts.append(f"适用 {w}")
-    for el in p.get("native_elements", []):
-        parts.append(f"元素 {el}")
-    for kw in p.get("keywords", []):
-        parts.append(kw)
-    return " · ".join(parts)
+        sentences.append(f"分类:{cat}。")
+    if intents := p.get("content_intent", []):
+        sentences.append("适合内容:" + "、".join(intents) + "。")
+    if whens := p.get("when_to_use", []):
+        sentences.append("适用场景:" + "、".join(whens) + "。")
+    if els := p.get("native_elements", []):
+        sentences.append("页面元素:" + "、".join(els) + "。")
+    if kws := p.get("keywords", []):
+        sentences.append("关键词:" + "、".join(kws) + "。")
+    return " ".join(sentences)
