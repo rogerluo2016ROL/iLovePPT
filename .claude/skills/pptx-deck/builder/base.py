@@ -24,6 +24,23 @@ from typing import Any
 
 from pptx import Presentation
 
+# === P0-3 · 静默吞错可见性(组件 A) ===
+# build 过程中被"吞掉但回落"的错误统一走这里:既保留回落鲁棒性,又不再静默。
+# 模块级列表方便测试断言;build_deck 入口清空,结束打印汇总。
+BUILD_WARNINGS: list[str] = []
+
+
+def _warn(stage: str, msg: str) -> None:
+    """记一条 build warning:append 到 BUILD_WARNINGS + 打印到 stderr。
+
+    stage 约定前缀:`builder.token-extract` / `builder.red-line` /
+    `tier1.slot-map` / `tier1.shape-removal`。
+    """
+    line = f"[{stage}] WARN {msg}"
+    BUILD_WARNINGS.append(line)
+    print(line, file=sys.stderr)
+
+
 HERE = Path(__file__).resolve().parent  # <repo>/.claude/skills/pptx-deck/builder
 PPTX_DECK_DIR = HERE.parent              # <repo>/.claude/skills/pptx-deck
 PPTX_SKILL_DIR = PPTX_DECK_DIR.parent / "pptx"  # <repo>/.claude/skills/pptx
@@ -545,6 +562,7 @@ def build_deck(plan: dict[str, Any]) -> Path:
     """
     # 延迟 import 避免循环依赖(tier1/tier2/tier3 都依赖 base.py 的常量)
     from . import tier1, tier2, tier3
+    BUILD_WARNINGS.clear()
 
     # set presentation mode(影响 layout 字数 / 字号)
     mode = plan.get("presentation_mode", "speaker")
@@ -646,6 +664,8 @@ def build_deck(plan: dict[str, Any]) -> Path:
         out = (Path(plan["_plan_dir"]) / out).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
     prs.save(str(out))
+    if BUILD_WARNINGS:
+        print(f"[build] {len(BUILD_WARNINGS)} warnings — {out}", file=sys.stderr)
     return out
 
 
