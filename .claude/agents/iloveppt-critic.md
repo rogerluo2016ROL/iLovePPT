@@ -383,7 +383,8 @@ suggested_alternative_patterns:
 
 ```python
 all_items = checklist_results  # 21 项:A1-A7 (Section A) + B1-B9 (Section B) + J1-J5 (Section J)
-severities = [item.severity for item in all_items]
+# J5 是 advisory,不计入 verdict 重算(与 rubric formula 注释 + validate_agent_return.py 一致)
+severities = [item.severity for item in all_items if item.id != "J5"]
 
 count_block = sum(1 for s in severities if s == 3)        # block 项数
 count_warn  = sum(1 for s in severities if s == 2)        # warn 项数

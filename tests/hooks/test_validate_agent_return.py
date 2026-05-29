@@ -90,10 +90,18 @@ def test_validate_block_audience_score_out_of_range_blocks():
 
 
 def test_validate_block_audience_ok():
+    # 真实 schema:overall_score 可为 float;per_page_scores 每页 scores: [{dim, score 0-3}]
     block = (
-        "next_action: delivered\noverall_score: 9\nverdict: excellent\n"
-        "per_page_scores:\n  - {page: 1, comprehension_5s: 9, info_density: 8, visual_appeal: 9, flow_coherence: 8}\n"
+        "next_action: delivered\noverall_score: 9.2\nverdict: excellent\n"
+        "per_page_scores:\n"
+        "  - {page: 1, scores: [{dim: 内容清晰度, score: 3}, {dim: 论据强度, score: 2}]}\n"
     )
+    code, msg = v.validate_block("iloveppt-audience", block)
+    assert code == 0, msg
+
+
+def test_validate_block_audience_float_score_ok():
+    block = "next_action: delivered\noverall_score: 8.93\nverdict: good\n"
     code, msg = v.validate_block("iloveppt-audience", block)
     assert code == 0, msg
 
@@ -116,9 +124,10 @@ def test_validate_block_critic_bool_severity_blocks():
 
 
 def test_validate_block_audience_per_page_out_of_range_blocks():
+    # score 5 越界(应 0-3)→ block(真实 12-dim 0-3 schema)
     block = (
         "next_action: delivered\noverall_score: 9\nverdict: excellent\n"
-        "per_page_scores:\n  - {page: 3, comprehension_5s: 9, info_density: 11, visual_appeal: 8, flow_coherence: 7}\n"
+        "per_page_scores:\n  - {page: 3, scores: [{dim: 视觉层次, score: 5}]}\n"
     )
     code, msg = v.validate_block("iloveppt-audience", block)
     assert code == 2

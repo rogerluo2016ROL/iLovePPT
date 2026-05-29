@@ -177,18 +177,23 @@ def validate_block(agent: str, block: str) -> tuple[int, str]:
         return 0, ""
 
     if agent == "iloveppt-audience":
+        # overall_score:0-10(可能 float,如 9.2)。reject bool。
         sc = data.get("overall_score")
-        if isinstance(sc, int) and not (0 <= sc <= 10):
+        if isinstance(sc, (int, float)) and not isinstance(sc, bool) and not (0 <= sc <= 10):
             return 2, f"audience overall_score={sc} 越界(应 0-10)"
+        # per_page_scores:真实 schema 每页含 scores: [{dim, score}] · score 0-3(见 audience.md)
         pps = data.get("per_page_scores")
         if isinstance(pps, list):
             for pg in pps:
                 if not isinstance(pg, dict):
                     continue
-                for dim in ("comprehension_5s", "info_density", "visual_appeal", "flow_coherence"):
-                    dv = pg.get(dim)
-                    if isinstance(dv, int) and not (1 <= dv <= 10):
-                        return 2, f"audience page {pg.get('page')} {dim}={dv} 越界(应 1-10)"
+                for item in pg.get("scores") or []:
+                    if not isinstance(item, dict):
+                        continue
+                    s = item.get("score")
+                    if isinstance(s, int) and not isinstance(s, bool) and not (0 <= s <= 3):
+                        return 2, (f"audience page {pg.get('page')} dim {item.get('dim')!r} "
+                                   f"score={s} 越界(应 0-3)")
         return 0, ""
 
     return 0, ""  # builder/author/brainstorm:本版只校 next_action 枚举
