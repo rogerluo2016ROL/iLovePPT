@@ -147,26 +147,58 @@ def _run_hook(payload: dict):
 
 
 def test_main_non_iloveppt_agent_passes():
-    r = _run_hook({"tool_input": {"subagent_type": "Explore"},
-                   "tool_response": "```yaml\nnext_action: teleport\n```"})
+    r = _run_hook({"agent_type": "Explore",
+                   "last_assistant_message": "```yaml\nnext_action: teleport\n```",
+                   "stop_hook_active": False})
     assert r.returncode == 0
 
 
 def test_main_no_yaml_block_passes():
-    r = _run_hook({"tool_input": {"subagent_type": "iloveppt-critic"},
-                   "tool_response": "just prose, no fence"})
+    r = _run_hook({"agent_type": "iloveppt-critic",
+                   "last_assistant_message": "just prose, no fence",
+                   "stop_hook_active": False})
     assert r.returncode == 0
 
 
 def test_main_critic_mismatch_blocks():
-    resp = ("summary text\n```yaml\nnext_action: pass\nverdict: pass\n"
-            "scores:\n  - {id: A6, severity: 3}\n```")
-    r = _run_hook({"tool_input": {"subagent_type": "iloveppt-critic"}, "tool_response": resp})
+    msg = ("summary text\n```yaml\nnext_action: pass\nverdict: pass\n"
+           "scores:\n  - {id: A6, severity: 3}\n```")
+    r = _run_hook({"agent_type": "iloveppt-critic",
+                   "last_assistant_message": msg, "stop_hook_active": False})
     assert r.returncode == 2
     assert "needs_revision" in r.stderr
+
+
+def test_main_loop_guard_stop_hook_active_passes():
+    # 即使违规,stop_hook_active=True 时放行(防死循环)
+    msg = ("```yaml\nnext_action: pass\nverdict: pass\n"
+           "scores:\n  - {id: A6, severity: 3}\n```")
+    r = _run_hook({"agent_type": "iloveppt-critic",
+                   "last_assistant_message": msg, "stop_hook_active": True})
+    assert r.returncode == 0
+
+
+def test_main_clean_critic_passes():
+    msg = ("```yaml\nnext_action: pass_with_notes\nverdict: pass_with_notes\n"
+           "scores:\n  - {id: A1, severity: 0}\n  - {id: B9, severity: 1}\n```")
+    r = _run_hook({"agent_type": "iloveppt-critic",
+                   "last_assistant_message": msg, "stop_hook_active": False})
+    assert r.returncode == 0, r.stderr
 
 
 def test_main_malformed_stdin_passes():
     r = subprocess.run([_sys.executable, str(_HOOK)], input="not json",
                        text=True, capture_output=True)
-    assert r.returncode == 0  # 防御性:解析不了的 stdin 不崩不拦
+    assert r.returncode == 0
+
+
+def test_main_transcript_fallback_blocks(tmp_path):
+    # last_assistant_message 缺失 → 从 agent_transcript_path 末条 assistant 读取
+    tp = tmp_path / "sub.jsonl"
+    rec = {"type": "assistant", "message": {"content": [
+        {"type": "text", "text": "x\n```yaml\nnext_action: pass\nverdict: pass\n"
+         "scores:\n  - {id: A6, severity: 3}\n```"}]}}
+    tp.write_text(_json.dumps(rec) + "\n", encoding="utf-8")
+    r = _run_hook({"agent_type": "iloveppt-critic",
+                   "agent_transcript_path": str(tp), "stop_hook_active": False})
+    assert r.returncode == 2

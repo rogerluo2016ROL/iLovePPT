@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
 # .claude/hooks/validate_agent_return.py
-"""PostToolUse hook · 校验 iloveppt-* subagent 的 return handoff YAML(组件 C / P0-1)。
+"""SubagentStop hook · 校验 iloveppt-* subagent 的 return handoff YAML(组件 C / P0-1)。
 
-设计原则:block(exit 2)极保守 —— 拿不准 / 无结构 / 非主流水线 agent 一律 exit 0 放行。
-只在「明确可判定的违规」上 block:
-  - return YAML 解析失败(主流水线 agent 末尾 yaml fence 不合法)
-  - next_action / verdict 不在该 agent 枚举内,或 verdict != next_action(critic)
-  - 分数越界(audience overall_score / 各维度)
-  - critic scores[].severity 非 int 0-3,或据公式重算的 verdict 与声明不符
+为什么是 SubagentStop 而非 PostToolUse:PostToolUse 对 subagent/Task 调用不触发
+(confirmed bug anthropics/claude-code#34692)。SubagentStop 在 subagent 完成时触发,
+stdin 内联 `agent_type` + `last_assistant_message`(return 全文)。
+
+行为:exit 2 阻断该 subagent 的 stop 并把 gate 消息喂回 subagent,逼它自纠后重出
+(改 verdict / 复查 severity)。`stop_hook_active=True` 时放行 → 最多一轮自纠,不死循环。
+
+设计原则:block 极保守 —— 拿不准 / 无结构 / 非主流水线 agent / 任何异常一律 exit 0 放行。
+只在「明确可判定的违规」上 exit 2:
+  - return YAML 解析失败 · next_action/verdict 不在枚举或 verdict!=next_action(critic)
+  - 分数越界(audience) · critic scores[].severity 非 int 0-3 或公式重算 verdict 与声明不符
 """
 from __future__ import annotations
 
@@ -63,6 +68,33 @@ def _extract_text(resp) -> str:
             elif isinstance(item, dict) and isinstance(item.get("text"), str):
                 parts.append(item["text"])
         return "\n".join(parts)
+    return ""
+
+
+def _read_subagent_text(payload: dict) -> str:
+    """取 subagent return 文本:优先内联 last_assistant_message;缺失则读 agent_transcript_path 末条 assistant。"""
+    msg = payload.get("last_assistant_message")
+    if isinstance(msg, str) and msg.strip():
+        return msg
+    tp = payload.get("agent_transcript_path") or payload.get("transcript_path")
+    if isinstance(tp, str):
+        try:
+            lines = Path(tp).read_text(encoding="utf-8").splitlines()
+        except Exception:
+            return ""
+        for line in reversed(lines):
+            if not line.strip():
+                continue
+            try:
+                obj = json.loads(line)
+            except Exception:
+                continue
+            if obj.get("type") == "assistant" or obj.get("role") == "assistant":
+                m = obj.get("message")
+                content = m.get("content") if isinstance(m, dict) else obj.get("content")
+                txt = _extract_text(content)
+                if txt.strip():
+                    return txt
     return ""
 
 
@@ -167,26 +199,31 @@ def main() -> int:
     try:
         payload = json.loads(raw)
     except Exception:
-        return 0  # stdin 非 JSON:防御性放行,绝不因 hook 自身崩溃卡流水线
+        return 0  # 非 JSON stdin:防御性放行
     if not isinstance(payload, dict):
         return 0
+    if payload.get("stop_hook_active") is True:
+        return 0  # loop guard:已在 stop-hook 续跑中,不再拦(最多一轮自纠)
 
-    tool_input = payload.get("tool_input") or {}
-    agent = tool_input.get("subagent_type") if isinstance(tool_input, dict) else None
+    agent = payload.get("agent_type")
     if agent not in ILOVEPPT_AGENTS:
         return 0
 
-    text = _extract_text(payload.get("tool_response"))
+    text = _read_subagent_text(payload)
+    if not text:
+        return 0
     block = _extract_last_yaml_block(text)
     if not block:
-        return 0  # 无 yaml fence:保守放行
+        return 0
 
     try:
         code, msg = validate_block(agent, block)
     except Exception:
         return 0  # validator 自身异常:放行(绝不误杀)
     if code == 2:
-        print(f"[gate] BLOCK · {msg}", file=sys.stderr)
+        # SubagentStop exit 2 → stderr 喂回该 subagent,逼它自纠后重出 return YAML
+        print(f"[gate] BLOCK · {msg}\n请修正后重新输出 return YAML(改 verdict 或复查 severity / scores),不要重复同一份。",
+              file=sys.stderr)
         return 2
     return 0
 
