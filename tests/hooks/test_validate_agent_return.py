@@ -28,3 +28,104 @@ def test_load_critic_thresholds():
     assert t["block_severity"] == 3
     assert t["warn_accumulation"] == 5
     assert t["notes_min_severity"] == 1
+
+
+def test_recompute_verdict():
+    t = v._load_critic_thresholds()
+    assert v._recompute_verdict([0, 0, 1], t) == "pass_with_notes"
+    assert v._recompute_verdict([0, 0, 0], t) == "pass"
+    assert v._recompute_verdict([0, 3, 1], t) == "needs_revision"
+    assert v._recompute_verdict([2, 2, 2, 2, 2, 2], t) == "needs_revision"  # >5 个 2
+    assert v._recompute_verdict([2, 2], t) == "pass_with_notes"
+
+
+def test_validate_block_critic_ok():
+    block = (
+        "next_action: pass_with_notes\n"
+        "verdict: pass_with_notes\n"
+        "scores:\n"
+        "  - {id: A1, severity: 0}\n"
+        "  - {id: B9, severity: 1}\n"
+        "  - {id: J5, severity: 2}\n"  # J5 不计入 → 不影响 verdict
+    )
+    code, msg = v.validate_block("iloveppt-critic", block)
+    assert code == 0, msg
+
+
+def test_validate_block_critic_verdict_mismatch_blocks():
+    block = (
+        "next_action: pass\n"
+        "verdict: pass\n"
+        "scores:\n"
+        "  - {id: A6, severity: 3}\n"  # 有 block → 应 needs_revision,声明 pass → 拦
+    )
+    code, msg = v.validate_block("iloveppt-critic", block)
+    assert code == 2
+    assert "needs_revision" in msg
+
+
+def test_validate_block_critic_severity_out_of_range_blocks():
+    block = "next_action: pass\nverdict: pass\nscores:\n  - {id: A1, severity: 4}\n"
+    code, msg = v.validate_block("iloveppt-critic", block)
+    assert code == 2
+
+
+def test_validate_block_critic_verdict_ne_next_action_blocks():
+    block = "next_action: pass\nverdict: needs_revision\n"
+    code, msg = v.validate_block("iloveppt-critic", block)
+    assert code == 2
+
+
+def test_validate_block_critic_no_scores_schema_only():
+    # 无 scores → 只 schema 校验,不重算 → 合法枚举即放行
+    block = "next_action: pass_with_notes\nverdict: pass_with_notes\n"
+    code, msg = v.validate_block("iloveppt-critic", block)
+    assert code == 0
+
+
+def test_validate_block_audience_score_out_of_range_blocks():
+    block = "next_action: delivered\noverall_score: 11\nverdict: excellent\n"
+    code, msg = v.validate_block("iloveppt-audience", block)
+    assert code == 2
+
+
+def test_validate_block_audience_ok():
+    block = (
+        "next_action: delivered\noverall_score: 9\nverdict: excellent\n"
+        "per_page_scores:\n  - {page: 1, comprehension_5s: 9, info_density: 8, visual_appeal: 9, flow_coherence: 8}\n"
+    )
+    code, msg = v.validate_block("iloveppt-audience", block)
+    assert code == 0, msg
+
+
+def test_validate_block_bad_yaml_blocks():
+    code, msg = v.validate_block("iloveppt-critic", "next_action: [unclosed\n")
+    assert code == 2
+
+
+def test_validate_block_unknown_next_action_blocks():
+    code, msg = v.validate_block("iloveppt-builder", "next_action: teleport\n")
+    assert code == 2
+
+
+def test_validate_block_critic_bool_severity_blocks():
+    # severity: true (yaml→Python bool) must be rejected (bool is int subclass)
+    block = "next_action: pass\nverdict: pass\nscores:\n  - {id: A1, severity: true}\n"
+    code, msg = v.validate_block("iloveppt-critic", block)
+    assert code == 2
+
+
+def test_validate_block_audience_per_page_out_of_range_blocks():
+    block = (
+        "next_action: delivered\noverall_score: 9\nverdict: excellent\n"
+        "per_page_scores:\n  - {page: 3, comprehension_5s: 9, info_density: 11, visual_appeal: 8, flow_coherence: 7}\n"
+    )
+    code, msg = v.validate_block("iloveppt-audience", block)
+    assert code == 2
+
+
+def test_validate_block_critic_j5_only_scores_no_block():
+    # J5 excluded from recompute → sev empty → recompute skipped → declared accepted
+    block = "next_action: pass\nverdict: pass\nscores:\n  - {id: J5, severity: 2}\n"
+    code, msg = v.validate_block("iloveppt-critic", block)
+    assert code == 0, msg

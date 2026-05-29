@@ -83,3 +83,79 @@ def _load_critic_thresholds() -> dict:
         }
     except Exception:
         return {"block_severity": 3, "warn_accumulation": 5, "notes_min_severity": 1}
+
+
+# J5 是 advisory,不计入 verdict 重算(见 critic-rubric.yaml formula 注释 + 本计划偏离 #4)
+_VERDICT_EXCLUDE_IDS = {"J5"}
+
+
+def _recompute_verdict(severities: list[int], thresholds: dict) -> str:
+    """按 critic-rubric.yaml 公式从整数 severity 列表算 verdict。"""
+    block = thresholds["block_severity"]
+    warn_cap = thresholds["warn_accumulation"]
+    notes_min = thresholds["notes_min_severity"]
+    if any(s == block for s in severities):
+        return "needs_revision"
+    if sum(1 for s in severities if s == 2) > warn_cap:
+        return "needs_revision"
+    if any(s >= notes_min for s in severities):
+        return "pass_with_notes"
+    return "pass"
+
+
+def validate_block(agent: str, block: str) -> tuple[int, str]:
+    """校验单个 handoff YAML block。返回 (exit_code, message)。0=放行 2=block。"""
+    try:
+        data = yaml.safe_load(block)
+    except Exception as e:
+        return 2, f"{agent} return YAML 解析失败: {e!r}"
+    if not isinstance(data, dict):
+        return 0, ""  # 非 dict 结构,保守放行
+
+    na = data.get("next_action")
+    enum = NEXT_ACTION_ENUM.get(agent, set())
+    if na is not None and enum and na not in enum:
+        return 2, f"{agent} next_action={na!r} 不在枚举 {sorted(enum)}"
+
+    if agent == "iloveppt-critic":
+        verdict = data.get("verdict")
+        if verdict is not None and na is not None and verdict != na:
+            return 2, f"critic verdict={verdict!r} 与 next_action={na!r} 不一致(应相等)"
+        scores = data.get("scores")
+        if isinstance(scores, list) and scores:
+            sev: list[int] = []
+            for item in scores:
+                if not isinstance(item, dict):
+                    continue
+                s = item.get("severity")
+                if not isinstance(s, int) or isinstance(s, bool) or not (0 <= s <= 3):
+                    return 2, f"critic scores 项 {item.get('id')!r} severity={s!r} 必须是 int 0-3"
+                if str(item.get("id")) not in _VERDICT_EXCLUDE_IDS:
+                    sev.append(s)
+            if sev:
+                thresholds = _load_critic_thresholds()
+                expected = _recompute_verdict(sev, thresholds)
+                declared = verdict or na
+                if declared and declared != expected:
+                    return 2, (
+                        f"critic verdict 公式重算={expected!r} 但声明={declared!r} "
+                        f"(severity={sev}) — 改 verdict 或 复查 severity"
+                    )
+        return 0, ""
+
+    if agent == "iloveppt-audience":
+        sc = data.get("overall_score")
+        if isinstance(sc, int) and not (0 <= sc <= 10):
+            return 2, f"audience overall_score={sc} 越界(应 0-10)"
+        pps = data.get("per_page_scores")
+        if isinstance(pps, list):
+            for pg in pps:
+                if not isinstance(pg, dict):
+                    continue
+                for dim in ("comprehension_5s", "info_density", "visual_appeal", "flow_coherence"):
+                    dv = pg.get(dim)
+                    if isinstance(dv, int) and not (1 <= dv <= 10):
+                        return 2, f"audience page {pg.get('page')} {dim}={dv} 越界(应 1-10)"
+        return 0, ""
+
+    return 0, ""  # builder/author/brainstorm:本版只校 next_action 枚举
