@@ -22,7 +22,7 @@
 | cover | 主标题 ≤ 20 字、副标 ≤ 24 字、不堆头衔 | "关于 XX 公司 2026 年战略发展规划暨数字化转型实施路径研讨" |
 | toc | 章节 ≤ 6、每章 ≤ 12 字、动宾对齐 | "公司发展的历史背景与现状分析" |
 | section_divider | 章节号 + 标题（≤ 10 字），layout 独立于内容页 | 与内容页同 header |
-| single_focus | 1 句话 ≤ 12 字 + 1 数字（72pt+）+ 1 行解释 ≤ 20 字 | 5 个要点平铺 |
+| single_focus | 1 句话 ≤ 12 字 + 1 数字（72pt+） + 1 行解释 ≤ 20 字 | 5 个要点平铺 |
 | compare | N 列对比表(header bar 风,跟 cards 视觉拉开)。每列 title ≤ 6 字、body ≤ 22 字、句式对称。可加 `recommended: true` 标主推列(蓝 header + 浅蓝 body + 绿 ✓ 徽章) | 标题长度差 2×;3 列里 0 列主推(没主张) |
 | **compare_pk** | **对决式两选一**。`left/right={title ≤ 8 字, body ≤ 40 字}`。中间巨型 VS 圆,适合 before/after、新旧 PK、二选一 | 三方对比硬塞(应该用 compare);body 写成 1 个词没说服力 |
 | **matrix_2x2** | **BCG 2×2 矩阵**。`x_axis/y_axis = {low, high}`(≤ 8 字),4 quadrants(pos = tl/tr/bl/br),`title ≤ 8 字`、`body ≤ 25 字`,1 个 quadrant 加 `highlight: true` | 4 格写 4 个不相关的点(矩阵的意义是同一维度二分类);轴标签写成完整句 |
@@ -363,7 +363,7 @@ brief.md schema 见 [iloveppt-brainstorm agent](${CLAUDE_PROJECT_DIR}/.claude/ag
 | `scqa` (situation/complication/question/answer) | cover 后第 1-2 内容页的开场叙述 |
 | outline 章节(brainstorm 推断,author Stage C 在 outline.md 里确定) | `toc.sections` + 每节 `section_divider.title` |
 | `audience` | 语气校准（technical → 精确数字；executive → 结论先行；general → 类比；sales → 卖点） |
-| `duration_min` | 估算页数(1 min ≈ 1.5 页)+ 内容密度(时长短 → 减 bullet) |
+| `duration_min` | 估算页数(1 min ≈ 1.5 页) + 内容密度(时长短 → 减 bullet) |
 | `presentation_mode` | speaker / handout 字数表切换(见上方"双模式字数表") |
 | `theme`(若是 .pptx 模板) | 由 [template-extract.md](template-extract.md) 提取主色与字体覆盖 theme |
 | `asset_inventory` | author 拓写 pic_text / chart 时优先用用户提供的素材 |

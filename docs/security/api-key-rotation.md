@@ -4,7 +4,7 @@
 
 ## 工具
 
-`library/_rag/scripts/rotate_api_key.py`(P3-18 加)
+`library/_rag/scripts/rotate_api_key.py`(加)
 
 ## 用法
 
@@ -38,4 +38,4 @@ library/_rag/.venv/bin/python library/_rag/scripts/rotate_api_key.py --rollback 
 
 ## 备份保留
 
-`.env.bak.<timestamp>` 不入 git(`.env.*` 已 gitignore)· 本地保留以备回滚 · 季度可手动清理旧备份。
+`.env.bak.<timestamp>` 不入 git(`.env.*` 已 gitignore) · 本地保留以备回滚 · 季度可手动清理旧备份。

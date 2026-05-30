@@ -12,7 +12,7 @@
 #   4. `'?'` 是 inspect_placeholders.py 留的 skeleton sentinel(未填充),
 #      legacy 模板允许(extractor v3+ 应 0)
 #
-# 引用:CLAUDE.md 关键不变量 / docs/optimization/2026-05-27-iLovePPT-optimization-plan.md P1-2
+# 引用:CLAUDE.md 关键不变量(self_check #13 SLOT_ID_ENUM_FAILED)
 
 version: 1
 schema:
@@ -648,7 +648,6 @@ special:
 meta:
   related_docs:
     - CLAUDE.md
-    - docs/optimization/2026-05-27-iLovePPT-optimization-plan.md
     - .claude/agents/iloveppt-template-extractor.md
   related_self_checks:
     - "#13 SLOT_ID_ENUM_FAILED"

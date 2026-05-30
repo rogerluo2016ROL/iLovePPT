@@ -28,7 +28,7 @@ bash scripts/check_deps.sh
 |---|---|---|
 | **`pptx` 局部改** | 已有 .pptx,改 ≤ 5 张文字 | 几行；不适合从零 |
 | **基于模板 + 代码混合** | 仓库已有 .pptx 模板,需版本化重生成 | ~500 行；保模板视觉投入 |
-| **python-pptx 全定制** | 没模板,跨平台中文,23+ 页 | ~800 行；复用率 90% |
+| **python-pptx 全定制** | 没模板,跨平台中文,23 + 页 | ~800 行；复用率 90% |
 
 判定经验：
 - 用户抱怨"字体丑 / 表格乱 / 中文字体不对"→ 基本需要"全定制"或"模板混合"——纯手动无法根治
@@ -37,7 +37,7 @@ bash scripts/check_deps.sh
 
 ## 跨场景共识
 
-- **中文字体默认 Microsoft YaHei**，跨平台 EA 字段必写（详见 [helpers.py](helpers.py) `set_font` / `_fix_ph_font`）
+- **中文字体默认 Microsoft YaHei**，跨平台 EA 字段必写（详见 [helpers/__init__.py](helpers/__init__.py) `set_font` / `_fix_ph_font`）
 - LibreOffice 渲染 PDF → pdftoppm PNG 视觉验证闭环
 - 12 个核心 helper 入口见 [design-system.md](design-system.md)
 
@@ -52,7 +52,7 @@ bash scripts/check_deps.sh
 
 | 模块 | 用途 |
 |---|---|
-| `helpers.py` | 低层 pptx 原语（set_font / card / bullets / table_modern / embed_picture 等）+ 设计 token（BRAND_* / FONT_* / 灰阶）|
+| `helpers.py` | 低层 pptx 原语（set_font / card / bullets / table_modern / embed_picture 等） + 设计 token（BRAND_* / FONT_* / 灰阶）|
 | `layout.py` | 几何原语（Box、content_region、full_region、columns、rows、stack、split、inset）— 主题无关，供 make_* 函数使用 |
 
 ## 交付前 checklist

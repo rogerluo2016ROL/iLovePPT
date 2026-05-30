@@ -115,7 +115,7 @@ pptx-deck（本 skill）
 - 不要跳过视觉 QA 直接交付 — 一定要逐页 Read PNG 检查
 - 不要在视觉 check 失败 ≥ 3 次时还硬重试 — 直接降级标 review_needed
 - 不要 cover/section_divider/closing 用同一种 layout — 节奏感很关键
-- 不要堆 5+ 种饱和色 — 用单一品牌色 + 1 强调色 + 灰阶
+- 不要堆 5 + 种饱和色 — 用单一品牌色 + 1 强调色 + 灰阶
 - 不要假设 macOS 渲染 = Windows 渲染 — Microsoft YaHei 在 macOS 默认 fallback
 - 不要在 build.py 内嵌 LLM API 调用 — vision QA 由 Claude 框架做
 - 不要 extract 用户模板时复制其内容 — 只提取主色/字体/layout token

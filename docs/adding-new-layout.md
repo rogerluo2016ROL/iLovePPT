@@ -1,4 +1,4 @@
-# 加新 layout —— Plugin 机制(P3-2 后)
+# 加新 layout —— Plugin 机制
 
 > 本仓库的 layout 系统是 **auto-discover plugin 架构**。加一个新 layout type(如 `swot_grid` / `bcg_growth_share` / `kanban`)= 写**一个文件**,不需要改 `helpers/__init__.py` / `build.py` / `themes/`。
 

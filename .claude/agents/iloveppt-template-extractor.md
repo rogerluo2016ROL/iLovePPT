@@ -505,7 +505,7 @@ summary: |
     5. 在 library/pptx-templates/INDEX.md 加一行
 ```
 
-**失败时** —— `status: error / next_action: dispatch_brainstorm / template_ready: false`,errors[] 含 **code(必填,从下方枚举选)+ message + suggestion**:
+**失败时** —— `status: error / next_action: dispatch_brainstorm / template_ready: false`,errors[] 含 **code(必填,从下方枚举选) + message + suggestion**:
 
 ```yaml
 status: error
@@ -570,7 +570,7 @@ summary 用 `[system] template_extractor_failed` 前缀,主线程整段转给 br
 - 不要覆盖用户已 final 化的 meta.yaml(检查文件存在性)
 - 不要无视 name 含 `__` 的 reject 规则
 - 🚫 **不要自创 layout_type 名** — `comparison_venn` / `objective_pyramid` / `horizontal_timeline` / `diagram_circular_centered` / `pyramid_chart_bullets` / `quadrant_4node_diagram` / `vertical_comparison` / `dual_column` / `three_column` / `image_left_text_right` / `grid_four_icons` / `mixed_split_complex` / `persona_with_options` / `instruction_reference` / `table_of_contents` 这些**全部历史违规**。从 17 enum 选,不在就 `other`
-- 🚫 **不要写字符串 confidence**(`high` / `medium` / `low`)— 历史翻车 42+ 次。严格 0.0-1.0 数字
+- 🚫 **不要写字符串 confidence**(`high` / `medium` / `low`)— 历史翻车 42 + 次。严格 0.0-1.0 数字
 - 🚫 **不要自己解释 Step 2.5 discrepancy** —(`8 hidden slides` / `1 hidden layout master` / `7 master slides` 全是历史幻觉)。如实记数字 + `discrepancy_resolution: pending`,等用户审
 - 🚫 **不要省略必填字段** — `id` / `name` / `layout_type` / `content_intent` / `when_to_use` / `keywords` / `native_elements` 缺一项,该页 RAG 检索就失声(`build_text_doc_tpl_page` 拿不到东西)
 - 🚫 **不要写 `embedding_dimension`** — 字段名是 `embedding_dim`(历史 2/3 次错)

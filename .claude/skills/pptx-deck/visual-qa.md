@@ -163,9 +163,9 @@ iloveppt-builder Step 3 在逐页 QA 全部通过后(进 Step 4 之前)对全 de
 
 - [ ] **无重叠**：所有元素 z-order 正常，无文字穿形状
 - [ ] **无截断**：所有文本框内容完整显示，无省略号或被裁剪
-- [ ] **字体统一**：全 deck 使用 Microsoft YaHei / Source Han Sans CN（正文）+ Bold（标题）
+- [ ] **字体统一**：全 deck 使用 Microsoft YaHei / Source Han Sans CN（正文） + Bold（标题）
 - [ ] **配色一致**：色值仅来自 `BRAND_*` / `GRAY_*` 套色板，无随机色
-- [ ] **字号层级清晰**：封面 48pt+ / 页标题 32pt+ / 正文 18-20pt / 表格 14pt / 页脚 9pt
+- [ ] **字号层级清晰**：封面 48pt + / 页标题 32pt + / 正文 18-20pt / 表格 14pt / 页脚 9pt
 - [ ] **留白达标**：左右边距 ≥ 0.55"、底部 ≥ 0.5"，离页边无元素
 - [ ] **对齐网格**：同类元素左对齐 / 居中对齐一致；优先使用 12-col grid (`grid_columns`),无随机偏移
 - [ ] **表格无意外 banding**：无意外横纹，行高均匀

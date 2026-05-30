@@ -222,7 +222,7 @@ stateDiagram-v2
 | 限制 | 描述 | 解决方案 |
 |---|---|---|
 | subgraph 嵌套 ≥ 2 层 | 布局不稳定，节点溢出容器 | 切 draw.io（支持任意嵌套） |
-| 节点形状有限 | 无三角形 / 精确多边形 | draw.io 支持 10+ shape |
+| 节点形状有限 | 无三角形 / 精确多边形 | draw.io 支持 10 + shape |
 | 多节点精确对齐 | 自动布局，无法手动指定坐标 | draw.io mxGeometry 精确控制 |
 | 配色细粒度 | 单节点颜色靠 classDef，写起来繁琐 | draw.io style 属性直接写 |
 | 长字符串折行位置 | 自动折，折点不可控 | draw.io `whiteSpace=wrap` |

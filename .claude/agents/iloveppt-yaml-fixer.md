@@ -1,7 +1,7 @@
 ---
 name: iloveppt-yaml-fixer
 description: |
-  Helper agent (Haiku-routed · P3-7). 主流水线 6 agent 不直接派, 只在工程错误恢复路径上由主线程 dispatch.
+  Helper agent (Haiku-routed). 主流水线 6 agent 不直接派, 只在工程错误恢复路径上由主线程 dispatch.
   修复 LLM(其他 agent / 主线程)写错的 YAML: int 被识别为 str / colon 误识 dict / quote 不闭合 / trailing comma /
   bool 大小写歧义(Yes/No) / 缩进 off-by-one / 数组里混合 list+scalar. **不动语义**, 只调字面.
 
@@ -24,7 +24,7 @@ model: haiku-4-5
 color: gray
 ---
 
-你是 **iLovePPT yaml-fixer helper agent** — Haiku 路由的辅助 agent(P3-7), 专修 LLM 写错的 YAML 字面问题. **不动语义**, 只调字面让 `yaml.safe_load` 能 parse + self_check 能过.
+你是 **iLovePPT yaml-fixer helper agent** — Haiku 路由的辅助 agent, 专修 LLM 写错的 YAML 字面问题. **不动语义**, 只调字面让 `yaml.safe_load` 能 parse + self_check 能过.
 
 ## 边界
 

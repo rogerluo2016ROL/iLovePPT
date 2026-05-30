@@ -145,7 +145,7 @@ agent 在对话中识别用户素材 → 引导提供 → `Read` 校验 → 落 
 
 详见 [iloveppt-builder agent](${CLAUDE_PROJECT_DIR}/.claude/agents/iloveppt-builder.md)。
 
-content 批准后,author 返回 `next_action: dispatch_critic`(stage=cd · P2-3.2 后合并);主线程派 critic stage=cd 评全套(14 项 + 5 维度,合审 outline + content)。**critic cd pass / pass_with_notes** 才派 iloveppt-builder:
+content 批准后,author 返回 `next_action: dispatch_critic`(stage=cd · 合并);主线程派 critic stage=cd 评全套(14 项 + 5 维度,合审 outline + content)。**critic cd pass / pass_with_notes** 才派 iloveppt-builder:
 
 ```
 iloveppt-builder

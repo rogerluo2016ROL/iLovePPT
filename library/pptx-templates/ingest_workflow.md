@@ -19,8 +19,8 @@
 - `library/pptx-templates/scripts/inspect_placeholders.py` —— Step 3.1.5 产 placeholder_map.yaml.draft 骨架
 - `library/pptx-templates/scripts/extractor_self_check.py` —— Step 3.3 自检 · exit code 0/1/2/3/4
 - `library/_rag/render_pages.py` —— Step 2 渲染 PNG(soffice/pdftoppm 已加 timeout)
-- `library/_rag/scripts/detect_watermark.py` —— Step 2.6 扫源 .pptx 第三方水印 / 版权 LOGO(P3-22)
-- `library/_rag/scripts/check_template_drift.py` —— 定期 / CI 跑 · 7 模板 sha drift sweep(P3-15)
+- `library/_rag/scripts/detect_watermark.py` —— Step 2.6 扫源 .pptx 第三方水印 / 版权 LOGO
+- `library/_rag/scripts/check_template_drift.py` —— 定期 / CI 跑 · 7 模板 sha drift sweep
 
 ```
 1. 用户提供 .pptx 路径
@@ -58,7 +58,7 @@
 8. 更新 INDEX.md 加一行
 ```
 
-### Step 2.6 · 水印 / 版权 LOGO detect(P3-22)
+### Step 2.6 · 水印 / 版权 LOGO detect
 
 **触发**:每次 `full` mode ingest 必跑。**输出**:
 
@@ -87,12 +87,12 @@ notes: |
 
 **brand keyword 自定义**:`library/_rag/scripts/detect_watermark_brand_config.yaml`(default `brands: []`,examples 注释段含 iSlide / OfficePlus 等)。
 
-### Step 3.3 sha drift gate(P3-15)
+### Step 3.3 sha drift gate
 
 `extractor_self_check.py` check #14 = `SOURCE_PPTX_SHA_DRIFT`。每次跑 self-check 比对 `_source/<name>.pptx` 实际 sha vs `meta.provenance.source_pptx_sha256`:
 
 - 不匹配 → exit 1 + 提示 `"模板 .pptx 源已变 · 必须重新 inspect placeholder_map · 跑 inspect_placeholders.py + bump source_pptx_version"`。
-- 模板更新流程:**先** bump `source_pptx_version`(v1 → v2)+ 重算 sha256 写入 meta.yaml + 重跑 `inspect_placeholders.py` 重生成 placeholder_map.yaml,**然后**重 embed。
+- 模板更新流程:**先** bump `source_pptx_version`(v1 → v2) + 重算 sha256 写入 meta.yaml + 重跑 `inspect_placeholders.py` 重生成 placeholder_map.yaml,**然后**重 embed。
 
 **定期 sweep**(可入 CI):
 
@@ -100,7 +100,7 @@ notes: |
 library/_rag/.venv/bin/python library/_rag/scripts/check_template_drift.py
 ```
 
-输出 markdown 表(每模板 declared SHA / actual SHA / version / status)+ exit 1 当任一模板漂移。
+输出 markdown 表(每模板 declared SHA / actual SHA / version / status) + exit 1 当任一模板漂移。
 
 ## 🔑 必填字段(直接进 embedding · 缺则 RAG 检索失效)
 
@@ -281,4 +281,4 @@ Exit code: 0=全过 / 1=字段 enum / list element type / shape_id resolve / sha
 11. **shape_id resolve**(`.yaml` + `.yaml.draft` 都查;每个 slot `shape_id`(非 null)必须能在 source `.pptx` 对应 slide 找到;`shape_id: null` 允许作 fallback,但若 source `.pptx` 缺失则报 `SOURCE_PPTX_MISSING`)
 12. **variant enum**(page meta.yaml.variant ∈ `library/vocabularies/layout_variants.yaml`,且 vocab[variant].layout_type 必须 == meta.layout_type)
 13. **slot_id enum**(placeholder_map slots[].id ∈ `library/vocabularies/slot_ids.yaml` 展开后的 enum)
-14. **source_pptx sha drift**(P3-15 · `_source/<name>.pptx` 实际 sha256 必须 == `meta.provenance.source_pptx_sha256`;不匹配 → `SOURCE_PPTX_SHA_DRIFT` exit 1 · 提示重新 inspect placeholder_map + bump source_pptx_version)
+14. **source_pptx sha drift**(`_source/<name>.pptx` 实际 sha256 必须 == `meta.provenance.source_pptx_sha256`;不匹配 → `SOURCE_PPTX_SHA_DRIFT` exit 1 · 提示重新 inspect placeholder_map + bump source_pptx_version)

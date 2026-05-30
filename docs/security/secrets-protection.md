@@ -2,12 +2,12 @@
 
 iLovePPT 是开源 agent team 工具,本身不存机密;但工作产物(brief / outline / content / 客户素材)经常含敏感信息。本文记录两道防线:
 
-- **入仓前**:`.githooks/pre-commit` 扫 staged 文件(P3-19)
-- **运行时**:`library/_rag/scripts/redact.py` 给 query log 脱敏(P3-21)
+- **入仓前**:`.githooks/pre-commit` 扫 staged 文件
+- **运行时**:`library/_rag/scripts/redact.py` 给 query log 脱敏
 
 ---
 
-## 1 · Pre-commit hook(P3-19)
+## 1 · Pre-commit hook
 
 ### 行为
 
@@ -64,13 +64,13 @@ git config --unset core.hooksPath
 
 ---
 
-## 2 · RAG query log 脱敏(P3-21)
+## 2 · RAG query log 脱敏
 
 ### 行为
 
 `library/search.sh` 每次跑都会 append 一行到 `library/_rag/query_log.jsonl`(给 bench / 分析用)。query 原文常含 brief 内容(可能含客户名 / 邮箱 / 钱数等敏感字段)。
 
-P3-21 之后默认走 `library/_rag/scripts/redact.py` 过滤:
+默认走 `library/_rag/scripts/redact.py` 过滤:
 
 | 模式 | 替换值 | 备注 |
 |---|---|---|
@@ -119,7 +119,7 @@ library/_rag/.venv/bin/python -m pytest tests/library/test_redact.py -v
 
 ## 已知限制
 
-1. **pre-commit 不扫 `.pptx` / 图片正文** —— 二进制 grep 没意义。深度扫敏感建议另起工具(后续 P3-22 模板入库时做)。
+1. **pre-commit 不扫 `.pptx` / 图片正文** —— 二进制 grep 没意义。深度扫敏感建议另起工具(后续模板入库时做)。
 2. **redact 不解 base64 / URL 编码** —— 仅扫明文。
 3. **手机号正则故意保守**(11 位 1[3-9])—— 防误吃 14 位订单号 / 18 位身份证。海外手机号 / 座机号目前不脱敏。
 4. **pre-commit hook 不是 server-side enforcement** —— `--no-verify` / 关 hook / 不 install 都能绕过。push 后 server-side 防护建议另起 P5 工作(`pre-receive` on hosting)。
